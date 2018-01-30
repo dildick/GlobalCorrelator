@@ -10,10 +10,10 @@ Example using tanh LUT
 
 
 int main() {
-    val_t in_hw;
-    result_t out_hw;
-    float in,out;
+    etaphi_t in_hw;   // val_t
+    etaphi_t out_hw;  // result_t
 
+    float in,out;
     float values = 0.1;
 
     in  = 0.1;

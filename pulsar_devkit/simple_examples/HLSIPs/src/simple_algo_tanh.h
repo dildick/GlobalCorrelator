@@ -15,6 +15,7 @@ typedef ap_fixed<AP_FIXED_SIZE,AP_FIXED_DEC> val_t;
 typedef ap_fixed<AP_FIXED_SIZE,AP_FIXED_DEC> result_t;
 
 typedef ap_int<10> etaphi_t;
+typedef ap_int<10> pt_t;
 typedef ap_uint<10> uetaphi_t;
 
 
@@ -22,7 +23,8 @@ typedef ap_uint<10> uetaphi_t;
 
 // reference and hardware functions
 void simple_algo_tanh_ref( const float& in, float& out );
-void simple_algo_tanh_hw(val_t data, result_t& res);
+//void simple_algo_tanh_hw(val_t data, result_t& res);
+void simple_algo_tanh_hw(etaphi_t data, etaphi_t& res);
 
 
 // *************************************************

@@ -1,3 +1,6 @@
+/*
+Reference algorithm
+*/
 #include <math.h>
 #include <cmath>
 #include <algorithm>
