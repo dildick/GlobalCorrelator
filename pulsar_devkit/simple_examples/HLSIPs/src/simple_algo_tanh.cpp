@@ -16,9 +16,8 @@ https://github.com/p2l1pfp/GlobalCorrelator_HLS/blob/dev/firmware/data.h
 #endif
 
 // https://github.com/Xilinx/RFNoC-HLS-NeuralNet/blob/master/rfnoc/hls/test_activations/test_activations.h/cpp
-void simple_algo_tanh_hw(etaphi_t data, etaphi_t& res){ 
-    /* Call hardware implementation of tanh */
-    tanh<etaphi_t,etaphi_t>(data, res);
+void simple_algo_tanh_hw(val_t data, result_t& res){ 
+    tanh<val_t, result_t>(data, res);
     return;
 }
 

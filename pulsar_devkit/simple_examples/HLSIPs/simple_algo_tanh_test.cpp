@@ -10,8 +10,8 @@ Example using tanh LUT
 
 
 int main() {
-    etaphi_t in_hw;
-    etaphi_t out_hw;
+    val_t in_hw;
+    result_t out_hw;
     float in,out;
 
     float values = 0.1;
@@ -25,13 +25,11 @@ int main() {
 
 
     // hardware implementation
-    in_hw  = round(values * VTX_ETA_SCALE);
+    in_hw  = values;
     out_hw = 0;
     simple_algo_tanh_hw(in_hw, out_hw);
 
-    out = out_hw.to_int()/VTX_ETA_SCALE;
-
     std::cout << " HW  : tanh(" << in_hw << ") = " << out_hw << std::endl;
-    std::cout << " HW  : converted output = " << out << std::endl;
+
     return 0;
 }
