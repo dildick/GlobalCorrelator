@@ -25,7 +25,7 @@ int main() {
 
 
     // hardware implementation
-    in_hw  = values;
+    in_hw  = round(values*1E3);
     out_hw = 0;
     simple_algo_tanh_hw(in_hw, out_hw);
 
