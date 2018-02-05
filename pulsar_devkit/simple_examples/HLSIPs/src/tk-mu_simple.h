@@ -26,6 +26,7 @@ typedef ap_int<2> q_t;       // charge
 #define Z0_RANGE 15
 
 #define ETA_CONVERSION 200
+#define PHI_CONVERSION 20000
 
 // Define structs for physics objects in software
 struct TrackObj_tkmu {
@@ -98,16 +99,17 @@ void invCosh(data_T &data, res_T &res) {
     init_cosh_table<res_T, TABLE_SIZE>(cosh_table);
 
     // Index into the lookup table based on data
-    int index;
 
     #pragma HLS PIPELINE
 
-    index = (1-data/(COSH_RANGE*ETA_CONVERSION))*TABLE_SIZE;
+//    int index;
+//    index = (1-data/(COSH_RANGE*ETA_CONVERSION))*TABLE_SIZE;
+//    if (index < 0) index = 0;
+//    else if (index > TABLE_SIZE-1) index = TABLE_SIZE-1;
 
-    if (index < 0) index = 0;
-    else if (index > TABLE_SIZE-1) index = TABLE_SIZE-1;
-
-    res = cosh_table[index];
+    if (data<0) res = cosh_table[0];
+    else if (data>TABLE_SIZE-1) res = cosh_table[TABLE_SIZE-1];
+    else res = cosh_table[data];
 
     return;
 }
@@ -117,13 +119,9 @@ void invCosh(data_T &data, res_T &res) {
 template<class data_T, class res_T>
 void invCosh(data_T &data, res_T &res) { 
     /* Get the tanh value from the LUT -- symmetric function */
-    if (data < 0) {
-        // should only get positive values!
-        res = 0;
-    }
-    else{
-        invCosh<data_T, res_T, N_TABLE_SIZE>(data, res); 
-    }
+    // should only get positive values!
+    if (data < 0) res = 0;
+    else invCosh<data_T, res_T, N_TABLE_SIZE>(data, res); 
 
     return;
 }
@@ -163,16 +161,17 @@ void tanh(data_T &data, res_T &res) {
     init_tanh_table<res_T, TABLE_SIZE>(tanh_table);
 
     // Index into the lookup table based on data
-    int index;
 
     #pragma HLS PIPELINE
 
-    index = (1-data/(TANH_RANGE*ETA_CONVERSION))*TABLE_SIZE;
+//    int index;
+//    index = (1-data/(TANH_RANGE*ETA_CONVERSION))*TABLE_SIZE;
+//    if (index < 0) index = 0;
+//    else if (index > TABLE_SIZE-1) index = TABLE_SIZE-1;
 
-    if (index < 0) index = 0;
-    else if (index > TABLE_SIZE-1) index = TABLE_SIZE-1;
-
-    res = tanh_table[index];
+    if (data<0) res = tanh_table[0];
+    else if (data>TABLE_SIZE-1) res = tanh_table[TABLE_SIZE-1];
+    else res = tanh_table[data];
 
     return;
 }
