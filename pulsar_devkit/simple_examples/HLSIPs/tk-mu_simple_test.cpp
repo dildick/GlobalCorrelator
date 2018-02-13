@@ -16,11 +16,11 @@ int main() {
     // :: Reference :: //
     // 00 -0.00128212 0.11572 -0.29363 -4.49219
     TrackObj_tkmu in_ref;
-    in_ref.pt  = 779.9581942408;
 
-    in_ref.eta = 2.745; //-0.289566;
-    in_ref.phi = -1.49705; //0.11572;
-    in_ref.z0  = -4.49219;
+    in_ref.pt  = 1.360636778;
+    in_ref.eta = -2.265;  //2.745;       // -0.289566;
+    in_ref.phi = 1.26735; //-1.49705;    //  0.11572;
+    in_ref.z0  = -4.72;   //-4.49219;
     in_ref.q   = -1;
 
     PropTrackObj_tkmu out_ref;
@@ -41,11 +41,11 @@ int main() {
 // z0 = 11 bit   1968/2048;    -80
 
     TkObj_tkmu in_hw;
-    in_hw.hwInvPt = "111100101101011";
-    in_hw.hwEta   = "100111000101";          // 12-bit = -453 :: "11111100000101" 14-bit = (0.9693603516)*5 -> -2.28194 (assuming the range is -5,5)
-    in_hw.hwPhi   = "00110001100000011";     // 17-bit = 1.26735 (drop leading 0's)
-    in_hw.hwZ0    = "101110110000";          // 12-bit (add zero after signed bit)
-    in_hw.hwQ     = 1;  // negative charge
+    in_hw.hwInvPt = 14699; //"011100101101011";       // 15-bit = -14699 :: /2E4 = 0.73495 -> pT = 1.360636778 GeV
+    in_hw.hwEta   = -453;  //"100111000101";          // 12-bit = -453   :: "11111100000101" 14-bit = (0.9693603516)*5 -> -2.28194 (assuming the range is -5,5)
+    in_hw.hwPhi   = 25347; //"00110001100000011";     // 17-bit = 1.26735 (drop leading 0's)
+    in_hw.hwZ0    = -944;  //"101110110000";          // 12-bit (add zero after signed bit)
+    in_hw.hwQ     = -1;     // negative charge
 
     PropTkObj_tkmu out_hw;
 

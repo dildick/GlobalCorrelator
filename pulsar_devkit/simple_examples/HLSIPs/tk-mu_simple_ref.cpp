@@ -39,9 +39,6 @@ void tkmu_simple_ref( const TrackObj_tkmu& in, PropTrackObj_tkmu& out ){
         deta = deta*tanh(tk_eta);
     }
 
-    std::cout << " DETA " << deta << std::endl;
-    std::cout << " DZCORRPHI " << dzCorrPhi << std::endl;
-
     // cosh(1.7)*1.464 = 4.14065
     float resPhi = tk_phi - tk_q*4.1407/cosh(etaProp)/tk_pt*dzCorrPhi - M_PI/144.;
 
