@@ -17,18 +17,18 @@
 
 typedef ap_int<15> invpt_t;  // inverse pt [1% at 100 GeV] -- 32768
 typedef ap_int<12> pt_t;
-typedef ap_int<12> eta_t;    // eta [sinh(eta) measure to 0.005] -- 4096 
-typedef ap_int<17> phi_t;    // phi (50 micro-rad) -- 131072 
+typedef ap_int<12> eta_t;    // eta [sinh(eta) measure to 0.005] -- 2048 (signed)
+typedef ap_int<17> phi_t;    // phi (50 micro-rad) -- 65536 (signed)
 typedef ap_int<10> chisq_t;  // chi^2 (0 - 100; 0.1 steps) -- 1024 (each bit is ~0.1)
 typedef ap_int<1> q_t;       // charge
-//typedef ap_int<12> z0_t;   // z0  (1 mm over +/-14.9 cm) -- 4096 (1 cm = 273) (same as eta_t)
+//typedef ap_int<12> z0_t;   // z0  (1 mm over +/-14.9 cm) -- 2048 (signed) (same as eta_t)
 
-typedef ap_fixed<15,2> finvpt_t;  // inverse pt [1% at 100 GeV] -- 32768
+typedef ap_fixed<15,1> finvpt_t;  // inverse pt [1% at 100 GeV] -- 32768
 typedef ap_fixed<12,9> fpt_t;
-typedef ap_fixed<12,3> feta_t;    // eta [sinh(eta) measure to 0.005] -- 4096 
+typedef ap_fixed<12,4> feta_t;    // eta [sinh(eta) measure to 0.005] -- 4096 
 typedef ap_fixed<17,3> fphi_t;    // phi (50 micro-rad) -- 131072 
 typedef ap_fixed<10,7> fchisq_t;  // chi^2 (0 - 100; 0.1 steps) -- 1024 (each bit is ~0.1)
-//typedef ap_int<12> z0_t;   // z0  (1 mm over +/-14.9 cm) -- 4096 (1 cm = 273) (same as eta_t)
+typedef ap_fixed<12,5> fz0_t;     // z0  (1 mm over +/-14.9 cm) -- 4096 (1 cm = 273) (same as eta_t)
 
 
 
@@ -38,12 +38,13 @@ typedef ap_fixed<10,7> fchisq_t;  // chi^2 (0 - 100; 0.1 steps) -- 1024 (each bi
 #define Z0_TABLE_SIZE 2048
 
 #define ETA_RANGE 3
-#define TANH_RANGE 3
 #define COSH_RANGE 3
 #define Z0_RANGE 15
 
 #define ETA_CONVERSION 200
 #define PHI_CONVERSION 20000
+#define INVETA_CONVERSION 5E-3
+#define INVPHI_CONVERSION 5E-5
 
 // -- Define structs for physics objects in software
 struct TrackObj_tkmu {
@@ -61,18 +62,18 @@ struct PropTrackObj_tkmu : TrackObj_tkmu {
 
 // -- Define structs for physics objects in hardware
 struct TkObj_tkmu {
-	invpt_t hwInvPt;
-	pt_t hwPt;
-	eta_t hwEta;
-	phi_t hwPhi;
-	eta_t hwZ0;  // same precision at eta_t
-	q_t hwQ;
-	chisq_t hwX2;
+    invpt_t hwInvPt;
+    pt_t hwPt;
+    eta_t hwEta;
+    phi_t hwPhi;
+    eta_t hwZ0;  // same precision at eta_t
+    q_t hwQ;
+    chisq_t hwX2;
 };
 
 struct PropTkObj_tkmu : TkObj_tkmu {
-	eta_t hwPropEta;
-	phi_t hwPropPhi;
+    eta_t hwPropEta;
+    phi_t hwPropPhi;
 };
 
 
@@ -109,7 +110,6 @@ void init_deta_cosh_table(res_T table_out[N_TABLE][N_TABLE]){
 template<class data_T, class res_T, int TABLE_SIZE/*=1024*/>
 void deta_cosh_LUT(const data_T& data_z0, const data_T& data_eta, res_T& res){
     /* Initialize LUT and return value from table */
-    std::cout << " BUILD LUT " << std::endl;
     res_T deta_cosh_table[TABLE_SIZE][TABLE_SIZE];
     init_deta_cosh_table<res_T>(deta_cosh_table);
 
@@ -133,7 +133,6 @@ void deta_cosh_LUT(const data_T& data_z0, const data_T& data_eta, res_T& res){
 template<class data_T, class res_T>
 void deta_cosh_LUT(const data_T& data_z0, const data_T& data_eta, res_T& res){
     /* Gateway to 2D LUT */
-    std::cout << " GATEWAY TO LUT " << std::endl;
     res = 0;
     data_T tmp_data_z0;
     data_T tmp_data_eta;
@@ -143,9 +142,6 @@ void deta_cosh_LUT(const data_T& data_z0, const data_T& data_eta, res_T& res){
     if (data_eta< 0) tmp_data_eta = -1*data_eta;
     else tmp_data_eta = data_eta;
 
-    std::cout << " CALL LUT " << std::endl;
-    std::cout << " data z0  " << tmp_data_z0 << std::endl;
-    std::cout << " data eta " << tmp_data_eta << std::endl;
     deta_cosh_LUT<data_T, res_T, ETA_TABLE_SIZE>(tmp_data_z0, tmp_data_eta, res);
 
     if (data_z0 < 0) res *= -1;
@@ -208,9 +204,6 @@ void deta_tanh_delta_plus_LUT( const data_T& data_z0, const data_T& data_eta, re
 
     if (data_z0<0)  tmp_data_z0  = -1*data_z0;
     if (data_eta<0) tmp_data_eta = -1*data_eta;
-
-    std::cout << " tmp z0  = " << tmp_data_z0 << std::endl;
-    std::cout << " tmp eta = " << tmp_data_eta << std::endl;
 
     deta_tanh_delta_plus_LUT<data_T,res_T,ETA_TABLE_SIZE>( tmp_data_z0,tmp_data_eta,res );
 
@@ -277,9 +270,6 @@ void deta_tanh_delta_minus_LUT( const data_T& data_z0, const data_T& data_eta, r
     if (data_z0<0)  tmp_data_z0  = -1*data_z0;
     if (data_eta<0) tmp_data_eta = -1*data_eta;
 
-    std::cout << " tmp z0  = " << tmp_data_z0 << std::endl;
-    std::cout << " tmp eta = " << tmp_data_eta << std::endl;
-
     deta_tanh_delta_minus_LUT<data_T,res_T,ETA_TABLE_SIZE>( tmp_data_z0,tmp_data_eta,res );
 
     if (data_z0<0) res = -1*res;
@@ -311,17 +301,33 @@ void init_deta_table(data_T table_out[N_TABLE]){
     return;
 }
 
-template<class data_T, class res_T>
+template<class data_T, class res_T, int TABLE_SIZE>
 void deta_LUT(data_T &data, res_T &res) {
     // Initialize the lookup table
-    res_T deta_table[Z0_TABLE_SIZE];
-    init_deta_table<res_T>(deta_table);
+    res_T deta_table[TABLE_SIZE];
+    init_deta_table<res_T,TABLE_SIZE>(deta_table);
 
     #pragma HLS PIPELINE
     res = 0;
     if (data < 0) res = deta_table[0];
-    else if (data > Z0_TABLE_SIZE-1) res = deta_table[Z0_TABLE_SIZE-1];
+    else if (data > Z0_RANGE) res = deta_table[TABLE_SIZE-1];
     else res = deta_table[data];
+
+    return;
+}
+
+template<class data_T, class res_T>
+void deta_LUT(data_T &data, res_T &res) { 
+    /* Gateway to deta_LUT (z0/550) : checks boundaries */
+    res = 0;
+    if (data < 0) {
+        data_T tmp_data = -1*data;
+        deta_LUT<data_T, res_T, Z0_TABLE_SIZE>(tmp_data, res);
+        res  *= -1;
+    }
+    else{
+        deta_LUT<data_T, res_T, Z0_TABLE_SIZE>(data, res); 
+    }
 
     return;
 }
@@ -329,11 +335,11 @@ void deta_LUT(data_T &data, res_T &res) {
 
 ///////////////////////////
 ///////////////////////////
-template<class data_T>
-void init_delta_minus_table(data_T table_out[Z0_TABLE_SIZE]){
+template<class data_T, int N_TABLE>
+void init_delta_minus_LUT(data_T table_out[N_TABLE]){
     /* delta_minus_LUT  z0 / (z0-850) */
-    for (int ii = 0; ii < Z0_TABLE_SIZE; ii++) {
-        float in_val = (Z0_RANGE)*((Z0_TABLE_SIZE-1)-ii)/float(Z0_TABLE_SIZE);
+    for (int ii = 0; ii < N_TABLE; ii++) {
+        float in_val = (Z0_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table 
         float numerator   = in_val;    // just repeat the calculation from delta_LUT
@@ -344,28 +350,39 @@ void init_delta_minus_table(data_T table_out[Z0_TABLE_SIZE]){
     }
 }
 
-template<class data_T, class res_T>
+template<class data_T, class res_T, int TABLE_SIZE>
 void delta_minus_LUT(data_T &data, res_T &res) {
     // Initialize the lookup table
-    res_T delta_minus_table[Z0_TABLE_SIZE];
-    init_delta_minus_table<res_T>(delta_minus_table);
+    res_T delta_minus_table[TABLE_SIZE];
+    init_delta_minus_LUT<res_T,TABLE_SIZE>(delta_minus_table);
 
     #pragma HLS PIPELINE
 
     res = 0;
     if (data < 0) res = delta_minus_table[0];
-    else if (data > Z0_TABLE_SIZE-1) res = delta_minus_table[Z0_TABLE_SIZE-1];
+    else if (data > Z0_RANGE) res = delta_minus_table[TABLE_SIZE-1];
     else res = delta_minus_table[data];
 
     return;
 }
 
+template<class data_T, class res_T>
+void delta_minus_LUT(data_T &data, res_T &res) { 
+    /* Gateway to delta_minus_LUT (z0/(850-z0)) */
+    res = 0;
+    delta_minus_LUT<data_T, res_T, Z0_TABLE_SIZE>(data, res); 
+
+    return;
+}
+
+
+
 ///////////////////////////
-template<class data_T>
-void init_delta_plus_table(data_T table_out[Z0_TABLE_SIZE]){
+template<class data_T, int N_TABLE>
+void init_delta_plus_LUT(data_T table_out[N_TABLE]){
     /* delta_plus_LUT  z0 / (z0+850) */
-    for (int ii = 0; ii < Z0_TABLE_SIZE; ii++) {
-        float in_val = (Z0_RANGE)*((Z0_TABLE_SIZE-1)-ii)/float(Z0_TABLE_SIZE);
+    for (int ii = 0; ii < N_TABLE; ii++) {
+        float in_val = (Z0_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table 
         float numerator   = in_val;    // just repeat the calculation from delta_LUT
@@ -376,18 +393,27 @@ void init_delta_plus_table(data_T table_out[Z0_TABLE_SIZE]){
     }
 }
 
-template<class data_T, class res_T>
+template<class data_T, class res_T, int TABLE_SIZE>
 void delta_plus_LUT(data_T &data, res_T &res) {
     /* Initialize the lookup table */
-    res_T delta_plus_table[Z0_TABLE_SIZE];
-    init_delta_plus_table<res_T>(delta_plus_table);
+    res_T delta_plus_table[TABLE_SIZE];
+    init_delta_plus_LUT<res_T,TABLE_SIZE>(delta_plus_table);
 
     #pragma HLS PIPELINE
 
     res = 0;
     if (data < 0) res = delta_plus_table[0];
-    else if (data > Z0_TABLE_SIZE-1) res = delta_plus_table[Z0_TABLE_SIZE-1];
+    else if (data > Z0_RANGE) res = delta_plus_table[TABLE_SIZE-1];
     else res = delta_plus_table[data];
+
+    return;
+}
+
+template<class data_T, class res_T>
+void delta_plus_LUT(data_T &data, res_T &res) { 
+    /* Gateway to delta_plus_LUT (z0/(850+z0)) */
+    res = 0;
+    delta_plus_LUT<data_T, res_T, Z0_TABLE_SIZE>(data, res); 
 
     return;
 }
@@ -395,34 +421,48 @@ void delta_plus_LUT(data_T &data, res_T &res) {
 
 ///////////////////////////
 template<class data_T, int N_TABLE>
-void init_delta_table(data_T table_out[N_TABLE]){
+void init_delta_LUT(data_T table_out[N_TABLE]){
     /* delta_LUT  = track.hwZ0 / 850 */
     for (int ii = 0; ii < N_TABLE; ii++) {
         float in_val = (Z0_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table 
         data_T real_val = in_val/850.;  // convert to proper type
-        if (DEBUG) std::cout << "delta_LUT:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
+        if (DEBUG) std::cout << "delta_LUT:  Lookup table Index " <<  ii << ": In Value = " << in_val << "; Result = " << real_val << std::endl;
         table_out[ii] = real_val;
-
-        // delta_LUT:  Lookup table Index: 0 In Value: 14.9927 Result: 4
     }
 
     return;
 }
 
-template<class data_T, class res_T>
+template<class data_T, class res_T, int TABLE_SIZE>
 void delta_LUT(data_T &data, res_T &res) {
     /* Initialize the LUT */
-    res_T delta_table[Z0_TABLE_SIZE];
-    init_delta_table<res_T,Z0_TABLE_SIZE>(delta_table);
+    res_T delta_table[TABLE_SIZE];
+    init_delta_LUT<res_T,TABLE_SIZE>(delta_table);
 
     #pragma HLS PIPELINE
 
     res = 0;
     if (data < 0) res = delta_table[0];
-    else if (data > Z0_TABLE_SIZE-1) res = delta_table[Z0_TABLE_SIZE-1];
+    else if (data > Z0_RANGE) res = delta_table[TABLE_SIZE-1];
     else res = delta_table[data];
+
+    return;
+}
+
+template<class data_T, class res_T>
+void delta_LUT(data_T &data, res_T &res) { 
+    /* Gateway to delta_LUT (z0/850) : checks boundaries */
+    res = 0;
+    if (data < 0) {
+        data_T tmp_data = -1*data;
+        delta_LUT<data_T, res_T, Z0_TABLE_SIZE>(tmp_data, res);
+        res  *= -1;
+    }
+    else{
+        delta_LUT<data_T, res_T, Z0_TABLE_SIZE>(data, res); 
+    }
 
     return;
 }
@@ -435,7 +475,7 @@ void init_tanh_table(data_T table_out[N_TABLE]) {
     /* Implement tanh lookup */
     for (int ii = 0; ii < N_TABLE; ii++) {
         // Convert from table index to X-value (unsigned 4-bit, range 0 to +4)
-        float in_val = (TANH_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
+        float in_val = (ETA_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table function
         data_T real_val = tanh(in_val);
@@ -478,6 +518,7 @@ void tanh(data_T &data, res_T &res) {
     return;
 }
 
+
 ///////////////////////////
 // -- 1/cosh(x) LUT (follow tanh example)
 template<class data_T, int N_TABLE>
@@ -488,8 +529,8 @@ void init_cosh_table(data_T table_out[N_TABLE]) {
         float in_val = (COSH_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table function
-        data_T real_val = 1.464*2.828/cosh(in_val);   // 1.464*cosh(1.7)/cosh(eta)
-        if (DEBUG) std::cout << "A*B/cosh:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
+        data_T real_val = 1./cosh(in_val);
+        if (DEBUG) std::cout << "1/cosh:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
         table_out[ii] = real_val;
     }
 
@@ -522,5 +563,56 @@ void invCosh(data_T &data, res_T &res) {
 }
 
 
-#endif
+///////////////////////////
+// -- ARCSINH FUNCTION 
+//    Tracker provides sinh(eta) and we need eta!
+//    http://mathworld.wolfram.com/InverseHyperbolicSine.html
+template<class data_T, int N_TABLE>
+void init_arcsinh_table(data_T table_out[N_TABLE]) {
+    /* Implement arcsinh lookup */
+    for (int ii = 0; ii < N_TABLE; ii++) {
+        // Convert from table index to X-value (unsigned 4-bit, range 0 to +4)
+        float in_val = (ETA_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
+        // Next, compute lookup table function
+        data_T real_val = log(in_val + sqrt(1+pow(in_val,2)));
+        if (DEBUG) std::cout << "Arcsinh:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
+        table_out[ii] = real_val;
+    }
+
+    return;
+}
+
+template<class data_T, class res_T, int TABLE_SIZE/*=1024*/>
+void arcsinh(data_T &data, res_T &res) {
+    // Initialize the lookup table
+    res_T arcsinh_table[TABLE_SIZE];
+    init_arcsinh_table<res_T, TABLE_SIZE>(arcsinh_table);
+
+    #pragma HLS PIPELINE
+
+    if (data<0) res = arcsinh_table[0];
+    else if (data>TABLE_SIZE-1) res = arcsinh_table[TABLE_SIZE-1];
+    else res = arcsinh_table[data];
+
+    return;
+}
+
+// Gateway to calling arcsinh(x)
+template<class data_T, class res_T>
+void arcsinh(data_T &data, res_T &res) { 
+    /* Get the arcsinh value from the LUT -- anti-symmetric function */
+    res = 0;
+    if (data < 0) {
+        data_T tmp_data = -1*data;
+        arcsinh<data_T, res_T, ETA_TABLE_SIZE>(tmp_data, res);
+        res  *= -1;
+    }
+    else{
+        arcsinh<data_T, res_T, ETA_TABLE_SIZE>(data, res); 
+    }
+
+    return;
+}
+
+#endif

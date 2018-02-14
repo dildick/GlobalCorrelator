@@ -10,6 +10,10 @@ Texas A&M University
 
 HLS implementation of TK-MU Linking
   > https://github.com/cms-l1t-offline/cmssw/blob/phase2-l1t-inegration-CMSSW_9_3_2/L1Trigger/L1TTrackMatch/plugins/L1TkMuonProducer.cc
+
+**
+LUTs are simplified to only include positive calculations,
+as long as negative calculations are simple transformations.
 */
 #include "tk-mu_simple.h"
 #include <cmath>
@@ -21,94 +25,127 @@ HLS implementation of TK-MU Linking
 
 
 void tkmu_simple_hw(  const TkObj_tkmu& in, PropTkObj_tkmu& out ){
-    /* Hardware implementation of the track propagation 
-       -> Eta has 0.005 resolution
-       -> Convert float to 12-bit signed integer (eta_t precision):
-       -> 1.1 @ 0.005 = 220 = "000011011100"; round( 1.1*ETA_CONVERSION )
-       -> 1.0 @ 0.005 = 200 = "000011001000"; round( 1.0*ETA_CONVERSION )
-    */
-    feta_t dzCorrPhi;
-    feta_t delta;
-    feta_t etaProp;
-    feta_t deta;
+    /* Hardware implementation of the track propagation */
+    feta_t boundary(1.1);           // barrel/endcap boundary
+    feta_t unity(1.0);
+    fphi_t M_PI_144(0.0218);        // used in phi propagation
+    fphi_t tmp_A(1.464);            // constant in phi extrapolation
+    fphi_t tmp_B(2.82832);          // cosh(1.7): constant in phi extrapolation
 
-    feta_t absEta   = abs(in.hwEta);   // just inspect the first bit?
-    feta_t boundary = 1.1;             // barrel/endcap boundary
-    feta_t unity    = 1.0;
+    // declare some variables
+    fphi_t dzCorrPhi(1.0);
+    fphi_t delta(0.0);
+    feta_t deta(0.0);
+    feta_t etaProp(1.1);
+    fphi_t invCoshEta_Phi(0.0);
+    feta_t invCoshEta_EtaBarrel(0.0);
 
+    // convert inputs (ap_int<>) to ap_fixed<> for internal use
+    fz0_t inhwZ0(in.hwZ0*INVETA_CONVERSION);     // same conversion as eta
+    feta_t inhwEta(in.hwEta*INVETA_CONVERSION);   // ap_int<> -> ap_fixed<>
+    feta_t abshwEta   = inhwEta;
+    if (inhwEta<0) abshwEta*=-1;
+
+    fphi_t inhwPhi(in.hwPhi*INVPHI_CONVERSION);
+    fphi_t inhwInvPt(in.hwInvPt*INVPHI_CONVERSION);  // same conversion for invPt & phi
+    if (in.hwQ<0) inhwInvPt *= -1;  
+
+    // Do the calculations!
     std::cout << " FIRMWARE : Eta calculation " << std::endl;
-    // barrel
-    if (absEta < boundary){
-        std::cout << " FIRMWARE : Barrel " << std::endl;
+    if (abshwEta < boundary){
+        // barrel
+        std::cout << " FIRMWARE : -- Barrel " << std::endl;
         dzCorrPhi = unity;            // convert 1.0 to eta_t
         etaProp   = boundary;         // 1.1;
 
-        feta_t inhwZ0 = (in.hwZ0>0) ?  1.*in.hwZ0 : -1.*in.hwZ0;
-        std::cout << " FIRMWARE : DETA COSH LUT " << std::endl;
-        deta_cosh_LUT(inhwZ0,absEta,deta);       // LUT: z0/550/cosh(|eta|)
-    }
-    // endcap
-    else {
-        std::cout << " FIRMWARE : Endcap " << std::endl;
-        etaProp = absEta;
-        delta_LUT(in.hwZ0,delta);               // LUT: 1/850. (-0.01764705882 -> 0.01764705882) [-4,4]
-
-        std::cout << " FIRMWARE : etaProp = " << absEta << std::endl;
-        std::cout << " FIRMWARE : delta   = " << delta << std::endl;
-
-        deta = 0;
-        if (in.hwEta>0){
-            dzCorrPhi = unity-delta;            // '1.0-delta'
-            std::cout << " FIRMWARE : +dzcorrphi   = " << dzCorrPhi << std::endl;
-
-            //delta_minus_LUT(in.hwZ0,deta);    // LUT: delta / (1-delta)
-            deta_tanh_delta_minus_LUT( in.hwZ0, in.hwEta, deta );          // LUT: tanh * delta / (1-delta)
+        // 2DLUT:  deta_cosh_LUT(inhwZ0,abshwEta,deta);       // LUT: z0/550/cosh(|eta|) [not using!]
+        // 2, 1DLUTs: [z0/550] * [1/cosh(|eta|)]
+        if (inhwZ0<0){
+            fz0_t tmp_inhwZ0 = -1*inhwZ0;
+            deta_LUT(tmp_inhwZ0,deta);                       // only takes positive values
+            deta *= -1;
         }
         else{
-            dzCorrPhi = unity+delta;            // '1.0+delta'
-            std::cout << " FIRMWARE : -dzcorrphi   = " << dzCorrPhi << std::endl;
-            std::cout << " FIRMWARE : in.hwZ0      = " << in.hwZ0 << std::endl;
-            std::cout << " FIRMWARE : in.hwEta     = " << in.hwEta << std::endl;
-
-            //delta_plus_LUT(in.hwZ0,deta);     // LUT: delta / (1+delta)
-            deta_tanh_delta_plus_LUT( in.hwZ0, in.hwEta, deta );           // LUT: tanh * delta / (1+delta)
-            std::cout << " FIRMWARE : 2d lut" << std::endl;
+            deta_LUT(inhwZ0,deta);
         }
 
-        std::cout << " FIRMWARE : dzCorrPhi = " << dzCorrPhi << std::endl;
-        std::cout << " FIRMWARE : deta      = " << deta << std::endl;
+        invCosh(abshwEta,invCoshEta_EtaBarrel);              // LUT: 1/cosh(|eta|)
+        deta *= invCoshEta_EtaBarrel;
     }
+    else {
+        // endcap
+        std::cout << " FIRMWARE : -- Endcap " << std::endl;
+        etaProp = abshwEta;
+
+        // LUT: z0/850.
+        if (inhwZ0<0){
+            fz0_t tmp_inhwZ0 = -1*inhwZ0;
+            delta_LUT(tmp_inhwZ0,delta);     // only takes positive values
+            delta *= -1;
+        }
+        else{
+            delta_LUT(inhwZ0,delta);
+        }
+
+        std::cout << " FIRMWARE :       delta   = " << delta << std::endl;
+
+        // Only LUTs for
+        // 1)  z0 / (850+z0)
+        // 2)  z0 / (850-z0)
+        // depending on sign(z0): multiply by '-1', if necessary, & choose the correct LUT!
+        deta = 0;
+        if (in.hwEta>0){
+            dzCorrPhi = unity-delta;
+            // Check z0 value, call the correct LUT!
+            if (inhwZ0<0){
+                delta_plus_LUT(inhwZ0,deta);                                    // LUT: delta / (1-delta)
+                deta *= -1;
+            }
+            else
+                delta_minus_LUT(inhwZ0,deta);                                   // LUT: delta / (1-delta)
+            //--2D LUT: deta_tanh_delta_minus_LUT( inhwZ0, inhwEta, deta );     // LUT: tanh * delta / (1-delta)
+        }
+        else{
+            dzCorrPhi = unity+delta;
+            if (inhwZ0<0){
+                delta_minus_LUT(inhwZ0,deta);                                   // LUT: delta / (1+delta)
+                deta *= -1;
+            }
+            else
+                delta_plus_LUT(inhwZ0,deta);                                    // LUT: delta / (1+delta)
+            //--2D LUT: deta_tanh_delta_plus_LUT( inhwZ0, inhwEta, deta );      // LUT: tanh * delta / (1+delta)
+        }
+
+        feta_t tanhEta;
+        tanh(inhwEta,tanhEta);  // handles the sign internally
+        deta*=tanhEta;
+
+        std::cout << " FIRMWARE :       deta      = " << deta << std::endl;
+        std::cout << " FIRMWARE :       dzCorrPhi = " << dzCorrPhi << std::endl;
+    }
+
+
     // ** calculate the propagated eta ** //
-    feta_t inhwEta = in.hwEta;
-    out.hwPropEta = (inhwEta + deta);
+    out.hwPropEta = (inhwEta + deta)*ETA_CONVERSION;
+
 
     // ** calculate the propagated phi ** //
-    // inverse cosh(etaProp)
-    std::cout << " FIRMWARE : Phi calculation " << std::endl;
-    feta_t tmp_invCoshEta = 0;
-    invCosh(etaProp,tmp_invCoshEta);            // LUT: 1/cosh(x) * 1.464*cosh(1.7) [from original function]
+    std::cout << " FIRMWARE : -- Phi calculation " << std::endl;
 
-    std::cout << " FIRMWARE : invCoshEta = " << tmp_invCoshEta << std::endl;
+    invCosh(etaProp,invCoshEta_Phi);            // LUT: 1/cosh(x)
+    std::cout << " FIRMWARE :    invCoshEta = " << invCoshEta_Phi << std::endl;
 
-    // Multiple in pieces to make sure the numbers stay within -pi,pi
-    // e.g., 1.464 * cosh(1.7) = 4.14
-    // 1.464     = 29280 in phi_t  (each bit is 0.00005) = "00111001001100000"
-    // cosh(1.7) = 56566 = "01101110011110110"
-    // M_PI/144  = 0.02181661565 -> 436 = "110110100"
-    fphi_t tmp_val1 = (in.hwQ>0) ? 1*in.hwInvPt : -1*in.hwInvPt;
-    fphi_t tmp_val2 = tmp_invCoshEta; //dzCorrPhi  * tmp_invCoshEta;        // max = (1 + 15/850) / cosh(0.0)
-    fphi_t tmp_val3 = dzCorrPhi;
-    fphi_t tmp_val4 = tmp_val1 * tmp_val2 * tmp_val3;
+    // Include two constants used in calculation (1.464*cosh(1.7))
+    tmp_A *= inhwInvPt;
+    tmp_B *= dzCorrPhi;       // cosh(1.7) * dzCorrPhi
+    fphi_t tmp_val4   = tmp_A * tmp_B * invCoshEta_Phi;
+    fphi_t outPropPhi = inhwPhi - tmp_val4 - M_PI_144;
 
-    // calculate the propagated phi
-    std::cout << " FIRMWARE : in.hwPhi = " << in.hwPhi << std::endl;
-    std::cout << " FIRMWARE : tmp_val4 = " << tmp_val4 << std::endl;
+    out.hwPropPhi = outPropPhi*PHI_CONVERSION;
 
-    fphi_t tmp_propPhi(in.hwPhi);
-    fphi_t M_PI_144 = 0.0218;
-    tmp_propPhi = tmp_propPhi - tmp_val4 - M_PI_144;
-
-    out.hwPropPhi = tmp_propPhi;
+    // Print results to screen for debugging
+    std::cout << " FIRMWARE : in.hwPhi      = " << in.hwPhi << std::endl;
+    std::cout << " FIRMWARE : out.hwPropPhi = " << out.hwPropPhi << std::endl;
 
     return;
 }
