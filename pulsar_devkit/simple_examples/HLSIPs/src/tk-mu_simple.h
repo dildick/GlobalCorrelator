@@ -23,23 +23,35 @@ typedef ap_int<10> chisq_t;  // chi^2 (0 - 100; 0.1 steps) -- 1024 (each bit is 
 typedef ap_int<1> q_t;       // charge
 //typedef ap_int<12> z0_t;   // z0  (1 mm over +/-14.9 cm) -- 2048 (signed) (same as eta_t)
 
+
 typedef ap_fixed<15,1> finvpt_t;  // inverse pt [1% at 100 GeV] -- 32768
 typedef ap_fixed<12,9> fpt_t;
 typedef ap_fixed<12,4> feta_t;    // eta [sinh(eta) measure to 0.005] -- 4096 
 typedef ap_fixed<17,3> fphi_t;    // phi (50 micro-rad) -- 131072 
 typedef ap_fixed<10,7> fchisq_t;  // chi^2 (0 - 100; 0.1 steps) -- 1024 (each bit is ~0.1)
 typedef ap_fixed<12,5> fz0_t;     // z0  (1 mm over +/-14.9 cm) -- 4096 (1 cm = 273) (same as eta_t)
-
+/*
+typedef ap_fixed<15,1> finvpt_t;  // inverse pt [1% at 100 GeV] -- 32768
+typedef ap_fixed<12,9> fpt_t;
+typedef ap_fixed<16,4> feta_t;    // eta [sinh(eta) measure to 0.005] -- 4096 
+typedef ap_fixed<17,3> fphi_t;    // phi (50 micro-rad) -- 131072 
+typedef ap_fixed<10,7> fchisq_t;  // chi^2 (0 - 100; 0.1 steps) -- 1024 (each bit is ~0.1)
+typedef ap_fixed<16,5> fz0_t;     // z0  (1 mm over +/-14.9 cm) -- 4096 (1 cm = 273) (same as eta_t)
+*/
 
 
 // size of the LUTs
 // 12-bit signed = 11-bit signed -> 2048
-#define ETA_TABLE_SIZE 2048
-#define Z0_TABLE_SIZE 2048
+#define ETA_TABLE_SIZE 2048  // 16384
+#define Z0_TABLE_SIZE 2048   // 16384
 
 #define ETA_RANGE 3
 #define COSH_RANGE 3
 #define Z0_RANGE 15
+
+#define INV_ETA_RANGE 1/ETA_RANGE
+#define INV_COSH_RANGE 1/COSH_RANGE
+#define INV_Z0_RANGE 1/Z0_RANGE
 
 #define ETA_CONVERSION 200
 #define PHI_CONVERSION 20000
@@ -294,7 +306,7 @@ void init_deta_table(data_T table_out[N_TABLE]){
 
         // Next, compute lookup table 
         data_T real_val = in_val/550.;  // convert to proper type
-        if (DEBUG) std::cout << "deta_LUT:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
+        std::cout << "deta_LUT:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
         table_out[ii] = real_val;
     }
 
@@ -309,9 +321,14 @@ void deta_LUT(data_T &data, res_T &res) {
 
     #pragma HLS PIPELINE
     res = 0;
+
     if (data < 0) res = deta_table[0];
     else if (data > Z0_RANGE) res = deta_table[TABLE_SIZE-1];
-    else res = deta_table[data];
+    else{
+        // convert input to index
+        int index = TABLE_SIZE - data * TABLE_SIZE * INV_Z0_RANGE;
+        res = deta_table[index];
+    }
 
     return;
 }
@@ -345,7 +362,7 @@ void init_delta_minus_LUT(data_T table_out[N_TABLE]){
         float numerator   = in_val;    // just repeat the calculation from delta_LUT
         float denominator = 850. - in_val;
         data_T real_val   = numerator/denominator; // convert to proper type
-        if (DEBUG) std::cout << "delta_minus_LUT:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
+        if (DEBUG) std::cout << "delta_minus_LUT (z0/(850-z0)):  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
         table_out[ii] = real_val;
     }
 }
@@ -361,7 +378,11 @@ void delta_minus_LUT(data_T &data, res_T &res) {
     res = 0;
     if (data < 0) res = delta_minus_table[0];
     else if (data > Z0_RANGE) res = delta_minus_table[TABLE_SIZE-1];
-    else res = delta_minus_table[data];
+    else{
+        // convert input to index
+        int index = TABLE_SIZE - data * TABLE_SIZE * INV_Z0_RANGE;
+        res = delta_minus_table[index];
+    }
 
     return;
 }
@@ -388,7 +409,7 @@ void init_delta_plus_LUT(data_T table_out[N_TABLE]){
         float numerator   = in_val;    // just repeat the calculation from delta_LUT
         float denominator = 850. + in_val;
         data_T real_val    = numerator/denominator; // convert to proper type
-        if (DEBUG) std::cout << "delta_plus_LUT:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
+        if (DEBUG) std::cout << "delta_plus_LUT (z0/(850+z0)):  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
         table_out[ii] = real_val;
     }
 }
@@ -404,7 +425,11 @@ void delta_plus_LUT(data_T &data, res_T &res) {
     res = 0;
     if (data < 0) res = delta_plus_table[0];
     else if (data > Z0_RANGE) res = delta_plus_table[TABLE_SIZE-1];
-    else res = delta_plus_table[data];
+    else{
+        // convert input to index
+        int index = TABLE_SIZE - data * TABLE_SIZE * INV_Z0_RANGE;
+        res = delta_plus_table[index];
+    }
 
     return;
 }
@@ -428,7 +453,7 @@ void init_delta_LUT(data_T table_out[N_TABLE]){
 
         // Next, compute lookup table 
         data_T real_val = in_val/850.;  // convert to proper type
-        if (DEBUG) std::cout << "delta_LUT:  Lookup table Index " <<  ii << ": In Value = " << in_val << "; Result = " << real_val << std::endl;
+        if (DEBUG) std::cout << "delta_LUT (z0/850):  Lookup table Index " <<  ii << ": In Value = " << in_val << "; Result = " << real_val << std::endl;
         table_out[ii] = real_val;
     }
 
@@ -444,9 +469,14 @@ void delta_LUT(data_T &data, res_T &res) {
     #pragma HLS PIPELINE
 
     res = 0;
+
     if (data < 0) res = delta_table[0];
     else if (data > Z0_RANGE) res = delta_table[TABLE_SIZE-1];
-    else res = delta_table[data];
+    else{
+        // convert input to index
+        int index = TABLE_SIZE - data * TABLE_SIZE * INV_Z0_RANGE;
+        res = delta_table[index];
+    }
 
     return;
 }
@@ -496,7 +526,11 @@ void tanh(data_T &data, res_T &res) {
 
     if (data<0) res = tanh_table[0];
     else if (data>TABLE_SIZE-1) res = tanh_table[TABLE_SIZE-1];
-    else res = tanh_table[data];
+    else{
+        // convert input to index
+        int index = TABLE_SIZE - data * TABLE_SIZE * INV_ETA_RANGE;
+        res = tanh_table[index];
+    }
 
     return;
 }
@@ -547,7 +581,11 @@ void invCosh(data_T &data, res_T &res) {
 
     if (data<0) res = cosh_table[0];
     else if (data>TABLE_SIZE-1) res = cosh_table[TABLE_SIZE-1];
-    else res = cosh_table[data];
+    else{
+        // convert input to index
+        int index = TABLE_SIZE - data * TABLE_SIZE * INV_COSH_RANGE;
+        res = cosh_table[index];
+    }
 
     return;
 }
@@ -593,7 +631,11 @@ void arcsinh(data_T &data, res_T &res) {
 
     if (data<0) res = arcsinh_table[0];
     else if (data>TABLE_SIZE-1) res = arcsinh_table[TABLE_SIZE-1];
-    else res = arcsinh_table[data];
+    else{
+        // convert input to index
+        int index = data * TABLE_SIZE * INV_ETA_RANGE;
+        res = arcsinh_table[index];
+    }
 
     return;
 }

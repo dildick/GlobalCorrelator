@@ -41,14 +41,17 @@ void tkmu_simple_hw(  const TkObj_tkmu& in, PropTkObj_tkmu& out ){
     feta_t invCoshEta_EtaBarrel(0.0);
 
     // convert inputs (ap_int<>) to ap_fixed<> for internal use
-    fz0_t inhwZ0(in.hwZ0*INVETA_CONVERSION);     // same conversion as eta
-    feta_t inhwEta(in.hwEta*INVETA_CONVERSION);   // ap_int<> -> ap_fixed<>
+    feta_t inhwEta(in.hwEta*INVETA_CONVERSION);      // ap_int<> -> ap_fixed<>
     feta_t abshwEta   = inhwEta;
     if (inhwEta<0) abshwEta*=-1;
 
+    fz0_t inhwZ0(in.hwZ0*INVETA_CONVERSION);         // same conversion as eta
+    fz0_t absInhwZ0 = inhwZ0;
+    if (inhwZ0<0) absInhwZ0 *= -1;
+
     fphi_t inhwPhi(in.hwPhi*INVPHI_CONVERSION);
     fphi_t inhwInvPt(in.hwInvPt*INVPHI_CONVERSION);  // same conversion for invPt & phi
-    if (in.hwQ<0) inhwInvPt *= -1;  
+    if (in.hwQ<0) inhwInvPt *= -1;                   // fold charge into 1/pT
 
     // Do the calculations!
     std::cout << " FIRMWARE : Eta calculation " << std::endl;
@@ -61,15 +64,14 @@ void tkmu_simple_hw(  const TkObj_tkmu& in, PropTkObj_tkmu& out ){
         // 2DLUT:  deta_cosh_LUT(inhwZ0,abshwEta,deta);       // LUT: z0/550/cosh(|eta|) [not using!]
         // 2, 1DLUTs: [z0/550] * [1/cosh(|eta|)]
         if (inhwZ0<0){
-            fz0_t tmp_inhwZ0 = -1*inhwZ0;
-            deta_LUT(tmp_inhwZ0,deta);                       // only takes positive values
+            deta_LUT(absInhwZ0,deta);                         // only takes positive values
             deta *= -1;
         }
         else{
             deta_LUT(inhwZ0,deta);
         }
 
-        invCosh(abshwEta,invCoshEta_EtaBarrel);              // LUT: 1/cosh(|eta|)
+        invCosh(abshwEta,invCoshEta_EtaBarrel);               // LUT: 1/cosh(|eta|)
         deta *= invCoshEta_EtaBarrel;
     }
     else {
@@ -79,8 +81,8 @@ void tkmu_simple_hw(  const TkObj_tkmu& in, PropTkObj_tkmu& out ){
 
         // LUT: z0/850.
         if (inhwZ0<0){
-            fz0_t tmp_inhwZ0 = -1*inhwZ0;
-            delta_LUT(tmp_inhwZ0,delta);     // only takes positive values
+            delta_LUT(absInhwZ0,delta);     // only takes positive values
+            std::cout << " FIRMWARE :    predelta   : " << absInhwZ0 << " = " << delta << std::endl;
             delta *= -1;
         }
         else{
@@ -98,7 +100,7 @@ void tkmu_simple_hw(  const TkObj_tkmu& in, PropTkObj_tkmu& out ){
             dzCorrPhi = unity-delta;
             // Check z0 value, call the correct LUT!
             if (inhwZ0<0){
-                delta_plus_LUT(inhwZ0,deta);                                    // LUT: delta / (1-delta)
+                delta_plus_LUT(absInhwZ0,deta);                                 // LUT: delta / (1-delta)
                 deta *= -1;
             }
             else
@@ -108,7 +110,7 @@ void tkmu_simple_hw(  const TkObj_tkmu& in, PropTkObj_tkmu& out ){
         else{
             dzCorrPhi = unity+delta;
             if (inhwZ0<0){
-                delta_minus_LUT(inhwZ0,deta);                                   // LUT: delta / (1+delta)
+                delta_minus_LUT(absInhwZ0,deta);                                // LUT: delta / (1+delta)
                 deta *= -1;
             }
             else
@@ -116,16 +118,20 @@ void tkmu_simple_hw(  const TkObj_tkmu& in, PropTkObj_tkmu& out ){
             //--2D LUT: deta_tanh_delta_plus_LUT( inhwZ0, inhwEta, deta );      // LUT: tanh * delta / (1+delta)
         }
 
+        std::cout << " FIRMWARE :       deta      = " << deta << std::endl;
+
         feta_t tanhEta;
         tanh(inhwEta,tanhEta);  // handles the sign internally
         deta*=tanhEta;
 
         std::cout << " FIRMWARE :       deta      = " << deta << std::endl;
+        std::cout << " FIRMWARE :       tanhEta   = " << tanhEta << std::endl;
         std::cout << " FIRMWARE :       dzCorrPhi = " << dzCorrPhi << std::endl;
     }
 
 
     // ** calculate the propagated eta ** //
+    std::cout << " FIRMWARE : -- ETA calculation " << inhwEta + deta << std::endl;
     out.hwPropEta = (inhwEta + deta)*ETA_CONVERSION;
 
 
@@ -133,7 +139,6 @@ void tkmu_simple_hw(  const TkObj_tkmu& in, PropTkObj_tkmu& out ){
     std::cout << " FIRMWARE : -- Phi calculation " << std::endl;
 
     invCosh(etaProp,invCoshEta_Phi);            // LUT: 1/cosh(x)
-    std::cout << " FIRMWARE :    invCoshEta = " << invCoshEta_Phi << std::endl;
 
     // Include two constants used in calculation (1.464*cosh(1.7))
     tmp_A *= inhwInvPt;
@@ -144,6 +149,12 @@ void tkmu_simple_hw(  const TkObj_tkmu& in, PropTkObj_tkmu& out ){
     out.hwPropPhi = outPropPhi*PHI_CONVERSION;
 
     // Print results to screen for debugging
+    std::cout << " FIRMWARE :    invCoshEta = " << invCoshEta_Phi << std::endl;
+    std::cout << " FIRMWARE :    tmp_A      = " << tmp_A << std::endl;
+    std::cout << " FIRMWARE :    tmp_B      = " << tmp_B << std::endl;
+    std::cout << " FIRMWARE :    tmp_val4   = " << tmp_val4 << std::endl;
+    std::cout << " FIRMWARE : hwPropPhi     = " << outPropPhi << std::endl;
+
     std::cout << " FIRMWARE : in.hwPhi      = " << in.hwPhi << std::endl;
     std::cout << " FIRMWARE : out.hwPropPhi = " << out.hwPropPhi << std::endl;
 

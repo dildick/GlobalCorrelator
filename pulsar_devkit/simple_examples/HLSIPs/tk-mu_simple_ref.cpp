@@ -45,7 +45,8 @@ void tkmu_simple_ref( const TrackObj_tkmu& in, PropTrackObj_tkmu& out ){
     std::cout << " SOFTWARE :       dzcorrphi  = " << dzCorrPhi << std::endl;
 
     std::cout << " SOFTWARE : -- Phi calculation " << std::endl;
-    std::cout << " SOFTWARE :       invCoshEta = " << 1/cosh(etaProp) << std::endl;
+    std::cout << " SOFTWARE :       invCoshEta  = " << 1/cosh(etaProp) << std::endl;
+    std::cout << " SOFTWARE :       1.464/invPt = " << 1.464/tk_pt << std::endl;
     // cosh(1.7)*1.464 = 4.14065
     float resPhi = tk_phi - tk_q*4.1407/cosh(etaProp)/tk_pt*dzCorrPhi - M_PI/144.;
 
