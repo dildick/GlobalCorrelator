@@ -35,21 +35,17 @@ typedef ap_int<1> q_t;       // charge
 typedef ap_int<11> z0_t;     // z0  (1 mm over +/-14.9 cm)
 
 
-typedef ap_fixed<15,2> finvpt_t;  // inverse pt [1% at 100 GeV] -- 32768
+typedef ap_fixed<15,2> finvpt_t;  // inverse pt [1% at 100 GeV]
 typedef ap_fixed<12,9> fpt_t;
-typedef ap_fixed<14,4> feta_t;    // eta [sinh(eta) measure to 0.005] -- 4096 
-typedef ap_fixed<19,3> fphi_t;    // phi (50 micro-rad) -- 262144
-typedef ap_fixed<10,7> fchisq_t;  // chi^2 (0 - 100; 0.1 steps) -- 1024 (each bit is ~0.1)
-typedef ap_fixed<14,5> fz0_t;     // z0  (1 mm over +/-14.9 cm) -- 4096 (1 cm = 273) (same as eta_t)
-/* standard bits:
-typedef ap_fixed<12,4> feta_t;    // eta [sinh(eta) measure to 0.005] -- 4096 
-typedef ap_fixed<12,5> fz0_t;     // z0  (1 mm over +/-14.9 cm) -- 4096 (1 cm = 273) (same as eta_t)
-*/
+typedef ap_fixed<14,4> feta_t;    // eta [sinh(eta) measure to 0.005]
+typedef ap_fixed<19,3> fphi_t;    // phi (50 micro-rad)
+typedef ap_fixed<10,7> fchisq_t;  // chi^2 (0 - 100; 0.1 steps) 
+typedef ap_fixed<11,5> fz0_t;     // z0  (1 mm over +/-14.9 cm) 
 
 
 // size of the LUTs
-#define ETA_TABLE_SIZE 8192  // 2048
-#define Z0_TABLE_SIZE 1024   // 2048
+#define ETA_TABLE_SIZE 8192  // 13 unsigned bits
+#define Z0_TABLE_SIZE 1024   // 10 unsigned bits
 
 // range for LUTs
 #define SINHETA_RANGE 6
@@ -80,6 +76,8 @@ struct TrackObj_tkmu {
     float phi;
     float z0;
     int q;
+    int VALID;
+    int BX;
 };
 
 struct PropTrackObj_tkmu : TrackObj_tkmu {
@@ -98,6 +96,8 @@ struct TkObj_tkmu {
     eta_t hwZ0;  // same precision at eta_t
     q_t hwQ;
     chisq_t hwX2;
+    q_t VALID;   // VALID bit
+    fpt_t BX;    // bunch crossing
 };
 
 struct PropTkObj_tkmu : TkObj_tkmu {
@@ -105,6 +105,37 @@ struct PropTkObj_tkmu : TkObj_tkmu {
     phi_t hwPropPhi;
 };
 
+inline void clear(TkObj_tkmu & c) {
+    c.hwRinv  = 0; 
+    c.hwInvPt = 0; 
+    c.hwEta = 0; 
+    c.hwPhi = 0; 
+    c.hwSinhEta = 0; 
+    c.hwPt  = 0;
+    c.hwZ0  = 0;
+    c.hwQ   = 0;
+    c.hwX2  = 0;
+    c.VALID = 0;
+    c.BX = 0;
+}
+inline void init(PropTkObj_tkmu & p, const TkObj_tkmu & i){
+    p.hwRinv  = i.hwRinv; 
+    p.hwInvPt = i.hwInvPt; 
+    p.hwEta = i.hwEta; 
+    p.hwPhi = i.hwPhi; 
+    p.hwSinhEta = i.hwSinhEta; 
+    p.hwPt  = i.hwPt;
+    p.hwZ0  = i.hwZ0;
+    p.hwQ   = i.hwQ;
+    p.hwX2  = i.hwX2;
+    p.VALID = i.VALID;
+    p.BX = i.BX;
+}
+inline void clearProp(PropTkObj_tkmu & c) {
+    clear(c);
+    c.hwPropEta = 0; 
+    c.hwPropPhi = 0; 
+}
 
 
 // reference and hardware functions
@@ -151,14 +182,7 @@ template<class data_T, class res_T>
 void deta_LUT(data_T &data, res_T &res) { 
     /* Gateway to deta_LUT (z0/550) : checks boundaries */
     res = 0;
-    if (data < 0) {
-        data_T tmp_data = -1*data;
-        deta_LUT<data_T, res_T, Z0_TABLE_SIZE>(tmp_data, res);
-        res  *= -1;
-    }
-    else{
-        deta_LUT<data_T, res_T, Z0_TABLE_SIZE>(data, res); 
-    }
+    deta_LUT<data_T, res_T, Z0_TABLE_SIZE>(data, res); 
 
     return;
 }
@@ -298,14 +322,7 @@ template<class data_T, class res_T>
 void delta_LUT(data_T &data, res_T &res) { 
     /* Gateway to delta_LUT (z0/850) : checks boundaries */
     res = 0;
-    if (data < 0) {
-        data_T tmp_data = -1*data;
-        delta_LUT<data_T, res_T, Z0_TABLE_SIZE>(tmp_data, res);
-        res  *= -1;
-    }
-    else{
-        delta_LUT<data_T, res_T, Z0_TABLE_SIZE>(data, res); 
-    }
+    delta_LUT<data_T, res_T, Z0_TABLE_SIZE>(data, res); 
 
     return;
 }
@@ -352,14 +369,7 @@ template<class data_T, class res_T>
 void tanh(data_T &data, res_T &res) { 
     /* Get the tanh value from the LUT -- symmetric function */
     res = 0;
-    if (data < 0) {
-        data_T tmp_data = -1*data;
-        tanh<data_T, res_T, ETA_TABLE_SIZE>(tmp_data, res);
-        res  *= -1;
-    }
-    else{
-        tanh<data_T, res_T, ETA_TABLE_SIZE>(data, res); 
-    }
+    tanh<data_T, res_T, ETA_TABLE_SIZE>(data, res); 
 
     return;
 }
@@ -408,7 +418,7 @@ void invCosh(data_T &data, res_T &res) {
     /* Get the tanh value from the LUT -- symmetric function */
     // should only get positive values!
     res = 0;
-    if (data>=0) invCosh<data_T, res_T, ETA_TABLE_SIZE>(data, res); 
+    invCosh<data_T, res_T, ETA_TABLE_SIZE>(data, res); 
 
     return;
 }
@@ -459,14 +469,7 @@ template<class data_T, class res_T>
 void arcsinh(data_T &data, res_T &res) { 
     /* Get the arcsinh value from the LUT -- anti-symmetric function */
     res = 0;
-    if (data < 0) {
-        data_T tmp_data = -1*data;
-        arcsinh<data_T, res_T, ETA_TABLE_SIZE>(tmp_data, res);
-        res  *= -1;
-    }
-    else{
-        arcsinh<data_T, res_T, ETA_TABLE_SIZE>(data, res); 
-    }
+    arcsinh<data_T, res_T, ETA_TABLE_SIZE>(data, res); 
 
     return;
 }
