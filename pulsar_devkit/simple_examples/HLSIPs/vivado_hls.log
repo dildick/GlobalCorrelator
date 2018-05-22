@@ -1,0 +1,366 @@
+================================================================
+  Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC
+  Version 2016.4
+  Build 1756540 on Mon Jan 23 19:31:01 MST 2017
+  Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
+================================================================
+INFO: [HLS 200-10] Running '/opt/Xilinx/Vivado_HLS/2016.4/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'dildick' on host 'cmstca' (Linux_x86_64 version 3.10.0-693.21.1.el7.x86_64) on Tue May 22 02:46:48 CDT 2018
+INFO: [HLS 200-10] On os "CentOS Linux release 7.4.1708 (Core) "
+INFO: [HLS 200-10] In directory '/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs'
+INFO: [HLS 200-10] Opening and resetting project '/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0'.
+INFO: [HLS 200-10] Adding design file 'src/tk-mu_simple.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file 'tk-mu_simple_test.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file 'tk-mu_simple_ref.cpp' to the project
+INFO: [HLS 200-10] Opening and resetting solution '/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xc7vx690tffg1927-2'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../tk-mu_simple_ref.cpp in debug mode
+   Compiling ../../../../tk-mu_simple_test.cpp in debug mode
+   Compiling ../../../../src/tk-mu_simple.cpp in debug mode
+   Generating csim.exe
+ Finished 
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-10] Analyzing design file 'src/tk-mu_simple.cpp' ... 
+INFO: [HLS 200-10] Validating synthesis directives ...
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:34 ; elapsed = 00:00:19 . Memory (MB): peak = 435.770 ; gain = 31.488 ; free physical = 37382 ; free virtual = 60302
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:34 ; elapsed = 00:00:20 . Memory (MB): peak = 435.770 ; gain = 31.488 ; free physical = 37367 ; free virtual = 60302
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:43 ; elapsed = 00:00:28 . Memory (MB): peak = 627.766 ; gain = 223.484 ; free physical = 37235 ; free virtual = 60183
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:68) automatically.
+INFO: [XFORM 203-602] Inlining function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:127) automatically.
+INFO: [XFORM 203-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:131) automatically.
+INFO: [XFORM 203-602] Inlining function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:145) automatically.
+INFO: [XFORM 203-602] Inlining function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:163) automatically.
+INFO: [XFORM 203-602] Inlining function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:167) automatically.
+INFO: [XFORM 203-602] Inlining function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:182) automatically.
+INFO: [XFORM 203-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:200) automatically.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:44 ; elapsed = 00:00:29 . Memory (MB): peak = 627.766 ; gain = 223.484 ; free physical = 37227 ; free virtual = 60178
+INFO: [XFORM 203-602] Inlining function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:68) automatically.
+INFO: [XFORM 203-602] Inlining function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:127) automatically.
+INFO: [XFORM 203-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:131) automatically.
+INFO: [XFORM 203-602] Inlining function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:145) automatically.
+INFO: [XFORM 203-602] Inlining function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:163) automatically.
+INFO: [XFORM 203-602] Inlining function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:167) automatically.
+INFO: [XFORM 203-602] Inlining function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:182) automatically.
+INFO: [XFORM 203-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:200) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (src/tk-mu_simple.cpp:71:16) in function 'tkmu_simple_hw'... converting 20 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.cpp:71:16) to (src/tk-mu_simple.cpp:95:9) in function 'tkmu_simple_hw'... converting 38 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.cpp:183:9) to (src/tk-mu_simple.cpp:220:5) in function 'tkmu_simple_hw'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:431:19) to (src/tk-mu_simple.h:445:5) in function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:478:22) to (src/tk-mu_simple.h:494:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (src/tk-mu_simple.h:494:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:244:23) to (src/tk-mu_simple.h:259:5) in function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:337:29) to (src/tk-mu_simple.h:353:5) in function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:290:30) to (src/tk-mu_simple.h:306:5) in function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:383:24) to (src/tk-mu_simple.h:399:5) in function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:529:22) to (src/tk-mu_simple.h:545:5) in function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:46 ; elapsed = 00:00:31 . Memory (MB): peak = 643.770 ; gain = 239.488 ; free physical = 37159 ; free virtual = 60126
+WARNING: [XFORM 203-631] Renaming function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:436:5) into tanh.
+WARNING: [XFORM 203-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:483:5) into invCosh.
+WARNING: [XFORM 203-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:483:5) into invCosh.1.
+WARNING: [XFORM 203-631] Renaming function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:249:5) into deta_LUT.
+WARNING: [XFORM 203-631] Renaming function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:342:5) into delta_plus_LUT.
+WARNING: [XFORM 203-631] Renaming function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:295:5) into delta_minus_LUT.
+WARNING: [XFORM 203-631] Renaming function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:388:5) into delta_LUT.
+WARNING: [XFORM 203-631] Renaming function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:534:5) into arcsinh.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:47 ; elapsed = 00:00:33 . Memory (MB): peak = 771.770 ; gain = 367.488 ; free physical = 37086 ; free virtual = 60058
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'tkmu_simple_hw' ...
+WARNING: [SYN 201-103] Legalizing function name 'invCosh.1' to 'invCosh_1'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'arcsinh' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'arcsinh'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 11.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 33.17 seconds; current allocated memory: 274.586 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.1 seconds; current allocated memory: 274.863 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'delta_LUT' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'delta_LUT'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 275.138 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.09 seconds; current allocated memory: 275.325 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'delta_plus_LUT' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'delta_plus_LUT'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.18 seconds; current allocated memory: 275.567 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 275.754 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'delta_minus_LUT' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'delta_minus_LUT'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 276.011 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 276.197 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'tanh' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'tanh'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 11.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 276.434 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 276.608 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'deta_LUT' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'deta_LUT'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.14 seconds; current allocated memory: 276.813 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 276.999 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'invCosh_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'invCosh.1'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 7.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.15 seconds; current allocated memory: 277.161 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.04 seconds; current allocated memory: 277.265 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'invCosh' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'invCosh'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.11 seconds; current allocated memory: 277.422 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.06 seconds; current allocated memory: 277.568 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'tkmu_simple_hw' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-21] Estimated clock period (4.89ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.38ns).
+WARNING: [SCHED 204-21] The critical path consists of the following:
+	'mul' operation ('r.V', src/tk-mu_simple.cpp:71) (4.89 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.66 seconds; current allocated memory: 280.754 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.71 seconds; current allocated memory: 283.696 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'arcsinh' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'arcsinh_arcsinh_table9' to 'arcsinh_arcsinh_tbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_29ns_27s_55_7' to 'tkmu_simple_hw_mucud' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mucud': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'arcsinh'.
+INFO: [HLS 200-111]  Elapsed time: 1.59 seconds; current allocated memory: 284.420 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'delta_LUT' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'delta_LUT_delta_table5' to 'delta_LUT_delta_tdEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_23ns_21s_44_5' to 'tkmu_simple_hw_mueOg' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'delta_LUT'.
+INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 285.592 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'delta_plus_LUT' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'delta_plus_LUT_delta_plus_table4' to 'delta_plus_LUT_defYi' due to the length limit 20
+WARNING: [RTGEN 206-101] RTL name 'tkmu_simple_hw_mueOg' is changed to 'tkmu_simple_hw_mueOg_x' due to conflict.
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'delta_plus_LUT'.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 286.665 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'delta_minus_LUT' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'delta_minus_LUT_delta_minus_table3' to 'delta_minus_LUT_dg8j' due to the length limit 20
+WARNING: [RTGEN 206-101] RTL name 'tkmu_simple_hw_mueOg' is changed to 'tkmu_simple_hw_mueOg_x' due to conflict.
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'delta_minus_LUT'.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 287.768 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'tanh' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_29ns_26s_55_7' to 'tkmu_simple_hw_muhbi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muhbi': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'tanh'.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 288.842 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'deta_LUT' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'deta_LUT_deta_table8' to 'deta_LUT_deta_tabibs' due to the length limit 20
+WARNING: [RTGEN 206-101] RTL name 'tkmu_simple_hw_mueOg' is changed to 'tkmu_simple_hw_mueOg_x' due to conflict.
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'deta_LUT'.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 289.860 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'invCosh_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'invCosh_1_cosh_table7' to 'invCosh_1_cosh_tajbC' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_26ns_24ns_49_5' to 'tkmu_simple_hw_mukbM' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mukbM': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'invCosh_1'.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 290.810 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'invCosh' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_27ns_25ns_51_5' to 'tkmu_simple_hw_mulbW' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mulbW': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'invCosh'.
+INFO: [HLS 200-111]  Elapsed time: 0.1 seconds; current allocated memory: 291.468 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'tkmu_simple_hw' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwRinv_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwPt_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwSinhEta_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwEta_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwPhi_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwZ0_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwQ_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwX2_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_VALID_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_BX_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwPropEta_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwPropPhi_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwRinv_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwPt_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwSinhEta_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwEta_V' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwPhi_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwZ0_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwQ_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwX2_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_VALID_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_BX_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'tkmu_simple_hw' to 'ap_ctrl_hs'.
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_dmul_64ns_64ns_64_8_max_dsp' to 'tkmu_simple_hw_dmmb6' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_sitodp_64s_64_6' to 'tkmu_simple_hw_sincg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_6s_10ns_17_3' to 'tkmu_simple_hw_muocq' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_19ns_19s_38_5' to 'tkmu_simple_hw_mupcA' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_38s_17ns_51_5' to 'tkmu_simple_hw_muqcK' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_mul_13s_11ns_24_1' to 'tkmu_simple_hw_murcU' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_mul_15s_17ns_32_1' to 'tkmu_simple_hw_musc4' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mac_muladd_15s_11ns_19ns_19_1' to 'tkmu_simple_hw_matde' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_mul_6s_11ns_17_1' to 'tkmu_simple_hw_muudo' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_am_addmul_13s_7s_11ns_26_1' to 'tkmu_simple_hw_amvdy' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_mul_18ns_19s_35_1' to 'tkmu_simple_hw_muwdI' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_mul_19ns_17ns_35_1' to 'tkmu_simple_hw_muxdS' due to the length limit 20
+WARNING: [RTGEN 206-101] Port 'tkmu_simple_hw/in_hwPt_V' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Port 'tkmu_simple_hw/in_hwX2_V' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Port 'tkmu_simple_hw/in_VALID_V' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+WARNING: [RTGEN 206-101] Port 'tkmu_simple_hw/in_BX_V' has no fanin or fanout and is left dangling.
+               Please use C simulation to confirm this function argument can be read from or written to.
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_amvdy': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_dmmb6': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_matde': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muocq': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mupcA': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muqcK': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_murcU': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_musc4': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muudo': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muwdI': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muxdS': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_sincg': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'tkmu_simple_hw'.
+INFO: [HLS 200-111]  Elapsed time: 0.26 seconds; current allocated memory: 296.330 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_mucud_MulnS_0'
+INFO: [RTMG 210-279] Implementing memory 'arcsinh_arcsinh_tbkb_rom' using auto ROMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_mueOg_MulnS_1'
+INFO: [RTMG 210-279] Implementing memory 'delta_LUT_delta_tdEe_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'delta_plus_LUT_defYi_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'delta_minus_LUT_dg8j_rom' using auto ROMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_muhbi_MulnS_2'
+INFO: [RTMG 210-279] Implementing memory 'tanh_tanh_table2_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'deta_LUT_deta_tabibs_rom' using auto ROMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_mukbM_MulnS_3'
+INFO: [RTMG 210-279] Implementing memory 'invCosh_1_cosh_tajbC_rom' using auto ROMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_mulbW_MulnS_4'
+INFO: [RTMG 210-279] Implementing memory 'invCosh_cosh_table1_rom' using auto ROMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_muocq_MulnS_5'
+INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_mupcA_MulnS_6'
+INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_muqcK_MulnS_7'
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:57 ; elapsed = 00:00:44 . Memory (MB): peak = 771.773 ; gain = 367.492 ; free physical = 37034 ; free virtual = 60023
+INFO: [SYSC 207-301] Generating SystemC RTL for tkmu_simple_hw.
+INFO: [VHDL 208-304] Generating VHDL RTL for tkmu_simple_hw.
+INFO: [VLOG 209-307] Generating Verilog RTL for tkmu_simple_hw.
+INFO: [IMPL 213-8] Exporting RTL as an IP in IP-XACT.
+
+****** Vivado v2016.4 (64-bit)
+  **** SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+  **** IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2016.4/data/ip'.
+WARNING: [IP_Flow 19-4832] The IP name 'tkmu_simple_hw_ap_dmul_6_max_dsp_64' you have specified is long. The Windows operating system has path length limitations. It is recommended you use shorter names to reduce the likelihood of issues.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'tkmu_simple_hw_ap_dmul_6_max_dsp_64'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'tkmu_simple_hw_ap_dmul_6_max_dsp_64'...
+WARNING: [IP_Flow 19-4832] The IP name 'tkmu_simple_hw_ap_sitodp_4_no_dsp_64' you have specified is long. The Windows operating system has path length limitations. It is recommended you use shorter names to reduce the likelihood of issues.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'tkmu_simple_hw_ap_sitodp_4_no_dsp_64'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'tkmu_simple_hw_ap_sitodp_4_no_dsp_64'...
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2016.4/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Tue May 22 02:47:41 2018...
+INFO: [HLS 200-112] Total elapsed time: 68.9 seconds; peak allocated memory: 296.330 MB.

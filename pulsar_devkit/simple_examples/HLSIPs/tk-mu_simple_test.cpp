@@ -65,8 +65,8 @@ int main() {
 
         PropTrackObj_tkmu out_ref;
 
-        tkmu_simple_ref(in_ref, out_ref);
-        //std::cout << " REF : eta = " << in_ref.eta << " => " << out_ref.propEta << std::endl;
+        out_ref = tkmu_simple_ref(in_ref);
+        //stdz::cout << " REF : eta = " << in_ref.eta << " => " << out_ref.propEta << std::endl;
         //std::cout << "     : phi = " << in_ref.phi << " => " << out_ref.propPhi << std::endl;
         //std::cout << "     : in z0 = " << (in_ref.z0) << std::endl;
         //std::cout << "     : in invpT = " << (1/in_ref.pt) << std::endl;
@@ -124,7 +124,7 @@ int main() {
         //in_hw.hwInvPt: convert in algorithm with '1/pt = 87.719298*in_hw.hwRinv;' // pt = (0.3*3.8*0.01)/rinv
         //in_hw.hwEta:   convert in algorithm with LUT
 
-        tkmu_simple_hw(in_hw, out_hw);
+        out_hw = tkmu_simple_hw(in_hw);
 
         //std::cout << " HW  : eta   = " << float(in_hw.hwEta)/(ETA_CONVERSION) << " => " << float(out_hw.hwPropEta)/(ETA_CONVERSION) << std::endl;
         //std::cout << "     : phi   = " << float(in_hw.hwPhi)/(PHI_CONVERSION) << " => " << float(out_hw.hwPropPhi)/(PHI_CONVERSION) << std::endl;

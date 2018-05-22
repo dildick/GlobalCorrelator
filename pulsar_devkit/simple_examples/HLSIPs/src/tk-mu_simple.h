@@ -33,15 +33,21 @@ typedef ap_int<19> phi_t;    // phi (50 micro-rad)
 typedef ap_int<10> chisq_t;  // chi^2 (0 - 100; 0.1 steps)
 typedef ap_int<1> q_t;       // charge
 typedef ap_int<11> z0_t;     // z0  (1 mm over +/-14.9 cm)
+typedef ap_int<3> bx_t;     // z0  (1 mm over +/-14.9 cm)
 
-
+// before the decimal point, after the decimal point
 typedef ap_fixed<15,2> finvpt_t;  // inverse pt [1% at 100 GeV]
-typedef ap_fixed<12,9> fpt_t;
+typedef ap_fixed<12,9> fpt_t;     // 1/Rinv
 typedef ap_fixed<14,4> feta_t;    // eta [sinh(eta) measure to 0.005]
 typedef ap_fixed<19,3> fphi_t;    // phi (50 micro-rad)
 typedef ap_fixed<10,7> fchisq_t;  // chi^2 (0 - 100; 0.1 steps) 
 typedef ap_fixed<11,5> fz0_t;     // z0  (1 mm over +/-14.9 cm) 
 
+// muon data
+typedef ap_int<12> pt_m;     // convert from RINV
+typedef ap_int<14> eta_m;    // eta [sinh(eta) measure to 0.005]
+typedef ap_int<19> phi_m;    // phi (50 micro-rad)
+typedef ap_int<1> q_m;       // charge
 
 // size of the LUTs
 #define ETA_TABLE_SIZE 8192  // 13 unsigned bits
@@ -71,45 +77,121 @@ typedef ap_fixed<11,5> fz0_t;     // z0  (1 mm over +/-14.9 cm)
 
 // -- Define structs for physics objects in software
 struct TrackObj_tkmu {
-    float pt;
-    float eta;
-    float phi;
-    float z0;
-    int q;
-    int VALID;
-    int BX;
+  float pt;
+  float eta;
+  float phi;
+  float z0;
+  int q;
+  int VALID;
+  int BX;
+  // constructor
+  TrackObj_tkmu() : 
+    pt(0),
+    eta(0),
+    phi(0),
+    z0(0),
+    q(0),
+    VALID(0),
+    BX(0)
+  {
+  }
 };
 
-struct PropTrackObj_tkmu : TrackObj_tkmu {
-    float propEta;
-    float propPhi;
+struct MuonObj_tkmu {
+  float pt;
+  float eta;
+  float phi;
+  int q;
+  int VALID;
+  int BX;
+  // constructor
+  MuonObj_tkmu() : 
+    pt(0),
+    eta(0),
+    phi(0),
+    q(0),
+    VALID(0),
+    BX(0)
+  {
+  }
+};
+
+
+struct PropTrackObj_tkmu : public TrackObj_tkmu {
+  float propEta;
+  float propPhi;
+  // constructor
+  PropTrackObj_tkmu() : 
+    TrackObj_tkmu(),
+    propEta(0),
+    propPhi(0)
+  {
+  }
 };
 
 // -- Define structs for physics objects in hardware
 struct TkObj_tkmu {
     invpt_t hwRinv;
-    invpt_t hwInvPt;
     pt_t hwPt;
     eta_t hwSinhEta;
     eta_t hwEta;
     phi_t hwPhi;
-    eta_t hwZ0;  // same precision at eta_t
+    z0_t hwZ0;  // same precision at eta_t
     q_t hwQ;
     chisq_t hwX2;
     q_t VALID;   // VALID bit
-    fpt_t BX;    // bunch crossing
+    bx_t BX;    // bunch crossing 3-bit counter
+  // constructor
+  TkObj_tkmu() : 
+    hwRinv(0),
+    hwPt(0),
+    hwSinhEta(0),  
+    hwEta(0),
+    hwPhi(0),
+    hwZ0(0),
+    hwQ(0),
+    hwX2(0),
+    VALID(0),
+    BX(0)
+  {
+  }
 };
 
-struct PropTkObj_tkmu : TkObj_tkmu {
+struct PropTkObj_tkmu : public TkObj_tkmu {
     eta_t hwPropEta;
     phi_t hwPropPhi;
+  // constructor
+  PropTkObj_tkmu() : 
+    TkObj_tkmu(),
+    hwPropEta(0),
+    hwPropPhi(0)
+  {
+  }
+};
+
+struct L1MuObj_tkmu {
+    pt_t hwPt;
+    eta_t hwEta;
+    phi_t hwPhi;
+    q_t hwQ;
+    q_t VALID;   // VALID bit
+    bx_t BX;    // bunch crossing
+  // constructor
+  L1MuObj_tkmu() : 
+    hwPt(0),
+    hwEta(0),
+    hwPhi(0),
+    hwQ(0),
+    VALID(0),
+    BX(0)
+  {
+  }
 };
 
 inline void clear(TkObj_tkmu & c) {
     c.hwRinv  = 0; 
-    c.hwInvPt = 0; 
-    c.hwEta = 0; 
     c.hwPhi = 0; 
+    c.hwEta = 0; 
     c.hwSinhEta = 0; 
     c.hwPt  = 0;
     c.hwZ0  = 0;
@@ -120,11 +202,10 @@ inline void clear(TkObj_tkmu & c) {
 }
 inline void init(PropTkObj_tkmu & p, const TkObj_tkmu & i){
     p.hwRinv  = i.hwRinv; 
-    p.hwInvPt = i.hwInvPt; 
+    p.hwPt  = i.hwPt;
     p.hwEta = i.hwEta; 
     p.hwPhi = i.hwPhi; 
     p.hwSinhEta = i.hwSinhEta; 
-    p.hwPt  = i.hwPt;
     p.hwZ0  = i.hwZ0;
     p.hwQ   = i.hwQ;
     p.hwX2  = i.hwX2;
@@ -139,8 +220,8 @@ inline void clearProp(PropTkObj_tkmu & c) {
 
 
 // reference and hardware functions
-void tkmu_simple_ref( const TrackObj_tkmu& in, PropTrackObj_tkmu& out );
-void tkmu_simple_hw(  TkObj_tkmu& in, PropTkObj_tkmu& out );
+PropTrackObj_tkmu tkmu_simple_ref( const TrackObj_tkmu& in );
+PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in );
 
 
 

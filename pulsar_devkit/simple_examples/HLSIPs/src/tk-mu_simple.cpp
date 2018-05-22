@@ -28,7 +28,10 @@ Negative values in binary are generated assuming "One's complement"
 
 
 
-void tkmu_simple_hw(  TkObj_tkmu& in, PropTkObj_tkmu& out ){
+PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in){
+
+  PropTkObj_tkmu out;
+
     /* Hardware implementation of the track propagation */
     feta_t boundary(1.1);           // barrel/endcap boundary
     feta_t unity(1.0);
@@ -214,7 +217,7 @@ void tkmu_simple_hw(  TkObj_tkmu& in, PropTkObj_tkmu& out ){
     if (DEBUG) std::cout << " FIRMWARE : in.hwPhi      = " << in.hwPhi << std::endl;
     if (DEBUG) std::cout << " FIRMWARE : out.hwPropPhi = " << out.hwPropPhi << std::endl;
 
-    return;
+    return out;
 }
 
 // THE END

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="tkmu_simple_hw" xd:componentRef="tkmu_simple_hw" xd:initiationInterval="142" xd:clockPeriod="5.000000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="AESL_return.hwRinv" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwRinv_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="15"/>
+  <xd:arg xd:name="AESL_return.hwPt" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwPt_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="12"/>
+  <xd:arg xd:name="AESL_return.hwSinhEta" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwSinhEta_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="14"/>
+  <xd:arg xd:name="AESL_return.hwEta" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwEta_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="14"/>
+  <xd:arg xd:name="AESL_return.hwPhi" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwPhi_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="19"/>
+  <xd:arg xd:name="AESL_return.hwZ0" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwZ0_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="11"/>
+  <xd:arg xd:name="AESL_return.hwQ" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwQ_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
+  <xd:arg xd:name="AESL_return.hwX2" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwX2_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="10"/>
+  <xd:arg xd:name="AESL_return.VALID" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_VALID_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
+  <xd:arg xd:name="AESL_return.BX" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_BX_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="3"/>
+  <xd:arg xd:name="AESL_return.hwPropEta" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwPropEta_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="14"/>
+  <xd:arg xd:name="AESL_return.hwPropPhi" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwPropPhi_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="19"/>
+  <xd:arg xd:name="in.hwRinv" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwRinv_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="15"/>
+  <xd:arg xd:name="in.hwPt" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwPt_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="12"/>
+  <xd:arg xd:name="in.hwSinhEta" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwSinhEta_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="14"/>
+  <xd:arg xd:name="in.hwEta" xd:originalName="in" xd:direction="out" xd:interfaceRef="in_hwEta_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="14"/>
+  <xd:arg xd:name="in.hwPhi" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwPhi_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="19"/>
+  <xd:arg xd:name="in.hwZ0" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwZ0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="11"/>
+  <xd:arg xd:name="in.hwQ" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwQ_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="1"/>
+  <xd:arg xd:name="in.hwX2" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwX2_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="10"/>
+  <xd:arg xd:name="in.VALID" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_VALID_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="1"/>
+  <xd:arg xd:name="in.BX" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_BX_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="3"/>
+  <xd:latencyEstimates xd:best-case="104" xd:worst-case="141" xd:average-case="124"/>
+  <xd:resourceEstimates xd:LUT="7936" xd:FF="3756" xd:BRAM="30" xd:DSP="45"/>
+</xd:acceleratorMap>
