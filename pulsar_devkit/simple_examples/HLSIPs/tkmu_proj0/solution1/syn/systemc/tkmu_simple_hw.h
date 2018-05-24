@@ -60,8 +60,8 @@ struct tkmu_simple_hw : public sc_module {
     sc_out< sc_logic > agg_result_hwX2_V_ap_vld;
     sc_out< sc_lv<1> > agg_result_VALID_V;
     sc_out< sc_logic > agg_result_VALID_V_ap_vld;
-    sc_out< sc_lv<3> > agg_result_BX_V;
-    sc_out< sc_logic > agg_result_BX_V_ap_vld;
+    sc_out< sc_lv<3> > agg_result_hwBX_V;
+    sc_out< sc_logic > agg_result_hwBX_V_ap_vld;
     sc_out< sc_lv<14> > agg_result_hwPropEta_V;
     sc_out< sc_logic > agg_result_hwPropEta_V_ap_vld;
     sc_out< sc_lv<19> > agg_result_hwPropPhi_V;
@@ -76,7 +76,7 @@ struct tkmu_simple_hw : public sc_module {
     sc_in< sc_lv<1> > in_hwQ_V;
     sc_in< sc_lv<10> > in_hwX2_V;
     sc_in< sc_lv<1> > in_VALID_V;
-    sc_in< sc_lv<3> > in_BX_V;
+    sc_in< sc_lv<3> > in_hwBX_V;
     sc_signal< sc_logic > ap_var_for_const0;
 
 
@@ -1159,10 +1159,10 @@ struct tkmu_simple_hw : public sc_module {
     void thread_F2_8_fu_2322_p2();
     void thread_F2_9_fu_2161_p2();
     void thread_F2_fu_1151_p2();
-    void thread_agg_result_BX_V();
-    void thread_agg_result_BX_V_ap_vld();
     void thread_agg_result_VALID_V();
     void thread_agg_result_VALID_V_ap_vld();
+    void thread_agg_result_hwBX_V();
+    void thread_agg_result_hwBX_V_ap_vld();
     void thread_agg_result_hwEta_V();
     void thread_agg_result_hwEta_V_ap_vld();
     void thread_agg_result_hwPhi_V();

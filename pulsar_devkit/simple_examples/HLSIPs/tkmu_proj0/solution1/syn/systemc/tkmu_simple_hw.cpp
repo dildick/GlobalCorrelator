@@ -593,19 +593,19 @@ tkmu_simple_hw::tkmu_simple_hw(sc_module_name name) : sc_module(name), mVcdFile(
     SC_METHOD(thread_F2_fu_1151_p2);
     sensitive << ( tmp_6_fu_1111_p1 );
 
-    SC_METHOD(thread_agg_result_BX_V);
-    sensitive << ( ap_start );
-    sensitive << ( ap_CS_fsm_state1 );
-
-    SC_METHOD(thread_agg_result_BX_V_ap_vld);
-    sensitive << ( ap_start );
-    sensitive << ( ap_CS_fsm_state1 );
-
     SC_METHOD(thread_agg_result_VALID_V);
     sensitive << ( ap_start );
     sensitive << ( ap_CS_fsm_state1 );
 
     SC_METHOD(thread_agg_result_VALID_V_ap_vld);
+    sensitive << ( ap_start );
+    sensitive << ( ap_CS_fsm_state1 );
+
+    SC_METHOD(thread_agg_result_hwBX_V);
+    sensitive << ( ap_start );
+    sensitive << ( ap_CS_fsm_state1 );
+
+    SC_METHOD(thread_agg_result_hwBX_V_ap_vld);
     sensitive << ( ap_start );
     sensitive << ( ap_CS_fsm_state1 );
 
@@ -2404,8 +2404,8 @@ tkmu_simple_hw::tkmu_simple_hw(sc_module_name name) : sc_module(name), mVcdFile(
     sc_trace(mVcdFile, agg_result_hwX2_V_ap_vld, "(port)agg_result_hwX2_V_ap_vld");
     sc_trace(mVcdFile, agg_result_VALID_V, "(port)agg_result_VALID_V");
     sc_trace(mVcdFile, agg_result_VALID_V_ap_vld, "(port)agg_result_VALID_V_ap_vld");
-    sc_trace(mVcdFile, agg_result_BX_V, "(port)agg_result_BX_V");
-    sc_trace(mVcdFile, agg_result_BX_V_ap_vld, "(port)agg_result_BX_V_ap_vld");
+    sc_trace(mVcdFile, agg_result_hwBX_V, "(port)agg_result_hwBX_V");
+    sc_trace(mVcdFile, agg_result_hwBX_V_ap_vld, "(port)agg_result_hwBX_V_ap_vld");
     sc_trace(mVcdFile, agg_result_hwPropEta_V, "(port)agg_result_hwPropEta_V");
     sc_trace(mVcdFile, agg_result_hwPropEta_V_ap_vld, "(port)agg_result_hwPropEta_V_ap_vld");
     sc_trace(mVcdFile, agg_result_hwPropPhi_V, "(port)agg_result_hwPropPhi_V");
@@ -2420,7 +2420,7 @@ tkmu_simple_hw::tkmu_simple_hw(sc_module_name name) : sc_module(name), mVcdFile(
     sc_trace(mVcdFile, in_hwQ_V, "(port)in_hwQ_V");
     sc_trace(mVcdFile, in_hwX2_V, "(port)in_hwX2_V");
     sc_trace(mVcdFile, in_VALID_V, "(port)in_VALID_V");
-    sc_trace(mVcdFile, in_BX_V, "(port)in_BX_V");
+    sc_trace(mVcdFile, in_hwBX_V, "(port)in_hwBX_V");
 #endif
 #ifdef __HLS_TRACE_LEVEL_INT__
     sc_trace(mVcdFile, ap_CS_fsm, "ap_CS_fsm");
@@ -3793,19 +3793,6 @@ void tkmu_simple_hw::thread_F2_fu_1151_p2() {
     F2_fu_1151_p2 = (!ap_const_lv12_433.is_01() || !tmp_6_fu_1111_p1.read().is_01())? sc_lv<12>(): (sc_biguint<12>(ap_const_lv12_433) - sc_biguint<12>(tmp_6_fu_1111_p1.read()));
 }
 
-void tkmu_simple_hw::thread_agg_result_BX_V() {
-    agg_result_BX_V = ap_const_lv3_0;
-}
-
-void tkmu_simple_hw::thread_agg_result_BX_V_ap_vld() {
-    if ((esl_seteq<1,1,1>(ap_CS_fsm_state1.read(), ap_const_lv1_1) && 
-         !esl_seteq<1,1,1>(ap_start.read(), ap_const_logic_0))) {
-        agg_result_BX_V_ap_vld = ap_const_logic_1;
-    } else {
-        agg_result_BX_V_ap_vld = ap_const_logic_0;
-    }
-}
-
 void tkmu_simple_hw::thread_agg_result_VALID_V() {
     agg_result_VALID_V = ap_const_lv1_0;
 }
@@ -3816,6 +3803,19 @@ void tkmu_simple_hw::thread_agg_result_VALID_V_ap_vld() {
         agg_result_VALID_V_ap_vld = ap_const_logic_1;
     } else {
         agg_result_VALID_V_ap_vld = ap_const_logic_0;
+    }
+}
+
+void tkmu_simple_hw::thread_agg_result_hwBX_V() {
+    agg_result_hwBX_V = ap_const_lv3_0;
+}
+
+void tkmu_simple_hw::thread_agg_result_hwBX_V_ap_vld() {
+    if ((esl_seteq<1,1,1>(ap_CS_fsm_state1.read(), ap_const_lv1_1) && 
+         !esl_seteq<1,1,1>(ap_start.read(), ap_const_logic_0))) {
+        agg_result_hwBX_V_ap_vld = ap_const_logic_1;
+    } else {
+        agg_result_hwBX_V_ap_vld = ap_const_logic_0;
     }
 }
 
@@ -7054,8 +7054,8 @@ void tkmu_simple_hw::thread_hdltv_gen() {
         mHdltvoutHandle << " , " <<  " \"agg_result_hwX2_V_ap_vld\" :  \"" << agg_result_hwX2_V_ap_vld.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"agg_result_VALID_V\" :  \"" << agg_result_VALID_V.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"agg_result_VALID_V_ap_vld\" :  \"" << agg_result_VALID_V_ap_vld.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"agg_result_BX_V\" :  \"" << agg_result_BX_V.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"agg_result_BX_V_ap_vld\" :  \"" << agg_result_BX_V_ap_vld.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"agg_result_hwBX_V\" :  \"" << agg_result_hwBX_V.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"agg_result_hwBX_V_ap_vld\" :  \"" << agg_result_hwBX_V_ap_vld.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"agg_result_hwPropEta_V\" :  \"" << agg_result_hwPropEta_V.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"agg_result_hwPropEta_V_ap_vld\" :  \"" << agg_result_hwPropEta_V_ap_vld.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"agg_result_hwPropPhi_V\" :  \"" << agg_result_hwPropPhi_V.read() << "\" ";
@@ -7070,7 +7070,7 @@ void tkmu_simple_hw::thread_hdltv_gen() {
         mHdltvinHandle << " , " <<  " \"in_hwQ_V\" :  \"" << in_hwQ_V.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"in_hwX2_V\" :  \"" << in_hwX2_V.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"in_VALID_V\" :  \"" << in_VALID_V.read() << "\" ";
-        mHdltvinHandle << " , " <<  " \"in_BX_V\" :  \"" << in_BX_V.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"in_hwBX_V\" :  \"" << in_hwBX_V.read() << "\" ";
         mHdltvinHandle << "}" << std::endl;
         mHdltvoutHandle << "}" << std::endl;
         ap_cycleNo++;

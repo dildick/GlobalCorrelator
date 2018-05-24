@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'invCosh'
 ================================================================
-* Date:           Tue May 22 02:47:28 2018
+* Date:           Thu May 24 15:26:53 2018
 
 * Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
 * Project:        tkmu_proj0
@@ -207,120 +207,120 @@ IsGatedGlobalClock: 0
 ST_1: data_V_read_3 (3)  [1/1] 0.00ns
 _ifconv:0  %data_V_read_3 = call i12 @_ssdm_op_Read.ap_auto.i12(i12 %data_V_read)
 
-ST_1: r_V_tr (5)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488
+ST_1: r_V_tr (5)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
 _ifconv:2  %r_V_tr = call i25 @_ssdm_op_BitConcatenate.i25.i12.i13(i12 %data_V_read_3, i13 0)
 
-ST_1: zext_cast (6)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488
+ST_1: zext_cast (6)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
 _ifconv:3  %zext_cast = zext i25 %r_V_tr to i51
 
-ST_1: mul (7)  [5/5] 1.54ns  loc: src/tk-mu_simple.h:488
+ST_1: mul (7)  [5/5] 1.54ns  loc: src/tk-mu_simple.h:534
 _ifconv:4  %mul = mul i51 44739243, %zext_cast
 
 
  <State 2>: 1.54ns
-ST_2: mul (7)  [4/5] 1.54ns  loc: src/tk-mu_simple.h:488
+ST_2: mul (7)  [4/5] 1.54ns  loc: src/tk-mu_simple.h:534
 _ifconv:4  %mul = mul i51 44739243, %zext_cast
 
 
  <State 3>: 1.54ns
-ST_3: mul (7)  [3/5] 1.54ns  loc: src/tk-mu_simple.h:488
+ST_3: mul (7)  [3/5] 1.54ns  loc: src/tk-mu_simple.h:534
 _ifconv:4  %mul = mul i51 44739243, %zext_cast
 
 
  <State 4>: 1.54ns
-ST_4: mul (7)  [2/5] 1.54ns  loc: src/tk-mu_simple.h:488
+ST_4: mul (7)  [2/5] 1.54ns  loc: src/tk-mu_simple.h:534
 _ifconv:4  %mul = mul i51 44739243, %zext_cast
 
 
  <State 5>: 1.54ns
-ST_5: mul (7)  [1/5] 1.54ns  loc: src/tk-mu_simple.h:488
+ST_5: mul (7)  [1/5] 1.54ns  loc: src/tk-mu_simple.h:534
 _ifconv:4  %mul = mul i51 44739243, %zext_cast
 
-ST_5: tmp_234 (8)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488
+ST_5: tmp_234 (8)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
 _ifconv:5  %tmp_234 = call i24 @_ssdm_op_PartSelect.i24.i51.i32.i32(i51 %mul, i32 27, i32 50)
 
 
  <State 6>: 3.67ns
-ST_6: tmp (9)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488
+ST_6: tmp (9)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
 _ifconv:6  %tmp = zext i24 %tmp_234 to i26
 
-ST_6: r_V (10)  [1/1] 1.57ns  loc: src/tk-mu_simple.h:488
+ST_6: r_V (10)  [1/1] 1.57ns  loc: src/tk-mu_simple.h:534
 _ifconv:7  %r_V = sub i26 8388608, %tmp
 
-ST_6: tmp_198 (11)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488
+ST_6: tmp_198 (11)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
 _ifconv:8  %tmp_198 = call i16 @_ssdm_op_PartSelect.i16.i26.i32.i32(i26 %r_V, i32 10, i32 25)
 
-ST_6: ret_V_cast (12)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488
+ST_6: ret_V_cast (12)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
 _ifconv:9  %ret_V_cast = sext i16 %tmp_198 to i17
 
-ST_6: tmp_235 (13)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488 (grouped into LUT with out node index)
+ST_6: tmp_235 (13)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534 (grouped into LUT with out node index)
 _ifconv:10  %tmp_235 = call i1 @_ssdm_op_BitSelect.i1.i26.i32(i26 %r_V, i32 25)
 
-ST_6: tmp_236 (14)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488
+ST_6: tmp_236 (14)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
 _ifconv:11  %tmp_236 = trunc i26 %r_V to i10
 
-ST_6: tmp_s (15)  [1/1] 1.23ns  loc: src/tk-mu_simple.h:488
+ST_6: tmp_s (15)  [1/1] 1.23ns  loc: src/tk-mu_simple.h:534
 _ifconv:12  %tmp_s = icmp eq i10 %tmp_236, 0
 
-ST_6: ret_V (16)  [1/1] 1.39ns  loc: src/tk-mu_simple.h:488
+ST_6: ret_V (16)  [1/1] 1.39ns  loc: src/tk-mu_simple.h:534
 _ifconv:13  %ret_V = add i17 1, %ret_V_cast
 
-ST_6: tmp_199 (17)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488
+ST_6: tmp_199 (17)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
 _ifconv:14  %tmp_199 = sext i16 %tmp_198 to i32
 
-ST_6: tmp_201 (18)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488 (grouped into LUT with out node index)
+ST_6: tmp_201 (18)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534 (grouped into LUT with out node index)
 _ifconv:15  %tmp_201 = sext i17 %ret_V to i32
 
-ST_6: tmp_202 (19)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:488 (grouped into LUT with out node index)
+ST_6: tmp_202 (19)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534 (grouped into LUT with out node index)
 _ifconv:16  %tmp_202 = select i1 %tmp_s, i32 %tmp_199, i32 %tmp_201
 
-ST_6: index (20)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:488 (out node of the LUT)
+ST_6: index (20)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:534 (out node of the LUT)
 _ifconv:17  %index = select i1 %tmp_235, i32 %tmp_202, i32 %tmp_199
 
-ST_6: tmp_237 (21)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:490
+ST_6: tmp_237 (21)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:536
 _ifconv:18  %tmp_237 = call i1 @_ssdm_op_BitSelect.i1.i32.i32(i32 %index, i32 31)
 
-ST_6: tmp_238 (22)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:491
+ST_6: tmp_238 (22)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:537
 _ifconv:19  %tmp_238 = call i19 @_ssdm_op_PartSelect.i19.i32.i32.i32(i32 %index, i32 13, i32 31)
 
 
  <State 7>: 2.39ns
-ST_7: icmp (23)  [1/1] 1.31ns  loc: src/tk-mu_simple.h:491
+ST_7: icmp (23)  [1/1] 1.31ns  loc: src/tk-mu_simple.h:537
 _ifconv:20  %icmp = icmp sgt i19 %tmp_238, 0
 
-ST_7: tmp_195 (24)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:492
+ST_7: tmp_195 (24)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:538
 _ifconv:21  %tmp_195 = zext i32 %index to i64
 
-ST_7: cosh_table1_addr (25)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:492
+ST_7: cosh_table1_addr (25)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:538
 _ifconv:22  %cosh_table1_addr = getelementptr [8192 x i17]* @cosh_table1, i64 0, i64 %tmp_195
 
-ST_7: cosh_table1_load (26)  [2/2] 2.39ns  loc: src/tk-mu_simple.h:492
+ST_7: cosh_table1_load (26)  [2/2] 2.39ns  loc: src/tk-mu_simple.h:538
 _ifconv:23  %cosh_table1_load = load i17* %cosh_table1_addr, align 4
 
 
  <State 8>: 3.10ns
-ST_8: StgValue_36 (4)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:483
+ST_8: StgValue_36 (4)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:529
 _ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind
 
-ST_8: cosh_table1_load (26)  [1/2] 2.39ns  loc: src/tk-mu_simple.h:492
+ST_8: cosh_table1_load (26)  [1/2] 2.39ns  loc: src/tk-mu_simple.h:538
 _ifconv:23  %cosh_table1_load = load i17* %cosh_table1_addr, align 4
 
-ST_8: sel_tmp1 (27)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:490 (grouped into LUT with out node sel_tmp2)
+ST_8: sel_tmp1 (27)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:536 (grouped into LUT with out node sel_tmp2)
 _ifconv:24  %sel_tmp1 = xor i1 %tmp_237, true
 
-ST_8: sel_tmp2 (28)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:491 (out node of the LUT)
+ST_8: sel_tmp2 (28)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:537 (out node of the LUT)
 _ifconv:25  %sel_tmp2 = and i1 %icmp, %sel_tmp1
 
-ST_8: sel_tmp (29)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:492 (grouped into LUT with out node ssdm_int_V_write_ass)
+ST_8: sel_tmp (29)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:538 (grouped into LUT with out node ssdm_int_V_write_ass)
 _ifconv:26  %sel_tmp = select i1 %sel_tmp2, i17 -65536, i17 6511
 
-ST_8: tmp_200 (30)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:492 (grouped into LUT with out node ssdm_int_V_write_ass)
+ST_8: tmp_200 (30)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:538 (grouped into LUT with out node ssdm_int_V_write_ass)
 _ifconv:27  %tmp_200 = or i1 %sel_tmp2, %tmp_237
 
-ST_8: ssdm_int_V_write_ass (31)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:492 (out node of the LUT)
+ST_8: ssdm_int_V_write_ass (31)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:538 (out node of the LUT)
 _ifconv:28  %ssdm_int_V_write_ass = select i1 %tmp_200, i17 %sel_tmp, i17 %cosh_table1_load
 
-ST_8: StgValue_43 (32)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:494
+ST_8: StgValue_43 (32)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:540
 _ifconv:29  ret i17 %ssdm_int_V_write_ass
 
 

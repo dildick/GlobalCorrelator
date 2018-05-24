@@ -13,10 +13,10 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SIM-3] *************** CSIM finish ***************
 @I [HLS-10] Analyzing design file 'src/tk-mu_simple.cpp' ... 
 @I [HLS-10] Validating synthesis directives ...
-@I [HLS-111] Finished Checking Pragmas Time (s): cpu = 00:00:34 ; elapsed = 00:00:19 . Memory (MB): peak = 435.770 ; gain = 31.488 ; free physical = 37382 ; free virtual = 60302
-@I [HLS-111] Finished Linking Time (s): cpu = 00:00:34 ; elapsed = 00:00:20 . Memory (MB): peak = 435.770 ; gain = 31.488 ; free physical = 37367 ; free virtual = 60302
+@I [HLS-111] Finished Checking Pragmas Time (s): cpu = 00:00:36 ; elapsed = 00:00:21 . Memory (MB): peak = 437.832 ; gain = 33.504 ; free physical = 32493 ; free virtual = 60570
+@I [HLS-111] Finished Linking Time (s): cpu = 00:00:36 ; elapsed = 00:00:22 . Memory (MB): peak = 437.832 ; gain = 33.504 ; free physical = 32478 ; free virtual = 60569
 @I [HLS-10] Starting code transformations ...
-@I [HLS-111] Finished Standard Transforms Time (s): cpu = 00:00:43 ; elapsed = 00:00:28 . Memory (MB): peak = 627.766 ; gain = 223.484 ; free physical = 37235 ; free virtual = 60183
+@I [HLS-111] Finished Standard Transforms Time (s): cpu = 00:00:45 ; elapsed = 00:00:30 . Memory (MB): peak = 629.828 ; gain = 225.500 ; free physical = 32342 ; free virtual = 60448
 @I [HLS-10] Checking synthesizability ...
 @I [XFORM-602] Inlining function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:68) automatically.
 @I [XFORM-602] Inlining function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:127) automatically.
@@ -26,7 +26,7 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [XFORM-602] Inlining function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:167) automatically.
 @I [XFORM-602] Inlining function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:182) automatically.
 @I [XFORM-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:200) automatically.
-@I [HLS-111] Finished Checking Synthesizability Time (s): cpu = 00:00:44 ; elapsed = 00:00:29 . Memory (MB): peak = 627.766 ; gain = 223.484 ; free physical = 37227 ; free virtual = 60178
+@I [HLS-111] Finished Checking Synthesizability Time (s): cpu = 00:00:46 ; elapsed = 00:00:31 . Memory (MB): peak = 629.828 ; gain = 225.500 ; free physical = 32333 ; free virtual = 60442
 @I [XFORM-602] Inlining function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:68) automatically.
 @I [XFORM-602] Inlining function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:127) automatically.
 @I [XFORM-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:131) automatically.
@@ -38,24 +38,24 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [XFORM-401] Performing if-conversion on hyperblock to (src/tk-mu_simple.cpp:71:16) in function 'tkmu_simple_hw'... converting 20 basic blocks.
 @I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.cpp:71:16) to (src/tk-mu_simple.cpp:95:9) in function 'tkmu_simple_hw'... converting 38 basic blocks.
 @I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.cpp:183:9) to (src/tk-mu_simple.cpp:220:5) in function 'tkmu_simple_hw'... converting 5 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:431:19) to (src/tk-mu_simple.h:445:5) in function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:478:22) to (src/tk-mu_simple.h:494:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock to (src/tk-mu_simple.h:494:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:244:23) to (src/tk-mu_simple.h:259:5) in function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:337:29) to (src/tk-mu_simple.h:353:5) in function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:290:30) to (src/tk-mu_simple.h:306:5) in function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:383:24) to (src/tk-mu_simple.h:399:5) in function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:529:22) to (src/tk-mu_simple.h:545:5) in function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-@I [HLS-111] Finished Pre-synthesis Time (s): cpu = 00:00:46 ; elapsed = 00:00:31 . Memory (MB): peak = 643.770 ; gain = 239.488 ; free physical = 37159 ; free virtual = 60126
-@W [XFORM-631] Renaming function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:436:5) into tanh.
-@W [XFORM-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:483:5) into invCosh.
-@W [XFORM-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:483:5) into invCosh.1.
-@W [XFORM-631] Renaming function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:249:5) into deta_LUT.
-@W [XFORM-631] Renaming function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:342:5) into delta_plus_LUT.
-@W [XFORM-631] Renaming function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:295:5) into delta_minus_LUT.
-@W [XFORM-631] Renaming function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:388:5) into delta_LUT.
-@W [XFORM-631] Renaming function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:534:5) into arcsinh.
-@I [HLS-111] Finished Architecture Synthesis Time (s): cpu = 00:00:47 ; elapsed = 00:00:33 . Memory (MB): peak = 771.770 ; gain = 367.488 ; free physical = 37086 ; free virtual = 60058
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:477:19) to (src/tk-mu_simple.h:491:5) in function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:524:22) to (src/tk-mu_simple.h:540:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock to (src/tk-mu_simple.h:540:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:290:23) to (src/tk-mu_simple.h:305:5) in function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:383:29) to (src/tk-mu_simple.h:399:5) in function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:336:30) to (src/tk-mu_simple.h:352:5) in function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:429:24) to (src/tk-mu_simple.h:445:5) in function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:575:22) to (src/tk-mu_simple.h:591:5) in function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+@I [HLS-111] Finished Pre-synthesis Time (s): cpu = 00:00:48 ; elapsed = 00:00:34 . Memory (MB): peak = 645.832 ; gain = 241.504 ; free physical = 32260 ; free virtual = 60387
+@W [XFORM-631] Renaming function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:482:5) into tanh.
+@W [XFORM-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:529:5) into invCosh.
+@W [XFORM-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:529:5) into invCosh.1.
+@W [XFORM-631] Renaming function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:295:5) into deta_LUT.
+@W [XFORM-631] Renaming function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:388:5) into delta_plus_LUT.
+@W [XFORM-631] Renaming function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:341:5) into delta_minus_LUT.
+@W [XFORM-631] Renaming function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:434:5) into delta_LUT.
+@W [XFORM-631] Renaming function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:580:5) into arcsinh.
+@I [HLS-111] Finished Architecture Synthesis Time (s): cpu = 00:00:50 ; elapsed = 00:00:35 . Memory (MB): peak = 773.832 ; gain = 369.504 ; free physical = 32182 ; free virtual = 60313
 @I [HLS-10] Starting hardware synthesis ...
 @I [HLS-10] Synthesizing 'tkmu_simple_hw' ...
 @W [SYN-103] Legalizing function name 'invCosh.1' to 'invCosh_1'.
@@ -66,13 +66,13 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SCHED-61] Pipelining function 'arcsinh'.
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 11.
 @I [SCHED-11] Finished scheduling.
-@I [HLS-111]  Elapsed time: 33.17 seconds; current allocated memory: 274.586 MB.
+@I [HLS-111]  Elapsed time: 35.28 seconds; current allocated memory: 281.729 MB.
 @I [BIND-100] Starting micro-architecture generation ...
 @I [BIND-101] Performing variable lifetime analysis.
 @I [BIND-101] Exploring resource sharing.
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
-@I [HLS-111]  Elapsed time: 0.1 seconds; current allocated memory: 274.863 MB.
+@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 282.013 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'delta_LUT' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -80,13 +80,13 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SCHED-61] Pipelining function 'delta_LUT'.
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
 @I [SCHED-11] Finished scheduling.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 275.138 MB.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 282.287 MB.
 @I [BIND-100] Starting micro-architecture generation ...
 @I [BIND-101] Performing variable lifetime analysis.
 @I [BIND-101] Exploring resource sharing.
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
-@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 275.325 MB.
+@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 282.474 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'delta_plus_LUT' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -94,13 +94,13 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SCHED-61] Pipelining function 'delta_plus_LUT'.
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
 @I [SCHED-11] Finished scheduling.
-@I [HLS-111]  Elapsed time: 0.18 seconds; current allocated memory: 275.567 MB.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 282.715 MB.
 @I [BIND-100] Starting micro-architecture generation ...
 @I [BIND-101] Performing variable lifetime analysis.
 @I [BIND-101] Exploring resource sharing.
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
-@I [HLS-111]  Elapsed time: 0.08 seconds; current allocated memory: 275.754 MB.
+@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 282.902 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'delta_minus_LUT' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -108,13 +108,13 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SCHED-61] Pipelining function 'delta_minus_LUT'.
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
 @I [SCHED-11] Finished scheduling.
-@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 276.011 MB.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 283.160 MB.
 @I [BIND-100] Starting micro-architecture generation ...
 @I [BIND-101] Performing variable lifetime analysis.
 @I [BIND-101] Exploring resource sharing.
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
-@I [HLS-111]  Elapsed time: 0.08 seconds; current allocated memory: 276.197 MB.
+@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 283.345 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'tanh' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -122,13 +122,13 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SCHED-61] Pipelining function 'tanh'.
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 11.
 @I [SCHED-11] Finished scheduling.
-@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 276.434 MB.
+@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 283.583 MB.
 @I [BIND-100] Starting micro-architecture generation ...
 @I [BIND-101] Performing variable lifetime analysis.
 @I [BIND-101] Exploring resource sharing.
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
-@I [HLS-111]  Elapsed time: 0.08 seconds; current allocated memory: 276.608 MB.
+@I [HLS-111]  Elapsed time: 0.08 seconds; current allocated memory: 283.757 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'deta_LUT' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -136,13 +136,13 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SCHED-61] Pipelining function 'deta_LUT'.
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
 @I [SCHED-11] Finished scheduling.
-@I [HLS-111]  Elapsed time: 0.14 seconds; current allocated memory: 276.813 MB.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 283.961 MB.
 @I [BIND-100] Starting micro-architecture generation ...
 @I [BIND-101] Performing variable lifetime analysis.
 @I [BIND-101] Exploring resource sharing.
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
-@I [HLS-111]  Elapsed time: 0.08 seconds; current allocated memory: 276.999 MB.
+@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 284.147 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'invCosh_1' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -150,13 +150,13 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SCHED-61] Pipelining function 'invCosh.1'.
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 7.
 @I [SCHED-11] Finished scheduling.
-@I [HLS-111]  Elapsed time: 0.15 seconds; current allocated memory: 277.161 MB.
+@I [HLS-111]  Elapsed time: 0.15 seconds; current allocated memory: 284.294 MB.
 @I [BIND-100] Starting micro-architecture generation ...
 @I [BIND-101] Performing variable lifetime analysis.
 @I [BIND-101] Exploring resource sharing.
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
-@I [HLS-111]  Elapsed time: 0.04 seconds; current allocated memory: 277.265 MB.
+@I [HLS-111]  Elapsed time: 0.05 seconds; current allocated memory: 284.398 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'invCosh' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -164,13 +164,13 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SCHED-61] Pipelining function 'invCosh'.
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
 @I [SCHED-11] Finished scheduling.
-@I [HLS-111]  Elapsed time: 0.11 seconds; current allocated memory: 277.422 MB.
+@I [HLS-111]  Elapsed time: 0.11 seconds; current allocated memory: 284.570 MB.
 @I [BIND-100] Starting micro-architecture generation ...
 @I [BIND-101] Performing variable lifetime analysis.
 @I [BIND-101] Exploring resource sharing.
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
-@I [HLS-111]  Elapsed time: 0.06 seconds; current allocated memory: 277.568 MB.
+@I [HLS-111]  Elapsed time: 0.07 seconds; current allocated memory: 284.716 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'tkmu_simple_hw' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -179,13 +179,13 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @W [SCHED-21] The critical path consists of the following:
 	'mul' operation ('r.V', src/tk-mu_simple.cpp:71) (4.89 ns)
 @I [SCHED-11] Finished scheduling.
-@I [HLS-111]  Elapsed time: 0.66 seconds; current allocated memory: 280.754 MB.
+@I [HLS-111]  Elapsed time: 0.66 seconds; current allocated memory: 287.887 MB.
 @I [BIND-100] Starting micro-architecture generation ...
 @I [BIND-101] Performing variable lifetime analysis.
 @I [BIND-101] Exploring resource sharing.
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
-@I [HLS-111]  Elapsed time: 1.71 seconds; current allocated memory: 283.696 MB.
+@I [HLS-111]  Elapsed time: 1.75 seconds; current allocated memory: 290.844 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'arcsinh' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -193,7 +193,7 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SYN-210] Renamed object name 'tkmu_simple_hw_mul_29ns_27s_55_7' to 'tkmu_simple_hw_mucud' due to the length limit 20
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mucud': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'arcsinh'.
-@I [HLS-111]  Elapsed time: 1.59 seconds; current allocated memory: 284.420 MB.
+@I [HLS-111]  Elapsed time: 1.62 seconds; current allocated memory: 291.569 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'delta_LUT' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -201,7 +201,7 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SYN-210] Renamed object name 'tkmu_simple_hw_mul_23ns_21s_44_5' to 'tkmu_simple_hw_mueOg' due to the length limit 20
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'delta_LUT'.
-@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 285.592 MB.
+@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 292.724 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'delta_plus_LUT' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -209,7 +209,7 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @W [RTGEN-101] RTL name 'tkmu_simple_hw_mueOg' is changed to 'tkmu_simple_hw_mueOg_x' due to conflict.
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'delta_plus_LUT'.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 286.665 MB.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 293.797 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'delta_minus_LUT' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -217,14 +217,14 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @W [RTGEN-101] RTL name 'tkmu_simple_hw_mueOg' is changed to 'tkmu_simple_hw_mueOg_x' due to conflict.
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'delta_minus_LUT'.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 287.768 MB.
+@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 294.901 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'tanh' 
 @I [HLS-10] ----------------------------------------------------------------
 @I [SYN-210] Renamed object name 'tkmu_simple_hw_mul_29ns_26s_55_7' to 'tkmu_simple_hw_muhbi' due to the length limit 20
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_muhbi': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'tanh'.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 288.842 MB.
+@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 295.929 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'deta_LUT' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -232,7 +232,7 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @W [RTGEN-101] RTL name 'tkmu_simple_hw_mueOg' is changed to 'tkmu_simple_hw_mueOg_x' due to conflict.
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'deta_LUT'.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 289.860 MB.
+@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 296.977 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'invCosh_1' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -240,14 +240,14 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [SYN-210] Renamed object name 'tkmu_simple_hw_mul_26ns_24ns_49_5' to 'tkmu_simple_hw_mukbM' due to the length limit 20
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mukbM': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'invCosh_1'.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 290.810 MB.
+@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 297.943 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'invCosh' 
 @I [HLS-10] ----------------------------------------------------------------
 @I [SYN-210] Renamed object name 'tkmu_simple_hw_mul_27ns_25ns_51_5' to 'tkmu_simple_hw_mulbW' due to the length limit 20
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mulbW': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'invCosh'.
-@I [HLS-111]  Elapsed time: 0.1 seconds; current allocated memory: 291.468 MB.
+@I [HLS-111]  Elapsed time: 0.1 seconds; current allocated memory: 298.585 MB.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'tkmu_simple_hw' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -260,7 +260,7 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwQ_V' to 'ap_vld'.
 @I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwX2_V' to 'ap_vld'.
 @I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_VALID_V' to 'ap_vld'.
-@I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_BX_V' to 'ap_vld'.
+@I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwBX_V' to 'ap_vld'.
 @I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwPropEta_V' to 'ap_vld'.
 @I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwPropPhi_V' to 'ap_vld'.
 @I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/in_hwRinv_V' to 'ap_none'.
@@ -272,7 +272,7 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/in_hwQ_V' to 'ap_none'.
 @I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/in_hwX2_V' to 'ap_none'.
 @I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/in_VALID_V' to 'ap_none'.
-@I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/in_BX_V' to 'ap_none'.
+@I [RTGEN-500] Setting interface mode on port 'tkmu_simple_hw/in_hwBX_V' to 'ap_none'.
 @I [RTGEN-500] Setting interface mode on function 'tkmu_simple_hw' to 'ap_ctrl_hs'.
 @I [SYN-210] Renamed object name 'tkmu_simple_hw_dmul_64ns_64ns_64_8_max_dsp' to 'tkmu_simple_hw_dmmb6' due to the length limit 20
 @I [SYN-210] Renamed object name 'tkmu_simple_hw_sitodp_64s_64_6' to 'tkmu_simple_hw_sincg' due to the length limit 20
@@ -292,7 +292,7 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
                Please use C simulation to confirm this function argument can be read from or written to.
 @W [RTGEN-101] Port 'tkmu_simple_hw/in_VALID_V' has no fanin or fanout and is left dangling.
                Please use C simulation to confirm this function argument can be read from or written to.
-@W [RTGEN-101] Port 'tkmu_simple_hw/in_BX_V' has no fanin or fanout and is left dangling.
+@W [RTGEN-101] Port 'tkmu_simple_hw/in_hwBX_V' has no fanin or fanout and is left dangling.
                Please use C simulation to confirm this function argument can be read from or written to.
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_amvdy': 1 instance(s).
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_dmmb6': 1 instance(s).
@@ -307,7 +307,7 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_muxdS': 1 instance(s).
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_sincg': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'tkmu_simple_hw'.
-@I [HLS-111]  Elapsed time: 0.26 seconds; current allocated memory: 296.330 MB.
+@I [HLS-111]  Elapsed time: 0.27 seconds; current allocated memory: 303.463 MB.
 @I [RTMG-282] Generating pipelined core: 'tkmu_simple_hw_mucud_MulnS_0'
 @I [RTMG-279] Implementing memory 'arcsinh_arcsinh_tbkb_rom' using auto ROMs.
 @I [RTMG-282] Generating pipelined core: 'tkmu_simple_hw_mueOg_MulnS_1'
@@ -324,9 +324,9 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 @I [RTMG-282] Generating pipelined core: 'tkmu_simple_hw_muocq_MulnS_5'
 @I [RTMG-282] Generating pipelined core: 'tkmu_simple_hw_mupcA_MulnS_6'
 @I [RTMG-282] Generating pipelined core: 'tkmu_simple_hw_muqcK_MulnS_7'
-@I [HLS-111] Finished generating all RTL models Time (s): cpu = 00:00:57 ; elapsed = 00:00:44 . Memory (MB): peak = 771.773 ; gain = 367.492 ; free physical = 37034 ; free virtual = 60023
+@I [HLS-111] Finished generating all RTL models Time (s): cpu = 00:00:59 ; elapsed = 00:00:46 . Memory (MB): peak = 837.836 ; gain = 433.508 ; free physical = 32130 ; free virtual = 60279
 @I [SYSC-301] Generating SystemC RTL for tkmu_simple_hw.
 @I [VHDL-304] Generating VHDL RTL for tkmu_simple_hw.
 @I [VLOG-307] Generating Verilog RTL for tkmu_simple_hw.
 @I [IMPL-8] Exporting RTL as an IP in IP-XACT.
-@I [HLS-112] Total elapsed time: 68.9 seconds; peak allocated memory: 296.330 MB.
+@I [HLS-112] Total elapsed time: 71.09 seconds; peak allocated memory: 303.463 MB.

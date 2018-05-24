@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'tkmu_simple_hw'" level="0">
-<item name = "Date">Tue May 22 02:47:29 2018
+<item name = "Date">Thu May 24 15:26:54 2018
 </item>
 <item name = "Version">2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)</item>
 <item name = "Project">tkmu_proj0</item>
@@ -450,8 +450,8 @@
 <column name="agg_result_hwX2_V_ap_vld">out, 1, ap_vld, agg_result_hwX2_V, pointer</column>
 <column name="agg_result_VALID_V">out, 1, ap_vld, agg_result_VALID_V, pointer</column>
 <column name="agg_result_VALID_V_ap_vld">out, 1, ap_vld, agg_result_VALID_V, pointer</column>
-<column name="agg_result_BX_V">out, 3, ap_vld, agg_result_BX_V, pointer</column>
-<column name="agg_result_BX_V_ap_vld">out, 1, ap_vld, agg_result_BX_V, pointer</column>
+<column name="agg_result_hwBX_V">out, 3, ap_vld, agg_result_hwBX_V, pointer</column>
+<column name="agg_result_hwBX_V_ap_vld">out, 1, ap_vld, agg_result_hwBX_V, pointer</column>
 <column name="agg_result_hwPropEta_V">out, 14, ap_vld, agg_result_hwPropEta_V, pointer</column>
 <column name="agg_result_hwPropEta_V_ap_vld">out, 1, ap_vld, agg_result_hwPropEta_V, pointer</column>
 <column name="agg_result_hwPropPhi_V">out, 19, ap_vld, agg_result_hwPropPhi_V, pointer</column>
@@ -466,7 +466,7 @@
 <column name="in_hwQ_V">in, 1, ap_none, in_hwQ_V, pointer</column>
 <column name="in_hwX2_V">in, 10, ap_none, in_hwX2_V, pointer</column>
 <column name="in_VALID_V">in, 1, ap_none, in_VALID_V, pointer</column>
-<column name="in_BX_V">in, 3, ap_none, in_BX_V, pointer</column>
+<column name="in_hwBX_V">in, 3, ap_none, in_hwBX_V, pointer</column>
 </table>
 </item>
 </section>

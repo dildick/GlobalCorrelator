@@ -24,8 +24,8 @@ const Port_Property HLS_Design_Meta::port_props[]={
 	Port_Property("agg_result_hwX2_V_ap_vld", 1, hls_out, 7, "ap_vld", "out_vld", 1),
 	Port_Property("agg_result_VALID_V", 1, hls_out, 8, "ap_vld", "out_data", 1),
 	Port_Property("agg_result_VALID_V_ap_vld", 1, hls_out, 8, "ap_vld", "out_vld", 1),
-	Port_Property("agg_result_BX_V", 3, hls_out, 9, "ap_vld", "out_data", 1),
-	Port_Property("agg_result_BX_V_ap_vld", 1, hls_out, 9, "ap_vld", "out_vld", 1),
+	Port_Property("agg_result_hwBX_V", 3, hls_out, 9, "ap_vld", "out_data", 1),
+	Port_Property("agg_result_hwBX_V_ap_vld", 1, hls_out, 9, "ap_vld", "out_vld", 1),
 	Port_Property("agg_result_hwPropEta_V", 14, hls_out, 10, "ap_vld", "out_data", 1),
 	Port_Property("agg_result_hwPropEta_V_ap_vld", 1, hls_out, 10, "ap_vld", "out_vld", 1),
 	Port_Property("agg_result_hwPropPhi_V", 19, hls_out, 11, "ap_vld", "out_data", 1),
@@ -40,6 +40,6 @@ const Port_Property HLS_Design_Meta::port_props[]={
 	Port_Property("in_hwQ_V", 1, hls_in, 18, "ap_none", "in_data", 1),
 	Port_Property("in_hwX2_V", 10, hls_in, 19, "ap_none", "in_data", 1),
 	Port_Property("in_VALID_V", 1, hls_in, 20, "ap_none", "in_data", 1),
-	Port_Property("in_BX_V", 3, hls_in, 21, "ap_none", "in_data", 1),
+	Port_Property("in_hwBX_V", 3, hls_in, 21, "ap_none", "in_data", 1),
 };
 const char* HLS_Design_Meta::dut_name = "tkmu_simple_hw";

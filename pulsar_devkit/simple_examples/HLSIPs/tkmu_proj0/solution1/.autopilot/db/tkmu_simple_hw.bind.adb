@@ -393,7 +393,7 @@
 					<Obj>
 						<type>1</type>
 						<id>10</id>
-						<name>agg_result_BX_V</name>
+						<name>agg_result_hwBX_V</name>
 						<fileName>src/tk-mu_simple.cpp</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
 						<lineNumber>33</lineNumber>
@@ -416,7 +416,7 @@
 								</second>
 							</item>
 						</inlineStackInfo>
-						<originalName>agg.result.BX.V</originalName>
+						<originalName>agg.result.hwBX.V</originalName>
 						<rtlName></rtlName>
 						<coreName></coreName>
 					</Obj>
@@ -771,7 +771,7 @@
 					<Obj>
 						<type>1</type>
 						<id>22</id>
-						<name>in_BX_V</name>
+						<name>in_hwBX_V</name>
 						<fileName></fileName>
 						<fileDirectory></fileDirectory>
 						<lineNumber>0</lineNumber>
@@ -780,7 +780,7 @@
 							<count>0</count>
 							<item_version>0</item_version>
 						</inlineStackInfo>
-						<originalName>in.BX.V</originalName>
+						<originalName>in.hwBX.V</originalName>
 						<rtlName></rtlName>
 						<coreName></coreName>
 					</Obj>
@@ -806,7 +806,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>156</lineNumber>
+						<lineNumber>181</lineNumber>
 						<contextFuncName>TkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -828,14 +828,14 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 									<item>
 										<first>
 											<first>src/tk-mu_simple.h</first>
 											<second>TkObj_tkmu</second>
 										</first>
-										<second>156</second>
+										<second>181</second>
 									</item>
 								</second>
 							</item>
@@ -864,7 +864,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>156</lineNumber>
+						<lineNumber>181</lineNumber>
 						<contextFuncName>TkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -886,14 +886,14 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 									<item>
 										<first>
 											<first>src/tk-mu_simple.h</first>
 											<second>TkObj_tkmu</second>
 										</first>
-										<second>156</second>
+										<second>181</second>
 									</item>
 								</second>
 							</item>
@@ -922,7 +922,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>156</lineNumber>
+						<lineNumber>181</lineNumber>
 						<contextFuncName>TkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -944,14 +944,14 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 									<item>
 										<first>
 											<first>src/tk-mu_simple.h</first>
 											<second>TkObj_tkmu</second>
 										</first>
-										<second>156</second>
+										<second>181</second>
 									</item>
 								</second>
 							</item>
@@ -980,7 +980,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>156</lineNumber>
+						<lineNumber>181</lineNumber>
 						<contextFuncName>TkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1002,14 +1002,14 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 									<item>
 										<first>
 											<first>src/tk-mu_simple.h</first>
 											<second>TkObj_tkmu</second>
 										</first>
-										<second>156</second>
+										<second>181</second>
 									</item>
 								</second>
 							</item>
@@ -1038,7 +1038,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>156</lineNumber>
+						<lineNumber>181</lineNumber>
 						<contextFuncName>TkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1060,14 +1060,14 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 									<item>
 										<first>
 											<first>src/tk-mu_simple.h</first>
 											<second>TkObj_tkmu</second>
 										</first>
-										<second>156</second>
+										<second>181</second>
 									</item>
 								</second>
 							</item>
@@ -1096,7 +1096,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>156</lineNumber>
+						<lineNumber>181</lineNumber>
 						<contextFuncName>TkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1118,14 +1118,14 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 									<item>
 										<first>
 											<first>src/tk-mu_simple.h</first>
 											<second>TkObj_tkmu</second>
 										</first>
-										<second>156</second>
+										<second>181</second>
 									</item>
 								</second>
 							</item>
@@ -1154,7 +1154,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>156</lineNumber>
+						<lineNumber>181</lineNumber>
 						<contextFuncName>TkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1176,14 +1176,14 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 									<item>
 										<first>
 											<first>src/tk-mu_simple.h</first>
 											<second>TkObj_tkmu</second>
 										</first>
-										<second>156</second>
+										<second>181</second>
 									</item>
 								</second>
 							</item>
@@ -1212,7 +1212,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>156</lineNumber>
+						<lineNumber>181</lineNumber>
 						<contextFuncName>TkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1234,14 +1234,14 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 									<item>
 										<first>
 											<first>src/tk-mu_simple.h</first>
 											<second>TkObj_tkmu</second>
 										</first>
-										<second>156</second>
+										<second>181</second>
 									</item>
 								</second>
 							</item>
@@ -1270,7 +1270,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>156</lineNumber>
+						<lineNumber>181</lineNumber>
 						<contextFuncName>TkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1292,14 +1292,14 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 									<item>
 										<first>
 											<first>src/tk-mu_simple.h</first>
 											<second>TkObj_tkmu</second>
 										</first>
-										<second>156</second>
+										<second>181</second>
 									</item>
 								</second>
 							</item>
@@ -1328,7 +1328,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>156</lineNumber>
+						<lineNumber>181</lineNumber>
 						<contextFuncName>TkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1350,14 +1350,14 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 									<item>
 										<first>
 											<first>src/tk-mu_simple.h</first>
 											<second>TkObj_tkmu</second>
 										</first>
-										<second>156</second>
+										<second>181</second>
 									</item>
 								</second>
 							</item>
@@ -5055,7 +5055,7 @@
 						<name>inhwEta_V_2</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>553</lineNumber>
+						<lineNumber>599</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -5077,7 +5077,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>553</second>
+										<second>599</second>
 									</item>
 								</second>
 							</item>
@@ -20567,7 +20567,7 @@
 						<name>delta_V_2</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>406</lineNumber>
+						<lineNumber>452</lineNumber>
 						<contextFuncName>delta_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;19, 3, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -20589,7 +20589,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>delta_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;19, 3, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>406</second>
+										<second>452</second>
 									</item>
 								</second>
 							</item>
@@ -20618,7 +20618,7 @@
 						<name>p_Val2_17_trunc_ex</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>406</lineNumber>
+						<lineNumber>452</lineNumber>
 						<contextFuncName>delta_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;19, 3, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -20640,7 +20640,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>delta_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;19, 3, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>406</second>
+										<second>452</second>
 									</item>
 								</second>
 							</item>
@@ -20695,7 +20695,7 @@
 						<name>delta_V</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>406</lineNumber>
+						<lineNumber>452</lineNumber>
 						<contextFuncName>delta_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;19, 3, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -20717,7 +20717,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>delta_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;19, 3, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>406</second>
+										<second>452</second>
 									</item>
 								</second>
 							</item>
@@ -21120,7 +21120,7 @@
 						<name>deta_V_8</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>360</lineNumber>
+						<lineNumber>406</lineNumber>
 						<contextFuncName>delta_plus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -21142,7 +21142,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>delta_plus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>360</second>
+										<second>406</second>
 									</item>
 								</second>
 							</item>
@@ -21171,7 +21171,7 @@
 						<name>deta_V_3_trunc11_ext</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>360</lineNumber>
+						<lineNumber>406</lineNumber>
 						<contextFuncName>delta_plus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -21193,7 +21193,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>delta_plus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>360</second>
+										<second>406</second>
 									</item>
 								</second>
 							</item>
@@ -21248,7 +21248,7 @@
 						<name>deta_V_6</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>313</lineNumber>
+						<lineNumber>359</lineNumber>
 						<contextFuncName>delta_minus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -21270,7 +21270,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>delta_minus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>313</second>
+										<second>359</second>
 									</item>
 								</second>
 							</item>
@@ -21513,7 +21513,7 @@
 						<name>deta_V_5</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>313</lineNumber>
+						<lineNumber>359</lineNumber>
 						<contextFuncName>delta_minus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -21535,7 +21535,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>delta_minus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>313</second>
+										<second>359</second>
 									</item>
 								</second>
 							</item>
@@ -21564,7 +21564,7 @@
 						<name>deta_V_3_trunc_ext_c</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>313</lineNumber>
+						<lineNumber>359</lineNumber>
 						<contextFuncName>delta_minus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -21586,7 +21586,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>delta_minus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>313</second>
+										<second>359</second>
 									</item>
 								</second>
 							</item>
@@ -21641,7 +21641,7 @@
 						<name>deta_V_2</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>360</lineNumber>
+						<lineNumber>406</lineNumber>
 						<contextFuncName>delta_plus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -21663,7 +21663,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>delta_plus_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>360</second>
+										<second>406</second>
 									</item>
 								</second>
 							</item>
@@ -21903,7 +21903,7 @@
 						<name>tanhEta_V</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>453</lineNumber>
+						<lineNumber>499</lineNumber>
 						<contextFuncName>tanh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -21925,7 +21925,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>tanh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>453</second>
+										<second>499</second>
 									</item>
 								</second>
 							</item>
@@ -22109,7 +22109,7 @@
 						<name>deta_V</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>266</lineNumber>
+						<lineNumber>312</lineNumber>
 						<contextFuncName>deta_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -22131,7 +22131,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>deta_LUT&amp;lt;ap_fixed&amp;lt;11, 5, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>266</second>
+										<second>312</second>
 									</item>
 								</second>
 							</item>
@@ -22333,7 +22333,7 @@
 						<name>invCoshEta_EtaBarrel</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>502</lineNumber>
+						<lineNumber>548</lineNumber>
 						<contextFuncName>invCosh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -22355,7 +22355,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>invCosh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>502</second>
+										<second>548</second>
 									</item>
 								</second>
 							</item>
@@ -22553,7 +22553,7 @@
 						<name>data_V_read_assign_5</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>553</lineNumber>
+						<lineNumber>599</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -22575,7 +22575,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>553</second>
+										<second>599</second>
 									</item>
 								</second>
 							</item>
@@ -23288,7 +23288,7 @@
 						<name>invCoshEta_Phi_V</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>502</lineNumber>
+						<lineNumber>548</lineNumber>
 						<contextFuncName>invCosh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;19, 3, 5, 3, 0&amp;gt; &amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -23310,7 +23310,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>invCosh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;19, 3, 5, 3, 0&amp;gt; &amp;gt;</second>
 										</first>
-										<second>502</second>
+										<second>548</second>
 									</item>
 								</second>
 							</item>
@@ -24158,7 +24158,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>168</lineNumber>
+						<lineNumber>193</lineNumber>
 						<contextFuncName>PropTkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -24180,7 +24180,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 								</second>
 							</item>
@@ -24470,7 +24470,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>168</lineNumber>
+						<lineNumber>193</lineNumber>
 						<contextFuncName>PropTkObj_tkmu</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -24492,7 +24492,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>PropTkObj_tkmu</second>
 										</first>
-										<second>168</second>
+										<second>193</second>
 									</item>
 								</second>
 							</item>
@@ -61930,21 +61930,6 @@
 		<count>22</count>
 		<item_version>0</item_version>
 		<item class_id="53" tracking_level="0" version="0">
-			<first>agg_result_BX_V</first>
-			<second>
-				<count>1</count>
-				<item_version>0</item_version>
-				<item>
-					<first>write</first>
-					<second>
-						<count>1</count>
-						<item_version>0</item_version>
-						<item>63</item>
-					</second>
-				</item>
-			</second>
-		</item>
-		<item>
 			<first>agg_result_VALID_V</first>
 			<second>
 				<count>1</count>
@@ -61955,6 +61940,21 @@
 						<count>1</count>
 						<item_version>0</item_version>
 						<item>62</item>
+					</second>
+				</item>
+			</second>
+		</item>
+		<item>
+			<first>agg_result_hwBX_V</first>
+			<second>
+				<count>1</count>
+				<item_version>0</item_version>
+				<item>
+					<first>write</first>
+					<second>
+						<count>1</count>
+						<item_version>0</item_version>
+						<item>63</item>
 					</second>
 				</item>
 			</second>
@@ -62110,14 +62110,14 @@
 			</second>
 		</item>
 		<item>
-			<first>in_BX_V</first>
+			<first>in_VALID_V</first>
 			<second>
 				<count>0</count>
 				<item_version>0</item_version>
 			</second>
 		</item>
 		<item>
-			<first>in_VALID_V</first>
+			<first>in_hwBX_V</first>
 			<second>
 				<count>0</count>
 				<item_version>0</item_version>

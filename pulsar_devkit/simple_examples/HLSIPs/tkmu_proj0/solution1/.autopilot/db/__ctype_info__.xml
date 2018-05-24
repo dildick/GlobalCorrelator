@@ -90,7 +90,7 @@
 <InvalidType>0</InvalidType>
 </RtlPorts>
 <RtlPorts>
-<name>agg_result_BX_V</name>
+<name>agg_result_hwBX_V</name>
 <CType>
 <TypeName>ap_int 3</TypeName>
 <TypeWidth>3</TypeWidth>
@@ -210,7 +210,7 @@
 <InvalidType>0</InvalidType>
 </RtlPorts>
 <RtlPorts>
-<name>in_BX_V</name>
+<name>in_hwBX_V</name>
 <CType>
 <TypeName>ap_int 3</TypeName>
 <TypeWidth>3</TypeWidth>

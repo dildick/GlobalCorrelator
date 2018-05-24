@@ -34,8 +34,8 @@ module tkmu_simple_hw (
         agg_result_hwX2_V_ap_vld,
         agg_result_VALID_V,
         agg_result_VALID_V_ap_vld,
-        agg_result_BX_V,
-        agg_result_BX_V_ap_vld,
+        agg_result_hwBX_V,
+        agg_result_hwBX_V_ap_vld,
         agg_result_hwPropEta_V,
         agg_result_hwPropEta_V_ap_vld,
         agg_result_hwPropPhi_V,
@@ -50,7 +50,7 @@ module tkmu_simple_hw (
         in_hwQ_V,
         in_hwX2_V,
         in_VALID_V,
-        in_BX_V
+        in_hwBX_V
 );
 
 parameter    ap_ST_fsm_state1 = 247'b1;
@@ -478,8 +478,8 @@ output  [9:0] agg_result_hwX2_V;
 output   agg_result_hwX2_V_ap_vld;
 output  [0:0] agg_result_VALID_V;
 output   agg_result_VALID_V_ap_vld;
-output  [2:0] agg_result_BX_V;
-output   agg_result_BX_V_ap_vld;
+output  [2:0] agg_result_hwBX_V;
+output   agg_result_hwBX_V_ap_vld;
 output  [13:0] agg_result_hwPropEta_V;
 output   agg_result_hwPropEta_V_ap_vld;
 output  [18:0] agg_result_hwPropPhi_V;
@@ -494,7 +494,7 @@ input  [10:0] in_hwZ0_V;
 input  [0:0] in_hwQ_V;
 input  [9:0] in_hwX2_V;
 input  [0:0] in_VALID_V;
-input  [2:0] in_BX_V;
+input  [2:0] in_hwBX_V;
 
 reg ap_done;
 reg ap_idle;
@@ -508,7 +508,7 @@ reg agg_result_hwZ0_V_ap_vld;
 reg agg_result_hwQ_V_ap_vld;
 reg agg_result_hwX2_V_ap_vld;
 reg agg_result_VALID_V_ap_vld;
-reg agg_result_BX_V_ap_vld;
+reg agg_result_hwBX_V_ap_vld;
 reg agg_result_hwPropEta_V_ap_vld;
 reg agg_result_hwPropPhi_V_ap_vld;
 reg in_hwEta_V_ap_vld;
@@ -2059,17 +2059,17 @@ end
 
 always @ (*) begin
     if (((ap_CS_fsm_state1 == 1'b1) & ~(ap_start == 1'b0))) begin
-        agg_result_BX_V_ap_vld = 1'b1;
+        agg_result_VALID_V_ap_vld = 1'b1;
     end else begin
-        agg_result_BX_V_ap_vld = 1'b0;
+        agg_result_VALID_V_ap_vld = 1'b0;
     end
 end
 
 always @ (*) begin
     if (((ap_CS_fsm_state1 == 1'b1) & ~(ap_start == 1'b0))) begin
-        agg_result_VALID_V_ap_vld = 1'b1;
+        agg_result_hwBX_V_ap_vld = 1'b1;
     end else begin
-        agg_result_VALID_V_ap_vld = 1'b0;
+        agg_result_hwBX_V_ap_vld = 1'b0;
     end
 end
 
@@ -3140,9 +3140,9 @@ assign F2_9_fu_2161_p2 = (ap_const_lv12_433 - tmp_138_fu_2121_p1);
 
 assign F2_fu_1151_p2 = (ap_const_lv12_433 - tmp_6_fu_1111_p1);
 
-assign agg_result_BX_V = ap_const_lv3_0;
-
 assign agg_result_VALID_V = 1'b0;
+
+assign agg_result_hwBX_V = ap_const_lv3_0;
 
 assign agg_result_hwEta_V = ap_const_lv14_0;
 

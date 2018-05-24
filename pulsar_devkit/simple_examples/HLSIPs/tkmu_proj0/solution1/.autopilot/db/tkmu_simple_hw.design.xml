@@ -1326,8 +1326,8 @@
 <CType>int</CType>
 </RtlPorts>
 <RtlPorts>
-<name>agg_result_BX_V</name>
-<Object>agg_result_BX_V</Object>
+<name>agg_result_hwBX_V</name>
+<Object>agg_result_hwBX_V</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_vld</IOProtocol>
@@ -1338,8 +1338,8 @@
 <CType>int</CType>
 </RtlPorts>
 <RtlPorts>
-<name>agg_result_BX_V_ap_vld</name>
-<Object>agg_result_BX_V</Object>
+<name>agg_result_hwBX_V_ap_vld</name>
+<Object>agg_result_hwBX_V</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_vld</IOProtocol>
@@ -1518,8 +1518,8 @@
 <CType>int</CType>
 </RtlPorts>
 <RtlPorts>
-<name>in_BX_V</name>
-<Object>in_BX_V</Object>
+<name>in_hwBX_V</name>
+<Object>in_hwBX_V</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

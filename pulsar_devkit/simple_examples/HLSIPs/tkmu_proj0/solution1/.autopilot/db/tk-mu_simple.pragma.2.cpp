@@ -9775,6 +9775,8 @@ struct timeval
 
 /* Like CLOCK_BOOTTIME but also wakes suspended system.  */
 
+/* Like CLOCK_REALTIME but in International Atomic Time.  */
+
 
 /* Flag to indicate time is absolute.  */
 
@@ -9845,7 +9847,7 @@ struct timex
 /* Status codes (timex.status) */
 # 104 "/usr/include/bits/timex.h" 3 4
 /* Read-only bits */
-# 87 "/usr/include/bits/time.h" 2 3 4
+# 89 "/usr/include/bits/time.h" 2 3 4
 
 extern "C" {
 
@@ -40652,20 +40654,23 @@ typedef ap_fixed<19,3> fphi_t; // phi (50 micro-rad)
 typedef ap_fixed<10,7> fchisq_t; // chi^2 (0 - 100; 0.1 steps) 
 typedef ap_fixed<11,5> fz0_t; // z0  (1 mm over +/-14.9 cm) 
 
+typedef ap_fixed<10,4> feta_m; // eta [sinh(eta) measure to 0.005]
+typedef ap_fixed<9,3> fphi_m; // phi (50 micro-rad)
+
 // muon data
-typedef ap_int<12> pt_m; // convert from RINV
-typedef ap_int<14> eta_m; // eta [sinh(eta) measure to 0.005]
-typedef ap_int<19> phi_m; // phi (50 micro-rad)
-typedef ap_int<1> q_m; // charge
+typedef ap_int<9> pt_m;
+typedef ap_int<10> eta_m;
+typedef ap_int<9> phi_m;
+typedef ap_int<4> quality_m;
 
 // size of the LUTs
 
 
 
 // range for LUTs
-# 66 "src/tk-mu_simple.h"
+# 69 "src/tk-mu_simple.h"
 // Conversions between binary and floating point (using example file to derive)
-# 78 "src/tk-mu_simple.h"
+# 81 "src/tk-mu_simple.h"
 // -- Define structs for physics objects in software
 struct TrackObj_tkmu {
   float pt;
@@ -40708,6 +40713,27 @@ struct MuonObj_tkmu {
 };
 
 
+struct TrackMuonObj_tkmu
+{
+  float pt;
+  float eta;
+  float phi;
+  int q;
+  int VALID; // VALID bit
+  int BX; // bunch crossing
+  // constructor
+  TrackMuonObj_tkmu() :
+    pt(0),
+    eta(0),
+    phi(0),
+    q(0),
+    VALID(0),
+    BX(0)
+  {
+  }
+};
+
+
 struct PropTrackObj_tkmu : public TrackObj_tkmu {
   float propEta;
   float propPhi;
@@ -40727,11 +40753,12 @@ struct TkObj_tkmu {
     eta_t hwSinhEta;
     eta_t hwEta;
     phi_t hwPhi;
-    z0_t hwZ0; // same precision at eta_t
+    z0_t hwZ0; // same precision at eta_t (Accoring to Dan: z0 precision needed to get precision on eta, which derives from z0)
+    // test precision of z0 11 to 14 
     q_t hwQ;
     chisq_t hwX2;
     q_t VALID; // VALID bit
-    bx_t BX; // bunch crossing 3-bit counter
+    bx_t hwBX; // bunch crossing 3-bit counter
   // constructor
   TkObj_tkmu() :
     hwRinv(0),
@@ -40743,7 +40770,7 @@ struct TkObj_tkmu {
     hwQ(0),
     hwX2(0),
     VALID(0),
-    BX(0)
+    hwBX(0)
   {
   }
 };
@@ -40760,21 +40787,40 @@ struct PropTkObj_tkmu : public TkObj_tkmu {
   }
 };
 
-struct L1MuObj_tkmu {
+struct MuObj_tkmu {
     pt_t hwPt;
     eta_t hwEta;
     phi_t hwPhi;
     q_t hwQ;
     q_t VALID; // VALID bit
-    bx_t BX; // bunch crossing
+    bx_t hwBX; // bunch crossing
   // constructor
-  L1MuObj_tkmu() :
+  MuObj_tkmu() :
     hwPt(0),
     hwEta(0),
     hwPhi(0),
     hwQ(0),
     VALID(0),
-    BX(0)
+    hwBX(0)
+  {
+  }
+};
+
+struct TkMuObj_tkmu {
+    pt_t hwPt;
+    eta_m hwEta;
+    phi_m hwPhi;
+    q_t hwQ;
+    q_t VALID; // VALID bit
+    bx_t hwBX; // bunch crossing
+  // constructor
+  TkMuObj_tkmu() :
+    hwPt(0),
+    hwEta(0),
+    hwPhi(0),
+    hwQ(0),
+    VALID(0),
+    hwBX(0)
   {
   }
 };
@@ -40789,7 +40835,7 @@ inline void clear(TkObj_tkmu & c) {
     c.hwQ = 0;
     c.hwX2 = 0;
     c.VALID = 0;
-    c.BX = 0;
+    c.hwBX = 0;
 }
 inline void init(PropTkObj_tkmu & p, const TkObj_tkmu & i){
     p.hwRinv = i.hwRinv;
@@ -40801,7 +40847,7 @@ inline void init(PropTkObj_tkmu & p, const TkObj_tkmu & i){
     p.hwQ = i.hwQ;
     p.hwX2 = i.hwX2;
     p.VALID = i.VALID;
-    p.BX = i.BX;
+    p.hwBX = i.hwBX;
 }
 inline void clearProp(PropTkObj_tkmu & c) {
     clear(c);
@@ -40813,6 +40859,8 @@ inline void clearProp(PropTkObj_tkmu & c) {
 // reference and hardware functions
 PropTrackObj_tkmu tkmu_simple_ref( const TrackObj_tkmu& in );
 PropTkObj_tkmu tkmu_simple_hw( TkObj_tkmu& in );
+TkMuObj_tkmu match_hw(const PropTkObj_tkmu&, const MuObj_tkmu&);
+TrackMuonObj_tkmu match_sim(const PropTrackObj_tkmu&, const MuonObj_tkmu&);
 
 
 
@@ -41144,6 +41192,17 @@ void arcsinh(data_T &data, res_T &res) {
     arcsinh<data_T, res_T, 8192 /* 13 unsigned bits*/>(data, res);
 
     return;
+}
+
+// delta R matching
+// choose eta precision of the muon as the dR precision of the match
+template<class data_T, class data_S, class data_U, class data_V>
+data_S dr2_int(data_T eta1, data_S phi1, data_U eta2, data_V phi2) {
+  // eta1, phi1: track properties
+  // eta2, phi2: muon properties
+  data_T deta = (eta1-eta2);
+  data_S dphi = (phi1-phi2);
+  return deta*deta + dphi*dphi;
 }
 # 23 "src/tk-mu_simple.cpp" 2
 # 1 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 1 3
@@ -41805,8 +41864,8 @@ extern void __assert (const char *__assertion, const char *__file, int __line)
 
 
 
-PropTkObj_tkmu tkmu_simple_hw( TkObj_tkmu& in){
-
+PropTkObj_tkmu tkmu_simple_hw( TkObj_tkmu& in)
+{
   PropTkObj_tkmu out;
 
     /* Hardware implementation of the track propagation */
@@ -41995,6 +42054,52 @@ PropTkObj_tkmu tkmu_simple_hw( TkObj_tkmu& in){
     if (0) std::cout << " FIRMWARE : out.hwPropPhi = " << out.hwPropPhi << std::endl;
 
     return out;
+}
+
+TkMuObj_tkmu match_hw(const PropTkObj_tkmu& inTrack, const MuObj_tkmu& inMuon)
+{
+  TkMuObj_tkmu outTrack;
+  feta_t tkEta = inTrack.hwEta;
+  fphi_t tkPhi = inTrack.hwPhi;
+
+  feta_m muEta = inMuon.hwEta;
+  fphi_m muPhi = inMuon.hwPhi;
+
+  // dR calculation
+  feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
+
+  if (dR2_tk_mu < 0.01) {
+    outTrack.hwPt = inTrack.hwPt;
+    outTrack.hwEta = inTrack.hwEta;
+    outTrack.hwPhi = inTrack.hwPhi;
+    outTrack.hwQ = inTrack.hwQ;
+    outTrack.VALID = inTrack.VALID and inMuon.VALID;
+    outTrack.hwBX = inTrack.hwBX;
+  }
+  return outTrack;
+}
+
+TrackMuonObj_tkmu match_sim(const PropTrackObj_tkmu& inTrack, const MuonObj_tkmu& inMuon)
+{
+  TrackMuonObj_tkmu outTrack;
+  float tketa = inTrack.eta;
+  float tkphi = inTrack.phi;
+
+  float mueta = inMuon.eta;
+  float muphi = inMuon.phi;
+
+  // dR calculation
+  float dR2_tk_mu = dr2_int (tketa, tkphi, mueta, muphi);
+
+  if (dR2_tk_mu < 0.01) {
+    outTrack.pt = inTrack.pt;
+    outTrack.eta = inTrack.eta;
+    outTrack.phi = inTrack.phi;
+    outTrack.q = inTrack.q;
+    outTrack.VALID = inTrack.VALID and inMuon.VALID;
+    outTrack.BX = inTrack.BX;
+  }
+  return outTrack;
 }
 
 // THE END

@@ -10,7 +10,7 @@
   <xd:arg xd:name="AESL_return.hwQ" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwQ_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
   <xd:arg xd:name="AESL_return.hwX2" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwX2_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="10"/>
   <xd:arg xd:name="AESL_return.VALID" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_VALID_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
-  <xd:arg xd:name="AESL_return.BX" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_BX_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="3"/>
+  <xd:arg xd:name="AESL_return.hwBX" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwBX_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="3"/>
   <xd:arg xd:name="AESL_return.hwPropEta" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwPropEta_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="14"/>
   <xd:arg xd:name="AESL_return.hwPropPhi" xd:originalName="AESL_return" xd:direction="out" xd:interfaceRef="agg_result_hwPropPhi_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="19"/>
   <xd:arg xd:name="in.hwRinv" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwRinv_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="15"/>
@@ -22,7 +22,7 @@
   <xd:arg xd:name="in.hwQ" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwQ_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="1"/>
   <xd:arg xd:name="in.hwX2" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwX2_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="10"/>
   <xd:arg xd:name="in.VALID" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_VALID_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="1"/>
-  <xd:arg xd:name="in.BX" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_BX_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="3"/>
+  <xd:arg xd:name="in.hwBX" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwBX_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="3"/>
   <xd:latencyEstimates xd:best-case="104" xd:worst-case="141" xd:average-case="124"/>
   <xd:resourceEstimates xd:LUT="7936" xd:FF="3756" xd:BRAM="30" xd:DSP="45"/>
 </xd:acceleratorMap>

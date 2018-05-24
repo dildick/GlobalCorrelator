@@ -1670,7 +1670,7 @@
 
 <Node id="31" bw="0" op_0_bw="0" op_1_bw="15">
 <![CDATA[
-ap_fixed_base.exit1177:0  call void (...)* @_ssdm_op_SpecBitsMap(i15* %agg_result_hwRinv_V), !map !207
+ap_fixed_base.exit1177:0  call void (...)* @_ssdm_op_SpecBitsMap(i15* %agg_result_hwRinv_V), !map !251
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1685,7 +1685,7 @@ ap_fixed_base.exit1177:0  call void (...)* @_ssdm_op_SpecBitsMap(i15* %agg_resul
 
 <Node id="32" bw="0" op_0_bw="0" op_1_bw="12">
 <![CDATA[
-ap_fixed_base.exit1177:1  call void (...)* @_ssdm_op_SpecBitsMap(i12* %agg_result_hwPt_V), !map !211
+ap_fixed_base.exit1177:1  call void (...)* @_ssdm_op_SpecBitsMap(i12* %agg_result_hwPt_V), !map !255
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1700,7 +1700,7 @@ ap_fixed_base.exit1177:1  call void (...)* @_ssdm_op_SpecBitsMap(i12* %agg_resul
 
 <Node id="33" bw="0" op_0_bw="0" op_1_bw="14">
 <![CDATA[
-ap_fixed_base.exit1177:2  call void (...)* @_ssdm_op_SpecBitsMap(i14* %agg_result_hwSinhEta_V), !map !215
+ap_fixed_base.exit1177:2  call void (...)* @_ssdm_op_SpecBitsMap(i14* %agg_result_hwSinhEta_V), !map !259
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1715,7 +1715,7 @@ ap_fixed_base.exit1177:2  call void (...)* @_ssdm_op_SpecBitsMap(i14* %agg_resul
 
 <Node id="34" bw="0" op_0_bw="0" op_1_bw="14">
 <![CDATA[
-ap_fixed_base.exit1177:3  call void (...)* @_ssdm_op_SpecBitsMap(i14* %agg_result_hwEta_V), !map !219
+ap_fixed_base.exit1177:3  call void (...)* @_ssdm_op_SpecBitsMap(i14* %agg_result_hwEta_V), !map !263
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1730,7 +1730,7 @@ ap_fixed_base.exit1177:3  call void (...)* @_ssdm_op_SpecBitsMap(i14* %agg_resul
 
 <Node id="35" bw="0" op_0_bw="0" op_1_bw="19">
 <![CDATA[
-ap_fixed_base.exit1177:4  call void (...)* @_ssdm_op_SpecBitsMap(i19* %agg_result_hwPhi_V), !map !223
+ap_fixed_base.exit1177:4  call void (...)* @_ssdm_op_SpecBitsMap(i19* %agg_result_hwPhi_V), !map !267
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1745,7 +1745,7 @@ ap_fixed_base.exit1177:4  call void (...)* @_ssdm_op_SpecBitsMap(i19* %agg_resul
 
 <Node id="36" bw="0" op_0_bw="0" op_1_bw="11">
 <![CDATA[
-ap_fixed_base.exit1177:5  call void (...)* @_ssdm_op_SpecBitsMap(i11* %agg_result_hwZ0_V), !map !227
+ap_fixed_base.exit1177:5  call void (...)* @_ssdm_op_SpecBitsMap(i11* %agg_result_hwZ0_V), !map !271
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1760,7 +1760,7 @@ ap_fixed_base.exit1177:5  call void (...)* @_ssdm_op_SpecBitsMap(i11* %agg_resul
 
 <Node id="37" bw="0" op_0_bw="0" op_1_bw="1">
 <![CDATA[
-ap_fixed_base.exit1177:6  call void (...)* @_ssdm_op_SpecBitsMap(i1* %agg_result_hwQ_V), !map !231
+ap_fixed_base.exit1177:6  call void (...)* @_ssdm_op_SpecBitsMap(i1* %agg_result_hwQ_V), !map !275
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1775,7 +1775,7 @@ ap_fixed_base.exit1177:6  call void (...)* @_ssdm_op_SpecBitsMap(i1* %agg_result
 
 <Node id="38" bw="0" op_0_bw="0" op_1_bw="10">
 <![CDATA[
-ap_fixed_base.exit1177:7  call void (...)* @_ssdm_op_SpecBitsMap(i10* %agg_result_hwX2_V), !map !235
+ap_fixed_base.exit1177:7  call void (...)* @_ssdm_op_SpecBitsMap(i10* %agg_result_hwX2_V), !map !279
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1790,7 +1790,7 @@ ap_fixed_base.exit1177:7  call void (...)* @_ssdm_op_SpecBitsMap(i10* %agg_resul
 
 <Node id="39" bw="0" op_0_bw="0" op_1_bw="1">
 <![CDATA[
-ap_fixed_base.exit1177:8  call void (...)* @_ssdm_op_SpecBitsMap(i1* %agg_result_VALID_V), !map !239
+ap_fixed_base.exit1177:8  call void (...)* @_ssdm_op_SpecBitsMap(i1* %agg_result_VALID_V), !map !283
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1805,7 +1805,7 @@ ap_fixed_base.exit1177:8  call void (...)* @_ssdm_op_SpecBitsMap(i1* %agg_result
 
 <Node id="40" bw="0" op_0_bw="0" op_1_bw="3">
 <![CDATA[
-ap_fixed_base.exit1177:9  call void (...)* @_ssdm_op_SpecBitsMap(i3* %agg_result_BX_V), !map !243
+ap_fixed_base.exit1177:9  call void (...)* @_ssdm_op_SpecBitsMap(i3* %agg_result_hwBX_V), !map !287
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1820,7 +1820,7 @@ ap_fixed_base.exit1177:9  call void (...)* @_ssdm_op_SpecBitsMap(i3* %agg_result
 
 <Node id="41" bw="0" op_0_bw="0" op_1_bw="14">
 <![CDATA[
-ap_fixed_base.exit1177:10  call void (...)* @_ssdm_op_SpecBitsMap(i14* %agg_result_hwPropEta_V), !map !247
+ap_fixed_base.exit1177:10  call void (...)* @_ssdm_op_SpecBitsMap(i14* %agg_result_hwPropEta_V), !map !291
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1835,7 +1835,7 @@ ap_fixed_base.exit1177:10  call void (...)* @_ssdm_op_SpecBitsMap(i14* %agg_resu
 
 <Node id="42" bw="0" op_0_bw="0" op_1_bw="19">
 <![CDATA[
-ap_fixed_base.exit1177:11  call void (...)* @_ssdm_op_SpecBitsMap(i19* %agg_result_hwPropPhi_V), !map !251
+ap_fixed_base.exit1177:11  call void (...)* @_ssdm_op_SpecBitsMap(i19* %agg_result_hwPropPhi_V), !map !295
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1850,7 +1850,7 @@ ap_fixed_base.exit1177:11  call void (...)* @_ssdm_op_SpecBitsMap(i19* %agg_resu
 
 <Node id="43" bw="0" op_0_bw="0" op_1_bw="15">
 <![CDATA[
-ap_fixed_base.exit1177:12  call void (...)* @_ssdm_op_SpecBitsMap(i15* %in_hwRinv_V), !map !255
+ap_fixed_base.exit1177:12  call void (...)* @_ssdm_op_SpecBitsMap(i15* %in_hwRinv_V), !map !299
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1865,7 +1865,7 @@ ap_fixed_base.exit1177:12  call void (...)* @_ssdm_op_SpecBitsMap(i15* %in_hwRin
 
 <Node id="44" bw="0" op_0_bw="0" op_1_bw="12">
 <![CDATA[
-ap_fixed_base.exit1177:13  call void (...)* @_ssdm_op_SpecBitsMap(i12* %in_hwPt_V), !map !259
+ap_fixed_base.exit1177:13  call void (...)* @_ssdm_op_SpecBitsMap(i12* %in_hwPt_V), !map !303
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1880,7 +1880,7 @@ ap_fixed_base.exit1177:13  call void (...)* @_ssdm_op_SpecBitsMap(i12* %in_hwPt_
 
 <Node id="45" bw="0" op_0_bw="0" op_1_bw="14">
 <![CDATA[
-ap_fixed_base.exit1177:14  call void (...)* @_ssdm_op_SpecBitsMap(i14* %in_hwSinhEta_V), !map !263
+ap_fixed_base.exit1177:14  call void (...)* @_ssdm_op_SpecBitsMap(i14* %in_hwSinhEta_V), !map !307
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1895,7 +1895,7 @@ ap_fixed_base.exit1177:14  call void (...)* @_ssdm_op_SpecBitsMap(i14* %in_hwSin
 
 <Node id="46" bw="0" op_0_bw="0" op_1_bw="14">
 <![CDATA[
-ap_fixed_base.exit1177:15  call void (...)* @_ssdm_op_SpecBitsMap(i14* %in_hwEta_V), !map !267
+ap_fixed_base.exit1177:15  call void (...)* @_ssdm_op_SpecBitsMap(i14* %in_hwEta_V), !map !311
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1910,7 +1910,7 @@ ap_fixed_base.exit1177:15  call void (...)* @_ssdm_op_SpecBitsMap(i14* %in_hwEta
 
 <Node id="47" bw="0" op_0_bw="0" op_1_bw="19">
 <![CDATA[
-ap_fixed_base.exit1177:16  call void (...)* @_ssdm_op_SpecBitsMap(i19* %in_hwPhi_V), !map !271
+ap_fixed_base.exit1177:16  call void (...)* @_ssdm_op_SpecBitsMap(i19* %in_hwPhi_V), !map !315
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1925,7 +1925,7 @@ ap_fixed_base.exit1177:16  call void (...)* @_ssdm_op_SpecBitsMap(i19* %in_hwPhi
 
 <Node id="48" bw="0" op_0_bw="0" op_1_bw="11">
 <![CDATA[
-ap_fixed_base.exit1177:17  call void (...)* @_ssdm_op_SpecBitsMap(i11* %in_hwZ0_V), !map !275
+ap_fixed_base.exit1177:17  call void (...)* @_ssdm_op_SpecBitsMap(i11* %in_hwZ0_V), !map !319
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1940,7 +1940,7 @@ ap_fixed_base.exit1177:17  call void (...)* @_ssdm_op_SpecBitsMap(i11* %in_hwZ0_
 
 <Node id="49" bw="0" op_0_bw="0" op_1_bw="1">
 <![CDATA[
-ap_fixed_base.exit1177:18  call void (...)* @_ssdm_op_SpecBitsMap(i1* %in_hwQ_V), !map !279
+ap_fixed_base.exit1177:18  call void (...)* @_ssdm_op_SpecBitsMap(i1* %in_hwQ_V), !map !323
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1955,7 +1955,7 @@ ap_fixed_base.exit1177:18  call void (...)* @_ssdm_op_SpecBitsMap(i1* %in_hwQ_V)
 
 <Node id="50" bw="0" op_0_bw="0" op_1_bw="10">
 <![CDATA[
-ap_fixed_base.exit1177:19  call void (...)* @_ssdm_op_SpecBitsMap(i10* %in_hwX2_V), !map !283
+ap_fixed_base.exit1177:19  call void (...)* @_ssdm_op_SpecBitsMap(i10* %in_hwX2_V), !map !327
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1970,7 +1970,7 @@ ap_fixed_base.exit1177:19  call void (...)* @_ssdm_op_SpecBitsMap(i10* %in_hwX2_
 
 <Node id="51" bw="0" op_0_bw="0" op_1_bw="1">
 <![CDATA[
-ap_fixed_base.exit1177:20  call void (...)* @_ssdm_op_SpecBitsMap(i1* %in_VALID_V), !map !287
+ap_fixed_base.exit1177:20  call void (...)* @_ssdm_op_SpecBitsMap(i1* %in_VALID_V), !map !331
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -1985,7 +1985,7 @@ ap_fixed_base.exit1177:20  call void (...)* @_ssdm_op_SpecBitsMap(i1* %in_VALID_
 
 <Node id="52" bw="0" op_0_bw="0" op_1_bw="3">
 <![CDATA[
-ap_fixed_base.exit1177:21  call void (...)* @_ssdm_op_SpecBitsMap(i3* %in_BX_V), !map !291
+ap_fixed_base.exit1177:21  call void (...)* @_ssdm_op_SpecBitsMap(i3* %in_hwBX_V), !map !335
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -2150,7 +2150,7 @@ ap_fixed_base.exit1177:31  call void @_ssdm_op_Write.ap_auto.i1P(i1* %agg_result
 
 <Node id="63" bw="0" op_0_bw="0" op_1_bw="3" op_2_bw="3">
 <![CDATA[
-ap_fixed_base.exit1177:32  call void @_ssdm_op_Write.ap_auto.i3P(i3* %agg_result_BX_V, i3 0)
+ap_fixed_base.exit1177:32  call void @_ssdm_op_Write.ap_auto.i3P(i3* %agg_result_hwBX_V, i3 0)
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -14562,8 +14562,8 @@ _ifconv:45  ret void
 <port id="1348" name="agg_result_VALID_V" dir="1" iftype="0">
 <core>NULL</core><StgValue><ssdm name="agg_result_VALID_V"/></StgValue>
 </port>
-<port id="1349" name="agg_result_BX_V" dir="1" iftype="0">
-<core>NULL</core><StgValue><ssdm name="agg_result_BX_V"/></StgValue>
+<port id="1349" name="agg_result_hwBX_V" dir="1" iftype="0">
+<core>NULL</core><StgValue><ssdm name="agg_result_hwBX_V"/></StgValue>
 </port>
 <port id="1350" name="agg_result_hwPropEta_V" dir="1" iftype="0">
 <core>NULL</core><StgValue><ssdm name="agg_result_hwPropEta_V"/></StgValue>
@@ -14598,8 +14598,8 @@ _ifconv:45  ret void
 <port id="1360" name="in_VALID_V" dir="0" iftype="0">
 <core>NULL</core><StgValue><ssdm name="in_VALID_V"/></StgValue>
 </port>
-<port id="1361" name="in_BX_V" dir="0" iftype="0">
-<core>NULL</core><StgValue><ssdm name="in_BX_V"/></StgValue>
+<port id="1361" name="in_hwBX_V" dir="0" iftype="0">
+<core>NULL</core><StgValue><ssdm name="in_hwBX_V"/></StgValue>
 </port>
 <port id="1362" name="arcsinh_table9" dir="0" iftype="1">
 <core>ROM_nP</core><StgValue><ssdm name="arcsinh_table9"/><MemPortTyVec>1 </MemPortTyVec>
@@ -14675,7 +14675,7 @@ _ifconv:45  ret void
 </dataflow>
 <dataflow id="1389" from="_ssdm_op_SpecBitsMap" to="StgValue_257" fromId="1370" toId="257">
 </dataflow>
-<dataflow id="1390" from="agg_result_BX_V" to="StgValue_257" fromId="1349" toId="257">
+<dataflow id="1390" from="agg_result_hwBX_V" to="StgValue_257" fromId="1349" toId="257">
 </dataflow>
 <dataflow id="1391" from="_ssdm_op_SpecBitsMap" to="StgValue_258" fromId="1370" toId="258">
 </dataflow>
@@ -14723,7 +14723,7 @@ _ifconv:45  ret void
 </dataflow>
 <dataflow id="1413" from="_ssdm_op_SpecBitsMap" to="StgValue_269" fromId="1370" toId="269">
 </dataflow>
-<dataflow id="1414" from="in_BX_V" to="StgValue_269" fromId="1361" toId="269">
+<dataflow id="1414" from="in_hwBX_V" to="StgValue_269" fromId="1361" toId="269">
 </dataflow>
 <dataflow id="1416" from="_ssdm_op_SpecTopModule" to="StgValue_270" fromId="1415" toId="270">
 </dataflow>
@@ -14785,7 +14785,7 @@ _ifconv:45  ret void
 </dataflow>
 <dataflow id="1461" from="_ssdm_op_Write.ap_auto.i3P" to="StgValue_280" fromId="1460" toId="280">
 </dataflow>
-<dataflow id="1462" from="agg_result_BX_V" to="StgValue_280" fromId="1349" toId="280">
+<dataflow id="1462" from="agg_result_hwBX_V" to="StgValue_280" fromId="1349" toId="280">
 </dataflow>
 <dataflow id="1464" from="StgValue_1463" to="StgValue_280" fromId="1463" toId="280">
 </dataflow>

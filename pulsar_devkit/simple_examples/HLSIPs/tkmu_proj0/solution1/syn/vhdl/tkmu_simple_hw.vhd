@@ -35,8 +35,8 @@ port (
     agg_result_hwX2_V_ap_vld : OUT STD_LOGIC;
     agg_result_VALID_V : OUT STD_LOGIC_VECTOR (0 downto 0);
     agg_result_VALID_V_ap_vld : OUT STD_LOGIC;
-    agg_result_BX_V : OUT STD_LOGIC_VECTOR (2 downto 0);
-    agg_result_BX_V_ap_vld : OUT STD_LOGIC;
+    agg_result_hwBX_V : OUT STD_LOGIC_VECTOR (2 downto 0);
+    agg_result_hwBX_V_ap_vld : OUT STD_LOGIC;
     agg_result_hwPropEta_V : OUT STD_LOGIC_VECTOR (13 downto 0);
     agg_result_hwPropEta_V_ap_vld : OUT STD_LOGIC;
     agg_result_hwPropPhi_V : OUT STD_LOGIC_VECTOR (18 downto 0);
@@ -51,7 +51,7 @@ port (
     in_hwQ_V : IN STD_LOGIC_VECTOR (0 downto 0);
     in_hwX2_V : IN STD_LOGIC_VECTOR (9 downto 0);
     in_VALID_V : IN STD_LOGIC_VECTOR (0 downto 0);
-    in_BX_V : IN STD_LOGIC_VECTOR (2 downto 0) );
+    in_hwBX_V : IN STD_LOGIC_VECTOR (2 downto 0) );
 end;
 
 
@@ -3134,17 +3134,6 @@ begin
     F2_8_fu_2322_p2 <= std_logic_vector(unsigned(ap_const_lv12_433) - unsigned(tmp_134_fu_2282_p1));
     F2_9_fu_2161_p2 <= std_logic_vector(unsigned(ap_const_lv12_433) - unsigned(tmp_138_fu_2121_p1));
     F2_fu_1151_p2 <= std_logic_vector(unsigned(ap_const_lv12_433) - unsigned(tmp_6_fu_1111_p1));
-    agg_result_BX_V <= ap_const_lv3_0;
-
-    agg_result_BX_V_ap_vld_assign_proc : process(ap_start, ap_CS_fsm_state1)
-    begin
-        if (((ap_CS_fsm_state1 = ap_const_lv1_1) and not((ap_start = ap_const_logic_0)))) then 
-            agg_result_BX_V_ap_vld <= ap_const_logic_1;
-        else 
-            agg_result_BX_V_ap_vld <= ap_const_logic_0;
-        end if; 
-    end process;
-
     agg_result_VALID_V <= ap_const_lv1_0;
 
     agg_result_VALID_V_ap_vld_assign_proc : process(ap_start, ap_CS_fsm_state1)
@@ -3153,6 +3142,17 @@ begin
             agg_result_VALID_V_ap_vld <= ap_const_logic_1;
         else 
             agg_result_VALID_V_ap_vld <= ap_const_logic_0;
+        end if; 
+    end process;
+
+    agg_result_hwBX_V <= ap_const_lv3_0;
+
+    agg_result_hwBX_V_ap_vld_assign_proc : process(ap_start, ap_CS_fsm_state1)
+    begin
+        if (((ap_CS_fsm_state1 = ap_const_lv1_1) and not((ap_start = ap_const_logic_0)))) then 
+            agg_result_hwBX_V_ap_vld <= ap_const_logic_1;
+        else 
+            agg_result_hwBX_V_ap_vld <= ap_const_logic_0;
         end if; 
     end process;
 

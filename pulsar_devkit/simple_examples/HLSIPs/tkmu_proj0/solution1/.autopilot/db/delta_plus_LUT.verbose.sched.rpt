@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'delta_plus_LUT'
 ================================================================
-* Date:           Tue May 22 02:47:22 2018
+* Date:           Thu May 24 15:26:46 2018
 
 * Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
 * Project:        tkmu_proj0
@@ -95,150 +95,150 @@ IsGatedGlobalClock: 0
 ST_1: data_V_read_5 (3)  [1/1] 0.00ns
 _ifconv:0  %data_V_read_5 = call i11 @_ssdm_op_Read.ap_auto.i11(i11 %data_V_read)
 
-ST_1: r_V (5)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_1: r_V (5)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:2  %r_V = call i21 @_ssdm_op_BitConcatenate.i21.i11.i10(i11 %data_V_read_5, i10 0)
 
-ST_1: sext_cast (6)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_1: sext_cast (6)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:3  %sext_cast = sext i21 %r_V to i44
 
-ST_1: mul (7)  [5/5] 1.54ns  loc: src/tk-mu_simple.h:347
+ST_1: mul (7)  [5/5] 1.54ns  loc: src/tk-mu_simple.h:393
 _ifconv:4  %mul = mul i44 2236963, %sext_cast
 
-ST_1: tmp_250 (10)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_1: tmp_250 (10)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:7  %tmp_250 = call i1 @_ssdm_op_BitSelect.i1.i11.i32(i11 %data_V_read_5, i32 10)
 
 
  <State 2>: 1.54ns
-ST_2: mul (7)  [4/5] 1.54ns  loc: src/tk-mu_simple.h:347
+ST_2: mul (7)  [4/5] 1.54ns  loc: src/tk-mu_simple.h:393
 _ifconv:4  %mul = mul i44 2236963, %sext_cast
 
 
  <State 3>: 1.54ns
-ST_3: mul (7)  [3/5] 1.54ns  loc: src/tk-mu_simple.h:347
+ST_3: mul (7)  [3/5] 1.54ns  loc: src/tk-mu_simple.h:393
 _ifconv:4  %mul = mul i44 2236963, %sext_cast
 
 
  <State 4>: 1.54ns
-ST_4: mul (7)  [2/5] 1.54ns  loc: src/tk-mu_simple.h:347
+ST_4: mul (7)  [2/5] 1.54ns  loc: src/tk-mu_simple.h:393
 _ifconv:4  %mul = mul i44 2236963, %sext_cast
 
 
  <State 5>: 4.06ns
-ST_5: mul (7)  [1/5] 1.54ns  loc: src/tk-mu_simple.h:347
+ST_5: mul (7)  [1/5] 1.54ns  loc: src/tk-mu_simple.h:393
 _ifconv:4  %mul = mul i44 2236963, %sext_cast
 
-ST_5: tmp_249 (8)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_5: tmp_249 (8)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:5  %tmp_249 = trunc i44 %mul to i43
 
-ST_5: neg_mul (9)  [1/1] 1.81ns  loc: src/tk-mu_simple.h:347
+ST_5: neg_mul (9)  [1/1] 1.81ns  loc: src/tk-mu_simple.h:393
 _ifconv:6  %neg_mul = sub i43 0, %tmp_249
 
-ST_5: tmp_251 (11)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_5: tmp_251 (11)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:8  %tmp_251 = call i18 @_ssdm_op_PartSelect.i18.i43.i32.i32(i43 %neg_mul, i32 25, i32 42)
 
-ST_5: tmp (12)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_5: tmp (12)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:9  %tmp = sext i18 %tmp_251 to i22
 
-ST_5: tmp_252 (13)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_5: tmp_252 (13)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:10  %tmp_252 = call i19 @_ssdm_op_PartSelect.i19.i44.i32.i32(i44 %mul, i32 25, i32 43)
 
-ST_5: tmp_209 (14)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_5: tmp_209 (14)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:11  %tmp_209 = sext i19 %tmp_252 to i22
 
-ST_5: p_v (15)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:347
+ST_5: p_v (15)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:393
 _ifconv:12  %p_v = select i1 %tmp_250, i22 %tmp, i22 %tmp_209
 
-ST_5: tmp_253 (16)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_5: tmp_253 (16)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:13  %tmp_253 = trunc i22 %p_v to i19
 
 
  <State 6>: 4.29ns
-ST_6: neg_ti (17)  [1/1] 1.45ns  loc: src/tk-mu_simple.h:347
+ST_6: neg_ti (17)  [1/1] 1.45ns  loc: src/tk-mu_simple.h:393
 _ifconv:14  %neg_ti = sub i19 0, %tmp_253
 
-ST_6: tmp_254 (18)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347 (grouped into LUT with out node r_V_15)
+ST_6: tmp_254 (18)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393 (grouped into LUT with out node r_V_15)
 _ifconv:15  %tmp_254 = trunc i22 %p_v to i19
 
-ST_6: tmp_210 (19)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347 (grouped into LUT with out node r_V_15)
+ST_6: tmp_210 (19)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393 (grouped into LUT with out node r_V_15)
 _ifconv:16  %tmp_210 = select i1 %tmp_250, i19 %neg_ti, i19 %tmp_254
 
-ST_6: r_V_15 (20)  [1/1] 1.45ns  loc: src/tk-mu_simple.h:347 (out node of the LUT)
+ST_6: r_V_15 (20)  [1/1] 1.45ns  loc: src/tk-mu_simple.h:393 (out node of the LUT)
 _ifconv:17  %r_V_15 = sub i19 65536, %tmp_210
 
-ST_6: tmp_204 (21)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_6: tmp_204 (21)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:18  %tmp_204 = call i13 @_ssdm_op_PartSelect.i13.i19.i32.i32(i19 %r_V_15, i32 6, i32 18)
 
-ST_6: ret_V_cast (22)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_6: ret_V_cast (22)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:19  %ret_V_cast = sext i13 %tmp_204 to i14
 
-ST_6: tmp_256 (24)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_6: tmp_256 (24)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:21  %tmp_256 = trunc i19 %r_V_15 to i6
 
-ST_6: tmp_s (25)  [1/1] 1.16ns  loc: src/tk-mu_simple.h:347
+ST_6: tmp_s (25)  [1/1] 1.16ns  loc: src/tk-mu_simple.h:393
 _ifconv:22  %tmp_s = icmp eq i6 %tmp_256, 0
 
-ST_6: ret_V (26)  [1/1] 1.39ns  loc: src/tk-mu_simple.h:347
+ST_6: ret_V (26)  [1/1] 1.39ns  loc: src/tk-mu_simple.h:393
 _ifconv:23  %ret_V = add i14 1, %ret_V_cast
 
 
  <State 7>: 3.10ns
-ST_7: tmp_255 (23)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347 (grouped into LUT with out node index)
+ST_7: tmp_255 (23)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393 (grouped into LUT with out node index)
 _ifconv:20  %tmp_255 = call i1 @_ssdm_op_BitSelect.i1.i19.i32(i19 %r_V_15, i32 18)
 
-ST_7: tmp_211 (27)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347
+ST_7: tmp_211 (27)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393
 _ifconv:24  %tmp_211 = sext i13 %tmp_204 to i32
 
-ST_7: tmp_212 (28)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347 (grouped into LUT with out node index)
+ST_7: tmp_212 (28)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393 (grouped into LUT with out node index)
 _ifconv:25  %tmp_212 = sext i14 %ret_V to i32
 
-ST_7: tmp_213 (29)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:347 (grouped into LUT with out node index)
+ST_7: tmp_213 (29)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:393 (grouped into LUT with out node index)
 _ifconv:26  %tmp_213 = select i1 %tmp_s, i32 %tmp_211, i32 %tmp_212
 
-ST_7: index (30)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:347 (out node of the LUT)
+ST_7: index (30)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:393 (out node of the LUT)
 _ifconv:27  %index = select i1 %tmp_255, i32 %tmp_213, i32 %tmp_211
 
-ST_7: tmp_257 (31)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:349
+ST_7: tmp_257 (31)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:395
 _ifconv:28  %tmp_257 = call i1 @_ssdm_op_BitSelect.i1.i32.i32(i32 %index, i32 31)
 
-ST_7: tmp_258 (32)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:350
+ST_7: tmp_258 (32)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:396
 _ifconv:29  %tmp_258 = call i22 @_ssdm_op_PartSelect.i22.i32.i32.i32(i32 %index, i32 10, i32 31)
 
-ST_7: icmp (33)  [1/1] 1.34ns  loc: src/tk-mu_simple.h:350
+ST_7: icmp (33)  [1/1] 1.34ns  loc: src/tk-mu_simple.h:396
 _ifconv:30  %icmp = icmp sgt i22 %tmp_258, 0
 
-ST_7: tmp_202 (34)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:351
+ST_7: tmp_202 (34)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:397
 _ifconv:31  %tmp_202 = zext i32 %index to i64
 
-ST_7: delta_plus_table4_ad (35)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:351
+ST_7: delta_plus_table4_ad (35)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:397
 _ifconv:32  %delta_plus_table4_ad = getelementptr [1024 x i5]* @delta_plus_table4, i64 0, i64 %tmp_202
 
-ST_7: delta_plus_table4_lo (36)  [2/2] 2.39ns  loc: src/tk-mu_simple.h:351
+ST_7: delta_plus_table4_lo (36)  [2/2] 2.39ns  loc: src/tk-mu_simple.h:397
 _ifconv:33  %delta_plus_table4_lo = load i5* %delta_plus_table4_ad, align 1
 
 
  <State 8>: 3.10ns
-ST_8: StgValue_46 (4)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:342
+ST_8: StgValue_46 (4)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:388
 _ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind
 
-ST_8: delta_plus_table4_lo (36)  [1/2] 2.39ns  loc: src/tk-mu_simple.h:351
+ST_8: delta_plus_table4_lo (36)  [1/2] 2.39ns  loc: src/tk-mu_simple.h:397
 _ifconv:33  %delta_plus_table4_lo = load i5* %delta_plus_table4_ad, align 1
 
-ST_8: sel_tmp1 (37)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:349 (grouped into LUT with out node sel_tmp2)
+ST_8: sel_tmp1 (37)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:395 (grouped into LUT with out node sel_tmp2)
 _ifconv:34  %sel_tmp1 = xor i1 %tmp_257, true
 
-ST_8: sel_tmp2 (38)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:350 (out node of the LUT)
+ST_8: sel_tmp2 (38)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:396 (out node of the LUT)
 _ifconv:35  %sel_tmp2 = and i1 %icmp, %sel_tmp1
 
-ST_8: sel_tmp (39)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:351 (grouped into LUT with out node ssdm_int_V_write_ass)
+ST_8: sel_tmp (39)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:397 (grouped into LUT with out node ssdm_int_V_write_ass)
 _ifconv:36  %sel_tmp = select i1 %sel_tmp2, i5 0, i5 -15
 
-ST_8: tmp_206 (40)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:351 (grouped into LUT with out node ssdm_int_V_write_ass)
+ST_8: tmp_206 (40)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:397 (grouped into LUT with out node ssdm_int_V_write_ass)
 _ifconv:37  %tmp_206 = or i1 %sel_tmp2, %tmp_257
 
-ST_8: ssdm_int_V_write_ass (41)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:351 (out node of the LUT)
+ST_8: ssdm_int_V_write_ass (41)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:397 (out node of the LUT)
 _ifconv:38  %ssdm_int_V_write_ass = select i1 %tmp_206, i5 %sel_tmp, i5 %delta_plus_table4_lo
 
-ST_8: StgValue_53 (42)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:353
+ST_8: StgValue_53 (42)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:399
 _ifconv:39  ret i5 %ssdm_int_V_write_ass
 
 
@@ -251,43 +251,43 @@ Target clock period: 5ns, clock uncertainty: 0.625ns.
  <State 1>: 1.54ns
 The critical path consists of the following:
 	wire read on port 'data_V_read' [3]  (0 ns)
-	'mul' operation ('mul', src/tk-mu_simple.h:347) [7]  (1.54 ns)
+	'mul' operation ('mul', src/tk-mu_simple.h:393) [7]  (1.54 ns)
 
  <State 2>: 1.54ns
 The critical path consists of the following:
-	'mul' operation ('mul', src/tk-mu_simple.h:347) [7]  (1.54 ns)
+	'mul' operation ('mul', src/tk-mu_simple.h:393) [7]  (1.54 ns)
 
  <State 3>: 1.54ns
 The critical path consists of the following:
-	'mul' operation ('mul', src/tk-mu_simple.h:347) [7]  (1.54 ns)
+	'mul' operation ('mul', src/tk-mu_simple.h:393) [7]  (1.54 ns)
 
  <State 4>: 1.54ns
 The critical path consists of the following:
-	'mul' operation ('mul', src/tk-mu_simple.h:347) [7]  (1.54 ns)
+	'mul' operation ('mul', src/tk-mu_simple.h:393) [7]  (1.54 ns)
 
  <State 5>: 4.06ns
 The critical path consists of the following:
-	'mul' operation ('mul', src/tk-mu_simple.h:347) [7]  (1.54 ns)
-	'sub' operation ('neg_mul', src/tk-mu_simple.h:347) [9]  (1.81 ns)
-	'select' operation ('p_v', src/tk-mu_simple.h:347) [15]  (0.71 ns)
+	'mul' operation ('mul', src/tk-mu_simple.h:393) [7]  (1.54 ns)
+	'sub' operation ('neg_mul', src/tk-mu_simple.h:393) [9]  (1.81 ns)
+	'select' operation ('p_v', src/tk-mu_simple.h:393) [15]  (0.71 ns)
 
  <State 6>: 4.29ns
 The critical path consists of the following:
-	'sub' operation ('neg_ti', src/tk-mu_simple.h:347) [17]  (1.45 ns)
-	'select' operation ('tmp_210', src/tk-mu_simple.h:347) [19]  (0 ns)
-	'sub' operation ('r.V', src/tk-mu_simple.h:347) [20]  (1.45 ns)
-	'add' operation ('ret.V', src/tk-mu_simple.h:347) [26]  (1.39 ns)
+	'sub' operation ('neg_ti', src/tk-mu_simple.h:393) [17]  (1.45 ns)
+	'select' operation ('tmp_210', src/tk-mu_simple.h:393) [19]  (0 ns)
+	'sub' operation ('r.V', src/tk-mu_simple.h:393) [20]  (1.45 ns)
+	'add' operation ('ret.V', src/tk-mu_simple.h:393) [26]  (1.39 ns)
 
  <State 7>: 3.1ns
 The critical path consists of the following:
-	'select' operation ('index', src/tk-mu_simple.h:347) [30]  (0.71 ns)
-	'getelementptr' operation ('delta_plus_table4_ad', src/tk-mu_simple.h:351) [35]  (0 ns)
-	'load' operation ('delta_plus_table4_lo', src/tk-mu_simple.h:351) on array 'delta_plus_table4' [36]  (2.39 ns)
+	'select' operation ('index', src/tk-mu_simple.h:393) [30]  (0.71 ns)
+	'getelementptr' operation ('delta_plus_table4_ad', src/tk-mu_simple.h:397) [35]  (0 ns)
+	'load' operation ('delta_plus_table4_lo', src/tk-mu_simple.h:397) on array 'delta_plus_table4' [36]  (2.39 ns)
 
  <State 8>: 3.1ns
 The critical path consists of the following:
-	'load' operation ('delta_plus_table4_lo', src/tk-mu_simple.h:351) on array 'delta_plus_table4' [36]  (2.39 ns)
-	'select' operation ('ssdm_int<14 + 1024 * 0, true>.V', src/tk-mu_simple.h:351) [41]  (0.71 ns)
+	'load' operation ('delta_plus_table4_lo', src/tk-mu_simple.h:397) on array 'delta_plus_table4' [36]  (2.39 ns)
+	'select' operation ('ssdm_int<14 + 1024 * 0, true>.V', src/tk-mu_simple.h:397) [41]  (0.71 ns)
 
 
 ============================================================

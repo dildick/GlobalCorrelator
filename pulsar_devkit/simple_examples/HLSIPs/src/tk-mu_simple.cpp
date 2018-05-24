@@ -28,8 +28,8 @@ Negative values in binary are generated assuming "One's complement"
 
 
 
-PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in){
-
+PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in)
+{
   PropTkObj_tkmu out;
 
     /* Hardware implementation of the track propagation */
@@ -218,6 +218,52 @@ PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in){
     if (DEBUG) std::cout << " FIRMWARE : out.hwPropPhi = " << out.hwPropPhi << std::endl;
 
     return out;
+}
+
+TkMuObj_tkmu match_hw(const PropTkObj_tkmu& inTrack, const MuObj_tkmu& inMuon)
+{
+  TkMuObj_tkmu outTrack;
+  feta_t tkEta = inTrack.hwEta;
+  fphi_t tkPhi = inTrack.hwPhi;
+
+  feta_m muEta = inMuon.hwEta;
+  fphi_m muPhi = inMuon.hwPhi;
+
+  // dR calculation
+  feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
+
+  if (dR2_tk_mu < 0.01) {
+    outTrack.hwPt = inTrack.hwPt;
+    outTrack.hwEta = inTrack.hwEta;
+    outTrack.hwPhi = inTrack.hwPhi;
+    outTrack.hwQ = inTrack.hwQ;
+    outTrack.VALID = inTrack.VALID and inMuon.VALID; 
+    outTrack.hwBX = inTrack.hwBX;
+  }
+  return outTrack;
+}
+
+TrackMuonObj_tkmu match_sim(const PropTrackObj_tkmu& inTrack, const MuonObj_tkmu& inMuon)
+{
+  TrackMuonObj_tkmu outTrack;
+  float tketa = inTrack.eta;
+  float tkphi = inTrack.phi;
+
+  float mueta = inMuon.eta;
+  float muphi = inMuon.phi;
+
+  // dR calculation
+  float dR2_tk_mu = dr2_int (tketa, tkphi, mueta, muphi);
+
+  if (dR2_tk_mu < 0.01) {
+    outTrack.pt = inTrack.pt;
+    outTrack.eta = inTrack.eta;
+    outTrack.phi = inTrack.phi;
+    outTrack.q = inTrack.q;
+    outTrack.VALID = inTrack.VALID and inMuon.VALID; 
+    outTrack.BX = inTrack.BX;
+  }
+  return outTrack;
 }
 
 // THE END

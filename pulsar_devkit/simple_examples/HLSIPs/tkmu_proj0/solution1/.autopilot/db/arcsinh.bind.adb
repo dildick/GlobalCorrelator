@@ -79,7 +79,7 @@
 						<name>r_V</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -94,7 +94,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -123,7 +123,7 @@
 						<name>sext_cast</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -138,7 +138,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -165,7 +165,7 @@
 						<name>mul</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -180,7 +180,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -208,7 +208,7 @@
 						<name>neg_mul</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -223,7 +223,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -251,7 +251,7 @@
 						<name>tmp</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -266,7 +266,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -295,7 +295,7 @@
 						<name>tmp_279</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -310,7 +310,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -340,7 +340,7 @@
 						<name>tmp_280</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -355,7 +355,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -385,7 +385,7 @@
 						<name>p_v_v</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -400,7 +400,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -429,7 +429,7 @@
 						<name>trunc</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -444,7 +444,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -471,7 +471,7 @@
 						<name>neg_ti</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -486,7 +486,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -514,7 +514,7 @@
 						<name>tmp_224</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -529,7 +529,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -556,7 +556,7 @@
 						<name>tmp_225</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -571,7 +571,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -600,7 +600,7 @@
 						<name>r_V_21</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -615,7 +615,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -643,7 +643,7 @@
 						<name>tmp_213</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -658,7 +658,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -688,7 +688,7 @@
 						<name>ret_V_cast</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -703,7 +703,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -730,7 +730,7 @@
 						<name>tmp_281</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -745,7 +745,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -774,7 +774,7 @@
 						<name>tmp_282</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -789,7 +789,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -816,7 +816,7 @@
 						<name>tmp_s</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -831,7 +831,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -859,7 +859,7 @@
 						<name>ret_V</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -874,7 +874,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -902,7 +902,7 @@
 						<name>tmp_226</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -917,7 +917,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -944,7 +944,7 @@
 						<name>tmp_227</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -959,7 +959,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -986,7 +986,7 @@
 						<name>tmp_228</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1001,7 +1001,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -1030,7 +1030,7 @@
 						<name>index</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>539</lineNumber>
+						<lineNumber>585</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1045,7 +1045,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>539</second>
+										<second>585</second>
 									</item>
 								</second>
 							</item>
@@ -1074,7 +1074,7 @@
 						<name>tmp_283</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>541</lineNumber>
+						<lineNumber>587</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1089,7 +1089,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>541</second>
+										<second>587</second>
 									</item>
 								</second>
 							</item>
@@ -1118,7 +1118,7 @@
 						<name>tmp_284</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>542</lineNumber>
+						<lineNumber>588</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1133,7 +1133,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>542</second>
+										<second>588</second>
 									</item>
 								</second>
 							</item>
@@ -1163,7 +1163,7 @@
 						<name>icmp</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>542</lineNumber>
+						<lineNumber>588</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1178,7 +1178,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>542</second>
+										<second>588</second>
 									</item>
 								</second>
 							</item>
@@ -1206,7 +1206,7 @@
 						<name>tmp_211</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>543</lineNumber>
+						<lineNumber>589</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1221,7 +1221,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>543</second>
+										<second>589</second>
 									</item>
 								</second>
 							</item>
@@ -1248,7 +1248,7 @@
 						<name>arcsinh_table9_addr</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>543</lineNumber>
+						<lineNumber>589</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1263,7 +1263,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>543</second>
+										<second>589</second>
 									</item>
 								</second>
 							</item>
@@ -1292,7 +1292,7 @@
 						<name>arcsinh_table9_load</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>543</lineNumber>
+						<lineNumber>589</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1307,7 +1307,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>543</second>
+										<second>589</second>
 									</item>
 								</second>
 							</item>
@@ -1334,7 +1334,7 @@
 						<name>sel_tmp1</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>541</lineNumber>
+						<lineNumber>587</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1349,7 +1349,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>541</second>
+										<second>587</second>
 									</item>
 								</second>
 							</item>
@@ -1377,7 +1377,7 @@
 						<name>sel_tmp2</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>542</lineNumber>
+						<lineNumber>588</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1392,7 +1392,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>542</second>
+										<second>588</second>
 									</item>
 								</second>
 							</item>
@@ -1420,7 +1420,7 @@
 						<name>sel_tmp</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>543</lineNumber>
+						<lineNumber>589</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1435,7 +1435,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>543</second>
+										<second>589</second>
 									</item>
 								</second>
 							</item>
@@ -1464,7 +1464,7 @@
 						<name>tmp_215</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>543</lineNumber>
+						<lineNumber>589</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1479,7 +1479,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>543</second>
+										<second>589</second>
 									</item>
 								</second>
 							</item>
@@ -1507,7 +1507,7 @@
 						<name>ssdm_int_V_write_ass</name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>543</lineNumber>
+						<lineNumber>589</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1522,7 +1522,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>543</second>
+										<second>589</second>
 									</item>
 								</second>
 							</item>
@@ -1551,7 +1551,7 @@
 						<name></name>
 						<fileName>src/tk-mu_simple.h</fileName>
 						<fileDirectory>/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs</fileDirectory>
-						<lineNumber>545</lineNumber>
+						<lineNumber>591</lineNumber>
 						<contextFuncName>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1566,7 +1566,7 @@
 											<first>src/tk-mu_simple.h</first>
 											<second>arcsinh&amp;lt;ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, ap_fixed&amp;lt;14, 4, 5, 3, 0&amp;gt;, 8192&amp;gt;</second>
 										</first>
-										<second>545</second>
+										<second>591</second>
 									</item>
 								</second>
 							</item>

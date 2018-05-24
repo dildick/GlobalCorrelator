@@ -52,28 +52,35 @@ int main() {
         std::vector<std::string> values_sw;
         split(data_sw,' ',values_sw);
 
-        TrackObj_tkmu in_ref;
+        TrackObj_tkmu in_track_sim;
 
         float rinv    = std::atof(values_sw.at(1).c_str());
         float sinhEta = std::atof(values_sw.at(3).c_str());
 
-        in_ref.pt  = rinv2pt(rinv);           // 1.360636778;
-        in_ref.eta = sinhEta2eta(sinhEta);    //-2.265;
-        in_ref.phi = std::atof(values_sw.at(2).c_str()); // 1.26735;
-        in_ref.z0  = std::atof(values_sw.at(4).c_str()); //-4.72;
-        in_ref.q   = (rinv>0) ? 1 : -1;       //-1;
+        in_track_sim.pt  = rinv2pt(rinv);           // 1.360636778;
+        in_track_sim.eta = sinhEta2eta(sinhEta);    //-2.265;
+        in_track_sim.phi = std::atof(values_sw.at(2).c_str()); // 1.26735;
+        in_track_sim.z0  = std::atof(values_sw.at(4).c_str()); //-4.72;
+        in_track_sim.q   = (rinv>0) ? 1 : -1;       //-1;
 
-        PropTrackObj_tkmu out_ref;
+        PropTrackObj_tkmu prop_track_sim;
 
-        out_ref = tkmu_simple_ref(in_ref);
-        //stdz::cout << " REF : eta = " << in_ref.eta << " => " << out_ref.propEta << std::endl;
-        //std::cout << "     : phi = " << in_ref.phi << " => " << out_ref.propPhi << std::endl;
-        //std::cout << "     : in z0 = " << (in_ref.z0) << std::endl;
-        //std::cout << "     : in invpT = " << (1/in_ref.pt) << std::endl;
+        prop_track_sim = tkmu_simple_ref(in_track_sim);
+        //stdz::cout << " REF : eta = " << in_track_sim.eta << " => " << prop_track_sim.propEta << std::endl;
+        //std::cout << "     : phi = " << in_track_sim.phi << " => " << prop_track_sim.propPhi << std::endl;
+        //std::cout << "     : in z0 = " << (in_track_sim.z0) << std::endl;
+        //std::cout << "     : in invpT = " << (1/in_track_sim.pt) << std::endl;
 
-        software_output << in_ref.eta << "," << out_ref.propEta << "," 
-                        << in_ref.phi << "," << out_ref.propPhi << ","
-                        << rinv       << "," << in_ref.z0       << "\n";
+        software_output << in_track_sim.eta << "," << prop_track_sim.propEta << "," 
+                        << in_track_sim.phi << "," << prop_track_sim.propPhi << ","
+                        << rinv       << "," << in_track_sim.z0       << "\n";
+
+
+        MuonObj_tkmu in_muon_sim;
+	// assign muon properties here
+        TrackMuonObj_tkmu out_trackmuon_sim = match_sim(prop_track_sim, in_muon_sim);
+
+
 
 
         // :: FIRMWARE :: //
@@ -81,58 +88,77 @@ int main() {
         std::vector<std::string> values_fw;
         split(data_fw,' ',values_fw);
 
-        TkObj_tkmu in_hw;
-        PropTkObj_tkmu out_hw;
+        TkObj_tkmu in_track_hw;
+        PropTkObj_tkmu prop_track_hw;
+
+        MuObj_tkmu in_muon_hw;
+        TkMuObj_tkmu out_trackmuon_hw;
 
         // setup Rinv
         bool isNegativeCharge(false);
         std::string rinv_str = values_fw.at(1);
         isNegative(rinv_str, isNegativeCharge);
-        in_hw.hwRinv = std::bitset<15>(rinv_str).to_ulong();   //std::stoi(values_fw.at(1).c_str(),NULL,2);
-        if (isNegativeCharge) in_hw.hwRinv *= -1;
-        in_hw.hwQ = (isNegativeCharge) ? -1 : 1;
+        in_track_hw.hwRinv = std::bitset<15>(rinv_str).to_ulong();   //std::stoi(values_fw.at(1).c_str(),NULL,2);
+        if (isNegativeCharge) in_track_hw.hwRinv *= -1;
+        in_track_hw.hwQ = (isNegativeCharge) ? -1 : 1;
 
-        if (DEBUG) std::cout << " Looping over data - hwRinv = " << in_hw.hwRinv << std::endl;
+        if (DEBUG) std::cout << " Looping over data - hwRinv = " << in_track_hw.hwRinv << std::endl;
 
         // setup sinhEta
         bool isNegativeEta(false);
         std::string eta_str = values_fw.at(3);
         isNegative(eta_str, isNegativeEta);
-        in_hw.hwSinhEta = std::bitset<14>(eta_str).to_ulong();   //std::stoi(values_fw.at(3).c_str(),NULL,2);
-        if (isNegativeEta) in_hw.hwSinhEta *= -1;
+        in_track_hw.hwSinhEta = std::bitset<14>(eta_str).to_ulong();   //std::stoi(values_fw.at(3).c_str(),NULL,2);
+        if (isNegativeEta) in_track_hw.hwSinhEta *= -1;
 
-        if (DEBUG) std::cout << " Looping over data - hwSinhEta = " << in_hw.hwSinhEta << std::endl;
+        if (DEBUG) std::cout << " Looping over data - hwSinhEta = " << in_track_hw.hwSinhEta << std::endl;
 
         // setup phi0
         bool isNegativePhi(false);
         std::string phi_str = values_fw.at(2);
         isNegative(phi_str, isNegativePhi);
-        in_hw.hwPhi = std::bitset<19>(phi_str).to_ulong();   //std::stoi(values_fw.at(2).c_str(),NULL,2);
-        if (isNegativePhi) in_hw.hwPhi *= -1;
+        in_track_hw.hwPhi = std::bitset<19>(phi_str).to_ulong();   //std::stoi(values_fw.at(2).c_str(),NULL,2);
+        if (isNegativePhi) in_track_hw.hwPhi *= -1;
 
-        if (DEBUG) std::cout << " Looping over data - hwPhi = " << in_hw.hwPhi << std::endl;
+        if (DEBUG) std::cout << " Looping over data - hwPhi = " << in_track_hw.hwPhi << std::endl;
 
         // setup z0
         bool isNegativeZ0(false);
         std::string z0_str = values_fw.at(4);
         isNegative(z0_str, isNegativeZ0);
-        in_hw.hwZ0 = std::bitset<12>(z0_str).to_ulong();   //std::stoi(values_fw.at(4).c_str(),NULL,2);
-        if (isNegativeZ0) in_hw.hwZ0 *= -1;
+        in_track_hw.hwZ0 = std::bitset<12>(z0_str).to_ulong();   //std::stoi(values_fw.at(4).c_str(),NULL,2);
+        if (isNegativeZ0) in_track_hw.hwZ0 *= -1;
 
-        if (DEBUG) std::cout << " Looping over data - hwZ0 = " << in_hw.hwZ0 << std::endl;
+        if (DEBUG) std::cout << " Looping over data - hwZ0 = " << in_track_hw.hwZ0 << std::endl;
 
-        //in_hw.hwInvPt: convert in algorithm with '1/pt = 87.719298*in_hw.hwRinv;' // pt = (0.3*3.8*0.01)/rinv
-        //in_hw.hwEta:   convert in algorithm with LUT
+        //in_track_hw.hwInvPt: convert in algorithm with '1/pt = 87.719298*in_track_hw.hwRinv;' // pt = (0.3*3.8*0.01)/rinv
+        //in_track_hw.hwEta:   convert in algorithm with LUT
 
-        out_hw = tkmu_simple_hw(in_hw);
+	// propagate the track
+        prop_track_hw = tkmu_simple_hw(in_track_hw);
 
-        //std::cout << " HW  : eta   = " << float(in_hw.hwEta)/(ETA_CONVERSION) << " => " << float(out_hw.hwPropEta)/(ETA_CONVERSION) << std::endl;
-        //std::cout << "     : phi   = " << float(in_hw.hwPhi)/(PHI_CONVERSION) << " => " << float(out_hw.hwPropPhi)/(PHI_CONVERSION) << std::endl;
+	// match the track with the muon
+	out_trackmuon_hw = match_hw(prop_track_hw, in_muon_hw);
+
+	// test dR
+	feta_t eta1 = 0.001;
+	fphi_t phi1 = 0.005;
+	feta_m eta2 = 0.100;
+	fphi_m phi2 = 0.500;
+	feta_t outdR = dr2_int(eta1, phi1, eta2, phi2);
+	std::cout << "test eta1 " << eta1 << std::endl;
+	std::cout << "test phi1 " << phi1 << std::endl;
+	std::cout << "test eta2 " << eta2 << std::endl;
+	std::cout << "test phi2 " << phi2 << std::endl;
+	std::cout << "test dR " << outdR << std::endl;
+	
+        //std::cout << " HW  : eta   = " << float(in_track_hw.hwEta)/(ETA_CONVERSION) << " => " << float(prop_track_hw.hwPropEta)/(ETA_CONVERSION) << std::endl;
+        //std::cout << "     : phi   = " << float(in_track_hw.hwPhi)/(PHI_CONVERSION) << " => " << float(prop_track_hw.hwPropPhi)/(PHI_CONVERSION) << std::endl;
 
         // save results to file
-        firmware_output << in_hw.hwEta*INVETA_CONVERSION   << "," << out_hw.hwPropEta*INVETA_CONVERSION << ","
-                        << in_hw.hwPhi*INVPHI_CONVERSION   << "," << out_hw.hwPropPhi*INVPHI_CONVERSION << ","
-                        << in_hw.hwRinv*INVRINV_CONVERSION << "," << in_hw.hwZ0*INVZ_CONVERSION         << "\n";
+        firmware_output << in_track_hw.hwEta*INVETA_CONVERSION   << "," << prop_track_hw.hwPropEta*INVETA_CONVERSION << ","
+                        << in_track_hw.hwPhi*INVPHI_CONVERSION   << "," << prop_track_hw.hwPropPhi*INVPHI_CONVERSION << ","
+                        << in_track_hw.hwRinv*INVRINV_CONVERSION << "," << in_track_hw.hwZ0*INVZ_CONVERSION         << "\n";
     }
 
     std::cout << " Finished " << std::endl;

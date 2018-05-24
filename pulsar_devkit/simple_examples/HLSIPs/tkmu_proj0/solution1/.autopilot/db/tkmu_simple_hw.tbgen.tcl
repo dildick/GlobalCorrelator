@@ -1,23 +1,23 @@
 set C_TypeInfoList {{ 
 "tkmu_simple_hw" : [[], {"return": [[],"0"] }, [{"ExternC" : 0}], [ {"in": [[], {"reference": "1"}] }],[],""], 
-"0": [ "PropTkObj_tkmu", {"struct": [[{"pack": 0}],[],[{ "": [[], "1"]},{ "hwPropEta": [[16], "2"]},{ "hwPropPhi": [[32], "3"]}],""]}], 
-"2": [ "eta_t", {"typedef": [[[],"4"],""]}], 
-"4": [ "ap_int<14>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 14}}]],""]}}], 
-"1": [ "TkObj_tkmu", {"struct": [[{"pack": 0}],[],[{ "hwRinv": [[16], "5"]},{ "hwPt": [[16], "6"]},{ "hwSinhEta": [[16], "2"]},{ "hwEta": [[16], "2"]},{ "hwPhi": [[32], "3"]},{ "hwZ0": [[16], "7"]},{ "hwQ": [[8], "8"]},{ "hwX2": [[16], "9"]},{ "VALID": [[8], "8"]},{ "BX": [[8], "10"]}],""]}], 
-"8": [ "q_t", {"typedef": [[[],"11"],""]}], 
-"9": [ "chisq_t", {"typedef": [[[],"12"],""]}], 
-"12": [ "ap_int<10>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 10}}]],""]}}], 
-"11": [ "ap_int<1>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 1}}]],""]}}], 
-"10": [ "bx_t", {"typedef": [[[],"13"],""]}], 
-"13": [ "ap_int<3>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 3}}]],""]}}], 
-"7": [ "z0_t", {"typedef": [[[],"14"],""]}], 
-"14": [ "ap_int<11>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 11}}]],""]}}], 
-"3": [ "phi_t", {"typedef": [[[],"15"],""]}], 
-"15": [ "ap_int<19>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 19}}]],""]}}], 
-"6": [ "pt_t", {"typedef": [[[],"16"],""]}], 
-"16": [ "ap_int<12>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 12}}]],""]}}], 
-"5": [ "invpt_t", {"typedef": [[[],"17"],""]}], 
-"17": [ "ap_int<15>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 15}}]],""]}}]
+"1": [ "TkObj_tkmu", {"struct": [[{"pack": 0}],[],[{ "hwRinv": [[16], "2"]},{ "hwPt": [[16], "3"]},{ "hwSinhEta": [[16], "4"]},{ "hwEta": [[16], "4"]},{ "hwPhi": [[32], "5"]},{ "hwZ0": [[16], "6"]},{ "hwQ": [[8], "7"]},{ "hwX2": [[16], "8"]},{ "VALID": [[8], "7"]},{ "hwBX": [[8], "9"]}],""]}], 
+"9": [ "bx_t", {"typedef": [[[],"10"],""]}], 
+"8": [ "chisq_t", {"typedef": [[[],"11"],""]}], 
+"10": [ "ap_int<3>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 3}}]],""]}}], 
+"6": [ "z0_t", {"typedef": [[[],"12"],""]}], 
+"5": [ "phi_t", {"typedef": [[[],"13"],""]}], 
+"13": [ "ap_int<19>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 19}}]],""]}}], 
+"2": [ "invpt_t", {"typedef": [[[],"14"],""]}], 
+"0": [ "PropTkObj_tkmu", {"struct": [[{"pack": 0}],[],[{ "": [[], "1"]},{ "hwPropEta": [[16], "4"]},{ "hwPropPhi": [[32], "5"]}],""]}], 
+"12": [ "ap_int<11>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 11}}]],""]}}], 
+"7": [ "q_t", {"typedef": [[[],"15"],""]}], 
+"15": [ "ap_int<1>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 1}}]],""]}}], 
+"4": [ "eta_t", {"typedef": [[[],"16"],""]}], 
+"14": [ "ap_int<15>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 15}}]],""]}}], 
+"3": [ "pt_t", {"typedef": [[[],"17"],""]}], 
+"17": [ "ap_int<12>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 12}}]],""]}}], 
+"16": [ "ap_int<14>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 14}}]],""]}}], 
+"11": [ "ap_int<10>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 10}}]],""]}}]
 }}
 set moduleName tkmu_simple_hw
 set isCombinational 0
@@ -40,7 +40,7 @@ set C_modelArgList {
 	{ agg_result_hwQ_V int 1 regular {pointer 1}  }
 	{ agg_result_hwX2_V int 10 regular {pointer 1}  }
 	{ agg_result_VALID_V int 1 regular {pointer 1}  }
-	{ agg_result_BX_V int 3 regular {pointer 1}  }
+	{ agg_result_hwBX_V int 3 regular {pointer 1}  }
 	{ agg_result_hwPropEta_V int 14 regular {pointer 1}  }
 	{ agg_result_hwPropPhi_V int 19 regular {pointer 1}  }
 	{ in_hwRinv_V int 15 regular {pointer 0}  }
@@ -52,7 +52,7 @@ set C_modelArgList {
 	{ in_hwQ_V int 1 regular {pointer 0}  }
 	{ in_hwX2_V int 10 unused {pointer 0}  }
 	{ in_VALID_V int 1 unused {pointer 0}  }
-	{ in_BX_V int 3 unused {pointer 0}  }
+	{ in_hwBX_V int 3 unused {pointer 0}  }
 }
 set C_modelArgMapList {[ 
 	{ "Name" : "agg_result_hwRinv_V", "interface" : "wire", "bitwidth" : 15, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":14,"cElement": [{"cName": "agg.result.hwRinv.V","cData": "int15","bit_use": { "low": 0,"up": 14},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
@@ -64,7 +64,7 @@ set C_modelArgMapList {[
  	{ "Name" : "agg_result_hwQ_V", "interface" : "wire", "bitwidth" : 1, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":0,"cElement": [{"cName": "agg.result.hwQ.V","cData": "int1","bit_use": { "low": 0,"up": 0},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "agg_result_hwX2_V", "interface" : "wire", "bitwidth" : 10, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":9,"cElement": [{"cName": "agg.result.hwX2.V","cData": "int10","bit_use": { "low": 0,"up": 9},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "agg_result_VALID_V", "interface" : "wire", "bitwidth" : 1, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":0,"cElement": [{"cName": "agg.result.VALID.V","cData": "int1","bit_use": { "low": 0,"up": 0},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
- 	{ "Name" : "agg_result_BX_V", "interface" : "wire", "bitwidth" : 3, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":2,"cElement": [{"cName": "agg.result.BX.V","cData": "int3","bit_use": { "low": 0,"up": 2},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
+ 	{ "Name" : "agg_result_hwBX_V", "interface" : "wire", "bitwidth" : 3, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":2,"cElement": [{"cName": "agg.result.hwBX.V","cData": "int3","bit_use": { "low": 0,"up": 2},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "agg_result_hwPropEta_V", "interface" : "wire", "bitwidth" : 14, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":13,"cElement": [{"cName": "agg.result.hwPropEta.V","cData": "int14","bit_use": { "low": 0,"up": 13},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "agg_result_hwPropPhi_V", "interface" : "wire", "bitwidth" : 19, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":18,"cElement": [{"cName": "agg.result.hwPropPhi.V","cData": "int19","bit_use": { "low": 0,"up": 18},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "in_hwRinv_V", "interface" : "wire", "bitwidth" : 15, "direction" : "READONLY", "bitSlice":[{"low":0,"up":14,"cElement": [{"cName": "in.hwRinv.V","cData": "int15","bit_use": { "low": 0,"up": 14},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
@@ -76,7 +76,7 @@ set C_modelArgMapList {[
  	{ "Name" : "in_hwQ_V", "interface" : "wire", "bitwidth" : 1, "direction" : "READONLY", "bitSlice":[{"low":0,"up":0,"cElement": [{"cName": "in.hwQ.V","cData": "int1","bit_use": { "low": 0,"up": 0},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "in_hwX2_V", "interface" : "wire", "bitwidth" : 10, "direction" : "READONLY", "bitSlice":[{"low":0,"up":9,"cElement": [{"cName": "in.hwX2.V","cData": "int10","bit_use": { "low": 0,"up": 9},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "in_VALID_V", "interface" : "wire", "bitwidth" : 1, "direction" : "READONLY", "bitSlice":[{"low":0,"up":0,"cElement": [{"cName": "in.VALID.V","cData": "int1","bit_use": { "low": 0,"up": 0},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
- 	{ "Name" : "in_BX_V", "interface" : "wire", "bitwidth" : 3, "direction" : "READONLY", "bitSlice":[{"low":0,"up":2,"cElement": [{"cName": "in.BX.V","cData": "int3","bit_use": { "low": 0,"up": 2},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} ]}
+ 	{ "Name" : "in_hwBX_V", "interface" : "wire", "bitwidth" : 3, "direction" : "READONLY", "bitSlice":[{"low":0,"up":2,"cElement": [{"cName": "in.hwBX.V","cData": "int3","bit_use": { "low": 0,"up": 2},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} ]}
 # RTL Port declarations: 
 set portNum 41
 set portList { 
@@ -104,8 +104,8 @@ set portList {
 	{ agg_result_hwX2_V_ap_vld sc_out sc_logic 1 outvld 7 } 
 	{ agg_result_VALID_V sc_out sc_lv 1 signal 8 } 
 	{ agg_result_VALID_V_ap_vld sc_out sc_logic 1 outvld 8 } 
-	{ agg_result_BX_V sc_out sc_lv 3 signal 9 } 
-	{ agg_result_BX_V_ap_vld sc_out sc_logic 1 outvld 9 } 
+	{ agg_result_hwBX_V sc_out sc_lv 3 signal 9 } 
+	{ agg_result_hwBX_V_ap_vld sc_out sc_logic 1 outvld 9 } 
 	{ agg_result_hwPropEta_V sc_out sc_lv 14 signal 10 } 
 	{ agg_result_hwPropEta_V_ap_vld sc_out sc_logic 1 outvld 10 } 
 	{ agg_result_hwPropPhi_V sc_out sc_lv 19 signal 11 } 
@@ -120,7 +120,7 @@ set portList {
 	{ in_hwQ_V sc_in sc_lv 1 signal 18 } 
 	{ in_hwX2_V sc_in sc_lv 10 signal 19 } 
 	{ in_VALID_V sc_in sc_lv 1 signal 20 } 
-	{ in_BX_V sc_in sc_lv 3 signal 21 } 
+	{ in_hwBX_V sc_in sc_lv 3 signal 21 } 
 }
 set NewPortList {[ 
 	{ "name": "ap_clk", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "clock", "bundle":{"name": "ap_clk", "role": "default" }} , 
@@ -147,8 +147,8 @@ set NewPortList {[
  	{ "name": "agg_result_hwX2_V_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "agg_result_hwX2_V", "role": "ap_vld" }} , 
  	{ "name": "agg_result_VALID_V", "direction": "out", "datatype": "sc_lv", "bitwidth":1, "type": "signal", "bundle":{"name": "agg_result_VALID_V", "role": "default" }} , 
  	{ "name": "agg_result_VALID_V_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "agg_result_VALID_V", "role": "ap_vld" }} , 
- 	{ "name": "agg_result_BX_V", "direction": "out", "datatype": "sc_lv", "bitwidth":3, "type": "signal", "bundle":{"name": "agg_result_BX_V", "role": "default" }} , 
- 	{ "name": "agg_result_BX_V_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "agg_result_BX_V", "role": "ap_vld" }} , 
+ 	{ "name": "agg_result_hwBX_V", "direction": "out", "datatype": "sc_lv", "bitwidth":3, "type": "signal", "bundle":{"name": "agg_result_hwBX_V", "role": "default" }} , 
+ 	{ "name": "agg_result_hwBX_V_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "agg_result_hwBX_V", "role": "ap_vld" }} , 
  	{ "name": "agg_result_hwPropEta_V", "direction": "out", "datatype": "sc_lv", "bitwidth":14, "type": "signal", "bundle":{"name": "agg_result_hwPropEta_V", "role": "default" }} , 
  	{ "name": "agg_result_hwPropEta_V_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "agg_result_hwPropEta_V", "role": "ap_vld" }} , 
  	{ "name": "agg_result_hwPropPhi_V", "direction": "out", "datatype": "sc_lv", "bitwidth":19, "type": "signal", "bundle":{"name": "agg_result_hwPropPhi_V", "role": "default" }} , 
@@ -163,7 +163,7 @@ set NewPortList {[
  	{ "name": "in_hwQ_V", "direction": "in", "datatype": "sc_lv", "bitwidth":1, "type": "signal", "bundle":{"name": "in_hwQ_V", "role": "default" }} , 
  	{ "name": "in_hwX2_V", "direction": "in", "datatype": "sc_lv", "bitwidth":10, "type": "signal", "bundle":{"name": "in_hwX2_V", "role": "default" }} , 
  	{ "name": "in_VALID_V", "direction": "in", "datatype": "sc_lv", "bitwidth":1, "type": "signal", "bundle":{"name": "in_VALID_V", "role": "default" }} , 
- 	{ "name": "in_BX_V", "direction": "in", "datatype": "sc_lv", "bitwidth":3, "type": "signal", "bundle":{"name": "in_BX_V", "role": "default" }}  ]}
+ 	{ "name": "in_hwBX_V", "direction": "in", "datatype": "sc_lv", "bitwidth":3, "type": "signal", "bundle":{"name": "in_hwBX_V", "role": "default" }}  ]}
 
 set RtlHierarchyInfo {[
 	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1", "4", "7", "10", "13", "16", "19", "22", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37"],
@@ -184,7 +184,7 @@ set RtlHierarchyInfo {[
 		{"Name" : "agg_result_hwQ_V", "Type" : "Vld", "Direction" : "O"},
 		{"Name" : "agg_result_hwX2_V", "Type" : "Vld", "Direction" : "O"},
 		{"Name" : "agg_result_VALID_V", "Type" : "Vld", "Direction" : "O"},
-		{"Name" : "agg_result_BX_V", "Type" : "Vld", "Direction" : "O"},
+		{"Name" : "agg_result_hwBX_V", "Type" : "Vld", "Direction" : "O"},
 		{"Name" : "agg_result_hwPropEta_V", "Type" : "Vld", "Direction" : "O"},
 		{"Name" : "agg_result_hwPropPhi_V", "Type" : "Vld", "Direction" : "O"},
 		{"Name" : "in_hwRinv_V", "Type" : "None", "Direction" : "I"},
@@ -196,7 +196,7 @@ set RtlHierarchyInfo {[
 		{"Name" : "in_hwQ_V", "Type" : "None", "Direction" : "I"},
 		{"Name" : "in_hwX2_V", "Type" : "None", "Direction" : "I"},
 		{"Name" : "in_VALID_V", "Type" : "None", "Direction" : "I"},
-		{"Name" : "in_BX_V", "Type" : "None", "Direction" : "I"},
+		{"Name" : "in_hwBX_V", "Type" : "None", "Direction" : "I"},
 		{"Name" : "arcsinh_table9", "Type" : "Memory", "Direction" : "I",
 			"SubConnect" : [
 			{"ID" : "4", "SubInstance" : "grp_arcsinh_fu_719", "Port" : "arcsinh_table9"}]},
@@ -356,7 +356,7 @@ set Spec2ImplPortList {
 	agg_result_hwQ_V { ap_vld {  { agg_result_hwQ_V out_data 1 1 }  { agg_result_hwQ_V_ap_vld out_vld 1 1 } } }
 	agg_result_hwX2_V { ap_vld {  { agg_result_hwX2_V out_data 1 10 }  { agg_result_hwX2_V_ap_vld out_vld 1 1 } } }
 	agg_result_VALID_V { ap_vld {  { agg_result_VALID_V out_data 1 1 }  { agg_result_VALID_V_ap_vld out_vld 1 1 } } }
-	agg_result_BX_V { ap_vld {  { agg_result_BX_V out_data 1 3 }  { agg_result_BX_V_ap_vld out_vld 1 1 } } }
+	agg_result_hwBX_V { ap_vld {  { agg_result_hwBX_V out_data 1 3 }  { agg_result_hwBX_V_ap_vld out_vld 1 1 } } }
 	agg_result_hwPropEta_V { ap_vld {  { agg_result_hwPropEta_V out_data 1 14 }  { agg_result_hwPropEta_V_ap_vld out_vld 1 1 } } }
 	agg_result_hwPropPhi_V { ap_vld {  { agg_result_hwPropPhi_V out_data 1 19 }  { agg_result_hwPropPhi_V_ap_vld out_vld 1 1 } } }
 	in_hwRinv_V { ap_none {  { in_hwRinv_V in_data 0 15 } } }
@@ -368,7 +368,7 @@ set Spec2ImplPortList {
 	in_hwQ_V { ap_none {  { in_hwQ_V in_data 0 1 } } }
 	in_hwX2_V { ap_none {  { in_hwX2_V in_data 0 10 } } }
 	in_VALID_V { ap_none {  { in_VALID_V in_data 0 1 } } }
-	in_BX_V { ap_none {  { in_BX_V in_data 0 3 } } }
+	in_hwBX_V { ap_none {  { in_hwBX_V in_data 0 3 } } }
 }
 
 set busDeadlockParameterList { 

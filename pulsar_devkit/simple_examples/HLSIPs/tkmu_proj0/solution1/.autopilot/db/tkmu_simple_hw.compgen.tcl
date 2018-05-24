@@ -1001,14 +1001,14 @@ eval "cg_default_interface_gen_dc { \
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
     id 47 \
-    name agg_result_BX_V \
+    name agg_result_hwBX_V \
     type other \
     dir O \
     reset_level 1 \
     sync_rst true \
-    corename dc_agg_result_BX_V \
+    corename dc_agg_result_hwBX_V \
     op interface \
-    ports { agg_result_BX_V { O 3 vector } agg_result_BX_V_ap_vld { O 1 bit } } \
+    ports { agg_result_hwBX_V { O 3 vector } agg_result_hwBX_V_ap_vld { O 1 bit } } \
 } "
 }
 
@@ -1181,14 +1181,14 @@ eval "cg_default_interface_gen_dc { \
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
     id 59 \
-    name in_BX_V \
+    name in_hwBX_V \
     type other \
     dir I \
     reset_level 1 \
     sync_rst true \
-    corename dc_in_BX_V \
+    corename dc_in_hwBX_V \
     op interface \
-    ports { in_BX_V { I 3 vector } } \
+    ports { in_hwBX_V { I 3 vector } } \
 } "
 }
 

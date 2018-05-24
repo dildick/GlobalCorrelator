@@ -122,7 +122,7 @@ set Interface18 "wire"
 set DataType18 "[list ap_int 1 ]"
 set Port18 [list $PortName18 $Interface18 $DataType18 $Pointer18 $Dims18 $Const18 $Volatile18 $ArrayOpt18]
 lappend structMem1 $Port18
-set PortName19 "BX"
+set PortName19 "hwBX"
 set BitWidth19 "8"
 set ArrayOpt19 ""
 set Const19 "0"
@@ -259,7 +259,7 @@ set Interface08 "wire"
 set DataType08 "[list ap_int 1 ]"
 set Port08 [list $PortName08 $Interface08 $DataType08 $Pointer08 $Dims08 $Const08 $Volatile08 $ArrayOpt08]
 lappend structMem0 $Port08
-set PortName09 "BX"
+set PortName09 "hwBX"
 set BitWidth09 "8"
 set ArrayOpt09 ""
 set Const09 "0"
