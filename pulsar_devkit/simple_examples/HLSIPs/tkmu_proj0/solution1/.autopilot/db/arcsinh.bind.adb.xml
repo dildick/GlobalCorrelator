@@ -655,7 +655,7 @@ _ifconv:30  %arcsinh_table9_load = load i12* %arcsinh_table9_addr, align 2
 
 <Node id="4" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="32" op_3_bw="32" op_4_bw="32" op_5_bw="0">
 <![CDATA[
-_ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind
+_ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str6) nounwind
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -951,7 +951,7 @@ _ifconv:36  ret i12 %ssdm_int_V_write_ass
 </dataflow>
 <dataflow id="190" from="StgValue_189" to="StgValue_48" fromId="189" toId="48">
 </dataflow>
-<dataflow id="192" from="p_str" to="StgValue_48" fromId="191" toId="48">
+<dataflow id="192" from="p_str6" to="StgValue_48" fromId="191" toId="48">
 </dataflow>
 <dataflow id="193" from="arcsinh_table9_addr" to="arcsinh_table9_load" fromId="46" toId="49">
 </dataflow>

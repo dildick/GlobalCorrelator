@@ -647,7 +647,7 @@ _ifconv:33  %delta_minus_table3_l = load i5* %delta_minus_table3_a, align 1
 
 <Node id="4" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="32" op_3_bw="32" op_4_bw="32" op_5_bw="0">
 <![CDATA[
-_ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind
+_ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str6) nounwind
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -941,7 +941,7 @@ _ifconv:39  ret i5 %ssdm_int_V_write_ass
 </dataflow>
 <dataflow id="183" from="StgValue_182" to="StgValue_46" fromId="182" toId="46">
 </dataflow>
-<dataflow id="185" from="p_str" to="StgValue_46" fromId="184" toId="46">
+<dataflow id="185" from="p_str6" to="StgValue_46" fromId="184" toId="46">
 </dataflow>
 <dataflow id="186" from="delta_minus_table3_a" to="delta_minus_table3_l" fromId="44" toId="47">
 </dataflow>

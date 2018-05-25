@@ -362,7 +362,7 @@ _ifconv:15  %cosh_table7_load = load i11* %cosh_table7_addr, align 2
 
 <Node id="4" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="32" op_3_bw="32" op_4_bw="32" op_5_bw="0">
 <![CDATA[
-_ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind
+_ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str6) nounwind
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>

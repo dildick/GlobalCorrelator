@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'invCosh_1'
 ================================================================
-* Date:           Thu May 24 15:26:47 2018
+* Date:           Thu May 24 19:27:13 2018
 
 * Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
 * Project:        tkmu_proj0
@@ -96,79 +96,79 @@ _ifconv:0  %data_V_read_2 = call i12 @_ssdm_op_Read.ap_auto.i12(i12 %data_V_read
 ST_1: tmp (5)  [1/1] 0.00ns
 _ifconv:2  %tmp = trunc i12 %data_V_read_2 to i11
 
-ST_1: r_V_tr (6)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
+ST_1: r_V_tr (6)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:573
 _ifconv:3  %r_V_tr = call i24 @_ssdm_op_BitConcatenate.i24.i11.i13(i11 %tmp, i13 0)
 
-ST_1: zext_cast (7)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
+ST_1: zext_cast (7)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:573
 _ifconv:4  %zext_cast = zext i24 %r_V_tr to i49
 
-ST_1: mul (8)  [5/5] 1.54ns  loc: src/tk-mu_simple.h:534
+ST_1: mul (8)  [5/5] 1.54ns  loc: src/tk-mu_simple.h:573
 _ifconv:5  %mul = mul i49 22369622, %zext_cast
 
 
  <State 2>: 1.54ns
-ST_2: mul (8)  [4/5] 1.54ns  loc: src/tk-mu_simple.h:534
+ST_2: mul (8)  [4/5] 1.54ns  loc: src/tk-mu_simple.h:573
 _ifconv:5  %mul = mul i49 22369622, %zext_cast
 
 
  <State 3>: 1.54ns
-ST_3: mul (8)  [3/5] 1.54ns  loc: src/tk-mu_simple.h:534
+ST_3: mul (8)  [3/5] 1.54ns  loc: src/tk-mu_simple.h:573
 _ifconv:5  %mul = mul i49 22369622, %zext_cast
 
 
  <State 4>: 1.54ns
-ST_4: mul (8)  [2/5] 1.54ns  loc: src/tk-mu_simple.h:534
+ST_4: mul (8)  [2/5] 1.54ns  loc: src/tk-mu_simple.h:573
 _ifconv:5  %mul = mul i49 22369622, %zext_cast
 
 
  <State 5>: 3.87ns
-ST_5: mul (8)  [1/5] 1.54ns  loc: src/tk-mu_simple.h:534
+ST_5: mul (8)  [1/5] 1.54ns  loc: src/tk-mu_simple.h:573
 _ifconv:5  %mul = mul i49 22369622, %zext_cast
 
-ST_5: tmp_231 (9)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
+ST_5: tmp_231 (9)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:573
 _ifconv:6  %tmp_231 = call i23 @_ssdm_op_PartSelect.i23.i49.i32.i32(i49 %mul, i32 26, i32 48)
 
-ST_5: tmp_cast_cast (10)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
+ST_5: tmp_cast_cast (10)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:573
 _ifconv:7  %tmp_cast_cast = zext i23 %tmp_231 to i25
 
-ST_5: r_V (11)  [1/1] 1.57ns  loc: src/tk-mu_simple.h:534
+ST_5: r_V (11)  [1/1] 1.57ns  loc: src/tk-mu_simple.h:573
 _ifconv:8  %r_V = sub i25 8388608, %tmp_cast_cast
 
-ST_5: tmp_232 (12)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
+ST_5: tmp_232 (12)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:573
 _ifconv:9  %tmp_232 = call i15 @_ssdm_op_PartSelect.i15.i25.i32.i32(i25 %r_V, i32 10, i32 24)
 
-ST_5: tmp_233 (14)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:537
+ST_5: tmp_233 (14)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:576
 _ifconv:11  %tmp_233 = call i2 @_ssdm_op_PartSelect.i2.i25.i32.i32(i25 %r_V, i32 23, i32 24)
 
-ST_5: icmp (15)  [1/1] 0.76ns  loc: src/tk-mu_simple.h:537
+ST_5: icmp (15)  [1/1] 0.76ns  loc: src/tk-mu_simple.h:576
 _ifconv:12  %icmp = icmp ne i2 %tmp_233, 0
 
 
  <State 6>: 2.39ns
-ST_6: tmp_198 (13)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:534
+ST_6: tmp_198 (13)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:573
 _ifconv:10  %tmp_198 = sext i15 %tmp_232 to i16
 
-ST_6: tmp_196 (16)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:538
+ST_6: tmp_196 (16)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:577
 _ifconv:13  %tmp_196 = zext i16 %tmp_198 to i64
 
-ST_6: cosh_table7_addr (17)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:538
+ST_6: cosh_table7_addr (17)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:577
 _ifconv:14  %cosh_table7_addr = getelementptr [8192 x i11]* @cosh_table7, i64 0, i64 %tmp_196
 
-ST_6: cosh_table7_load (18)  [2/2] 2.39ns  loc: src/tk-mu_simple.h:538
+ST_6: cosh_table7_load (18)  [2/2] 2.39ns  loc: src/tk-mu_simple.h:577
 _ifconv:15  %cosh_table7_load = load i11* %cosh_table7_addr, align 2
 
 
  <State 7>: 3.10ns
-ST_7: StgValue_27 (4)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:529
-_ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind
+ST_7: StgValue_27 (4)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:568
+_ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str6) nounwind
 
-ST_7: cosh_table7_load (18)  [1/2] 2.39ns  loc: src/tk-mu_simple.h:538
+ST_7: cosh_table7_load (18)  [1/2] 2.39ns  loc: src/tk-mu_simple.h:577
 _ifconv:15  %cosh_table7_load = load i11* %cosh_table7_addr, align 2
 
-ST_7: ssdm_int_V_write_ass (19)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:538
+ST_7: ssdm_int_V_write_ass (19)  [1/1] 0.71ns  loc: src/tk-mu_simple.h:577
 _ifconv:16  %ssdm_int_V_write_ass = select i1 %icmp, i11 -1024, i11 %cosh_table7_load
 
-ST_7: StgValue_30 (20)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:540
+ST_7: StgValue_30 (20)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:579
 _ifconv:17  ret i11 %ssdm_int_V_write_ass
 
 
@@ -411,7 +411,7 @@ StgValue_30          (ret           ) [ 00000000]
 <pin id="43" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str"/></StgValue>
+<StgValue><ssdm name="p_str6"/></StgValue>
 </bind>
 </comp>
 

@@ -1,5 +1,5 @@
-@I [HLS-0] Workspace /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1 opened at Thu May 24 15:26:11 CDT 2018
-@I [HLS-100] Command   open_solution returned 0; 0 sec.
+@I [HLS-0] Workspace /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1 opened at Thu May 24 19:26:42 CDT 2018
+@I [HLS-100] Command   open_solution returned 0; 0.04 sec.
 @I [HLS-100] Execute   set_part xc7vx690tffg1927-2 
 @I [HLS-100] Execute     add_library xilinx/virtex7/virtex7:xc7vx690t:ffg1927:-2 
 @I [HLS-100] Execute       get_default_platform 
@@ -16,12 +16,12 @@
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.lib 
 @I [HLS-100] Command             ap_source returned 0; 0 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.lib 
-@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.lib 
 @I [HLS-100] Command             ap_source returned 0; 0 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.lib 
 @I [HLS-100] Command             ap_source returned 0; 0 sec.
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.lib 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.lib 
@@ -30,11 +30,11 @@
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.lib 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Command         ap_source returned 0; 0 sec.
+@I [HLS-100] Command         ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_old.lib 
 @I [HLS-100] Command         ap_source returned 0; 0 sec.
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_vivado.lib 
-@I [HLS-100] Command         ap_source returned 0; 0 sec.
+@I [HLS-100] Command         ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.hlp 
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/target_info.tcl 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
@@ -55,7 +55,7 @@
 @I [HLS-100] Command         config_chip_info returned 0; 0 sec.
 @I [HLS-100] Execute         config_chip_info -quiet -speed medium 
 @I [HLS-100] Command         config_chip_info returned 0; 0 sec.
-@I [HLS-100] Command       import_lib returned 0; 0.03 sec.
+@I [HLS-100] Command       import_lib returned 0; 0.02 sec.
 @I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
@@ -67,9 +67,9 @@
 @I [HLS-100] Command             ap_source returned 0; 0 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
 @I [HLS-100] Execute               source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
-@I [HLS-100] Command               ap_source returned 0; 0 sec.
-@I [HLS-100] Execute               source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
 @I [HLS-100] Command               ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute               source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
+@I [HLS-100] Command               ap_source returned 0; 0 sec.
 @I [HLS-100] Command             ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
 @I [HLS-100] Command             ap_source returned 0; 0.01 sec.
@@ -94,7 +94,7 @@
 @I [HLS-100] Command       config_chip_info returned 0; 0 sec.
 @I [HLS-100] Execute       config_chip_info -quiet -speed medium 
 @I [HLS-100] Command       config_chip_info returned 0; 0 sec.
-@I [HLS-100] Command     add_library returned 0; 0.13 sec.
+@I [HLS-100] Command     add_library returned 0; 0.11 sec.
 @I [HLS-100] Execute     add_library xilinx/virtex7/virtex7_fpv6 
 @I [HLS-100] Execute       get_default_platform 
 @I [HLS-100] Command       get_default_platform returned 0; 0 sec.
@@ -104,7 +104,7 @@
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv7.lib 
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_hp.lib 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Command         ap_source returned 0; 0 sec.
+@I [HLS-100] Command         ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv.hlp 
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.hlp 
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/target_info.tcl 
@@ -121,14 +121,14 @@
 @I [HLS-100] Command         ap_source returned 0; 0 sec.
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_hp.hlp 
 @I [HLS-100] Command         ap_source returned 0; 0 sec.
-@I [HLS-100] Command       import_lib returned 0; 0.01 sec.
+@I [HLS-100] Command       import_lib returned 0; 0.02 sec.
 @I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
 @I [HLS-100] Command         ap_source returned 0; 0 sec.
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     add_library returned 0; 0.01 sec.
+@I [HLS-100] Command     add_library returned 0; 0.02 sec.
 @I [HLS-10] Setting target device to 'xc7vx690tffg1927-2'
-@I [HLS-100] Command   set_part returned 0; 0.15 sec.
+@I [HLS-100] Command   set_part returned 0; 0.14 sec.
 @I [HLS-100] Execute   create_clock -period 5 -name default 
 @I [HLS-100] Execute     config_clock -quiet -name default -period 5 -default=false 
 @I [SYN-201] Setting up clock 'default' with a period of 5ns.
@@ -150,10 +150,10 @@
 @I [HLS-100] Execute     is_xip /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/src/tk-mu_simple.cpp 
 @I [HLS-100] Command     is_xip returned 0; 0 sec.
 @I [HLS-100] Execute     source run_sim.tcl 
-@I [HLS-100] Command     ap_source returned 0; 5.83 sec.
+@I [HLS-100] Command     ap_source returned 0; 1.34 sec.
 @I [SIM-1] CSim done with 0 errors.
 @I [SIM-3] *************** CSIM finish ***************
-@I [HLS-100] Command   csim_design returned 0; 12.16 sec.
+@I [HLS-100] Command   csim_design returned 0; 6.42 sec.
 @I [HLS-100] Execute   csynth_design 
 @I [HLS-100] Execute     elaborate -effort=medium -skip_syncheck=0 -keep_printf=0 -lm=0 -skip_cdt=0 -skip_transform=0 -ng=0 -g=0 -opt_fp=0 
 @I [HLS-10] Analyzing design file 'src/tk-mu_simple.cpp' ... 
@@ -161,7 +161,7 @@
 @I [HLS-0] Handling src/tk-mu_simple.cpp as C++
 @I [HLS-0] Syntax Checking before pre-processing...
 @I [HLS-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc" -hls    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -Wno-attributes -Wno-gcc-compat   -I "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/systemc/include" -I "/opt/Xilinx/Vivado_HLS/2016.4/include" -I "/opt/Xilinx/Vivado_HLS/2016.4/include/ap_sysc" -fexceptions -I "/opt/Xilinx/Vivado_HLS/2016.4/common/technology/autopilot" -include etc/autopilot_ssdm_op.h "src/tk-mu_simple.cpp"  -o "/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.pp.00.o" 
-@I [HLS-100] Command       clang returned 0; 1.82 sec.
+@I [HLS-100] Command       clang returned 0; 1.8 sec.
 @I [HLS-100] Execute       is_encrypted /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.pp.00.o 
 @I [HLS-100] Command       is_encrypted returned 0; 0 sec.
 @I [HLS-0] Source preprocessing
@@ -182,7 +182,7 @@ Error:Syntax error in source:for (__decltype(__n + 0) __niter = __n;
 Error:Missing ; in source:t
 Error:Syntax error in source:)
  *__first = __tmp;
-@I [HLS-100] Command       cdt returned 0; 4 sec.
+@I [HLS-100] Command       cdt returned 0; 4.48 sec.
 @I [HLS-0] Marker-Pragma convertor: /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.pp.0.cpp.ap-cdt.cpp /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.pragma.0.cpp /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.pragma.0.cpp.ap-line.CXX 0
 @I [HLS-0] Converting Pragmas to Markers...
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/pragma.status.tcl 
@@ -190,19 +190,19 @@ Error:Syntax error in source:)
 @I [HLS-0] Pragma Handling...
 @I [HLS-0] Source preprocessing
 @I [HLS-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc" -hls -fno-exceptions  -D__llvm__  -CC -E "/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.pragma.1.cpp"     -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -Wno-attributes -Wno-gcc-compat -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/opt/Xilinx/Vivado_HLS/2016.4/common/technology/autopilot" -I "/opt/Xilinx/Vivado_HLS/2016.4/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h  -o "/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.pragma.2.cpp" 
-@I [HLS-100] Command       clang returned 0; 0.16 sec.
+@I [HLS-100] Command       clang returned 0; 0.19 sec.
 @I [HLS-0] Processing labels
 @I [HLS-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain /opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions  -D__llvm__  -w  "/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.pragma.2.cpp"    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/opt/Xilinx/Vivado_HLS/2016.4/common/technology/autopilot" -I "/opt/Xilinx/Vivado_HLS/2016.4/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -g -o "/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.g.bc" 
-@I [HLS-100] Command       clang returned 0; 1.12 sec.
+@I [HLS-100] Command       clang returned 0; 1.11 sec.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/ve_warning.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-10] Validating synthesis directives ...
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/pragma.status.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-111] Finished Checking Pragmas Time (s): cpu = 00:00:36 ; elapsed = 00:00:21 . Memory (MB): peak = 437.832 ; gain = 33.504 ; free physical = 32493 ; free virtual = 60570
+@I [HLS-111] Finished Checking Pragmas Time (s): cpu = 00:00:31 ; elapsed = 00:00:16 . Memory (MB): peak = 437.828 ; gain = 33.504 ; free physical = 32435 ; free virtual = 60549
 @I [HLS-0] Linking Release ...
 @I [HLS-100] Execute       llvm-ld /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.bc -disable-opt -L/opt/Xilinx/Vivado_HLS/2016.4/lnx64/lib -lm_basic -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o 
-@I [HLS-100] Command       llvm-ld returned 0; 0.28 sec.
+@I [HLS-100] Command       llvm-ld returned 0; 0.25 sec.
 @I [HLS-100] Execute       disassemble /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o 
 @I [HLS-100] Execute         is_encrypted /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o.bc 
 @I [HLS-100] Command         is_encrypted returned 0; 0 sec.
@@ -210,29 +210,29 @@ Error:Syntax error in source:)
 @I [HLS-0] Disassemble time: 0 seconds per iteration
 @I [HLS-0] Linking Debug ...
 @I [HLS-100] Execute       llvm-ld /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tk-mu_simple.g.bc -disable-opt -L/opt/Xilinx/Vivado_HLS/2016.4/lnx64/lib -lm_basic -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g 
-@I [HLS-100] Command       llvm-ld returned 0; 0.25 sec.
+@I [HLS-100] Command       llvm-ld returned 0; 0.23 sec.
 @I [HLS-100] Execute       disassemble /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g 
 @I [HLS-100] Execute         is_encrypted /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.bc 
 @I [HLS-100] Command         is_encrypted returned 0; 0 sec.
-@I [HLS-100] Command       disassemble returned 0; 0.14 sec.
+@I [HLS-100] Command       disassemble returned 0; 0.15 sec.
 @I [HLS-0] Disassemble time: 0 seconds per iteration
-@I [HLS-111] Finished Linking Time (s): cpu = 00:00:36 ; elapsed = 00:00:22 . Memory (MB): peak = 437.832 ; gain = 33.504 ; free physical = 32478 ; free virtual = 60569
+@I [HLS-111] Finished Linking Time (s): cpu = 00:00:31 ; elapsed = 00:00:16 . Memory (MB): peak = 437.828 ; gain = 33.504 ; free physical = 32419 ; free virtual = 60548
 @I [HLS-100] Execute       opt_and_import_c a -opt_level=2 -skip_syncheck=0 -ng=0 -keep_printf=0 
 @I [HLS-100] Execute         cleanup_all_models 
 @I [HLS-100] Command         cleanup_all_models returned 0; 0 sec.
 @I [HLS-10] Starting code transformations ...
 @I [HLS-100] Execute         transform -promote-dbg-pointer /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.pp.bc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.pp.0.bc -f 
-@I [HLS-100] Command         transform returned 0; 0.13 sec.
+@I [HLS-100] Command         transform returned 0; 0.14 sec.
 @I [HLS-100] Execute         llvm-ld /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.pp.0.bc -disable-opt -L/opt/Xilinx/Vivado_HLS/2016.4/lnx64/lib -lfloatconversion -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.0 
-@I [HLS-100] Command         llvm-ld returned 0; 0.3 sec.
+@I [HLS-100] Command         llvm-ld returned 0; 0.29 sec.
 @I [HLS-0] Running Standard Transforms...
 @I [HLS-100] Execute         transform -hls -share-std-xform -always-inline -promote-dbg-pointer -interface-preproc -scalarrepl -mem2reg -keep-read-access -instcombine -dce -promote-dbg-pointer -bitop-raise -indvarspre -indvars -loop-simplify -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -simplifycfg -mem2reg -globalopt -global-constprop -deadargelim -instcombine -simplifycfg -prune-eh -simplifycfg -scalarrepl -instcombine -reassociate -licm -simplifycfg -loop-simplify -indvars -instcombine -simplifycfg -mem2reg -loop-simplify -indvars -instcombine -gvn -gvn -instcombine -adce -break-crit-edges -simplifycfg -loop-delete -global-array-opt -dce -dse -adce -find-syn-modules -top tkmu_simple_hw -deadargelim -mem2reg -instcombine -dce -presyn-prepare -auto-rom-infer -interface-preproc -syn-check -check-rec-only -find-region -simplifycfg -func-extr -function-inline -globaldce -mem2reg -instcombine -dce -gvn -globaldce -adce -adse -constprop -instcombine -bit-constprop -instcombine -dce -simplifycfg -bitop-raise -simplifycfg -dce -loop-delete -reassociate -globalopt -global-privatize -mem2reg -dce -global-constprop -pointer-simplify -constprop -dce -func-inst -deadargelim -promote-dbg-pointer -norm-name /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.0.bc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.1.bc -f -phase std-opt 
-@I [HLS-100] Command         transform returned 0; 8.08 sec.
+@I [HLS-100] Command         transform returned 0; 8.14 sec.
 @I [HLS-100] Execute         disassemble /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.1 /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.1 
 @I [HLS-100] Execute           is_encrypted /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.1.bc 
 @I [HLS-100] Command           is_encrypted returned 0; 0 sec.
-@I [HLS-100] Command         disassemble returned 0; 0.3 sec.
-@I [HLS-111] Finished Standard Transforms Time (s): cpu = 00:00:45 ; elapsed = 00:00:30 . Memory (MB): peak = 629.828 ; gain = 225.500 ; free physical = 32342 ; free virtual = 60448
+@I [HLS-100] Command         disassemble returned 0; 0.29 sec.
+@I [HLS-111] Finished Standard Transforms Time (s): cpu = 00:00:40 ; elapsed = 00:00:25 . Memory (MB): peak = 629.824 ; gain = 225.500 ; free physical = 32282 ; free virtual = 60426
 @I [HLS-10] Checking synthesizability ...
 @I [HLS-0] Checking Synthesizability 1/2..
 @I [HLS-100] Execute         transform -hls -syn-check -check-rec-only -disaggr -scalarrepl -norm-name -dce -mem2reg -instcombine -function-uniquify -directive-preproc -mem2reg -dse -dce -auto-rom-infer -dce -array-normalize -instcombine -dce -array-seg-normalize -instcombine -dce -array-flatten -instcombine -dce -array-burst -dce -deadargelim -promote-global-argument -simplifycfg -mem2reg -globaldce -resolve-double-ptr -dce -deadargelim -dce -instcombine -function-inline -globaldce -dce -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -dse -adse -instcombine -ptrLegalization -simplifycfg -dce -instcombine -pointer-simplify -ptrArgReplace -dce -instcombine -disaggr -scalarrepl -norm-name -dce -mem2reg -instcombine -ptrLegalization -simplifycfg -deadargelim -instcombine -dce -inst-simplify -function-uniquify -directive-preproc -mem2reg -dse -dce -globaldce /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.1.bc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.2.prechk.bc -f 
@@ -244,11 +244,11 @@ Error:Syntax error in source:)
 @I [XFORM-602] Inlining function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:167) automatically.
 @I [XFORM-602] Inlining function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:182) automatically.
 @I [XFORM-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:200) automatically.
-@I [HLS-100] Command         transform returned 0; 0.76 sec.
+@I [HLS-100] Command         transform returned 0; 0.73 sec.
 @I [HLS-0] Checking Synthesizability 2/2..
 @I [HLS-100] Execute         transform -syn-check /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.2.prechk.bc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.2.bc -f -phase syn-check 
-@I [HLS-100] Command         transform returned 0; 0.1 sec.
-@I [HLS-111] Finished Checking Synthesizability Time (s): cpu = 00:00:46 ; elapsed = 00:00:31 . Memory (MB): peak = 629.828 ; gain = 225.500 ; free physical = 32333 ; free virtual = 60442
+@I [HLS-100] Command         transform returned 0; 0.11 sec.
+@I [HLS-111] Finished Checking Synthesizability Time (s): cpu = 00:00:41 ; elapsed = 00:00:26 . Memory (MB): peak = 629.824 ; gain = 225.500 ; free physical = 32272 ; free virtual = 60419
 @I [HLS-0] Compiler optimizing ...
 @I [HLS-0] Share syncheck's 1.bc for syn flow: copy /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.g.1.bc to /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o.1.bc
 @I [HLS-0] Presyn 1...
@@ -267,39 +267,39 @@ Error:Syntax error in source:)
 @I [XFORM-401] Performing if-conversion on hyperblock to (src/tk-mu_simple.cpp:71:16) in function 'tkmu_simple_hw'... converting 20 basic blocks.
 @I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.cpp:71:16) to (src/tk-mu_simple.cpp:95:9) in function 'tkmu_simple_hw'... converting 38 basic blocks.
 @I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.cpp:183:9) to (src/tk-mu_simple.cpp:220:5) in function 'tkmu_simple_hw'... converting 5 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:477:19) to (src/tk-mu_simple.h:491:5) in function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:524:22) to (src/tk-mu_simple.h:540:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock to (src/tk-mu_simple.h:540:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:290:23) to (src/tk-mu_simple.h:305:5) in function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:383:29) to (src/tk-mu_simple.h:399:5) in function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:336:30) to (src/tk-mu_simple.h:352:5) in function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:429:24) to (src/tk-mu_simple.h:445:5) in function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:575:22) to (src/tk-mu_simple.h:591:5) in function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:516:19) to (src/tk-mu_simple.h:530:5) in function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:563:22) to (src/tk-mu_simple.h:579:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock to (src/tk-mu_simple.h:579:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:329:23) to (src/tk-mu_simple.h:344:5) in function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:422:29) to (src/tk-mu_simple.h:438:5) in function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:375:30) to (src/tk-mu_simple.h:391:5) in function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:468:24) to (src/tk-mu_simple.h:484:5) in function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:614:22) to (src/tk-mu_simple.h:630:5) in function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
 @I [HLS-100] Command         transform returned 0; 0.64 sec.
 @I [HLS-100] Execute         disassemble /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o.2 /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o.2 
 @I [HLS-100] Execute           is_encrypted /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o.2.bc 
 @I [HLS-100] Command           is_encrypted returned 0; 0 sec.
 @I [HLS-100] Command         disassemble returned 0; 0.2 sec.
-@I [HLS-111] Finished Pre-synthesis Time (s): cpu = 00:00:48 ; elapsed = 00:00:34 . Memory (MB): peak = 645.832 ; gain = 241.504 ; free physical = 32260 ; free virtual = 60387
+@I [HLS-111] Finished Pre-synthesis Time (s): cpu = 00:00:43 ; elapsed = 00:00:28 . Memory (MB): peak = 645.828 ; gain = 241.504 ; free physical = 32201 ; free virtual = 60366
 @I [HLS-0] Building ssdm...
 @I [HLS-100] Execute         transform -hls -function-uniquify -auto-function-inline -globaldce -ptrArgReplace -mem2reg -instcombine -dce -reset-lda -loop-simplify -indvars -licm -loop-dep -loop-bound -licm -loop-simplify -flattenloopnest -array-flatten -gvn -instcombine -dce -array-map -dce -func-legal -gvn -adce -instcombine -cfgopt -simplifycfg -loop-simplify -array-burst -promote-global-argument -dce -axi4-lower -array-seg-normalize -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -gvn -gvn -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -dse -adse -adce -licm -inst-simplify -dce -globaldce -instcombine -array-stream -eliminate-keepreads -instcombine -dce -deadargelim -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -mem2reg -disaggr -norm-name -mem2reg -instcombine -dse -adse -adce -ptrLegalization -dce -auto-rom-infer -array-flatten -dce -instcombine -loop-rot -constprop -cfgopt -simplifycfg -loop-simplify -indvars -pointer-simplify -dce -loop-bound -loop-simplify -loop-preproc -constprop -global-constprop -gvn -mem2reg -instcombine -dce -loop-bound -loop-merge -dce -bitwidthmin -deadargelim -dce -canonicalize-dataflow -dce -scalar-propagation -deadargelim -globaldce -mem2reg -interface-preproc -interface-gen -deadargelim -directive-preproc -inst-simplify -dce -gvn -mem2reg -instcombine -dce -adse -loop-bound -instcombine -cfgopt -simplifycfg -loop-simplify -clean-region -io-protocol -find-region -mem2reg -bitop-raise -inst-simplify -inst-rectify -instcombine -adce -deadargelim -loop-simplify -phi-opt -bitop-raise -cfgopt -simplifycfg -strip-dead-prototypes -interface-lower -bitop-lower -intrinsic-lower -auto-function-inline -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -inst-simplify -simplifycfg -loop-simplify -mergereturn -inst-simplify -inst-rectify -dce -bitop-lower -loop-rewind -pointer-simplify -dce -cfgopt -read-loop-dep -dce -bitwidth -loop-dep -norm-name -legalize -cdfg-build /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o.2.bc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o.3.bc -f -phase build-ssdm 
-@W [XFORM-631] Renaming function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:482:5) into tanh.
-@W [XFORM-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:529:5) into invCosh.
-@W [XFORM-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:529:5) into invCosh.1.
-@W [XFORM-631] Renaming function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:295:5) into deta_LUT.
-@W [XFORM-631] Renaming function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:388:5) into delta_plus_LUT.
-@W [XFORM-631] Renaming function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:341:5) into delta_minus_LUT.
-@W [XFORM-631] Renaming function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:434:5) into delta_LUT.
-@W [XFORM-631] Renaming function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:580:5) into arcsinh.
-@I [HLS-100] Command         transform returned 0; 1.42 sec.
+@W [XFORM-631] Renaming function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:521:5) into tanh.
+@W [XFORM-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:568:5) into invCosh.
+@W [XFORM-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:568:5) into invCosh.1.
+@W [XFORM-631] Renaming function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:334:5) into deta_LUT.
+@W [XFORM-631] Renaming function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:427:5) into delta_plus_LUT.
+@W [XFORM-631] Renaming function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:380:5) into delta_minus_LUT.
+@W [XFORM-631] Renaming function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:473:5) into delta_LUT.
+@W [XFORM-631] Renaming function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:619:5) into arcsinh.
+@I [HLS-100] Command         transform returned 0; 1.41 sec.
 @I [HLS-100] Execute         disassemble /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o.3 /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o.3 
 @I [HLS-100] Execute           is_encrypted /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.o.3.bc 
 @I [HLS-100] Command           is_encrypted returned 0; 0 sec.
 @I [HLS-100] Command         disassemble returned 0; 0.17 sec.
-@I [HLS-111] Finished Architecture Synthesis Time (s): cpu = 00:00:50 ; elapsed = 00:00:35 . Memory (MB): peak = 773.832 ; gain = 369.504 ; free physical = 32182 ; free virtual = 60313
+@I [HLS-111] Finished Architecture Synthesis Time (s): cpu = 00:00:45 ; elapsed = 00:00:30 . Memory (MB): peak = 773.828 ; gain = 369.504 ; free physical = 32123 ; free virtual = 60293
 @I [HLS-0] Finish building internal data model.
-@I [HLS-100] Command       opt_and_import_c returned 0; 13.49 sec.
-@I [HLS-100] Command     elaborate returned 0; 22.6 sec.
+@I [HLS-100] Command       opt_and_import_c returned 0; 13.51 sec.
+@I [HLS-100] Command     elaborate returned 0; 23.05 sec.
 @I [HLS-100] Execute     autosyn 
 @I [HLS-10] Starting hardware synthesis ...
 @I [HLS-0] Synthesizing C/C++ design ...
@@ -382,7 +382,7 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       cdfg_preprocess -model arcsinh 
 @I [HLS-100] Command       cdfg_preprocess returned 0; 0 sec.
 @I [HLS-100] Execute       rtl_gen_preprocess arcsinh 
-@I [HLS-100] Command       rtl_gen_preprocess returned 0; 0 sec.
+@I [HLS-100] Command       rtl_gen_preprocess returned 0; 0.01 sec.
 @I [HLS-0] Preprocessing Module: delta_LUT ...
 @I [HLS-100] Execute       set_default_model delta_LUT 
 @I [HLS-100] Command       set_default_model returned 0; 0 sec.
@@ -417,7 +417,7 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       cdfg_preprocess -model deta_LUT 
 @I [HLS-100] Command       cdfg_preprocess returned 0; 0 sec.
 @I [HLS-100] Execute       rtl_gen_preprocess deta_LUT 
-@I [HLS-100] Command       rtl_gen_preprocess returned 0; 0 sec.
+@I [HLS-100] Command       rtl_gen_preprocess returned 0; 0.01 sec.
 @I [HLS-0] Preprocessing Module: invCosh.1 ...
 @I [HLS-100] Execute       set_default_model invCosh.1 
 @I [HLS-100] Command       set_default_model returned 0; 0 sec.
@@ -450,8 +450,8 @@ Error:Syntax error in source:)
 @I [SCHED-61] Pipelining function 'arcsinh'.
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 11.
 @I [SCHED-11] Finished scheduling.
-@I [HLS-100] Command       schedule returned 0; 0.1 sec.
-@I [HLS-111]  Elapsed time: 35.28 seconds; current allocated memory: 281.729 MB.
+@I [HLS-100] Command       schedule returned 0; 0.09 sec.
+@I [HLS-111]  Elapsed time: 30 seconds; current allocated memory: 281.809 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh.verbose.sched.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.04 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh.sched.adb -f 
@@ -494,11 +494,11 @@ Error:Syntax error in source:)
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
 @I [HLS-100] Command       bind returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 282.013 MB.
+@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 282.087 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh.verbose.bind.rpt -verbose -f 
-@I [HLS-100] Command       report returned 0; 0.06 sec.
+@I [HLS-100] Command       report returned 0; 0.07 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh.bind.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.04 sec.
+@I [HLS-100] Command       db_write returned 0; 0.03 sec.
 @I [HLS-0] Finish binding arcsinh.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'delta_LUT' 
@@ -511,7 +511,7 @@ Error:Syntax error in source:)
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
 @I [SCHED-11] Finished scheduling.
 @I [HLS-100] Command       schedule returned 0; 0.06 sec.
-@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 282.287 MB.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 282.362 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_LUT.verbose.sched.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.04 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_LUT.sched.adb -f 
@@ -554,7 +554,7 @@ Error:Syntax error in source:)
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
 @I [HLS-100] Command       bind returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 282.474 MB.
+@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 282.549 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_LUT.verbose.bind.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.06 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_LUT.bind.adb -f 
@@ -571,11 +571,11 @@ Error:Syntax error in source:)
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
 @I [SCHED-11] Finished scheduling.
 @I [HLS-100] Command       schedule returned 0; 0.06 sec.
-@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 282.715 MB.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 282.790 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_plus_LUT.verbose.sched.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.04 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_plus_LUT.sched.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.04 sec.
+@I [HLS-100] Command       db_write returned 0; 0.03 sec.
 @I [HLS-0] Finish scheduling delta_plus_LUT.
 @I [HLS-100] Execute       set_default_model delta_plus_LUT 
 @I [HLS-100] Command       set_default_model returned 0; 0 sec.
@@ -614,11 +614,11 @@ Error:Syntax error in source:)
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
 @I [HLS-100] Command       bind returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 282.902 MB.
+@I [HLS-111]  Elapsed time: 0.08 seconds; current allocated memory: 282.977 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_plus_LUT.verbose.bind.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.06 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_plus_LUT.bind.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.03 sec.
+@I [HLS-100] Command       db_write returned 0; 0.04 sec.
 @I [HLS-0] Finish binding delta_plus_LUT.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'delta_minus_LUT' 
@@ -630,10 +630,10 @@ Error:Syntax error in source:)
 @I [SCHED-61] Pipelining function 'delta_minus_LUT'.
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
 @I [SCHED-11] Finished scheduling.
-@I [HLS-100] Command       schedule returned 0; 0.05 sec.
-@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 283.160 MB.
+@I [HLS-100] Command       schedule returned 0; 0.06 sec.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 283.234 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT.verbose.sched.rpt -verbose -f 
-@I [HLS-100] Command       report returned 0; 0.04 sec.
+@I [HLS-100] Command       report returned 0; 0.03 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT.sched.adb -f 
 @I [HLS-100] Command       db_write returned 0; 0.04 sec.
 @I [HLS-0] Finish scheduling delta_minus_LUT.
@@ -674,11 +674,11 @@ Error:Syntax error in source:)
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
 @I [HLS-100] Command       bind returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 283.345 MB.
+@I [HLS-111]  Elapsed time: 0.08 seconds; current allocated memory: 283.420 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT.verbose.bind.rpt -verbose -f 
-@I [HLS-100] Command       report returned 0; 0.07 sec.
+@I [HLS-100] Command       report returned 0; 0.06 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT.bind.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.03 sec.
+@I [HLS-100] Command       db_write returned 0; 0.04 sec.
 @I [HLS-0] Finish binding delta_minus_LUT.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'tanh' 
@@ -691,7 +691,7 @@ Error:Syntax error in source:)
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 11.
 @I [SCHED-11] Finished scheduling.
 @I [HLS-100] Command       schedule returned 0; 0.06 sec.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 283.583 MB.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 283.657 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tanh.verbose.sched.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.04 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tanh.sched.adb -f 
@@ -734,11 +734,11 @@ Error:Syntax error in source:)
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
 @I [HLS-100] Command       bind returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.08 seconds; current allocated memory: 283.757 MB.
+@I [HLS-111]  Elapsed time: 0.08 seconds; current allocated memory: 283.831 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tanh.verbose.bind.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.06 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tanh.bind.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.04 sec.
+@I [HLS-100] Command       db_write returned 0; 0.03 sec.
 @I [HLS-0] Finish binding tanh.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Implementing module 'deta_LUT' 
@@ -751,11 +751,11 @@ Error:Syntax error in source:)
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
 @I [SCHED-11] Finished scheduling.
 @I [HLS-100] Command       schedule returned 0; 0.06 sec.
-@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 283.961 MB.
+@I [HLS-111]  Elapsed time: 0.15 seconds; current allocated memory: 284.035 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT.verbose.sched.rpt -verbose -f 
-@I [HLS-100] Command       report returned 0; 0.04 sec.
+@I [HLS-100] Command       report returned 0; 0.03 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT.sched.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.04 sec.
+@I [HLS-100] Command       db_write returned 0; 0.03 sec.
 @I [HLS-0] Finish scheduling deta_LUT.
 @I [HLS-100] Execute       set_default_model deta_LUT 
 @I [HLS-100] Command       set_default_model returned 0; 0 sec.
@@ -794,7 +794,7 @@ Error:Syntax error in source:)
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
 @I [HLS-100] Command       bind returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.09 seconds; current allocated memory: 284.147 MB.
+@I [HLS-111]  Elapsed time: 0.08 seconds; current allocated memory: 284.221 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT.verbose.bind.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.06 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT.bind.adb -f 
@@ -811,7 +811,7 @@ Error:Syntax error in source:)
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 7.
 @I [SCHED-11] Finished scheduling.
 @I [HLS-100] Command       schedule returned 0; 0.05 sec.
-@I [HLS-111]  Elapsed time: 0.15 seconds; current allocated memory: 284.294 MB.
+@I [HLS-111]  Elapsed time: 0.15 seconds; current allocated memory: 284.385 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1.verbose.sched.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.02 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1.sched.adb -f 
@@ -853,8 +853,8 @@ Error:Syntax error in source:)
 @I [BIND-101] Exploring resource sharing.
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
-@I [HLS-100] Command       bind returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.05 seconds; current allocated memory: 284.398 MB.
+@I [HLS-100] Command       bind returned 0; 0 sec.
+@I [HLS-111]  Elapsed time: 0.04 seconds; current allocated memory: 284.488 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1.verbose.bind.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.03 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1.bind.adb -f 
@@ -871,11 +871,11 @@ Error:Syntax error in source:)
 @I [SCHED-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
 @I [SCHED-11] Finished scheduling.
 @I [HLS-100] Command       schedule returned 0; 0.06 sec.
-@I [HLS-111]  Elapsed time: 0.11 seconds; current allocated memory: 284.570 MB.
+@I [HLS-111]  Elapsed time: 0.11 seconds; current allocated memory: 284.645 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh.verbose.sched.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.03 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh.sched.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.03 sec.
+@I [HLS-100] Command       db_write returned 0; 0.02 sec.
 @I [HLS-0] Finish scheduling invCosh.
 @I [HLS-100] Execute       set_default_model invCosh 
 @I [HLS-100] Command       set_default_model returned 0; 0 sec.
@@ -914,7 +914,7 @@ Error:Syntax error in source:)
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
 @I [HLS-100] Command       bind returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.07 seconds; current allocated memory: 284.716 MB.
+@I [HLS-111]  Elapsed time: 0.06 seconds; current allocated memory: 284.791 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh.verbose.bind.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.05 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh.bind.adb -f 
@@ -931,12 +931,12 @@ Error:Syntax error in source:)
 @W [SCHED-21] The critical path consists of the following:
 	'mul' operation ('r.V', src/tk-mu_simple.cpp:71) (4.89 ns)
 @I [SCHED-11] Finished scheduling.
-@I [HLS-100] Command       schedule returned 0; 0.58 sec.
-@I [HLS-111]  Elapsed time: 0.66 seconds; current allocated memory: 287.887 MB.
+@I [HLS-100] Command       schedule returned 0; 0.57 sec.
+@I [HLS-111]  Elapsed time: 0.65 seconds; current allocated memory: 287.977 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.verbose.sched.rpt -verbose -f 
-@I [HLS-100] Command       report returned 0; 0.62 sec.
+@I [HLS-100] Command       report returned 0; 0.61 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.sched.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.6 sec.
+@I [HLS-100] Command       db_write returned 0; 0.59 sec.
 @I [HLS-0] Finish scheduling tkmu_simple_hw.
 @I [HLS-100] Execute       set_default_model tkmu_simple_hw 
 @I [HLS-100] Command       set_default_model returned 0; 0 sec.
@@ -975,11 +975,11 @@ Error:Syntax error in source:)
 @I [BIND-101] Binding ...
 @I [BIND-100] Finished micro-architecture generation.
 @I [HLS-100] Command       bind returned 0; 0.53 sec.
-@I [HLS-111]  Elapsed time: 1.75 seconds; current allocated memory: 290.844 MB.
+@I [HLS-111]  Elapsed time: 1.73 seconds; current allocated memory: 290.919 MB.
 @I [HLS-100] Execute       report -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.verbose.bind.rpt -verbose -f 
-@I [HLS-100] Command       report returned 0; 0.98 sec.
+@I [HLS-100] Command       report returned 0; 0.97 sec.
 @I [HLS-100] Execute       db_write -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.bind.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.63 sec.
+@I [HLS-100] Command       db_write returned 0; 0.61 sec.
 @I [HLS-0] Finish binding tkmu_simple_hw.
 @I [HLS-100] Execute       get_model_list tkmu_simple_hw -filter all-wo-channel 
 @I [HLS-100] Command       get_model_list returned 0; 0 sec.
@@ -1012,7 +1012,7 @@ Error:Syntax error in source:)
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mucud': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'arcsinh'.
 @I [HLS-100] Command       create_rtl_model returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 1.62 seconds; current allocated memory: 291.569 MB.
+@I [HLS-111]  Elapsed time: 1.6 seconds; current allocated memory: 291.643 MB.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl arcsinh -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/systemc/arcsinh -synmodules arcsinh delta_LUT delta_plus_LUT delta_minus_LUT tanh deta_LUT invCosh.1 invCosh tkmu_simple_hw 
@@ -1024,11 +1024,11 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       gen_tb_info arcsinh -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh -p /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db 
 @I [HLS-100] Command       gen_tb_info returned 0; 0.01 sec.
 @I [HLS-100] Execute       report -model arcsinh -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/arcsinh_csynth.rpt -f 
-@I [HLS-100] Command       report returned 0; 0.02 sec.
+@I [HLS-100] Command       report returned 0; 0.01 sec.
 @I [HLS-100] Execute       report -model arcsinh -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/arcsinh_csynth.xml -f -x 
-@I [HLS-100] Command       report returned 0; 0 sec.
+@I [HLS-100] Command       report returned 0; 0.01 sec.
 @I [HLS-100] Execute       report -model arcsinh -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh.verbose.rpt -verbose -f 
-@I [HLS-100] Command       report returned 0; 0.06 sec.
+@I [HLS-100] Command       report returned 0; 0.07 sec.
 @I [HLS-100] Execute       db_write -model arcsinh -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh.adb -f 
 @I [HLS-100] Command       db_write returned 0; 0.05 sec.
 @I [HLS-10] ----------------------------------------------------------------
@@ -1040,7 +1040,7 @@ Error:Syntax error in source:)
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'delta_LUT'.
 @I [HLS-100] Command       create_rtl_model returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 292.724 MB.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 292.814 MB.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl delta_LUT -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/systemc/delta_LUT -synmodules arcsinh delta_LUT delta_plus_LUT delta_minus_LUT tanh deta_LUT invCosh.1 invCosh tkmu_simple_hw 
@@ -1058,7 +1058,7 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       report -model delta_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_LUT.verbose.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.07 sec.
 @I [HLS-100] Execute       db_write -model delta_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_LUT.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.05 sec.
+@I [HLS-100] Command       db_write returned 0; 0.04 sec.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'delta_plus_LUT' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -1068,11 +1068,11 @@ Error:Syntax error in source:)
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'delta_plus_LUT'.
 @I [HLS-100] Command       create_rtl_model returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 293.797 MB.
+@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 293.887 MB.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl delta_plus_LUT -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/systemc/delta_plus_LUT -synmodules arcsinh delta_LUT delta_plus_LUT delta_minus_LUT tanh deta_LUT invCosh.1 invCosh tkmu_simple_hw 
-@I [HLS-100] Command       gen_rtl returned 0; 0.01 sec.
+@I [HLS-100] Command       gen_rtl returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl delta_plus_LUT -style xilinx -f -lang vhdl -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/vhdl/delta_plus_LUT 
 @I [HLS-100] Command       gen_rtl returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl delta_plus_LUT -style xilinx -f -lang vlog -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/verilog/delta_plus_LUT 
@@ -1086,7 +1086,7 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       report -model delta_plus_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_plus_LUT.verbose.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.07 sec.
 @I [HLS-100] Execute       db_write -model delta_plus_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_plus_LUT.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.04 sec.
+@I [HLS-100] Command       db_write returned 0; 0.05 sec.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'delta_minus_LUT' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -1096,7 +1096,7 @@ Error:Syntax error in source:)
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'delta_minus_LUT'.
 @I [HLS-100] Command       create_rtl_model returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 294.901 MB.
+@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 294.991 MB.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl delta_minus_LUT -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/systemc/delta_minus_LUT -synmodules arcsinh delta_LUT delta_plus_LUT delta_minus_LUT tanh deta_LUT invCosh.1 invCosh tkmu_simple_hw 
@@ -1104,7 +1104,7 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       gen_rtl delta_minus_LUT -style xilinx -f -lang vhdl -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/vhdl/delta_minus_LUT 
 @I [HLS-100] Command       gen_rtl returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl delta_minus_LUT -style xilinx -f -lang vlog -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/verilog/delta_minus_LUT 
-@I [HLS-100] Command       gen_rtl returned 0; 0.01 sec.
+@I [HLS-100] Command       gen_rtl returned 0; 0 sec.
 @I [HLS-100] Execute       gen_tb_info delta_minus_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT -p /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db 
 @I [HLS-100] Command       gen_tb_info returned 0; 0.01 sec.
 @I [HLS-100] Execute       report -model delta_minus_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/delta_minus_LUT_csynth.rpt -f 
@@ -1114,7 +1114,7 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       report -model delta_minus_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT.verbose.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.07 sec.
 @I [HLS-100] Execute       db_write -model delta_minus_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.04 sec.
+@I [HLS-100] Command       db_write returned 0; 0.05 sec.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'tanh' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -1122,10 +1122,10 @@ Error:Syntax error in source:)
 @I [SYN-210] Renamed object name 'tkmu_simple_hw_mul_29ns_26s_55_7' to 'tkmu_simple_hw_muhbi' due to the length limit 20
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_muhbi': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'tanh'.
-@I [HLS-100] Command       create_rtl_model returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 295.929 MB.
+@I [HLS-100] Command       create_rtl_model returned 0; 0.02 sec.
+@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 296.064 MB.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
-@I [HLS-100] Command       ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl tanh -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/systemc/tanh -synmodules arcsinh delta_LUT delta_plus_LUT delta_minus_LUT tanh deta_LUT invCosh.1 invCosh tkmu_simple_hw 
 @I [HLS-100] Command       gen_rtl returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl tanh -style xilinx -f -lang vhdl -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/vhdl/tanh 
@@ -1151,7 +1151,7 @@ Error:Syntax error in source:)
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'deta_LUT'.
 @I [HLS-100] Command       create_rtl_model returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 296.977 MB.
+@I [HLS-111]  Elapsed time: 0.16 seconds; current allocated memory: 297.082 MB.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl deta_LUT -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/systemc/deta_LUT -synmodules arcsinh delta_LUT delta_plus_LUT delta_minus_LUT tanh deta_LUT invCosh.1 invCosh tkmu_simple_hw 
@@ -1159,7 +1159,7 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       gen_rtl deta_LUT -style xilinx -f -lang vhdl -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/vhdl/deta_LUT 
 @I [HLS-100] Command       gen_rtl returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl deta_LUT -style xilinx -f -lang vlog -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/verilog/deta_LUT 
-@I [HLS-100] Command       gen_rtl returned 0; 0 sec.
+@I [HLS-100] Command       gen_rtl returned 0; 0.01 sec.
 @I [HLS-100] Execute       gen_tb_info deta_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT -p /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db 
 @I [HLS-100] Command       gen_tb_info returned 0; 0.01 sec.
 @I [HLS-100] Execute       report -model deta_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/deta_LUT_csynth.rpt -f 
@@ -1169,7 +1169,7 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       report -model deta_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT.verbose.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.07 sec.
 @I [HLS-100] Execute       db_write -model deta_LUT -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.05 sec.
+@I [HLS-100] Command       db_write returned 0; 0.04 sec.
 @I [HLS-10] ----------------------------------------------------------------
 @I [HLS-10] -- Generating RTL for module 'invCosh_1' 
 @I [HLS-10] ----------------------------------------------------------------
@@ -1179,7 +1179,7 @@ Error:Syntax error in source:)
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mukbM': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'invCosh_1'.
 @I [HLS-100] Command       create_rtl_model returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 297.943 MB.
+@I [HLS-111]  Elapsed time: 0.17 seconds; current allocated memory: 298.033 MB.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl invCosh.1 -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/systemc/invCosh_1 -synmodules arcsinh delta_LUT delta_plus_LUT delta_minus_LUT tanh deta_LUT invCosh.1 invCosh tkmu_simple_hw 
@@ -1191,9 +1191,9 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       gen_tb_info invCosh.1 -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1 -p /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db 
 @I [HLS-100] Command       gen_tb_info returned 0; 0.01 sec.
 @I [HLS-100] Execute       report -model invCosh.1 -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/invCosh_1_csynth.rpt -f 
-@I [HLS-100] Command       report returned 0; 0 sec.
-@I [HLS-100] Execute       report -model invCosh.1 -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/invCosh_1_csynth.xml -f -x 
 @I [HLS-100] Command       report returned 0; 0.01 sec.
+@I [HLS-100] Execute       report -model invCosh.1 -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/invCosh_1_csynth.xml -f -x 
+@I [HLS-100] Command       report returned 0; 0 sec.
 @I [HLS-100] Execute       report -model invCosh.1 -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1.verbose.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 0.04 sec.
 @I [HLS-100] Execute       db_write -model invCosh.1 -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1.adb -f 
@@ -1206,17 +1206,17 @@ Error:Syntax error in source:)
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_mulbW': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'invCosh'.
 @I [HLS-100] Command       create_rtl_model returned 0; 0.01 sec.
-@I [HLS-111]  Elapsed time: 0.1 seconds; current allocated memory: 298.585 MB.
+@I [HLS-111]  Elapsed time: 0.1 seconds; current allocated memory: 298.691 MB.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl invCosh -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/systemc/invCosh -synmodules arcsinh delta_LUT delta_plus_LUT delta_minus_LUT tanh deta_LUT invCosh.1 invCosh tkmu_simple_hw 
 @I [HLS-100] Command       gen_rtl returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl invCosh -style xilinx -f -lang vhdl -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/vhdl/invCosh 
-@I [HLS-100] Command       gen_rtl returned 0; 0 sec.
+@I [HLS-100] Command       gen_rtl returned 0; 0.01 sec.
 @I [HLS-100] Execute       gen_rtl invCosh -style xilinx -f -lang vlog -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/verilog/invCosh 
 @I [HLS-100] Command       gen_rtl returned 0; 0 sec.
 @I [HLS-100] Execute       gen_tb_info invCosh -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh -p /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db 
-@I [HLS-100] Command       gen_tb_info returned 0; 0.01 sec.
+@I [HLS-100] Command       gen_tb_info returned 0; 0 sec.
 @I [HLS-100] Execute       report -model invCosh -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/invCosh_csynth.rpt -f 
 @I [HLS-100] Command       report returned 0; 0.01 sec.
 @I [HLS-100] Execute       report -model invCosh -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/invCosh_csynth.xml -f -x 
@@ -1285,32 +1285,32 @@ Error:Syntax error in source:)
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_muxdS': 1 instance(s).
 @I [RTGEN-100] Generating core module 'tkmu_simple_hw_sincg': 1 instance(s).
 @I [RTGEN-100] Finished creating RTL model for 'tkmu_simple_hw'.
-@I [HLS-100] Command       create_rtl_model returned 0; 0.13 sec.
-@I [HLS-111]  Elapsed time: 0.27 seconds; current allocated memory: 303.463 MB.
+@I [HLS-100] Command       create_rtl_model returned 0; 0.14 sec.
+@I [HLS-111]  Elapsed time: 0.27 seconds; current allocated memory: 303.553 MB.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       gen_rtl tkmu_simple_hw -istop -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/systemc/tkmu_simple_hw -synmodules arcsinh delta_LUT delta_plus_LUT delta_minus_LUT tanh deta_LUT invCosh.1 invCosh tkmu_simple_hw 
-@I [HLS-100] Command       gen_rtl returned 0; 0 sec.
+@I [HLS-100] Command       gen_rtl returned 0; 0.01 sec.
 @I [HLS-100] Execute       gen_rtl tkmu_simple_hw -istop -style xilinx -f -lang vhdl -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/vhdl/tkmu_simple_hw 
 @I [HLS-100] Command       gen_rtl returned 0; 0.14 sec.
 @I [HLS-100] Execute       gen_rtl tkmu_simple_hw -istop -style xilinx -f -lang vlog -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/verilog/tkmu_simple_hw 
-@I [HLS-100] Command       gen_rtl returned 0; 0.08 sec.
+@I [HLS-100] Command       gen_rtl returned 0; 0.07 sec.
 @I [HLS-100] Execute       export_constraint_db -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl -f -tool general 
 @I [HLS-100] Command       export_constraint_db returned 0; 0 sec.
 @I [HLS-100] Execute       report -model tkmu_simple_hw -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.design.xml -verbose -f -dv 
-@I [HLS-100] Command       report returned 0; 0.29 sec.
+@I [HLS-100] Command       report returned 0; 0.28 sec.
 @I [HLS-100] Execute       report -model tkmu_simple_hw -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.sdaccel.xml -verbose -f -sdaccel 
-@I [HLS-100] Command       report returned 0; 0.21 sec.
+@I [HLS-100] Command       report returned 0; 0.22 sec.
 @I [HLS-100] Execute       gen_tb_info tkmu_simple_hw -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw -p /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db 
 @I [HLS-100] Command       gen_tb_info returned 0; 0 sec.
 @I [HLS-100] Execute       report -model tkmu_simple_hw -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/tkmu_simple_hw_csynth.rpt -f 
-@I [HLS-100] Command       report returned 0; 0.08 sec.
+@I [HLS-100] Command       report returned 0; 0.07 sec.
 @I [HLS-100] Execute       report -model tkmu_simple_hw -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/syn/report/tkmu_simple_hw_csynth.xml -f -x 
 @I [HLS-100] Command       report returned 0; 0.07 sec.
 @I [HLS-100] Execute       report -model tkmu_simple_hw -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.verbose.rpt -verbose -f 
 @I [HLS-100] Command       report returned 0; 1.1 sec.
 @I [HLS-100] Execute       db_write -model tkmu_simple_hw -o /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.adb -f 
-@I [HLS-100] Command       db_write returned 0; 0.7 sec.
+@I [HLS-100] Command       db_write returned 0; 0.71 sec.
 @I [HLS-100] Execute       sc_get_clocks tkmu_simple_hw 
 @I [HLS-100] Command       sc_get_clocks returned 0; 0 sec.
 @I [HLS-100] Execute       sc_get_portdomain tkmu_simple_hw 
@@ -1392,7 +1392,7 @@ Error:Syntax error in source:)
 @I [HLS-0] Append model tkmu_simple_hw_muwdI
 @I [HLS-0] Found component tkmu_simple_hw_muxdS.
 @I [HLS-0] Append model tkmu_simple_hw_muxdS
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
+@I [HLS-100] Command       ap_source returned 0; 0.01 sec.
 @I [HLS-0] Append model arcsinh
 @I [HLS-0] Append model delta_LUT
 @I [HLS-0] Append model delta_plus_LUT
@@ -1445,7 +1445,7 @@ Error:Syntax error in source:)
 @I [HLS-0] CAS Generation done.
 @I [HLS-0] CBC Generation done.
 @I [HLS-100] Execute       export_ssdm /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/a.export.ll 
-@I [HLS-100] Command       export_ssdm returned 0; 0.01 sec.
+@I [HLS-100] Command       export_ssdm returned 0; 0 sec.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
@@ -1471,16 +1471,16 @@ Error:Syntax error in source:)
 @I [HLS-100] Command             ap_source returned 0; 0 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
 @I [HLS-100] Execute               source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
-@I [HLS-100] Command               ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command               ap_source returned 0; 0 sec.
 @I [HLS-100] Execute               source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
 @I [HLS-100] Command               ap_source returned 0; 0 sec.
-@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command             ap_source returned 0; 0 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
 @I [HLS-100] Command             ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
 @I [HLS-100] Command             ap_source returned 0; 0 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
-@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
 @I [HLS-100] Command             ap_source returned 0; 0 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
@@ -1494,8 +1494,8 @@ Error:Syntax error in source:)
 @I [HLS-100] Command       ap_source returned 0; 0.07 sec.
 @I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
-@I [HLS-100] Command         ap_source returned 0; 0.01 sec.
-@I [HLS-100] Command       ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command         ap_source returned 0; 0 sec.
+@I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Execute       source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
@@ -1537,13 +1537,13 @@ Error:Syntax error in source:)
 @I [RTMG-282] Generating pipelined core: 'tkmu_simple_hw_muocq_MulnS_5'
 @I [RTMG-282] Generating pipelined core: 'tkmu_simple_hw_mupcA_MulnS_6'
 @I [RTMG-282] Generating pipelined core: 'tkmu_simple_hw_muqcK_MulnS_7'
-@I [HLS-100] Command       ap_source returned 0; 0.08 sec.
-@I [HLS-111] Finished generating all RTL models Time (s): cpu = 00:00:59 ; elapsed = 00:00:46 . Memory (MB): peak = 837.836 ; gain = 433.508 ; free physical = 32130 ; free virtual = 60279
+@I [HLS-100] Command       ap_source returned 0; 0.07 sec.
+@I [HLS-111] Finished generating all RTL models Time (s): cpu = 00:00:54 ; elapsed = 00:00:41 . Memory (MB): peak = 837.832 ; gain = 433.508 ; free physical = 32072 ; free virtual = 60258
 @I [SYSC-301] Generating SystemC RTL for tkmu_simple_hw.
 @I [VHDL-304] Generating VHDL RTL for tkmu_simple_hw.
 @I [VLOG-307] Generating Verilog RTL for tkmu_simple_hw.
-@I [HLS-100] Command     autosyn returned 0; 10.93 sec.
-@I [HLS-100] Command   csynth_design returned 0; 33.53 sec.
+@I [HLS-100] Command     autosyn returned 0; 10.8 sec.
+@I [HLS-100] Command   csynth_design returned 0; 33.85 sec.
 @I [HLS-100] Execute   export_design -format ip_catalog -vendor cern-cms 
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
@@ -1572,14 +1572,14 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
 @I [HLS-100] Command             ap_source returned 0; 0 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
-@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
 @I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
@@ -1589,8 +1589,8 @@ Error:Syntax error in source:)
 @I [HLS-100] Command         ap_source returned 0; 0.07 sec.
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
 @I [HLS-100] Command         ap_source returned 0; 0 sec.
-@I [HLS-100] Command       ap_source returned 0; 0.07 sec.
-@I [HLS-100] Command     ap_source returned 0; 0.07 sec.
+@I [HLS-100] Command       ap_source returned 0; 0.08 sec.
+@I [HLS-100] Command     ap_source returned 0; 0.08 sec.
 @I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
 @I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
@@ -1618,21 +1618,21 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
-@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
 @I [HLS-100] Command             ap_source returned 0; 0 sec.
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
 @I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
@@ -1649,7 +1649,7 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
 @I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
 @I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
@@ -1725,6 +1725,234 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh.compgen.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/APCoreGen.gen 
+@I [HLS-100] Command       ap_source returned 0; 0 sec.
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op.gen 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op_simcore.gen 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/interface.gen 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
+@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
+@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
+@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
+@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.06 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Command         ap_source returned 0; 0.08 sec.
+@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
+@I [HLS-100] Command         ap_source returned 0; 0 sec.
+@I [HLS-100] Command       ap_source returned 0; 0.08 sec.
+@I [HLS-100] Command     ap_source returned 0; 0.08 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
+@I [HLS-100] Command       ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command     ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/APCoreGen.gen 
+@I [HLS-100] Command       ap_source returned 0; 0 sec.
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op.gen 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op_simcore.gen 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/interface.gen 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
+@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
+@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
+@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
+@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.05 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Command         ap_source returned 0; 0.07 sec.
+@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
+@I [HLS-100] Command         ap_source returned 0; 0 sec.
+@I [HLS-100] Command       ap_source returned 0; 0.07 sec.
+@I [HLS-100] Command     ap_source returned 0; 0.07 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
+@I [HLS-100] Command       ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command     ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/APCoreGen.gen 
+@I [HLS-100] Command       ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command     ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op.gen 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op_simcore.gen 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/interface.gen 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
+@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
+@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
+@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
+@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.05 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Command         ap_source returned 0; 0.07 sec.
+@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
+@I [HLS-100] Command         ap_source returned 0; 0 sec.
+@I [HLS-100] Command       ap_source returned 0; 0.07 sec.
+@I [HLS-100] Command     ap_source returned 0; 0.07 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
+@I [HLS-100] Command       ap_source returned 0; 0 sec.
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_LUT.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_plus_LUT.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tanh.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.compgen.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
@@ -1732,51 +1960,109 @@ Error:Syntax error in source:)
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/APCoreGen.gen 
+@I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op.gen 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op_simcore.gen 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/interface.gen 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
+@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
+@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
+@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
+@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.05 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Command         ap_source returned 0; 0.07 sec.
+@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
+@I [HLS-100] Command         ap_source returned 0; 0 sec.
+@I [HLS-100] Command       ap_source returned 0; 0.07 sec.
+@I [HLS-100] Command     ap_source returned 0; 0.07 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
+@I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/APCoreGen.gen 
+@I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op.gen 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op_simcore.gen 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.rtl_wrap.cfg.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.tbgen.tcl 
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/interface.gen 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl 
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
+@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
+@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
+@I [HLS-100] Command             ap_source returned 0; 0 sec.
+@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
+@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.02 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
+@I [HLS-100] Command           ap_source returned 0; 0.08 sec.
+@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Command         ap_source returned 0; 0.13 sec.
+@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
+@I [HLS-100] Command         ap_source returned 0; 0 sec.
+@I [HLS-100] Command       ap_source returned 0; 0.13 sec.
+@I [HLS-100] Command     ap_source returned 0; 0.13 sec.
+@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
+@I [HLS-100] Command       ap_source returned 0; 0 sec.
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
@@ -1830,57 +2116,29 @@ Error:Syntax error in source:)
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/APCoreGen.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_LUT.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_plus_LUT.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tanh.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh.compgen.tcl 
+@I [HLS-100] Command     ap_source returned 0; 0 sec.
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.compgen.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op_simcore.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/interface.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
-@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
-@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
-@I [HLS-100] Command             ap_source returned 0; 0 sec.
-@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
-@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.05 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Command         ap_source returned 0; 0.07 sec.
-@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
-@I [HLS-100] Command         ap_source returned 0; 0 sec.
-@I [HLS-100] Command       ap_source returned 0; 0.07 sec.
-@I [HLS-100] Command     ap_source returned 0; 0.07 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
+@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
@@ -1916,13 +2174,13 @@ Error:Syntax error in source:)
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
+@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
 @I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
 @I [HLS-100] Command           ap_source returned 0; 0.05 sec.
 @I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
+@I [HLS-100] Command           ap_source returned 0; 0 sec.
 @I [HLS-100] Command         ap_source returned 0; 0.08 sec.
 @I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
 @I [HLS-100] Command         ap_source returned 0; 0 sec.
@@ -1930,268 +2188,10 @@ Error:Syntax error in source:)
 @I [HLS-100] Command     ap_source returned 0; 0.08 sec.
 @I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
 @I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_LUT.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_plus_LUT.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tanh.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/APCoreGen.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op_simcore.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/interface.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
-@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
-@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
-@I [HLS-100] Command             ap_source returned 0; 0 sec.
-@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
-@I [HLS-100] Command             ap_source returned 0; 0 sec.
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.05 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Command         ap_source returned 0; 0.07 sec.
-@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
-@I [HLS-100] Command         ap_source returned 0; 0 sec.
-@I [HLS-100] Command       ap_source returned 0; 0.07 sec.
-@I [HLS-100] Command     ap_source returned 0; 0.07 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
+@I [HLS-100] Command       ap_source returned 0; 0.01 sec.
 @I [HLS-100] Command     ap_source returned 0; 0.01 sec.
 @I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
 @I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/APCoreGen.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op_simcore.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/interface.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
-@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
-@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
-@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
-@I [HLS-100] Command             ap_source returned 0; 0 sec.
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.05 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Command         ap_source returned 0; 0.07 sec.
-@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
-@I [HLS-100] Command         ap_source returned 0; 0 sec.
-@I [HLS-100] Command       ap_source returned 0; 0.08 sec.
-@I [HLS-100] Command     ap_source returned 0; 0.08 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/APCoreGen.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op_simcore.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/interface.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
-@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
-@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
-@I [HLS-100] Command             ap_source returned 0; 0 sec.
-@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
-@I [HLS-100] Command             ap_source returned 0; 0.01 sec.
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.05 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Command         ap_source returned 0; 0.07 sec.
-@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
-@I [HLS-100] Command         ap_source returned 0; 0 sec.
-@I [HLS-100] Command       ap_source returned 0; 0.07 sec.
-@I [HLS-100] Command     ap_source returned 0; 0.07 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/arcsinh.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_LUT.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_plus_LUT.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/delta_minus_LUT.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tanh.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/deta_LUT.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh_1.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/invCosh.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.compgen.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/tkmu_simple_hw.constraint.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/common.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/APCoreGen.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/op_simcore.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/generic/autopilot/interface.gen 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/virtex.gen 
-@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx.gen 
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/plb46.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/fsl.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/axi4.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/nativeAXI4.gen 
-@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/saxilite.gen 
-@I [HLS-100] Command             ap_source returned 0; 0 sec.
-@I [HLS-100] Execute             source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/maxi.gen 
-@I [HLS-100] Command             ap_source returned 0; 0 sec.
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/scripts/xilinxcoregen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/interface/XilEDKCoreGen.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/dds_compiler.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.01 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/util.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfft.gen 
-@I [HLS-100] Command           ap_source returned 0; 0.05 sec.
-@I [HLS-100] Execute           source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/ip/xfir.gen 
-@I [HLS-100] Command           ap_source returned 0; 0 sec.
-@I [HLS-100] Command         ap_source returned 0; 0.07 sec.
-@I [HLS-100] Execute         source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/dsp48.gen 
-@I [HLS-100] Command         ap_source returned 0; 0 sec.
-@I [HLS-100] Command       ap_source returned 0; 0.07 sec.
-@I [HLS-100] Command     ap_source returned 0; 0.07 sec.
-@I [HLS-100] Execute     source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
-@I [HLS-100] Execute       source /opt/Xilinx/Vivado_HLS/2016.4/common/technology/xilinx/common/xilinx_fpv6.gen 
-@I [HLS-100] Command       ap_source returned 0; 0 sec.
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Execute     source /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0/solution1/.autopilot/db/global.setting.tcl 
-@I [HLS-100] Command     ap_source returned 0; 0 sec.
-@I [HLS-100] Command   export_design returned 0; 24.97 sec.
+@I [HLS-100] Command   export_design returned 0; 24.99 sec.
 @I [HLS-100] Execute   cleanup_all 
-@I [HLS-100] Command   cleanup_all returned 0; 0.04 sec.
+@I [HLS-100] Command   cleanup_all returned 0; 0.05 sec.

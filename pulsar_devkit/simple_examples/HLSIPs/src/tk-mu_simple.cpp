@@ -223,8 +223,8 @@ PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in)
 TkMuObj_tkmu match_hw(const PropTkObj_tkmu& inTrack, const MuObj_tkmu& inMuon)
 {
   TkMuObj_tkmu outTrack;
-  feta_t tkEta = inTrack.hwEta;
-  fphi_t tkPhi = inTrack.hwPhi;
+  feta_t tkEta = inTrack.hwPropEta;
+  fphi_t tkPhi = inTrack.hwPropPhi;
 
   feta_m muEta = inMuon.hwEta;
   fphi_m muPhi = inMuon.hwPhi;
@@ -232,10 +232,10 @@ TkMuObj_tkmu match_hw(const PropTkObj_tkmu& inTrack, const MuObj_tkmu& inMuon)
   // dR calculation
   feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
 
-  if (dR2_tk_mu < 0.01) {
+  if (dR2_tk_mu < 0.2) {
     outTrack.hwPt = inTrack.hwPt;
-    outTrack.hwEta = inTrack.hwEta;
-    outTrack.hwPhi = inTrack.hwPhi;
+    outTrack.hwEta = inMuon.hwEta;
+    outTrack.hwPhi = inMuon.hwPhi;
     outTrack.hwQ = inTrack.hwQ;
     outTrack.VALID = inTrack.VALID and inMuon.VALID; 
     outTrack.hwBX = inTrack.hwBX;
@@ -243,22 +243,32 @@ TkMuObj_tkmu match_hw(const PropTkObj_tkmu& inTrack, const MuObj_tkmu& inMuon)
   return outTrack;
 }
 
-TrackMuonObj_tkmu match_sim(const PropTrackObj_tkmu& inTrack, const MuonObj_tkmu& inMuon)
+TrackMuonObj_tkmu match_sw(const PropTrackObj_tkmu& inTrack, 
+			   const MuonObj_tkmu& inMuon)
 {
   TrackMuonObj_tkmu outTrack;
-  float tketa = inTrack.eta;
-  float tkphi = inTrack.phi;
-
+  float tketa = inTrack.propEta;
+  float tkphi = inTrack.propPhi;
+  
   float mueta = inMuon.eta;
   float muphi = inMuon.phi;
 
   // dR calculation
   float dR2_tk_mu = dr2_int (tketa, tkphi, mueta, muphi);
 
-  if (dR2_tk_mu < 0.01) {
+  std::cout 
+    << "CheckMatch: tketa " << tketa
+    << " tkphi " << tkphi
+    << " mueta " << mueta
+    << " muphi " << muphi
+    << " dR2_tk_mu " << dR2_tk_mu
+    << std::endl;
+
+  if (dR2_tk_mu < 0.2) {
+    std::cout << ">>>> MATCH! <<<<" << std::endl;
     outTrack.pt = inTrack.pt;
-    outTrack.eta = inTrack.eta;
-    outTrack.phi = inTrack.phi;
+    outTrack.eta = inMuon.eta;
+    outTrack.phi = inMuon.phi;
     outTrack.q = inTrack.q;
     outTrack.VALID = inTrack.VALID and inMuon.VALID; 
     outTrack.BX = inTrack.BX;

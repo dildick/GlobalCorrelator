@@ -40628,7 +40628,9 @@ typedef ap_int<4> quality_m;
 #pragma line 81 "src/tk-mu_simple.h"
 // -- Define structs for physics objects in software
 struct TrackObj_tkmu {
+  float rinv;
   float pt;
+  float sinheta;
   float eta;
   float phi;
   float z0;
@@ -40637,7 +40639,9 @@ struct TrackObj_tkmu {
   int BX;
   // constructor
   TrackObj_tkmu() :
+    rinv(0),
     pt(0),
+    sinheta(0),
     eta(0),
     phi(0),
     z0(0),
@@ -40666,7 +40670,6 @@ struct MuonObj_tkmu {
   {
   }
 };
-#pragma empty_line
 #pragma empty_line
 struct TrackMuonObj_tkmu
 {
@@ -40780,6 +40783,42 @@ struct TkMuObj_tkmu {
   }
 };
 #pragma empty_line
+#pragma empty_line
+#pragma empty_line
+namespace {
+#pragma empty_line
+std::ostream& operator << (std::ostream& os, const PropTrackObj_tkmu& rhs)
+{
+    os << rhs.pt << " "
+       << rhs.eta << " "
+       << rhs.phi << " "
+       << rhs.propEta << " "
+       << rhs.propPhi << " "
+       << rhs.q << " ";
+    return os;
+}
+#pragma empty_line
+std::ostream& operator << (std::ostream& os, const MuonObj_tkmu& rhs)
+{
+    os << rhs.pt << " "
+       << rhs.eta << " "
+       << rhs.phi << " "
+       << rhs.q << " ";
+    return os;
+}
+#pragma empty_line
+std::ostream& operator << (std::ostream& os, const TrackMuonObj_tkmu& rhs)
+{
+    os << rhs.pt << " "
+       << rhs.eta << " "
+       << rhs.phi << " "
+       << rhs.q << " ";
+    return os;
+}
+#pragma empty_line
+}
+#pragma empty_line
+#pragma empty_line
 inline void clear(TkObj_tkmu & c) {
     c.hwRinv = 0;
     c.hwPhi = 0;
@@ -40815,7 +40854,7 @@ inline void clearProp(PropTkObj_tkmu & c) {
 PropTrackObj_tkmu tkmu_simple_ref( const TrackObj_tkmu& in );
 PropTkObj_tkmu tkmu_simple_hw( TkObj_tkmu& in );
 TkMuObj_tkmu match_hw(const PropTkObj_tkmu&, const MuObj_tkmu&);
-TrackMuonObj_tkmu match_sim(const PropTrackObj_tkmu&, const MuonObj_tkmu&);
+TrackMuonObj_tkmu match_sw(const PropTrackObj_tkmu&, const MuonObj_tkmu&);
 #pragma empty_line
 #pragma empty_line
 #pragma empty_line
@@ -42018,8 +42057,8 @@ PropTkObj_tkmu tkmu_simple_hw( TkObj_tkmu& in)
 TkMuObj_tkmu match_hw(const PropTkObj_tkmu& inTrack, const MuObj_tkmu& inMuon)
 {
   TkMuObj_tkmu outTrack;
-  feta_t tkEta = inTrack.hwEta;
-  fphi_t tkPhi = inTrack.hwPhi;
+  feta_t tkEta = inTrack.hwPropEta;
+  fphi_t tkPhi = inTrack.hwPropPhi;
 #pragma empty_line
   feta_m muEta = inMuon.hwEta;
   fphi_m muPhi = inMuon.hwPhi;
@@ -42027,10 +42066,10 @@ TkMuObj_tkmu match_hw(const PropTkObj_tkmu& inTrack, const MuObj_tkmu& inMuon)
   // dR calculation
   feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
 #pragma empty_line
-  if (dR2_tk_mu < 0.01) {
+  if (dR2_tk_mu < 0.2) {
     outTrack.hwPt = inTrack.hwPt;
-    outTrack.hwEta = inTrack.hwEta;
-    outTrack.hwPhi = inTrack.hwPhi;
+    outTrack.hwEta = inMuon.hwEta;
+    outTrack.hwPhi = inMuon.hwPhi;
     outTrack.hwQ = inTrack.hwQ;
     outTrack.VALID = inTrack.VALID and inMuon.VALID;
     outTrack.hwBX = inTrack.hwBX;
@@ -42038,11 +42077,12 @@ TkMuObj_tkmu match_hw(const PropTkObj_tkmu& inTrack, const MuObj_tkmu& inMuon)
   return outTrack;
 }
 #pragma empty_line
-TrackMuonObj_tkmu match_sim(const PropTrackObj_tkmu& inTrack, const MuonObj_tkmu& inMuon)
+TrackMuonObj_tkmu match_sw(const PropTrackObj_tkmu& inTrack,
+      const MuonObj_tkmu& inMuon)
 {
   TrackMuonObj_tkmu outTrack;
-  float tketa = inTrack.eta;
-  float tkphi = inTrack.phi;
+  float tketa = inTrack.propEta;
+  float tkphi = inTrack.propPhi;
 #pragma empty_line
   float mueta = inMuon.eta;
   float muphi = inMuon.phi;
@@ -42050,10 +42090,19 @@ TrackMuonObj_tkmu match_sim(const PropTrackObj_tkmu& inTrack, const MuonObj_tkmu
   // dR calculation
   float dR2_tk_mu = dr2_int (tketa, tkphi, mueta, muphi);
 #pragma empty_line
-  if (dR2_tk_mu < 0.01) {
+  std::cout
+    << "CheckMatch: tketa " << tketa
+    << " tkphi " << tkphi
+    << " mueta " << mueta
+    << " muphi " << muphi
+    << " dR2_tk_mu " << dR2_tk_mu
+    << std::endl;
+#pragma empty_line
+  if (dR2_tk_mu < 0.2) {
+    std::cout << ">>>> MATCH! <<<<" << std::endl;
     outTrack.pt = inTrack.pt;
-    outTrack.eta = inTrack.eta;
-    outTrack.phi = inTrack.phi;
+    outTrack.eta = inMuon.eta;
+    outTrack.phi = inMuon.phi;
     outTrack.q = inTrack.q;
     outTrack.VALID = inTrack.VALID and inMuon.VALID;
     outTrack.BX = inTrack.BX;

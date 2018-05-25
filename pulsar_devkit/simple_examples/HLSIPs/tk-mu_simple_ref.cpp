@@ -57,6 +57,9 @@ PropTrackObj_tkmu tkmu_simple_ref( const TrackObj_tkmu& in ){
     while (resPhi > M_PI)  resPhi -= 2.*M_PI;
     while (resPhi < -M_PI) resPhi += 2.*M_PI;
 
+    out.pt = in.pt;
+    out.eta = in.eta;
+    out.phi = in.phi;
     out.propEta = tk_eta + deta;
     out.propPhi = resPhi;
 

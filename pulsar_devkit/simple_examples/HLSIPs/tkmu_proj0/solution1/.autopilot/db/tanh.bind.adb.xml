@@ -623,7 +623,7 @@ _ifconv:28  %tanh_table2_load = load i10* %tanh_table2_addr, align 2
 
 <Node id="4" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="32" op_3_bw="32" op_4_bw="32" op_5_bw="0">
 <![CDATA[
-_ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind
+_ifconv:1  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str6) nounwind
 
 ]]></Node>
 <StgValue><ssdm name=""/></StgValue>
@@ -915,7 +915,7 @@ _ifconv:34  ret i10 %ssdm_int_V_write_ass
 </dataflow>
 <dataflow id="187" from="StgValue_186" to="StgValue_46" fromId="186" toId="46">
 </dataflow>
-<dataflow id="189" from="p_str" to="StgValue_46" fromId="188" toId="46">
+<dataflow id="189" from="p_str6" to="StgValue_46" fromId="188" toId="46">
 </dataflow>
 <dataflow id="190" from="tanh_table2_addr" to="tanh_table2_load" fromId="44" toId="47">
 </dataflow>

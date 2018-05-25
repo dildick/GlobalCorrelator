@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'tkmu_simple_hw'
 ================================================================
-* Date:           Thu May 24 15:26:50 2018
+* Date:           Thu May 24 19:27:16 2018
 
 * Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
 * Project:        tkmu_proj0
@@ -666,34 +666,34 @@ ap_fixed_base.exit1177:21  call void (...)* @_ssdm_op_SpecBitsMap(i3* %in_hwBX_V
 ST_1: StgValue_270 (53)  [1/1] 0.00ns
 ap_fixed_base.exit1177:22  call void (...)* @_ssdm_op_SpecTopModule([15 x i8]* @tkmu_simple_hw_str) nounwind
 
-ST_1: StgValue_271 (54)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:181->src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_1: StgValue_271 (54)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:184->src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 ap_fixed_base.exit1177:23  call void @_ssdm_op_Write.ap_auto.i15P(i15* %agg_result_hwRinv_V, i15 0)
 
-ST_1: StgValue_272 (55)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:181->src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_1: StgValue_272 (55)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:184->src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 ap_fixed_base.exit1177:24  call void @_ssdm_op_Write.ap_auto.i12P(i12* %agg_result_hwPt_V, i12 0)
 
-ST_1: StgValue_273 (56)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:181->src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_1: StgValue_273 (56)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:184->src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 ap_fixed_base.exit1177:25  call void @_ssdm_op_Write.ap_auto.i14P(i14* %agg_result_hwSinhEta_V, i14 0)
 
-ST_1: StgValue_274 (57)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:181->src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_1: StgValue_274 (57)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:184->src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 ap_fixed_base.exit1177:26  call void @_ssdm_op_Write.ap_auto.i14P(i14* %agg_result_hwEta_V, i14 0)
 
-ST_1: StgValue_275 (58)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:181->src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_1: StgValue_275 (58)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:184->src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 ap_fixed_base.exit1177:27  call void @_ssdm_op_Write.ap_auto.i19P(i19* %agg_result_hwPhi_V, i19 0)
 
-ST_1: StgValue_276 (59)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:181->src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_1: StgValue_276 (59)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:184->src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 ap_fixed_base.exit1177:28  call void @_ssdm_op_Write.ap_auto.i11P(i11* %agg_result_hwZ0_V, i11 0)
 
-ST_1: StgValue_277 (60)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:181->src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_1: StgValue_277 (60)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:184->src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 ap_fixed_base.exit1177:29  call void @_ssdm_op_Write.ap_auto.i1P(i1* %agg_result_hwQ_V, i1 false)
 
-ST_1: StgValue_278 (61)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:181->src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_1: StgValue_278 (61)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:184->src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 ap_fixed_base.exit1177:30  call void @_ssdm_op_Write.ap_auto.i10P(i10* %agg_result_hwX2_V, i10 0)
 
-ST_1: StgValue_279 (62)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:181->src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_1: StgValue_279 (62)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:184->src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 ap_fixed_base.exit1177:31  call void @_ssdm_op_Write.ap_auto.i1P(i1* %agg_result_VALID_V, i1 false)
 
-ST_1: StgValue_280 (63)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:181->src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_1: StgValue_280 (63)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:184->src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 ap_fixed_base.exit1177:32  call void @_ssdm_op_Write.ap_auto.i3P(i3* %agg_result_hwBX_V, i3 0)
 
 ST_1: in_hwSinhEta_V_read (64)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:59
@@ -942,7 +942,7 @@ ST_16: StgValue_351 (162)  [1/1] 1.20ns  loc: src/tk-mu_simple.cpp:60
 ST_16: data_V_read_assign (167)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:64
 ap_fixed_base.exit:0  %data_V_read_assign = phi i14 [ 0, %9 ], [ %tmp_35, %11 ], [ %tmp_56, %14 ], [ %tmp_30, %17 ], [ 0, %16 ], [ %p_9, %15 ], [ 0, %0 ], [ %tmp_33, %2 ], [ %tmp_54, %5 ], [ %tmp_27, %8 ], [ 0, %7 ], [ %p_7, %6 ]
 
-ST_16: inhwEta_V_2 (168)  [11/11] 0.00ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_16: inhwEta_V_2 (168)  [11/11] 0.00ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
@@ -1086,52 +1086,52 @@ ST_30: StgValue_390 (165)  [1/1] 1.20ns  loc: src/tk-mu_simple.cpp:60
 
 
  <State 31>: 4.24ns
-ST_31: inhwEta_V_2 (168)  [10/11] 4.24ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_31: inhwEta_V_2 (168)  [10/11] 4.24ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
  <State 32>: 4.24ns
-ST_32: inhwEta_V_2 (168)  [9/11] 4.24ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_32: inhwEta_V_2 (168)  [9/11] 4.24ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
  <State 33>: 4.24ns
-ST_33: inhwEta_V_2 (168)  [8/11] 4.24ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_33: inhwEta_V_2 (168)  [8/11] 4.24ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
  <State 34>: 4.24ns
-ST_34: inhwEta_V_2 (168)  [7/11] 4.24ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_34: inhwEta_V_2 (168)  [7/11] 4.24ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
  <State 35>: 4.24ns
-ST_35: inhwEta_V_2 (168)  [6/11] 4.24ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_35: inhwEta_V_2 (168)  [6/11] 4.24ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
  <State 36>: 4.24ns
-ST_36: inhwEta_V_2 (168)  [5/11] 4.24ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_36: inhwEta_V_2 (168)  [5/11] 4.24ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
  <State 37>: 4.24ns
-ST_37: inhwEta_V_2 (168)  [4/11] 4.24ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_37: inhwEta_V_2 (168)  [4/11] 4.24ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
  <State 38>: 4.24ns
-ST_38: inhwEta_V_2 (168)  [3/11] 4.24ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_38: inhwEta_V_2 (168)  [3/11] 4.24ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
  <State 39>: 4.24ns
-ST_39: inhwEta_V_2 (168)  [2/11] 4.24ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_39: inhwEta_V_2 (168)  [2/11] 4.24ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
  <State 40>: 3.10ns
-ST_40: inhwEta_V_2 (168)  [1/11] 3.10ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_40: inhwEta_V_2 (168)  [1/11] 3.10ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 ap_fixed_base.exit:1  %inhwEta_V_2 = call fastcc i12 @arcsinh(i14 %data_V_read_assign)
 
 
@@ -2700,50 +2700,50 @@ ST_160: tmp_218 (603)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:144
 ST_160: StgValue_842 (604)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:144
 :1  br i1 %tmp_218, label %90, label %91
 
-ST_160: deta_V (652)  [8/8] 0.00ns  loc: src/tk-mu_simple.h:312->src/tk-mu_simple.cpp:127
+ST_160: deta_V (652)  [8/8] 0.00ns  loc: src/tk-mu_simple.h:351->src/tk-mu_simple.cpp:127
 ._crit_edge1102:0  %deta_V = call fastcc i5 @deta_LUT(i11 %absInhwZ0_V)
 
 
  <State 161>: 0.89ns
-ST_161: delta_V_2 (606)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:149
+ST_161: delta_V_2 (606)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:149
 :0  %delta_V_2 = call fastcc i11 @delta_LUT(i11 %data_V_read_assign_3)
 
 
  <State 162>: 4.38ns
-ST_162: delta_V_2 (606)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:149
+ST_162: delta_V_2 (606)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:149
 :0  %delta_V_2 = call fastcc i11 @delta_LUT(i11 %data_V_read_assign_3)
 
 
  <State 163>: 4.38ns
-ST_163: delta_V_2 (606)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:149
+ST_163: delta_V_2 (606)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:149
 :0  %delta_V_2 = call fastcc i11 @delta_LUT(i11 %data_V_read_assign_3)
 
 
  <State 164>: 4.38ns
-ST_164: delta_V_2 (606)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:149
+ST_164: delta_V_2 (606)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:149
 :0  %delta_V_2 = call fastcc i11 @delta_LUT(i11 %data_V_read_assign_3)
 
 
  <State 165>: 4.38ns
-ST_165: delta_V_2 (606)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:149
+ST_165: delta_V_2 (606)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:149
 :0  %delta_V_2 = call fastcc i11 @delta_LUT(i11 %data_V_read_assign_3)
 
 
  <State 166>: 4.38ns
-ST_166: delta_V_2 (606)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:149
+ST_166: delta_V_2 (606)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:149
 :0  %delta_V_2 = call fastcc i11 @delta_LUT(i11 %data_V_read_assign_3)
 
 
  <State 167>: 4.38ns
-ST_167: delta_V_2 (606)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:149
+ST_167: delta_V_2 (606)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:149
 :0  %delta_V_2 = call fastcc i11 @delta_LUT(i11 %data_V_read_assign_3)
 
 
  <State 168>: 3.99ns
-ST_168: delta_V_2 (606)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:149
+ST_168: delta_V_2 (606)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:149
 :0  %delta_V_2 = call fastcc i11 @delta_LUT(i11 %data_V_read_assign_3)
 
-ST_168: p_Val2_17_trunc_ex (607)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:149
+ST_168: p_Val2_17_trunc_ex (607)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:149
 :1  %p_Val2_17_trunc_ex = zext i11 %delta_V_2 to i12
 
 ST_168: StgValue_853 (608)  [1/1] 0.89ns
@@ -2751,42 +2751,42 @@ ST_168: StgValue_853 (608)  [1/1] 0.89ns
 
 
  <State 169>: 0.89ns
-ST_169: delta_V (610)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:145
+ST_169: delta_V (610)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:145
 :0  %delta_V = call fastcc i11 @delta_LUT(i11 %absInhwZ0_V)
 
 
  <State 170>: 4.38ns
-ST_170: delta_V (610)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:145
+ST_170: delta_V (610)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:145
 :0  %delta_V = call fastcc i11 @delta_LUT(i11 %absInhwZ0_V)
 
 
  <State 171>: 4.38ns
-ST_171: delta_V (610)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:145
+ST_171: delta_V (610)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:145
 :0  %delta_V = call fastcc i11 @delta_LUT(i11 %absInhwZ0_V)
 
 
  <State 172>: 4.38ns
-ST_172: delta_V (610)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:145
+ST_172: delta_V (610)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:145
 :0  %delta_V = call fastcc i11 @delta_LUT(i11 %absInhwZ0_V)
 
 
  <State 173>: 4.38ns
-ST_173: delta_V (610)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:145
+ST_173: delta_V (610)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:145
 :0  %delta_V = call fastcc i11 @delta_LUT(i11 %absInhwZ0_V)
 
 
  <State 174>: 4.38ns
-ST_174: delta_V (610)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:145
+ST_174: delta_V (610)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:145
 :0  %delta_V = call fastcc i11 @delta_LUT(i11 %absInhwZ0_V)
 
 
  <State 175>: 4.38ns
-ST_175: delta_V (610)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:145
+ST_175: delta_V (610)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:145
 :0  %delta_V = call fastcc i11 @delta_LUT(i11 %absInhwZ0_V)
 
 
  <State 176>: 3.10ns
-ST_176: delta_V (610)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:452->src/tk-mu_simple.cpp:145
+ST_176: delta_V (610)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:491->src/tk-mu_simple.cpp:145
 :0  %delta_V = call fastcc i11 @delta_LUT(i11 %absInhwZ0_V)
 
 
@@ -2820,10 +2820,10 @@ ST_178: p_Val2_12 (620)  [1/1] 0.71ns  loc: src/tk-mu_simple.cpp:170
 ST_178: StgValue_870 (621)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:171
 :1  br i1 %tmp_218, label %97, label %98
 
-ST_178: deta_V_8 (623)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:176
+ST_178: deta_V_8 (623)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:176
 :0  %deta_V_8 = call fastcc i5 @delta_plus_LUT(i11 %data_V_read_assign_3)
 
-ST_178: deta_V_6 (627)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:172
+ST_178: deta_V_6 (627)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:172
 :0  %deta_V_6 = call fastcc i5 @delta_minus_LUT(i11 %absInhwZ0_V)
 
 ST_178: p_Val2_10 (632)  [1/1] 1.45ns  loc: src/tk-mu_simple.cpp:160
@@ -2832,48 +2832,48 @@ ST_178: p_Val2_10 (632)  [1/1] 1.45ns  loc: src/tk-mu_simple.cpp:160
 ST_178: StgValue_874 (633)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:162
 :1  br i1 %tmp_218, label %94, label %95
 
-ST_178: deta_V_5 (635)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:167
+ST_178: deta_V_5 (635)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:167
 :0  %deta_V_5 = call fastcc i5 @delta_minus_LUT(i11 %data_V_read_assign_3)
 
-ST_178: deta_V_2 (639)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:163
+ST_178: deta_V_2 (639)  [8/8] 0.89ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:163
 :0  %deta_V_2 = call fastcc i5 @delta_plus_LUT(i11 %absInhwZ0_V)
 
 
  <State 179>: 4.38ns
-ST_179: deta_V_8 (623)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:176
+ST_179: deta_V_8 (623)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:176
 :0  %deta_V_8 = call fastcc i5 @delta_plus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 180>: 4.38ns
-ST_180: deta_V_8 (623)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:176
+ST_180: deta_V_8 (623)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:176
 :0  %deta_V_8 = call fastcc i5 @delta_plus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 181>: 4.38ns
-ST_181: deta_V_8 (623)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:176
+ST_181: deta_V_8 (623)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:176
 :0  %deta_V_8 = call fastcc i5 @delta_plus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 182>: 4.38ns
-ST_182: deta_V_8 (623)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:176
+ST_182: deta_V_8 (623)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:176
 :0  %deta_V_8 = call fastcc i5 @delta_plus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 183>: 4.38ns
-ST_183: deta_V_8 (623)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:176
+ST_183: deta_V_8 (623)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:176
 :0  %deta_V_8 = call fastcc i5 @delta_plus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 184>: 4.38ns
-ST_184: deta_V_8 (623)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:176
+ST_184: deta_V_8 (623)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:176
 :0  %deta_V_8 = call fastcc i5 @delta_plus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 185>: 3.99ns
-ST_185: deta_V_8 (623)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:176
+ST_185: deta_V_8 (623)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:176
 :0  %deta_V_8 = call fastcc i5 @delta_plus_LUT(i11 %data_V_read_assign_3)
 
-ST_185: deta_V_3_trunc11_ext (624)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:176
+ST_185: deta_V_3_trunc11_ext (624)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:176
 :1  %deta_V_3_trunc11_ext = zext i5 %deta_V_8 to i6
 
 ST_185: StgValue_885 (625)  [1/1] 0.89ns
@@ -2881,37 +2881,37 @@ ST_185: StgValue_885 (625)  [1/1] 0.89ns
 
 
  <State 186>: 4.38ns
-ST_186: deta_V_6 (627)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:172
+ST_186: deta_V_6 (627)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:172
 :0  %deta_V_6 = call fastcc i5 @delta_minus_LUT(i11 %absInhwZ0_V)
 
 
  <State 187>: 4.38ns
-ST_187: deta_V_6 (627)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:172
+ST_187: deta_V_6 (627)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:172
 :0  %deta_V_6 = call fastcc i5 @delta_minus_LUT(i11 %absInhwZ0_V)
 
 
  <State 188>: 4.38ns
-ST_188: deta_V_6 (627)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:172
+ST_188: deta_V_6 (627)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:172
 :0  %deta_V_6 = call fastcc i5 @delta_minus_LUT(i11 %absInhwZ0_V)
 
 
  <State 189>: 4.38ns
-ST_189: deta_V_6 (627)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:172
+ST_189: deta_V_6 (627)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:172
 :0  %deta_V_6 = call fastcc i5 @delta_minus_LUT(i11 %absInhwZ0_V)
 
 
  <State 190>: 4.38ns
-ST_190: deta_V_6 (627)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:172
+ST_190: deta_V_6 (627)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:172
 :0  %deta_V_6 = call fastcc i5 @delta_minus_LUT(i11 %absInhwZ0_V)
 
 
  <State 191>: 4.38ns
-ST_191: deta_V_6 (627)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:172
+ST_191: deta_V_6 (627)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:172
 :0  %deta_V_6 = call fastcc i5 @delta_minus_LUT(i11 %absInhwZ0_V)
 
 
  <State 192>: 3.10ns
-ST_192: deta_V_6 (627)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:172
+ST_192: deta_V_6 (627)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:172
 :0  %deta_V_6 = call fastcc i5 @delta_minus_LUT(i11 %absInhwZ0_V)
 
 
@@ -2934,45 +2934,45 @@ ST_193: deta_V_4 (641)  [1/1] 1.27ns  loc: src/tk-mu_simple.cpp:164
 ST_193: StgValue_898 (642)  [1/1] 0.89ns  loc: src/tk-mu_simple.cpp:165
 :3  br label %99
 
-ST_193: tanhEta_V (646)  [11/11] 0.00ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_193: tanhEta_V (646)  [11/11] 0.00ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
  <State 194>: 4.38ns
-ST_194: deta_V_5 (635)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:167
+ST_194: deta_V_5 (635)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:167
 :0  %deta_V_5 = call fastcc i5 @delta_minus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 195>: 4.38ns
-ST_195: deta_V_5 (635)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:167
+ST_195: deta_V_5 (635)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:167
 :0  %deta_V_5 = call fastcc i5 @delta_minus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 196>: 4.38ns
-ST_196: deta_V_5 (635)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:167
+ST_196: deta_V_5 (635)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:167
 :0  %deta_V_5 = call fastcc i5 @delta_minus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 197>: 4.38ns
-ST_197: deta_V_5 (635)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:167
+ST_197: deta_V_5 (635)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:167
 :0  %deta_V_5 = call fastcc i5 @delta_minus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 198>: 4.38ns
-ST_198: deta_V_5 (635)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:167
+ST_198: deta_V_5 (635)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:167
 :0  %deta_V_5 = call fastcc i5 @delta_minus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 199>: 4.38ns
-ST_199: deta_V_5 (635)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:167
+ST_199: deta_V_5 (635)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:167
 :0  %deta_V_5 = call fastcc i5 @delta_minus_LUT(i11 %data_V_read_assign_3)
 
 
  <State 200>: 3.99ns
-ST_200: deta_V_5 (635)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:167
+ST_200: deta_V_5 (635)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:167
 :0  %deta_V_5 = call fastcc i5 @delta_minus_LUT(i11 %data_V_read_assign_3)
 
-ST_200: deta_V_3_trunc_ext_c (636)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:359->src/tk-mu_simple.cpp:167
+ST_200: deta_V_3_trunc_ext_c (636)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:398->src/tk-mu_simple.cpp:167
 :1  %deta_V_3_trunc_ext_c = zext i5 %deta_V_5 to i6
 
 ST_200: StgValue_908 (637)  [1/1] 0.89ns
@@ -2980,37 +2980,37 @@ ST_200: StgValue_908 (637)  [1/1] 0.89ns
 
 
  <State 201>: 4.38ns
-ST_201: deta_V_2 (639)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:163
+ST_201: deta_V_2 (639)  [7/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:163
 :0  %deta_V_2 = call fastcc i5 @delta_plus_LUT(i11 %absInhwZ0_V)
 
 
  <State 202>: 4.38ns
-ST_202: deta_V_2 (639)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:163
+ST_202: deta_V_2 (639)  [6/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:163
 :0  %deta_V_2 = call fastcc i5 @delta_plus_LUT(i11 %absInhwZ0_V)
 
 
  <State 203>: 4.38ns
-ST_203: deta_V_2 (639)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:163
+ST_203: deta_V_2 (639)  [5/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:163
 :0  %deta_V_2 = call fastcc i5 @delta_plus_LUT(i11 %absInhwZ0_V)
 
 
  <State 204>: 4.38ns
-ST_204: deta_V_2 (639)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:163
+ST_204: deta_V_2 (639)  [4/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:163
 :0  %deta_V_2 = call fastcc i5 @delta_plus_LUT(i11 %absInhwZ0_V)
 
 
  <State 205>: 4.38ns
-ST_205: deta_V_2 (639)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:163
+ST_205: deta_V_2 (639)  [3/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:163
 :0  %deta_V_2 = call fastcc i5 @delta_plus_LUT(i11 %absInhwZ0_V)
 
 
  <State 206>: 4.38ns
-ST_206: deta_V_2 (639)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:163
+ST_206: deta_V_2 (639)  [2/8] 4.38ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:163
 :0  %deta_V_2 = call fastcc i5 @delta_plus_LUT(i11 %absInhwZ0_V)
 
 
  <State 207>: 3.10ns
-ST_207: deta_V_2 (639)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:406->src/tk-mu_simple.cpp:163
+ST_207: deta_V_2 (639)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:445->src/tk-mu_simple.cpp:163
 :0  %deta_V_2 = call fastcc i5 @delta_plus_LUT(i11 %absInhwZ0_V)
 
 
@@ -3021,52 +3021,52 @@ ST_208: deta_V_3 (644)  [1/1] 0.00ns
 ST_208: tmp_173 (645)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:160
 :1  %tmp_173 = phi i17 [ %p_Val2_10, %94 ], [ %p_Val2_10, %95 ], [ %p_Val2_12, %97 ], [ %p_Val2_12, %98 ]
 
-ST_208: tanhEta_V (646)  [10/11] 3.67ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_208: tanhEta_V (646)  [10/11] 3.67ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
  <State 209>: 3.67ns
-ST_209: tanhEta_V (646)  [9/11] 3.67ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_209: tanhEta_V (646)  [9/11] 3.67ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
  <State 210>: 3.67ns
-ST_210: tanhEta_V (646)  [8/11] 3.67ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_210: tanhEta_V (646)  [8/11] 3.67ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
  <State 211>: 3.67ns
-ST_211: tanhEta_V (646)  [7/11] 3.67ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_211: tanhEta_V (646)  [7/11] 3.67ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
  <State 212>: 3.67ns
-ST_212: tanhEta_V (646)  [6/11] 3.67ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_212: tanhEta_V (646)  [6/11] 3.67ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
  <State 213>: 3.67ns
-ST_213: tanhEta_V (646)  [5/11] 3.67ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_213: tanhEta_V (646)  [5/11] 3.67ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
  <State 214>: 3.67ns
-ST_214: tanhEta_V (646)  [4/11] 3.67ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_214: tanhEta_V (646)  [4/11] 3.67ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
  <State 215>: 3.67ns
-ST_215: tanhEta_V (646)  [3/11] 3.67ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_215: tanhEta_V (646)  [3/11] 3.67ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
  <State 216>: 3.67ns
-ST_216: tanhEta_V (646)  [2/11] 3.67ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_216: tanhEta_V (646)  [2/11] 3.67ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
  <State 217>: 3.10ns
-ST_217: tanhEta_V (646)  [1/11] 3.10ns  loc: src/tk-mu_simple.h:499->src/tk-mu_simple.cpp:182
+ST_217: tanhEta_V (646)  [1/11] 3.10ns  loc: src/tk-mu_simple.h:538->src/tk-mu_simple.cpp:182
 :2  %tanhEta_V = call fastcc i10 @tanh(i13 %p_Val2_7)
 
 
@@ -3093,63 +3093,63 @@ ST_220: p_Val2_14 (649)  [1/3] 2.94ns  loc: src/tk-mu_simple.cpp:183
 ST_220: StgValue_933 (650)  [1/1] 0.89ns
 :6  br label %_ifconv
 
-ST_220: data_V_read_assign_5 (663)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:599->src/tk-mu_simple.cpp:68
+ST_220: data_V_read_assign_5 (663)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:638->src/tk-mu_simple.cpp:68
 _ifconv:0  %data_V_read_assign_5 = phi i12 [ 1126, %._crit_edge1102 ], [ %inhwEta_V_2, %99 ]
 
-ST_220: invCoshEta_Phi_V (680)  [8/8] 0.00ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:200
+ST_220: invCoshEta_Phi_V (680)  [8/8] 0.00ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:200
 _ifconv:17  %invCoshEta_Phi_V = call fastcc i17 @invCosh(i12 %data_V_read_assign_5)
 
 
  <State 221>: 4.29ns
-ST_221: deta_V (652)  [7/8] 4.29ns  loc: src/tk-mu_simple.h:312->src/tk-mu_simple.cpp:127
+ST_221: deta_V (652)  [7/8] 4.29ns  loc: src/tk-mu_simple.h:351->src/tk-mu_simple.cpp:127
 ._crit_edge1102:0  %deta_V = call fastcc i5 @deta_LUT(i11 %absInhwZ0_V)
 
 
  <State 222>: 4.29ns
-ST_222: deta_V (652)  [6/8] 4.29ns  loc: src/tk-mu_simple.h:312->src/tk-mu_simple.cpp:127
+ST_222: deta_V (652)  [6/8] 4.29ns  loc: src/tk-mu_simple.h:351->src/tk-mu_simple.cpp:127
 ._crit_edge1102:0  %deta_V = call fastcc i5 @deta_LUT(i11 %absInhwZ0_V)
 
-ST_222: invCoshEta_EtaBarrel (657)  [7/7] 0.00ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:131
+ST_222: invCoshEta_EtaBarrel (657)  [7/7] 0.00ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:131
 ._crit_edge1102:5  %invCoshEta_EtaBarrel = call fastcc i11 @invCosh.1(i12 %inhwEta_V_2)
 
 
  <State 223>: 4.29ns
-ST_223: deta_V (652)  [5/8] 4.29ns  loc: src/tk-mu_simple.h:312->src/tk-mu_simple.cpp:127
+ST_223: deta_V (652)  [5/8] 4.29ns  loc: src/tk-mu_simple.h:351->src/tk-mu_simple.cpp:127
 ._crit_edge1102:0  %deta_V = call fastcc i5 @deta_LUT(i11 %absInhwZ0_V)
 
-ST_223: invCoshEta_EtaBarrel (657)  [6/7] 3.87ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:131
+ST_223: invCoshEta_EtaBarrel (657)  [6/7] 3.87ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:131
 ._crit_edge1102:5  %invCoshEta_EtaBarrel = call fastcc i11 @invCosh.1(i12 %inhwEta_V_2)
 
 
  <State 224>: 4.29ns
-ST_224: deta_V (652)  [4/8] 4.29ns  loc: src/tk-mu_simple.h:312->src/tk-mu_simple.cpp:127
+ST_224: deta_V (652)  [4/8] 4.29ns  loc: src/tk-mu_simple.h:351->src/tk-mu_simple.cpp:127
 ._crit_edge1102:0  %deta_V = call fastcc i5 @deta_LUT(i11 %absInhwZ0_V)
 
-ST_224: invCoshEta_EtaBarrel (657)  [5/7] 3.87ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:131
+ST_224: invCoshEta_EtaBarrel (657)  [5/7] 3.87ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:131
 ._crit_edge1102:5  %invCoshEta_EtaBarrel = call fastcc i11 @invCosh.1(i12 %inhwEta_V_2)
 
 
  <State 225>: 4.29ns
-ST_225: deta_V (652)  [3/8] 4.29ns  loc: src/tk-mu_simple.h:312->src/tk-mu_simple.cpp:127
+ST_225: deta_V (652)  [3/8] 4.29ns  loc: src/tk-mu_simple.h:351->src/tk-mu_simple.cpp:127
 ._crit_edge1102:0  %deta_V = call fastcc i5 @deta_LUT(i11 %absInhwZ0_V)
 
-ST_225: invCoshEta_EtaBarrel (657)  [4/7] 3.87ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:131
+ST_225: invCoshEta_EtaBarrel (657)  [4/7] 3.87ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:131
 ._crit_edge1102:5  %invCoshEta_EtaBarrel = call fastcc i11 @invCosh.1(i12 %inhwEta_V_2)
 
 
  <State 226>: 4.29ns
-ST_226: deta_V (652)  [2/8] 4.29ns  loc: src/tk-mu_simple.h:312->src/tk-mu_simple.cpp:127
+ST_226: deta_V (652)  [2/8] 4.29ns  loc: src/tk-mu_simple.h:351->src/tk-mu_simple.cpp:127
 ._crit_edge1102:0  %deta_V = call fastcc i5 @deta_LUT(i11 %absInhwZ0_V)
 
-ST_226: invCoshEta_EtaBarrel (657)  [3/7] 3.87ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:131
+ST_226: invCoshEta_EtaBarrel (657)  [3/7] 3.87ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:131
 ._crit_edge1102:5  %invCoshEta_EtaBarrel = call fastcc i11 @invCosh.1(i12 %inhwEta_V_2)
 
 
  <State 227>: 3.87ns
-ST_227: deta_V (652)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:312->src/tk-mu_simple.cpp:127
+ST_227: deta_V (652)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:351->src/tk-mu_simple.cpp:127
 ._crit_edge1102:0  %deta_V = call fastcc i5 @deta_LUT(i11 %absInhwZ0_V)
 
-ST_227: invCoshEta_EtaBarrel (657)  [2/7] 3.87ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:131
+ST_227: invCoshEta_EtaBarrel (657)  [2/7] 3.87ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:131
 ._crit_edge1102:5  %invCoshEta_EtaBarrel = call fastcc i11 @invCosh.1(i12 %inhwEta_V_2)
 
 
@@ -3166,7 +3166,7 @@ ST_228: deta_V_1 (655)  [1/1] 1.27ns  loc: src/tk-mu_simple.cpp:129
 ST_228: p_Val2_15_call_ret (656)  [1/1] 0.71ns  loc: src/tk-mu_simple.cpp:128
 ._crit_edge1102:4  %p_Val2_15_call_ret = select i1 %tmp_217, i6 %deta_V_1, i6 %deta_V_9_cast
 
-ST_228: invCoshEta_EtaBarrel (657)  [1/7] 3.10ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:131
+ST_228: invCoshEta_EtaBarrel (657)  [1/7] 3.10ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:131
 ._crit_edge1102:5  %invCoshEta_EtaBarrel = call fastcc i11 @invCosh.1(i12 %inhwEta_V_2)
 
 
@@ -3211,7 +3211,7 @@ _ifconv:8  %r_V_10 = mul i26 855, %OP1_V_5_cast
 ST_231: tmp_221 (674)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:194
 _ifconv:11  %tmp_221 = trunc i26 %r_V_10 to i10
 
-ST_231: invCoshEta_Phi_V (680)  [7/8] 3.67ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:200
+ST_231: invCoshEta_Phi_V (680)  [7/8] 3.67ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:200
 _ifconv:17  %invCoshEta_Phi_V = call fastcc i17 @invCosh(i12 %data_V_read_assign_5)
 
 
@@ -3237,10 +3237,10 @@ _ifconv:15  %tmp_183 = select i1 %tmp_178, i14 %tmp_179, i14 %ret_V_3
 ST_232: tmp_182 (679)  [1/1] 0.71ns  loc: src/tk-mu_simple.cpp:194 (out node of the LUT)
 _ifconv:16  %tmp_182 = select i1 %tmp_220, i14 %tmp_183, i14 %tmp_179
 
-ST_232: invCoshEta_Phi_V (680)  [6/8] 3.67ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:200
+ST_232: invCoshEta_Phi_V (680)  [6/8] 3.67ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:200
 _ifconv:17  %invCoshEta_Phi_V = call fastcc i17 @invCosh(i12 %data_V_read_assign_5)
 
-ST_232: StgValue_975 (700)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_232: StgValue_975 (700)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 _ifconv:37  call void @_ssdm_op_Write.ap_auto.i14P(i14* %agg_result_hwPropEta_V, i14 %tmp_182)
 
 
@@ -3248,7 +3248,7 @@ _ifconv:37  call void @_ssdm_op_Write.ap_auto.i14P(i14* %agg_result_hwPropEta_V,
 ST_233: tmp_174 (665)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:160
 _ifconv:2  %tmp_174 = phi i17 [ -65536, %._crit_edge1102 ], [ %tmp_173, %99 ]
 
-ST_233: invCoshEta_Phi_V (680)  [5/8] 3.67ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:200
+ST_233: invCoshEta_Phi_V (680)  [5/8] 3.67ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:200
 _ifconv:17  %invCoshEta_Phi_V = call fastcc i17 @invCosh(i12 %data_V_read_assign_5)
 
 ST_233: OP2_V_2_cast (681)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:203
@@ -3265,7 +3265,7 @@ _ifconv:22  %p_Val2_17 = mul i35 185356, %OP2_V_3_cast
 
 
  <State 234>: 3.67ns
-ST_234: invCoshEta_Phi_V (680)  [4/8] 3.67ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:200
+ST_234: invCoshEta_Phi_V (680)  [4/8] 3.67ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:200
 _ifconv:17  %invCoshEta_Phi_V = call fastcc i17 @invCosh(i12 %data_V_read_assign_5)
 
 ST_234: tmp_184 (683)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:203
@@ -3285,7 +3285,7 @@ _ifconv:26  %r_V_7 = mul nsw i38 %OP2_V, %OP1_V
 
 
  <State 235>: 3.67ns
-ST_235: invCoshEta_Phi_V (680)  [3/8] 3.67ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:200
+ST_235: invCoshEta_Phi_V (680)  [3/8] 3.67ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:200
 _ifconv:17  %invCoshEta_Phi_V = call fastcc i17 @invCosh(i12 %data_V_read_assign_5)
 
 ST_235: r_V_7 (689)  [4/5] 1.54ns  loc: src/tk-mu_simple.cpp:205
@@ -3293,7 +3293,7 @@ _ifconv:26  %r_V_7 = mul nsw i38 %OP2_V, %OP1_V
 
 
  <State 236>: 3.67ns
-ST_236: invCoshEta_Phi_V (680)  [2/8] 3.67ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:200
+ST_236: invCoshEta_Phi_V (680)  [2/8] 3.67ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:200
 _ifconv:17  %invCoshEta_Phi_V = call fastcc i17 @invCosh(i12 %data_V_read_assign_5)
 
 ST_236: r_V_7 (689)  [3/5] 1.54ns  loc: src/tk-mu_simple.cpp:205
@@ -3301,7 +3301,7 @@ _ifconv:26  %r_V_7 = mul nsw i38 %OP2_V, %OP1_V
 
 
  <State 237>: 3.10ns
-ST_237: invCoshEta_Phi_V (680)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:548->src/tk-mu_simple.cpp:200
+ST_237: invCoshEta_Phi_V (680)  [1/8] 3.10ns  loc: src/tk-mu_simple.h:587->src/tk-mu_simple.cpp:200
 _ifconv:17  %invCoshEta_Phi_V = call fastcc i17 @invCosh(i12 %data_V_read_assign_5)
 
 ST_237: r_V_7 (689)  [2/5] 1.54ns  loc: src/tk-mu_simple.cpp:205
@@ -3402,7 +3402,7 @@ _ifconv:42  %tmp_190 = select i1 %tmp_187, i19 %tmp_188, i19 %ret_V_5
 ST_247: tmp_192 (706)  [1/1] 0.71ns  loc: src/tk-mu_simple.cpp:208 (out node of the LUT)
 _ifconv:43  %tmp_192 = select i1 %tmp_222, i19 %tmp_190, i19 %tmp_188
 
-ST_247: StgValue_1019 (707)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:193->src/tk-mu_simple.h:194->src/tk-mu_simple.cpp:33
+ST_247: StgValue_1019 (707)  [1/1] 0.00ns  loc: src/tk-mu_simple.h:196->src/tk-mu_simple.h:197->src/tk-mu_simple.cpp:33
 _ifconv:44  call void @_ssdm_op_Write.ap_auto.i19P(i19* %agg_result_hwPropPhi_V, i19 %tmp_192)
 
 ST_247: StgValue_1020 (708)  [1/1] 0.00ns  loc: src/tk-mu_simple.cpp:220

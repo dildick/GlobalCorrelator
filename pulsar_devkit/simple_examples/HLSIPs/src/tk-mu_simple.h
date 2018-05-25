@@ -80,7 +80,9 @@ typedef ap_int<4> quality_m;
 
 // -- Define structs for physics objects in software
 struct TrackObj_tkmu {
+  float rinv;
   float pt;
+  float sinheta;
   float eta;
   float phi;
   float z0;
@@ -88,8 +90,10 @@ struct TrackObj_tkmu {
   int VALID;
   int BX;
   // constructor
-  TrackObj_tkmu() : 
+  TrackObj_tkmu() :
+    rinv(0),
     pt(0),
+    sinheta(0),
     eta(0),
     phi(0),
     z0(0),
@@ -118,7 +122,6 @@ struct MuonObj_tkmu {
   {
   }
 };
-
 
 struct TrackMuonObj_tkmu 
 {
@@ -232,6 +235,42 @@ struct TkMuObj_tkmu {
   }
 };
 
+
+
+namespace {
+
+std::ostream& operator << (std::ostream& os, const PropTrackObj_tkmu& rhs)
+{
+    os << rhs.pt << " " 
+       << rhs.eta << " "
+       << rhs.phi << " " 
+       << rhs.propEta << " " 
+       << rhs.propPhi << " "
+       << rhs.q << " ";
+    return os;
+}
+
+std::ostream& operator << (std::ostream& os, const MuonObj_tkmu& rhs)
+{
+    os << rhs.pt << " " 
+       << rhs.eta << " "
+       << rhs.phi << " " 
+       << rhs.q << " ";
+    return os;
+}
+
+std::ostream& operator << (std::ostream& os, const TrackMuonObj_tkmu& rhs)
+{
+    os << rhs.pt << " " 
+       << rhs.eta << " "
+       << rhs.phi << " " 
+       << rhs.q << " ";
+    return os;
+}
+
+}
+
+
 inline void clear(TkObj_tkmu & c) {
     c.hwRinv  = 0; 
     c.hwPhi = 0; 
@@ -267,7 +306,7 @@ inline void clearProp(PropTkObj_tkmu & c) {
 PropTrackObj_tkmu tkmu_simple_ref( const TrackObj_tkmu& in );
 PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in );
 TkMuObj_tkmu match_hw(const PropTkObj_tkmu&, const MuObj_tkmu&);
-TrackMuonObj_tkmu match_sim(const PropTrackObj_tkmu&, const MuonObj_tkmu&);
+TrackMuonObj_tkmu match_sw(const PropTrackObj_tkmu&, const MuonObj_tkmu&);
 
 
 
