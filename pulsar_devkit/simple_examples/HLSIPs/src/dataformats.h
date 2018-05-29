@@ -257,69 +257,69 @@ namespace {
 
 std::ostream& operator << (std::ostream& os, const TkObj_tkmu& rhs)
 {
-    os << "Rinv " << rhs.hwRinv << " " 
-       << "pT " << rhs.hwPt << " " 
-       << "eta " << rhs.hwEta << " "
-       << "phi " << rhs.hwPhi << " " 
-       << "Z0 " << rhs.hwZ0 << " " 
-       << "Q " << rhs.hwQ << " "
-       << "X2 " << rhs.hwX2 << " " 
-       << "Valid " << rhs.VALID << " "
-       << "BX " << rhs.hwBX << " ";
+    os << "Rinv: " << rhs.hwRinv << " " 
+       << "pT: " << rhs.hwPt << " " 
+       << "eta: " << rhs.hwEta << " "
+       << "phi: " << rhs.hwPhi << " " 
+       << "Z0: " << rhs.hwZ0 << " " 
+       << "Q: " << rhs.hwQ << " "
+       << "X2: " << rhs.hwX2 << " " 
+       << "Valid: " << rhs.VALID << " "
+       << "BX: " << rhs.hwBX << " ";
    return os;
 }
 
 std::ostream& operator << (std::ostream& os, const PropTkObj_tkmu& rhs)
 {
-    os << "Rinv " << rhs.hwRinv << " " 
-       << "pT " << rhs.hwPt << " " 
-       << "eta " << rhs.hwEta << " "
-       << "phi " << rhs.hwPhi << " " 
-       << "eta_prop " << rhs.hwPropEta << " " 
-       << "phi_prop " << rhs.hwPropPhi << " "
-       << "Z0 " << rhs.hwZ0 << " " 
-       << "Q " << rhs.hwQ << " "
-       << "X2 " << rhs.hwX2 << " " 
-       << "Valid " << rhs.VALID << " "
-       << "BX " << rhs.hwBX << " ";
+    os << "Rinv: " << rhs.hwRinv << " " 
+       << "pT: " << rhs.hwPt << " " 
+       << "eta: " << rhs.hwEta << " "
+       << "phi: " << rhs.hwPhi << " " 
+       << "eta_prop: " << rhs.hwPropEta << " " 
+       << "phi_prop: " << rhs.hwPropPhi << " "
+       << "Z0: " << rhs.hwZ0 << " " 
+       << "Q: " << rhs.hwQ << " "
+       << "X2: " << rhs.hwX2 << " " 
+       << "Valid: " << rhs.VALID << " "
+       << "BX: " << rhs.hwBX << " ";
    return os;
 }
 
 std::ostream& operator << (std::ostream& os, const TrackObj_tkmu& rhs)
 {
-    os << " pT " << rhs.pt << " " 
-       << " eta " << rhs.eta << " "
-       << " phi " << rhs.phi << " " 
-       << " Q " << rhs.q << " ";
+    os << " pT: " << rhs.pt << " " 
+       << " eta: " << rhs.eta << " "
+       << " phi: " << rhs.phi << " " 
+       << " Q: " << rhs.q << " ";
     return os;
 }
 
 std::ostream& operator << (std::ostream& os, const PropTrackObj_tkmu& rhs)
 {
-    os << " pT " << rhs.pt << " " 
-       << " eta " << rhs.eta << " "
-       << " phi " << rhs.phi << " " 
-       << " eta_prop " << rhs.propEta << " " 
-       << " phi_prop " << rhs.propPhi << " "
-       << " Q " << rhs.q << " ";
+    os << " pT: " << rhs.pt << " " 
+       << " eta: " << rhs.eta << " "
+       << " phi: " << rhs.phi << " " 
+       << " eta_prop: " << rhs.propEta << " " 
+       << " phi_prop: " << rhs.propPhi << " "
+       << " Q: " << rhs.q << " ";
     return os;
 }
 
 std::ostream& operator << (std::ostream& os, const MuonObj_tkmu& rhs)
 {
-    os << " pT " << rhs.pt << " " 
-       << " eta " << rhs.eta << " "
-       << " phi " << rhs.phi << " " 
-       << " Q " << rhs.q << " ";
+    os << " pT: " << rhs.pt << " " 
+       << " eta: " << rhs.eta << " "
+       << " phi: " << rhs.phi << " " 
+       << " Q: " << rhs.q << " ";
     return os;
 }
 
 std::ostream& operator << (std::ostream& os, const TrackMuonObj_tkmu& rhs)
 {
-    os << " pT " << rhs.pt << " " 
-       << " eta " << rhs.eta << " "
-       << " phi " << rhs.phi << " " 
-       << " Q " << rhs.q << " ";
+    os << " pT: " << rhs.pt << " " 
+       << " eta: " << rhs.eta << " "
+       << " phi: " << rhs.phi << " " 
+       << " Q: " << rhs.q << " ";
     return os;
 }
 

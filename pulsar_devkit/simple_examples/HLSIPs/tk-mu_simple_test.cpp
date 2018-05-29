@@ -39,7 +39,18 @@ float rinv2pt(const float& rinv);
 float sinhEta2eta(const float& sinhEta);
 void isNegative( std::string& bit_value, bool& isNeg);
 float normalizePhi(float phi);
+// dump output
+void writeOutputSW(std::ofstream&,
+		   const TrackObj_tkmu&, 
+		   const PropTrackObj_tkmu&,
+		   const MuonObj_tkmu&,
+		   const TrackMuonObj_tkmu&);
 
+void writeOutputHW(std::ofstream&,
+		   const TkObj_tkmu&, 
+		   const PropTkObj_tkmu&,
+		   const MuObj_tkmu&,
+		   const TkMuObj_tkmu&);
 
 int main() 
 {
@@ -79,8 +90,6 @@ int main()
     std::ofstream firmware_output;
     firmware_output.open("../../../../firmware_prop.txt");
 
-
-
     // start the loop on the events...
     for (unsigned int i=0,size=sw_track_data.size();i<size;i++){
 
@@ -111,26 +120,8 @@ int main()
 	out_trackmuon_sw = match_sw(prop_track_sw, in_muon_sw);
 	std::cout << std::endl;
 	
-	// dump output to "track software" file
-        software_output 
-	  // track properties
-	  << in_track_sw.rinv      << "," 
-	  << in_track_sw.eta       << "," 
-	  << prop_track_sw.propEta << "," 
-	  << in_track_sw.phi       << "," 
-	  << prop_track_sw.propPhi << ","
-	  << in_track_sw.z0        << ","
-	  // muon properties
-	  << in_muon_sw.pt         << "," 
-	  << in_muon_sw.eta        << "," 
-	  << in_muon_sw.phi        << "," 
-	  << in_muon_sw.q          << ","
-	  // track-muon properties
-	  << out_trackmuon_sw.pt         << "," 
-	  << out_trackmuon_sw.eta        << "," 
-	  << out_trackmuon_sw.phi        << "," 
-	  << out_trackmuon_sw.q
-	  << "\n";
+	writeOutputSW(software_output, in_track_sw, prop_track_sw,
+		      in_muon_sw, out_trackmuon_sw);
 
         // :: FIRMWARE :: //
         std::string track_data_fw = hw_track_data[i];
@@ -152,26 +143,8 @@ int main()
         TkMuObj_tkmu out_trackmuon_hw;
 	out_trackmuon_hw = match_hw(prop_track_hw, in_muon_hw);
 
-        // save results to file
-        firmware_output 
-	  // track properties
-	  << in_track_hw.hwRinv*INVRINV_CONVERSION     << "," 
-	  << in_track_hw.hwEta*INVETA_CONVERSION       << "," 
-	  << prop_track_hw.hwPropEta*INVETA_CONVERSION << ","
-	  << in_track_hw.hwPhi*INVPHI_CONVERSION       << "," 
-	  << prop_track_hw.hwPropPhi*INVPHI_CONVERSION << ","
-	  << in_track_hw.hwZ0*INVZ_CONVERSION          << "," 
-	  // muon properties
-	  << in_muon_hw.hwPt         << "," 
-	  << in_muon_hw.hwEta        << "," 
-	  << in_muon_hw.hwPhi        << "," 
-	  << in_muon_hw.hwQ          << ","
-	  // track-muon properties
-	  << out_trackmuon_hw.hwPt         << "," 
-	  << out_trackmuon_hw.hwEta        << "," 
-	  << out_trackmuon_hw.hwPhi        << "," 
-	  << out_trackmuon_hw.hwQ
-	  << "\n";
+	writeOutputHW(firmware_output, in_track_hw, prop_track_hw,
+		      in_muon_hw, out_trackmuon_hw);
     }
 
     std::cout << " Finished " << std::endl;
@@ -509,6 +482,62 @@ float normalizePhi(float outPhi)
   if (returnValue > M_PI)
     returnValue -= 2*M_PI;
   return returnValue;
+}
+
+void writeOutputSW(std::ofstream& software_output,
+		   const TrackObj_tkmu& in_track_sw, 
+		   const PropTrackObj_tkmu& prop_track_sw,
+		   const MuonObj_tkmu& in_muon_sw,
+		   const TrackMuonObj_tkmu& out_trackmuon_sw)
+{
+  // dump output to "track software" file
+  software_output 
+    // track properties
+    << in_track_sw.rinv      << "," 
+    << in_track_sw.eta       << "," 
+    << prop_track_sw.propEta << "," 
+    << in_track_sw.phi       << "," 
+    << prop_track_sw.propPhi << ","
+    << in_track_sw.z0        << ","
+    // muon properties
+    << in_muon_sw.pt         << "," 
+    << in_muon_sw.eta        << "," 
+    << in_muon_sw.phi        << "," 
+    << in_muon_sw.q          << ","
+    // track-muon properties
+    << out_trackmuon_sw.pt         << "," 
+    << out_trackmuon_sw.eta        << "," 
+    << out_trackmuon_sw.phi        << "," 
+    << out_trackmuon_sw.q
+    << "\n";
+}
+
+void writeOutputHW(std::ofstream& firmware_output,
+		   const TkObj_tkmu& in_track_hw, 
+		   const PropTkObj_tkmu& prop_track_hw,
+		   const MuObj_tkmu& in_muon_hw,
+		   const TkMuObj_tkmu& out_trackmuon_hw)
+{
+  // save results to file
+  firmware_output 
+    // track properties
+    << in_track_hw.hwRinv*INVRINV_CONVERSION     << "," 
+    << in_track_hw.hwEta*INVETA_CONVERSION       << "," 
+    << prop_track_hw.hwPropEta*INVETA_CONVERSION << ","
+    << in_track_hw.hwPhi*INVPHI_CONVERSION       << "," 
+    << prop_track_hw.hwPropPhi*INVPHI_CONVERSION << ","
+    << in_track_hw.hwZ0*INVZ_CONVERSION          << "," 
+    // muon properties
+    << in_muon_hw.hwPt         << "," 
+    << in_muon_hw.hwEta        << "," 
+    << in_muon_hw.hwPhi        << "," 
+    << in_muon_hw.hwQ          << ","
+    // track-muon properties
+    << out_trackmuon_hw.hwPt         << "," 
+    << out_trackmuon_hw.hwEta        << "," 
+    << out_trackmuon_hw.hwPhi        << "," 
+    << out_trackmuon_hw.hwQ
+    << "\n";
 }
 
 // THE END
