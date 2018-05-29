@@ -92,33 +92,25 @@ int main()
 	// data from the data file
         TrackObj_tkmu in_track_sw;
 	decode_sw_track_data(track_data_sw, in_track_sw);
+	std::cout << "Test track: " << in_track_sw << std::endl;
 	  
 	// define the propagated track and obtain it by 
 	// propagating the reference track to the second 
 	// muon station
         PropTrackObj_tkmu prop_track_sw = tkmu_simple_ref(in_track_sw);
-	std::cout << "test prop track " << prop_track_sw << std::endl;
+	std::cout << "Test prop track: " << prop_track_sw << std::endl;
 
 	// define the reference track and decode the data 
 	// from the sim muon data file
         MuonObj_tkmu in_muon_sw;
 	decode_sw_muon_data(muon_data_sw, in_muon_sw);
-	std::cout << "test mu " << in_muon_sw << std::endl;
+	std::cout << "Test mu: " << in_muon_sw << std::endl;
 
 	// obtain the track-muon by matching the track to the muon
         TrackMuonObj_tkmu out_trackmuon_sw;
 	out_trackmuon_sw = match_sw(prop_track_sw, in_muon_sw);
 	std::cout << std::endl;
 	
-	if (false){
-	  std::cout << " REF : eta = " << in_track_sw.eta 
-		    << " => " << prop_track_sw.propEta << std::endl;
-	  std::cout << "     : phi = " << in_track_sw.phi 
-		    << " => " << prop_track_sw.propPhi << std::endl;
-	  std::cout << "     : in z0 = " << (in_track_sw.z0) << std::endl;
-	  std::cout << "     : in invpT = " << (1/in_track_sw.pt) << std::endl;
-	}
-
 	// dump output to "track software" file
         software_output 
 	  // track properties

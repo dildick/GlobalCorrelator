@@ -85,6 +85,33 @@ struct TrackObj_tkmu {
   }
 };
 
+struct PropTrackObj_tkmu : public TrackObj_tkmu {
+  float propEta;
+  float propPhi;
+  // constructor
+  PropTrackObj_tkmu() : 
+    TrackObj_tkmu(),
+    propEta(0),
+    propPhi(0)
+  {
+  }
+  // copy constructor
+  PropTrackObj_tkmu(const TrackObj_tkmu& ref)
+    {
+      rinv = ref.rinv;
+      pt = ref.pt;
+      sinheta = ref.sinheta;
+      eta = ref.eta;
+      phi = ref.phi;
+      z0 = ref.z0;
+      q = ref.q;
+      VALID = ref.VALID;
+      BX = ref.BX;
+      propEta = 0;
+      propPhi = 0;
+    }
+};
+
 struct MuonObj_tkmu {
   float pt;
   float eta;
@@ -124,18 +151,6 @@ struct TrackMuonObj_tkmu
   }
 };
 
-
-struct PropTrackObj_tkmu : public TrackObj_tkmu {
-  float propEta;
-  float propPhi;
-  // constructor
-  PropTrackObj_tkmu() : 
-    TrackObj_tkmu(),
-    propEta(0),
-    propPhi(0)
-  {
-  }
-};
 
 // -- Define structs for physics objects in hardware
 struct TkObj_tkmu 
@@ -193,6 +208,8 @@ struct PropTkObj_tkmu : public TkObj_tkmu
       hwX2 = ref.hwX2;
       VALID = ref.VALID;
       hwBX = ref.hwBX;
+      hwPropEta = 0;
+      hwPropPhi = 0;
     }
 };
 
@@ -268,32 +285,41 @@ std::ostream& operator << (std::ostream& os, const PropTkObj_tkmu& rhs)
    return os;
 }
 
+std::ostream& operator << (std::ostream& os, const TrackObj_tkmu& rhs)
+{
+    os << " pT " << rhs.pt << " " 
+       << " eta " << rhs.eta << " "
+       << " phi " << rhs.phi << " " 
+       << " Q " << rhs.q << " ";
+    return os;
+}
+
 std::ostream& operator << (std::ostream& os, const PropTrackObj_tkmu& rhs)
 {
-    os << rhs.pt << " " 
-       << rhs.eta << " "
-       << rhs.phi << " " 
-       << rhs.propEta << " " 
-       << rhs.propPhi << " "
-       << rhs.q << " ";
+    os << " pT " << rhs.pt << " " 
+       << " eta " << rhs.eta << " "
+       << " phi " << rhs.phi << " " 
+       << " eta_prop " << rhs.propEta << " " 
+       << " phi_prop " << rhs.propPhi << " "
+       << " Q " << rhs.q << " ";
     return os;
 }
 
 std::ostream& operator << (std::ostream& os, const MuonObj_tkmu& rhs)
 {
-    os << rhs.pt << " " 
-       << rhs.eta << " "
-       << rhs.phi << " " 
-       << rhs.q << " ";
+    os << " pT " << rhs.pt << " " 
+       << " eta " << rhs.eta << " "
+       << " phi " << rhs.phi << " " 
+       << " Q " << rhs.q << " ";
     return os;
 }
 
 std::ostream& operator << (std::ostream& os, const TrackMuonObj_tkmu& rhs)
 {
-    os << rhs.pt << " " 
-       << rhs.eta << " "
-       << rhs.phi << " " 
-       << rhs.q << " ";
+    os << " pT " << rhs.pt << " " 
+       << " eta " << rhs.eta << " "
+       << " phi " << rhs.phi << " " 
+       << " Q " << rhs.q << " ";
     return os;
 }
 
