@@ -264,7 +264,7 @@ TrackMuonObj_tkmu match_sw(const PropTrackObj_tkmu& inTrack,
     << " dR2_tk_mu " << dR2_tk_mu
     << std::endl;
 
-  if (dR2_tk_mu < 0.2) {
+  if (dR2_tk_mu < 0.1) {
     std::cout << ">>>> MATCH! <<<<" << std::endl;
     outTrack.pt = inTrack.pt;
     outTrack.eta = inMuon.eta;

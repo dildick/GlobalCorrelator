@@ -15,11 +15,5 @@
     <clockList>
         <clock name="default" period="5" default="false"/>
     </clockList>
-    <config>
-        <schedule model="tkmu_simple_hw"/>
-    </config>
-    <ExportDesign askAgain="true" evaluate="false" rtl="verilog" formatName="ip_catalog">
-        <Format formatName="ip_catalog" description="" vendor="cern-cms" library="" version="1.0" driver_input_dir="" display_name="" taxonomy=""/>
-    </ExportDesign>
 </AutoPilot:solution>
 

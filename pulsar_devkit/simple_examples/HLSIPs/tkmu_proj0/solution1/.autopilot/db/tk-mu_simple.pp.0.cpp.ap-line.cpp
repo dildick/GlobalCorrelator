@@ -40580,6 +40580,8 @@ typedef ap_int<10> chisq_t; // chi^2 (0 - 100; 0.1 steps)
 typedef ap_int<1> q_t; // charge
 typedef ap_int<11> z0_t; // z0  (1 mm over +/-14.9 cm)
 typedef ap_int<3> bx_t; // z0  (1 mm over +/-14.9 cm)
+typedef ap_int<4> sector_t; // 9 phi sectors --> 4 bits  
+typedef ap_int<2> subsector_t; // 3 phi subsectors --> 2 bits  
 #pragma empty_line
 // before the decimal point, after the decimal point
 typedef ap_fixed<15,2> finvpt_t; // inverse pt [1% at 100 GeV]
@@ -40603,9 +40605,9 @@ typedef ap_int<4> quality_m;
 #pragma empty_line
 #pragma empty_line
 // range for LUTs
-#pragma line 69 "src/tk-mu_simple.h"
+#pragma line 71 "src/tk-mu_simple.h"
 // Conversions between binary and floating point (using example file to derive)
-#pragma line 81 "src/tk-mu_simple.h"
+#pragma line 83 "src/tk-mu_simple.h"
 // -- Define structs for physics objects in software
 struct TrackObj_tkmu {
   float rinv;
@@ -40617,6 +40619,8 @@ struct TrackObj_tkmu {
   int q;
   int VALID;
   int BX;
+  int sector;
+  int subsector;
   // constructor
   TrackObj_tkmu() :
     rinv(0),
@@ -40627,7 +40631,9 @@ struct TrackObj_tkmu {
     z0(0),
     q(0),
     VALID(0),
-    BX(0)
+    BX(0),
+    sector(0),
+    subsector(0)
   {
   }
 };
@@ -40697,6 +40703,8 @@ struct TkObj_tkmu {
     chisq_t hwX2;
     q_t VALID; // VALID bit
     bx_t hwBX; // bunch crossing 3-bit counter
+    sector_t hwSector;
+    subsector_t hwSubsector;
   // constructor
   TkObj_tkmu() :
     hwRinv(0),
@@ -40708,7 +40716,9 @@ struct TkObj_tkmu {
     hwQ(0),
     hwX2(0),
     VALID(0),
-    hwBX(0)
+    hwBX(0),
+    hwSector(0),
+    hwSubsector(0)
   {
   }
 };
@@ -42078,7 +42088,7 @@ TrackMuonObj_tkmu match_sw(const PropTrackObj_tkmu& inTrack,
     << " dR2_tk_mu " << dR2_tk_mu
     << std::endl;
 #pragma empty_line
-  if (dR2_tk_mu < 0.2) {
+  if (dR2_tk_mu < 0.1) {
     std::cout << ">>>> MATCH! <<<<" << std::endl;
     outTrack.pt = inTrack.pt;
     outTrack.eta = inMuon.eta;

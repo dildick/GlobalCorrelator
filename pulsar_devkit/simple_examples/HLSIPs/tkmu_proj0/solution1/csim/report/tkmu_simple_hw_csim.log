@@ -4,539 +4,1213 @@ INFO: [SIM 4] CSIM will launch GCC as the compiler.
    Compiling ../../../../tk-mu_simple_test.cpp in debug mode
    Compiling ../../../../src/tk-mu_simple.cpp in debug mode
    Generating csim.exe
-test prop track 53.4286 -0.624604 0.105362 -0.627441 0.0370971 0 
-test mu 22 0 0 0 
-CheckMatch: tketa -0.627441 tkphi 0.0370971 mueta 0 muphi 0 dR2_tk_mu 0.395058
-test prop track 54.724 0.629474 0.221977 0.626467 0.245509 0 
-test mu 22 0 0 0 
-CheckMatch: tketa 0.626467 tkphi 0.245509 mueta 0 muphi 0 dR2_tk_mu 0.452736
-test prop track 3.84232 -2.06735 0.143228 -2.06346 0.388733 0 
-test mu 59 -0.6525 2.80344 1 
-CheckMatch: tketa -2.06346 tkphi 0.388733 mueta -0.6525 muphi 2.80344 dR2_tk_mu 7.8216
-test prop track 3.90209 2.0654 0.253457 2.06321 -0.0337443 0 
-test mu 57 0.641625 -0.239983 -1 
-CheckMatch: tketa 2.06321 tkphi -0.0337443 mueta 0.641625 muphi -0.239983 dR2_tk_mu 2.06343
-test prop track 42.1936 -1.69268 0.238709 -1.69229 0.181971 0 
-test mu 4.5 2.07713 -0.567232 1 
-CheckMatch: tketa -1.69229 tkphi 0.181971 mueta 2.07713 muphi -0.567232 dR2_tk_mu 14.7698
-test prop track 42.1936 1.6857 0.122832 1.68455 0.136223 0 
-test mu 4.5 -2.088 3.10887 -1 
-CheckMatch: tketa 1.68455 tkphi 0.136223 mueta -2.088 muphi 3.10887 dR2_tk_mu 23.0687
-test prop track 14.0209 -1.4198 0.244258 -1.42353 0.357919 0 
-test mu 63 1.67475 -0.359974 -1 
-CheckMatch: tketa -1.42353 tkphi 0.357919 mueta 1.67475 muphi -0.359974 dR2_tk_mu 10.1147
-test prop track 13.8276 1.4198 0.126463 1.42362 -0.0315651 0 
-test mu 46 -1.70738 2.71617 1 
-CheckMatch: tketa 1.42362 tkphi -0.0315651 mueta -1.70738 muphi 2.71617 dR2_tk_mu 17.3532
-test prop track 53.1144 -0.0624594 0.157531 -0.0589506 0.0889914 0 
-test mu 0 0 0 0 
-CheckMatch: tketa -0.0589506 tkphi 0.0889914 mueta 0 muphi 0 dR2_tk_mu 0.0113946
->>>> MATCH! <<<<
-test prop track 54.724 0.0585603 0.0412376 0.0616445 0.0647697 0 
-test mu 0 0 0 0 
-CheckMatch: tketa 0.0616445 tkphi 0.0647697 mueta 0 muphi 0 dR2_tk_mu 0.00799516
->>>> MATCH! <<<<
-test prop track 77.1746 1.31617 0.0840754 1.31302 0.0353155 0 
-test mu 12.5 1.31588 -0.981748 1 
-CheckMatch: tketa 1.31302 tkphi 0.0353155 mueta 1.31588 muphi -0.981748 dR2_tk_mu 1.03443
-test prop track 90.2942 -1.32104 0.200596 -1.31804 0.201549 0 
-test mu 16.5 -1.31588 2.42164 -1 
-CheckMatch: tketa -1.31804 tkphi 0.201549 mueta -1.31588 muphi 2.42164 dR2_tk_mu 4.92883
-test prop track 132.786 -0.973535 0.0958691 -0.971774 0.0553633 0 
-test mu 60.5 -0.054375 1.46171 1 
-CheckMatch: tketa -0.971774 tkphi 0.0553633 mueta -0.054375 muphi 1.46171 dR2_tk_mu 2.81944
-test prop track 130.862 0.968355 0.212347 0.969698 0.209494 0 
-test mu 54 0.054375 -1.5817 -1 
-CheckMatch: tketa 0.969698 tkphi 0.209494 mueta 0.054375 muphi -1.5817 dR2_tk_mu 4.04621
-test prop track 41.6104 2.0119 0.246332 2.01658 0.250538 0 
-test mu 50.5 1.31588 0.949023 1 
-CheckMatch: tketa 2.01658 tkphi 0.250538 mueta 1.31588 muphi 0.949023 dR2_tk_mu 0.978864
-test prop track 40.1308 -2.01087 0.130052 -2.01544 0.0809668 0 
-test mu 90.5 -1.31588 -2.14894 -1 
-CheckMatch: tketa -2.01544 tkphi 0.0809668 mueta -1.31588 muphi -2.14894 dR2_tk_mu 5.46185
-test prop track 6.1973 -2.03825 0.12368 -2.03631 0.272678 0 
-test mu 140.5 1.0005 -2.37801 -1 
-CheckMatch: tketa -2.03631 tkphi 0.272678 mueta 1.0005 muphi -2.37801 dR2_tk_mu 16.2484
-test prop track 6.16346 2.03373 0.235949 2.03267 0.0410925 0 
-test mu 140.5 -1.0005 0.730857 1 
-CheckMatch: tketa 2.03267 tkphi 0.0410925 mueta -1.0005 muphi 0.730857 dR2_tk_mu 9.67589
-test prop track 11.5911 1.58912 0.109642 1.58313 0.228736 0 
-test mu 74.5 2.02275 1.14537 -1 
-CheckMatch: tketa 1.58313 tkphi 0.228736 mueta 2.02275 muphi 1.14537 dR2_tk_mu 1.03349
-test prop track 11.8341 -1.58605 0.225666 -1.58069 0.0671394 0 
-test mu 74.5 2.02275 1.16719 -1 
-CheckMatch: tketa -1.58069 tkphi 0.0671394 mueta 2.02275 muphi 1.16719 dR2_tk_mu 14.1949
-test prop track 53.4286 -1.80101 0.0867078 -1.80225 0.0399426 0 
-test mu 8.5 2.001 -0.458148 1 
-CheckMatch: tketa -1.80225 tkphi 0.0399426 mueta 2.001 muphi -0.458148 dR2_tk_mu 14.7128
-test prop track 54.724 1.79471 0.203603 1.79766 0.206182 0 
-test mu 8 -2.088 3.03251 -1 
-CheckMatch: tketa 1.79766 tkphi 0.206182 mueta -2.088 muphi 3.03251 dR2_tk_mu 23.0864
-test prop track 13.9559 -2.35849 0.0283029 -2.36455 0.0624473 0 
-test mu 9.5 1.57687 3.01069 -1 
-CheckMatch: tketa -2.36455 tkphi 0.0624473 mueta 1.57687 muphi 3.01069 dR2_tk_mu 24.227
-test prop track 13.0862 2.35886 0.142968 2.3641 0.0621752 0 
-test mu 38 -1.59862 -0.425424 1 
-CheckMatch: tketa 2.3641 tkphi 0.0621752 mueta -1.59862 muphi -0.425424 dR2_tk_mu 15.941
-test prop track 19.2937 -2.33554 0.263234 -2.33804 0.282669 0 
-test mu 1.5 1.7835 -1.00356 1 
-CheckMatch: tketa -2.33804 tkphi 0.282669 mueta 1.7835 muphi -1.00356 dR2_tk_mu 18.6415
-test prop track 71.6625 -1.5557 0.274052 -1.56456 0.228658 0 
-test mu 7 1.7835 -0.981748 -1 
-CheckMatch: tketa -1.56456 tkphi 0.228658 mueta 1.7835 muphi -0.981748 dR2_tk_mu 12.6746
-test prop track 70.5424 -1.59446 0.0415027 -1.60816 -0.00354953 0 
-test mu 14 2.38162 3.04342 1 
-CheckMatch: tketa -1.60816 tkphi -0.00354953 mueta 2.38162 muphi 3.04342 dR2_tk_mu 25.2024
-test prop track 69.4571 -1.59674 0.04155 -1.61063 -0.00382051 0 
-test mu 9 2.38162 3.06523 1 
-CheckMatch: tketa -1.61063 tkphi -0.00382051 mueta 2.38162 muphi 3.06523 dR2_tk_mu 25.3572
-test prop track 69.9958 1.59902 0.157962 1.61328 0.158768 0 
-test mu 89 1.58775 -1.72351 -1 
-CheckMatch: tketa 1.61328 tkphi 0.158768 mueta 1.58775 muphi -1.72351 dR2_tk_mu 3.54363
-test prop track 41.6104 1.87379 0.0537083 1.87948 0.061569 0 
-test mu 56.5 -1.58775 1.37445 1 
-CheckMatch: tketa 1.87948 tkphi 0.061569 mueta -1.58775 muphi 1.37445 dR2_tk_mu 13.7453
-test prop track 43.2031 -1.88196 0.17031 -1.88713 0.119808 0 
-test mu 57 1.8705 2.11621 -1 
-CheckMatch: tketa -1.88713 tkphi 0.119808 mueta 1.8705 muphi 2.11621 dR2_tk_mu 18.1054
-test prop track 98.1464 0.924885 0.171091 0.925177 0.17456 0 
-test mu 10 1.8705 2.13803 -1 
-CheckMatch: tketa 0.925177 tkphi 0.17456 mueta 1.8705 muphi 2.13803 dR2_tk_mu 4.74884
-test prop track 83.6059 -0.92622 0.0556021 -0.92571 0.00410262 0 
-test mu 0 0 0 0 
+phisector sw4 1
+actual phi 1.50176
+Test prop track: 53.4286 -0.624604 0.105362 -0.627441 0.0370971 0 
+Test mu: 59 -0.6525 2.80344 1 
+CheckMatch: tketa -0.627441 tkphi 0.0370971 mueta -0.6525 muphi 2.80344 dR2_tk_mu 7.65325
+
+phisector sw4 1
+phisector sw8 2
+actual phi 3.01478
+Test prop track: 54.724 0.629474 0.221977 0.626467 0.245509 0 
+Test mu: 57 0.641625 -0.239983 -1 
+CheckMatch: tketa 0.626467 tkphi 0.245509 mueta 0.641625 muphi -0.239983 dR2_tk_mu 0.235933
+
+phisector sw8 2
+phisector sw4 1
+actual phi 1.53963
+Test prop track: 3.84232 -2.06735 0.143228 -2.06346 0.388733 0 
+Test mu: 4.5 2.07713 -0.567232 1 
+CheckMatch: tketa -2.06346 tkphi 0.388733 mueta 2.07713 muphi -0.567232 dR2_tk_mu 18.0583
+
+phisector sw4 1
+phisector sw8 2
+actual phi 3.04626
+Test prop track: 3.90209 2.0654 0.253457 2.06321 -0.0337443 0 
+Test mu: 4.5 -2.088 3.10887 -1 
+CheckMatch: tketa 2.06321 tkphi -0.0337443 mueta -2.088 muphi 3.10887 dR2_tk_mu 27.1085
+
+phisector sw8 2
+phisector sw4 0
+actual phi 1.63511
+Test prop track: 42.1936 -1.69268 0.238709 -1.69229 0.181971 0 
+Test mu: 63 1.67475 -0.359974 -1 
+CheckMatch: tketa -1.69229 tkphi 0.181971 mueta 1.67475 muphi -0.359974 dR2_tk_mu 11.6307
+
+phisector sw4 0
+phisector sw8 2
+actual phi 2.91563
+Test prop track: 42.1936 1.6857 0.122832 1.68455 0.136223 0 
+Test mu: 46 -1.70738 2.71617 1 
+CheckMatch: tketa 1.68455 tkphi 0.136223 mueta -1.70738 muphi 2.71617 dR2_tk_mu 18.1613
+
+phisector sw8 2
+phisector sw3 1
+actual phi 1.29156
+Test prop track: 14.0209 -1.4198 0.244258 -1.42353 0.357919 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa -1.42353 tkphi 0.357919 mueta 0 muphi 0 dR2_tk_mu 2.15454
+
+phisector sw3 1
+phisector sw8 0
+actual phi 2.91926
+Test prop track: 13.8276 1.4198 0.126463 1.42362 -0.0315651 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa 1.42362 tkphi -0.0315651 mueta 0 muphi 0 dR2_tk_mu 2.02769
+
+phisector sw8 0
+phisector sw2 1
+actual phi 0.855731
+Test prop track: 53.1144 -0.0624594 0.157531 -0.0589506 0.0889914 0 
+Test mu: 12.5 1.31588 -0.981748 1 
+CheckMatch: tketa -0.0589506 tkphi 0.0889914 mueta 1.31588 muphi -0.981748 dR2_tk_mu 3.03663
+
+phisector sw2 1
+phisector sw7 0
+actual phi 2.48494
+Test prop track: 54.724 0.0585603 0.0412376 0.0616445 0.0647697 0 
+Test mu: 16.5 -1.31588 2.42164 -1 
+CheckMatch: tketa 0.0616445 tkphi 0.0647697 mueta -1.31588 muphi 2.42164 dR2_tk_mu 7.45242
+
+phisector sw7 0
+phisector sw1 2
+actual phi 0.433175
+Test prop track: 77.1746 1.31617 0.0840754 1.31302 0.0353155 0 
+Test mu: 60.5 -0.054375 1.46171 1 
+CheckMatch: tketa 1.31302 tkphi 0.0353155 mueta -0.054375 muphi 1.46171 dR2_tk_mu 3.90437
+
+phisector sw1 2
+phisector sw6 0
+actual phi 2.2952
+Test prop track: 90.2942 -1.32104 0.200596 -1.31804 0.201549 0 
+Test mu: 54 0.054375 -1.5817 -1 
+CheckMatch: tketa -1.31804 tkphi 0.201549 mueta 0.054375 muphi -1.5817 dR2_tk_mu 5.06352
+
+phisector sw6 0
+phisector sw1 1
+actual phi 0.444969
+Test prop track: 132.786 -0.973535 0.0958691 -0.971774 0.0553633 0 
+Test mu: 50.5 1.31588 0.949023 1 
+CheckMatch: tketa -0.971774 tkphi 0.0553633 mueta 1.31588 muphi 0.949023 dR2_tk_mu 6.03197
+
+phisector sw1 1
+phisector sw5 2
+actual phi 1.95785
+Test prop track: 130.862 0.968355 0.212347 0.969698 0.209494 0 
+Test mu: 90.5 -1.31588 -2.14894 -1 
+CheckMatch: tketa 0.969698 tkphi 0.209494 mueta -1.31588 muphi -2.14894 dR2_tk_mu 10.786
+
+phisector sw5 2
+phisector sw1 2
+actual phi 0.595432
+Test prop track: 41.6104 2.0119 0.246332 2.01658 0.250538 0 
+Test mu: 140.5 1.0005 -2.37801 -1 
+CheckMatch: tketa 2.01658 tkphi 0.250538 mueta 1.0005 muphi -2.37801 dR2_tk_mu 7.94168
+
+phisector sw1 2
+phisector sw6 1
+actual phi 2.22465
+Test prop track: 40.1308 -2.01087 0.130052 -2.01544 0.0809668 0 
+Test mu: 140.5 -1.0005 0.730857 1 
+CheckMatch: tketa -2.01544 tkphi 0.0809668 mueta -1.0005 muphi 0.730857 dR2_tk_mu 1.45245
+
+phisector sw6 1
+phisector sw4 1
+actual phi 1.52008
+Test prop track: 6.1973 -2.03825 0.12368 -2.03631 0.272678 0 
+Test mu: 74.5 2.02275 1.14537 -1 
+CheckMatch: tketa -2.03631 tkphi 0.272678 mueta 2.02275 muphi 1.14537 dR2_tk_mu 17.2376
+
+phisector sw4 1
+phisector sw8 2
+actual phi 3.02875
+Test prop track: 6.16346 2.03373 0.235949 2.03267 0.0410925 0 
+Test mu: 74.5 2.02275 1.16719 -1 
+CheckMatch: tketa 2.03267 tkphi 0.0410925 mueta 2.02275 muphi 1.16719 dR2_tk_mu 1.26819
+
+phisector sw8 2
+phisector sw4 1
+actual phi 1.50604
+Test prop track: 11.5911 1.58912 0.109642 1.58313 0.228736 0 
+Test mu: 8.5 2.001 -0.458148 1 
+CheckMatch: tketa 1.58313 tkphi 0.228736 mueta 2.001 muphi -0.458148 dR2_tk_mu 0.646424
+
+phisector sw4 1
+phisector sw8 2
+actual phi 3.01847
+Test prop track: 11.8341 -1.58605 0.225666 -1.58069 0.0671394 0 
+Test mu: 8 -2.088 3.03251 -1 
+CheckMatch: tketa -1.58069 tkphi 0.0671394 mueta -2.088 muphi 3.03251 dR2_tk_mu 9.05078
+
+phisector sw8 2
+phisector sw3 1
+actual phi 1.13401
+Test prop track: 53.4286 -1.80101 0.0867078 -1.80225 0.0399426 0 
+Test mu: 9.5 1.57687 3.01069 -1 
+CheckMatch: tketa -1.80225 tkphi 0.0399426 mueta 1.57687 muphi 3.01069 dR2_tk_mu 20.2438
+
+phisector sw3 1
+phisector sw7 2
+actual phi 2.6473
+Test prop track: 54.724 1.79471 0.203603 1.79766 0.206182 0 
+Test mu: 38 -1.59862 -0.425424 1 
+CheckMatch: tketa 1.79766 tkphi 0.206182 mueta -1.59862 muphi -0.425424 dR2_tk_mu 11.9336
+
+phisector sw7 2
+phisector sw0 1
+actual phi 0.0283029
+Test prop track: 13.9559 -2.35849 0.0283029 -2.36455 0.0624473 0 
+Test mu: 1.5 1.7835 -1.00356 1 
+CheckMatch: tketa -2.36455 tkphi 0.0624473 mueta 1.7835 muphi -1.00356 dR2_tk_mu 18.3427
+
+phisector sw0 1
+phisector sw4 2
+actual phi 1.53937
+Test prop track: 13.0862 2.35886 0.142968 2.3641 0.0621752 0 
+Test mu: 7 1.7835 -0.981748 -1 
+CheckMatch: tketa 2.3641 tkphi 0.0621752 mueta 1.7835 muphi -0.981748 dR2_tk_mu 1.42688
+
+phisector sw4 2
+phisector sw9 0
+actual phi 3.40513
+Test prop track: 19.2937 -2.33554 0.263234 -2.33804 0.282669 0 
+Test mu: 14 2.38162 3.04342 1 
+CheckMatch: tketa -2.33804 tkphi 0.282669 mueta 2.38162 muphi 3.04342 dR2_tk_mu 29.8969
+
+phisector sw9 0
+phisector sw2 0
+actual phi 0.972252
+Test prop track: 71.6625 -1.5557 0.274052 -1.56456 0.228658 0 
+Test mu: 9 2.38162 3.06523 1 
+CheckMatch: tketa -1.56456 tkphi 0.228658 mueta 2.38162 muphi 3.06523 dR2_tk_mu 23.6186
+
+phisector sw2 0
+phisector sw2 1
+actual phi 0.739703
+Test prop track: 70.5424 -1.59446 0.0415027 -1.60816 -0.00354953 0 
+Test mu: 89 1.58775 -1.72351 -1 
+CheckMatch: tketa -1.60816 tkphi -0.00354953 mueta 1.58775 muphi -1.72351 dR2_tk_mu 13.1721
+
+phisector sw2 1
+phisector sw6 2
+actual phi 2.25256
+Test prop track: 69.9958 1.59902 0.157962 1.61328 0.158768 0 
+Test mu: 56.5 -1.58775 1.37445 1 
+CheckMatch: tketa 1.61328 tkphi 0.158768 mueta -1.58775 muphi 1.37445 dR2_tk_mu 11.7245
+
+phisector sw6 2
+phisector sw3 1
+actual phi 1.10101
+Test prop track: 41.6104 1.87379 0.0537083 1.87948 0.061569 0 
+Test mu: 57 1.8705 2.11621 -1 
+CheckMatch: tketa 1.87948 tkphi 0.061569 mueta 1.8705 muphi 2.11621 dR2_tk_mu 4.22164
+
+phisector sw3 1
+phisector sw7 2
+actual phi 2.61401
+Test prop track: 43.2031 -1.88196 0.17031 -1.88713 0.119808 0 
+Test mu: 10 1.8705 2.13803 -1 
+CheckMatch: tketa -1.88713 tkphi 0.119808 mueta 1.8705 muphi 2.13803 dR2_tk_mu 18.193
+
+phisector sw7 2
+phisector sw2 2
+actual phi 0.869291
+Test prop track: 98.1464 0.924885 0.171091 0.925177 0.17456 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa 0.925177 tkphi 0.17456 mueta 0 muphi 0 dR2_tk_mu 0.886423
+
+phisector sw2 2
+phisector sw7 1
+actual phi 2.4993
+Test prop track: 83.6059 -0.92622 0.0556021 -0.92571 0.00410262 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -0.92571 tkphi 0.00410262 mueta 0 muphi 0 dR2_tk_mu 0.856955
-test prop track 4.40892 1.59065 0.222366 1.5861 0.569902 0 
-test mu 0 0 0 0 
-CheckMatch: tketa 1.5861 tkphi 0.569902 mueta 0 muphi 0 dR2_tk_mu 2.8405
-test prop track 4.44145 1.5975 0.222517 1.59201 0.565414 0 
-test mu 90.5 0.924375 1.77805 -1 
-CheckMatch: tketa 1.59201 tkphi 0.565414 mueta 0.924375 muphi 1.77805 dR2_tk_mu 1.91623
-test prop track 4.40032 -1.59674 0.335648 -1.59298 -0.0508633 0 
-test mu 140.5 -0.859125 -1.40717 1 
-CheckMatch: tketa -1.59298 tkphi -0.0508633 mueta -0.859125 muphi -1.40717 dR2_tk_mu 2.37812
-test prop track 4.38748 -1.60432 0.103591 -1.60119 -0.281694 0 
-test mu 47 1.62038 1.73442 -1 
-CheckMatch: tketa -1.60119 tkphi -0.281694 mueta 1.62038 muphi 1.73442 dR2_tk_mu 14.4432
-test prop track 78.5167 -0.155621 0.0702696 -0.151621 0.0168462 0 
-test mu 5 -1.653 -2.21439 1 
-CheckMatch: tketa -0.151621 tkphi 0.0168462 mueta -1.653 muphi -2.21439 dR2_tk_mu 7.23254
-test prop track 78.5167 0.153691 0.186625 0.157587 0.196415 0 
-test mu 93 -0.163125 2.09439 1 
-CheckMatch: tketa 0.157587 tkphi 0.196415 mueta -0.163125 muphi 2.09439 dR2_tk_mu 3.70518
-test prop track 40.8573 0.386769 0.052108 0.388056 0.0910312 0 
-test mu 111 0.163125 -0.992657 -1 
-CheckMatch: tketa 0.388056 tkphi 0.0910312 mueta 0.163125 muphi -0.992657 dR2_tk_mu 1.22497
-test prop track 39.9533 -0.397641 0.168302 -0.396063 0.0843713 0 
-test mu 38.5 0.41325 2.63981 -1 
-CheckMatch: tketa -0.396063 tkphi 0.0843713 mueta 0.41325 muphi 2.63981 dR2_tk_mu 7.18526
-test prop track 114.297 -0.174888 0.111379 -0.177092 0.0678499 0 
-test mu 40 -0.41325 -0.64359 1 
-CheckMatch: tketa -0.177092 tkphi 0.0678499 mueta -0.41325 muphi -0.64359 dR2_tk_mu 0.561918
-test prop track 122.02 0.167189 0.227924 0.165193 0.226446 0 
-test mu 126 -0.163125 1.21082 1 
-CheckMatch: tketa 0.165193 tkphi 0.226446 mueta -0.163125 muphi 1.21082 dR2_tk_mu 1.07679
-test prop track 57.5124 0.20558 0.17458 0.208501 0.195913 0 
-test mu 139.5 0.163125 -1.88714 -1 
-CheckMatch: tketa 0.208501 tkphi 0.195913 mueta 0.163125 muphi -1.88714 dR2_tk_mu 4.34116
-test prop track 56.434 -0.215134 0.0582723 -0.212114 -0.00751894 0 
-test mu 65 0.184875 2.73798 -1 
-CheckMatch: tketa -0.212114 tkphi -0.00751894 mueta 0.184875 muphi 2.73798 dR2_tk_mu 7.69539
-test prop track 58.2545 -0.713336 0.22121 -0.711316 0.156793 0 
-test mu 81.5 -0.184875 -0.490873 1 
-CheckMatch: tketa -0.711316 tkphi 0.156793 mueta -0.184875 muphi -0.490873 dR2_tk_mu 0.696611
-test prop track 59.7976 0.711792 0.104983 0.714067 0.124667 0 
-test mu 67 0.696 -0.130899 -1 
-CheckMatch: tketa 0.714067 tkphi 0.124667 mueta 0.696 muphi -0.130899 dR2_tk_mu 0.0656407
->>>> MATCH! <<<<
-test prop track 43.2031 -0.985101 0.113354 -0.992991 0.148979 0 
-test mu 0 0 0 0 
-CheckMatch: tketa -0.992991 tkphi 0.148979 mueta 0 muphi 0 dR2_tk_mu 1.00823
-test prop track 42.5917 0.983822 0.229903 0.975994 0.14982 0 
-test mu 40.5 0.97875 -2.67254 1 
-CheckMatch: tketa 0.975994 tkphi 0.14982 mueta 0.97875 muphi -2.67254 dR2_tk_mu 7.9657
-test prop track 64.0385 -1.38353 0.261459 -1.38692 0.270262 0 
-test mu 60.5 -0.859125 0.589049 -1 
-CheckMatch: tketa -1.38692 tkphi 0.270262 mueta -0.859125 muphi 0.589049 dR2_tk_mu 0.380197
-test prop track 148.024 0.725638 0.121184 0.732907 0.116133 0 
-test mu 90.5 1.31588 1.00356 1 
-CheckMatch: tketa 0.732907 tkphi 0.116133 mueta 1.31588 muphi 1.00356 dR2_tk_mu 1.12739
-test prop track 143.325 -0.724104 0.237549 -0.716661 0.198417 0 
-test mu 45.5 -1.31588 -2.08349 -1 
-CheckMatch: tketa -0.716661 tkphi 0.198417 mueta -1.31588 muphi -2.08349 dR2_tk_mu 5.56615
-test prop track 132.786 0.826474 0.194546 0.815283 0.15404 0 
-test mu 140 0.728625 1.49444 -1 
-CheckMatch: tketa 0.815283 tkphi 0.15404 mueta 0.728625 muphi 1.49444 dR2_tk_mu 1.80418
-test prop track 143.325 -0.830772 0.0784792 -0.842007 0.0739776 0 
-test mu 140 -0.728625 -1.69079 1 
-CheckMatch: tketa -0.842007 tkphi 0.0739776 mueta -0.728625 muphi -1.69079 dR2_tk_mu 3.12725
-test prop track 138.915 -0.346538 0.0598963 -0.353469 0.020215 0 
-test mu 140 0.80475 1.29809 1 
-CheckMatch: tketa -0.353469 tkphi 0.020215 mueta 0.80475 muphi 1.29809 dR2_tk_mu 2.97443
-test prop track 138.915 0.346538 0.17627 0.339407 0.172318 0 
-test mu 200.5 0.84825 1.29809 1 
-CheckMatch: tketa 0.339407 tkphi 0.172318 mueta 0.84825 muphi 1.29809 dR2_tk_mu 1.52628
-test prop track 99.2245 1.02792 0.201932 1.02758 0.155105 0 
-test mu 0 0 0 0 
+
+phisector sw7 1
+phisector sw2 0
+actual phi 0.920566
+Test prop track: 4.40892 1.59065 0.222366 1.5861 0.569902 0 
+Test mu: 90.5 0.924375 1.77805 -1 
+CheckMatch: tketa 1.5861 tkphi 0.569902 mueta 0.924375 muphi 1.77805 dR2_tk_mu 1.89751
+
+phisector sw2 0
+phisector sw2 0
+actual phi 0.920717
+Test prop track: 4.44145 1.5975 0.222517 1.59201 0.565414 0 
+Test mu: 140.5 -0.859125 -1.40717 1 
+CheckMatch: tketa 1.59201 tkphi 0.565414 mueta -0.859125 muphi -1.40717 dR2_tk_mu 9.89916
+
+phisector sw2 0
+phisector sw6 1
+actual phi 2.43025
+Test prop track: 4.40032 -1.59674 0.335648 -1.59298 -0.0508633 0 
+Test mu: 47 1.62038 1.73442 -1 
+CheckMatch: tketa -1.59298 tkphi -0.0508633 mueta 1.62038 muphi 1.73442 dR2_tk_mu 13.5129
+
+phisector sw6 1
+phisector sw6 2
+actual phi 2.19819
+Test prop track: 4.38748 -1.60432 0.103591 -1.60119 -0.281694 0 
+Test mu: 5 -1.653 -2.21439 1 
+CheckMatch: tketa -1.60119 tkphi -0.281694 mueta -1.653 muphi -2.21439 dR2_tk_mu 3.73798
+
+phisector sw6 2
+phisector sw3 1
+actual phi 1.11757
+Test prop track: 78.5167 -0.155621 0.0702696 -0.151621 0.0168462 0 
+Test mu: 93 -0.163125 2.09439 1 
+CheckMatch: tketa -0.151621 tkphi 0.0168462 mueta -0.163125 muphi 2.09439 dR2_tk_mu 4.31634
+
+phisector sw3 1
+phisector sw7 2
+actual phi 2.63033
+Test prop track: 78.5167 0.153691 0.186625 0.157587 0.196415 0 
+Test mu: 111 0.163125 -0.992657 -1 
+CheckMatch: tketa 0.157587 tkphi 0.196415 mueta 0.163125 muphi -0.992657 dR2_tk_mu 1.41392
+
+phisector sw7 2
+phisector sw4 0
+actual phi 1.44851
+Test prop track: 40.8573 0.386769 0.052108 0.388056 0.0910312 0 
+Test mu: 38.5 0.41325 2.63981 -1 
+CheckMatch: tketa 0.388056 tkphi 0.0910312 mueta 0.41325 muphi 2.63981 dR2_tk_mu 6.49691
+
+phisector sw4 0
+phisector sw8 1
+actual phi 2.9611
+Test prop track: 39.9533 -0.397641 0.168302 -0.396063 0.0843713 0 
+Test mu: 40 -0.41325 -0.64359 1 
+CheckMatch: tketa -0.396063 tkphi 0.0843713 mueta -0.41325 muphi -0.64359 dR2_tk_mu 0.530223
+
+phisector sw8 1
+phisector sw2 0
+actual phi 0.809579
+Test prop track: 114.297 -0.174888 0.111379 -0.177092 0.0678499 0 
+Test mu: 126 -0.163125 1.21082 1 
+CheckMatch: tketa -0.177092 tkphi 0.0678499 mueta -0.163125 muphi 1.21082 dR2_tk_mu 1.30658
+
+phisector sw2 0
+phisector sw6 1
+actual phi 2.32252
+Test prop track: 122.02 0.167189 0.227924 0.165193 0.226446 0 
+Test mu: 139.5 0.163125 -1.88714 -1 
+CheckMatch: tketa 0.165193 tkphi 0.226446 mueta 0.163125 muphi -1.88714 dR2_tk_mu 4.46724
+
+phisector sw6 1
+phisector sw4 0
+actual phi 1.57098
+Test prop track: 57.5124 0.20558 0.17458 0.208501 0.195913 0 
+Test mu: 65 0.184875 2.73798 -1 
+CheckMatch: tketa 0.208501 tkphi 0.195913 mueta 0.184875 muphi 2.73798 dR2_tk_mu 6.46269
+
+phisector sw4 0
+phisector sw8 2
+actual phi 2.85107
+Test prop track: 56.434 -0.215134 0.0582723 -0.212114 -0.00751894 0 
+Test mu: 81.5 -0.184875 -0.490873 1 
+CheckMatch: tketa -0.212114 tkphi -0.00751894 mueta -0.184875 muphi -0.490873 dR2_tk_mu 0.234373
+
+phisector sw8 2
+phisector sw4 1
+actual phi 1.61761
+Test prop track: 58.2545 -0.713336 0.22121 -0.711316 0.156793 0 
+Test mu: 67 0.696 -0.130899 -1 
+CheckMatch: tketa -0.711316 tkphi 0.156793 mueta 0.696 muphi -0.130899 dR2_tk_mu 2.0633
+
+phisector sw4 1
+phisector sw9 0
+actual phi 3.24688
+Test prop track: 59.7976 0.711792 0.104983 0.714067 0.124667 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa 0.714067 tkphi 0.124667 mueta 0 muphi 0 dR2_tk_mu 0.525434
+
+phisector sw9 0
+phisector sw1 0
+actual phi 0.462454
+Test prop track: 43.2031 -0.985101 0.113354 -0.992991 0.148979 0 
+Test mu: 40.5 0.97875 -2.67254 1 
+CheckMatch: tketa -0.992991 tkphi 0.148979 mueta 0.97875 muphi -2.67254 dR2_tk_mu 11.8487
+
+phisector sw1 0
+phisector sw5 1
+actual phi 1.9754
+Test prop track: 42.5917 0.983822 0.229903 0.975994 0.14982 0 
+Test mu: 60.5 -0.859125 0.589049 -1 
+CheckMatch: tketa 0.975994 tkphi 0.14982 mueta -0.859125 muphi 0.589049 dR2_tk_mu 3.56058
+
+phisector sw5 1
+phisector sw6 0
+actual phi 2.35606
+Test prop track: 64.0385 -1.38353 0.261459 -1.38692 0.270262 0 
+Test mu: 90.5 1.31588 1.00356 1 
+CheckMatch: tketa -1.38692 tkphi 0.270262 mueta 1.31588 muphi 1.00356 dR2_tk_mu 7.84285
+
+phisector sw6 0
+phisector sw2 1
+actual phi 0.819384
+Test prop track: 148.024 0.725638 0.121184 0.732907 0.116133 0 
+Test mu: 45.5 -1.31588 -2.08349 -1 
+CheckMatch: tketa 0.732907 tkphi 0.116133 mueta -1.31588 muphi -2.08349 dR2_tk_mu 9.03584
+
+phisector sw2 1
+phisector sw6 2
+actual phi 2.33215
+Test prop track: 143.325 -0.724104 0.237549 -0.716661 0.198417 0 
+Test mu: 140 0.728625 1.49444 -1 
+CheckMatch: tketa -0.716661 tkphi 0.198417 mueta 0.728625 muphi 1.49444 dR2_tk_mu 3.76852
+
+phisector sw6 2
+phisector sw2 0
+actual phi 0.892746
+Test prop track: 132.786 0.826474 0.194546 0.815283 0.15404 0 
+Test mu: 140 -0.728625 -1.69079 1 
+CheckMatch: tketa 0.815283 tkphi 0.15404 mueta -0.728625 muphi -1.69079 dR2_tk_mu 5.78704
+
+phisector sw2 0
+phisector sw6 2
+actual phi 2.17308
+Test prop track: 143.325 -0.830772 0.0784792 -0.842007 0.0739776 0 
+Test mu: 140 0.80475 1.29809 1 
+CheckMatch: tketa -0.842007 tkphi 0.0739776 mueta 0.80475 muphi 1.29809 dR2_tk_mu 4.21026
+
+phisector sw6 2
+phisector sw3 2
+actual phi 1.1072
+Test prop track: 138.915 -0.346538 0.0598963 -0.353469 0.020215 0 
+Test mu: 200.5 0.84825 1.29809 1 
+CheckMatch: tketa -0.353469 tkphi 0.020215 mueta 0.84825 muphi 1.29809 dR2_tk_mu 3.07709
+
+phisector sw3 2
+phisector sw8 0
+actual phi 2.96907
+Test prop track: 138.915 0.346538 0.17627 0.339407 0.172318 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa 0.339407 tkphi 0.172318 mueta 0 muphi 0 dR2_tk_mu 0.144891
+
+phisector sw8 0
+phisector sw2 1
+actual phi 0.900132
+Test prop track: 99.2245 1.02792 0.201932 1.02758 0.155105 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa 1.02758 tkphi 0.155105 mueta 0 muphi 0 dR2_tk_mu 1.07999
-test prop track 106.228 -1.03163 0.0853253 -1.03204 0.0868703 0 
-test mu 0 0 0 0 
-CheckMatch: tketa -1.03204 tkphi 0.0868703 mueta 0 muphi 0 dR2_tk_mu 1.07265
-test prop track 145.636 -0.512433 0.0587032 -0.504355 0.0539267 0 
-test mu 140 -0.36975 2.32347 1 
-CheckMatch: tketa -0.504355 tkphi 0.0539267 mueta -0.36975 muphi 2.32347 dR2_tk_mu 5.16895
-test prop track 141.085 0.510711 0.175148 0.518983 0.135742 0 
-test mu 140 0.36975 -0.785398 -1 
-CheckMatch: tketa 0.518983 tkphi 0.135742 mueta 0.36975 muphi -0.785398 dR2_tk_mu 0.870769
-test prop track 38.2604 1.73828 0.182946 1.73531 0.124097 0 
-test mu 100.5 1.0005 1.52716 1 
-CheckMatch: tketa 1.73531 tkphi 0.124097 mueta 1.0005 muphi 1.52716 dR2_tk_mu 2.50854
-test prop track 37.7801 1.73694 0.183178 1.73365 0.123798 0 
-test mu 5 -1.02225 -1.55989 -1 
-CheckMatch: tketa 1.73365 tkphi 0.123798 mueta -1.02225 muphi -1.55989 dR2_tk_mu 10.4298
-test prop track 38.0989 -1.74227 0.066534 -1.74032 0.081574 0 
-test mu 140 -0.511125 2.35619 -1 
-CheckMatch: tketa -1.74032 tkphi 0.081574 mueta -0.511125 muphi 2.35619 dR2_tk_mu 6.68482
-test prop track 30.5049 -0.955329 0.230973 -0.955258 0.290509 0 
-test mu 140 -0.489375 2.35619 -1 
-CheckMatch: tketa -0.955258 tkphi 0.290509 mueta -0.489375 muphi 2.35619 dR2_tk_mu 4.4841
-test prop track 29.8988 0.951396 0.114779 0.952112 0.00996036 0 
-test mu 41 1.74 2.65072 1 
-CheckMatch: tketa 0.952112 tkphi 0.00996036 mueta 1.74 muphi 2.65072 dR2_tk_mu 7.59437
-test prop track 27.7829 -2.28448 0.0469853 -2.28596 0.0552548 0 
-test mu 42 -1.76175 -0.403607 -1 
-CheckMatch: tketa -2.28596 tkphi 0.0552548 mueta -1.76175 muphi -0.403607 dR2_tk_mu 0.485355
-test prop track 27.613 2.28133 0.162469 2.28234 0.110365 0 
-test mu 14.5 0.97875 -2.80344 1 
-CheckMatch: tketa 2.28234 tkphi 0.110365 mueta 0.97875 muphi -2.80344 dR2_tk_mu 10.1896
-test prop track 114.297 0.0877778 0.125673 0.100619 0.125569 0 
-test mu 40.5 -0.97875 0.490874 -1 
-CheckMatch: tketa 0.100619 tkphi 0.125569 mueta -0.97875 muphi 0.490874 dR2_tk_mu 1.29849
-test prop track 115.762 -0.0936132 0.242038 -0.0805667 0.198784 0 
-test mu 50 2.28375 -1.76715 1 
-CheckMatch: tketa -0.0805667 tkphi 0.198784 mueta 2.28375 muphi -1.76715 dR2_tk_mu 9.45487
-test prop track 23.5756 -1.09548 0.142689 -1.09324 0.0156083 0 
-test mu 63.5 -2.262 1.42899 -1 
-CheckMatch: tketa -1.09324 tkphi 0.0156083 mueta -2.262 muphi 1.42899 dR2_tk_mu 3.36365
-test prop track 23.3923 1.09431 0.258916 1.09649 0.343188 0 
-test mu 126 0.10875 1.9635 -1 
-CheckMatch: tketa 1.09649 tkphi 0.343188 mueta 0.10875 muphi 1.9635 dR2_tk_mu 3.60102
-test prop track 23.3923 1.09431 0.0262339 1.09649 0.110506 0 
-test mu 131 -0.054375 -1.22173 1 
-CheckMatch: tketa 1.09649 tkphi 0.110506 mueta -0.054375 muphi -1.22173 dR2_tk_mu 3.09934
-test prop track 57.1483 0.268255 0.0999218 0.264759 0.0346802 0 
-test mu 35.5 1.12013 -2.94524 -1 
-CheckMatch: tketa 0.264759 tkphi 0.0346802 mueta 1.12013 muphi -2.94524 dR2_tk_mu 9.61159
-test prop track 57.5124 -0.27014 0.21623 -0.273429 0.237563 0 
-test mu 25.5 -1.12013 -0.0109084 1 
-CheckMatch: tketa -0.273429 tkphi 0.237563 mueta -1.12013 muphi -0.0109084 dR2_tk_mu 0.778633
-test prop track 23.3319 -2.09234 0.0344057 -2.08811 0.0555435 0 
-test mu 54 0.261 0 1 
-CheckMatch: tketa -2.08811 tkphi 0.0555435 mueta 0.261 muphi 0 dR2_tk_mu 5.5214
-test prop track 23.5142 2.09802 0.150605 2.09389 0.0860344 0 
-test mu 72.5 -0.261 -3.04342 -1 
-CheckMatch: tketa 2.09389 tkphi 0.0860344 mueta -0.261 muphi -3.04342 dR2_tk_mu 15.339
-test prop track 75.8776 -1.09313 0.251942 -1.08568 0.197419 0 
-test mu 45 2.07713 -0.632681 1 
-CheckMatch: tketa -1.08568 tkphi 0.197419 mueta 2.07713 muphi -0.632681 dR2_tk_mu 10.6924
-test prop track 79.9063 1.09077 0.135748 1.09843 0.144989 0 
-test mu 27 -2.10975 2.59618 -1 
-CheckMatch: tketa 1.09843 tkphi 0.144989 mueta -2.10975 muphi 2.59618 dR2_tk_mu 16.3007
-test prop track 28.3055 0.169115 0.180034 0.176257 0.245892 0 
-test mu 140.5 1.12013 -2.44346 -1 
-CheckMatch: tketa 0.176257 tkphi 0.245892 mueta 1.12013 muphi -2.44346 dR2_tk_mu 8.12351
-test prop track 28.3055 -0.178735 0.0634992 -0.172234 -0.0459917 0 
-test mu 100.5 -1.07662 0.64359 1 
-CheckMatch: tketa -0.172234 tkphi -0.0459917 mueta -1.07662 muphi 0.64359 dR2_tk_mu 1.29345
-test prop track 22.7442 -2.29622 0.192628 -2.3028 0.13429 0 
-test mu 29.5 0.184875 3.0216 -1 
-CheckMatch: tketa -2.3028 tkphi 0.13429 mueta 0.184875 muphi 3.0216 dR2_tk_mu 14.5251
-test prop track 21.7054 2.29193 0.0769831 2.29839 0.0930889 0 
-test mu 35 -0.163125 -0.305432 1 
-CheckMatch: tketa 2.29839 tkphi 0.0930889 mueta -0.163125 muphi -0.305432 dR2_tk_mu 6.21788
-test prop track 15.1247 0.819283 0.212347 0.81944 0.0264503 0 
-test mu 0 0 0 0 
+
+phisector sw2 1
+phisector sw7 0
+actual phi 2.52903
+Test prop track: 106.228 -1.03163 0.0853253 -1.03204 0.0868703 0 
+Test mu: 140 -0.36975 2.32347 1 
+CheckMatch: tketa -1.03204 tkphi 0.0868703 mueta -0.36975 muphi 2.32347 dR2_tk_mu 5.441
+
+phisector sw7 0
+phisector sw3 2
+actual phi 1.106
+Test prop track: 145.636 -0.512433 0.0587032 -0.504355 0.0539267 0 
+Test mu: 140 0.36975 -0.785398 -1 
+CheckMatch: tketa -0.504355 tkphi 0.0539267 mueta 0.36975 muphi -0.785398 dR2_tk_mu 1.46853
+
+phisector sw3 2
+phisector sw8 0
+actual phi 2.96795
+Test prop track: 141.085 0.510711 0.175148 0.518983 0.135742 0 
+Test mu: 100.5 1.0005 1.52716 1 
+CheckMatch: tketa 0.518983 tkphi 0.135742 mueta 1.0005 muphi 1.52716 dR2_tk_mu 2.16791
+
+phisector sw8 0
+phisector sw4 0
+actual phi 1.57935
+Test prop track: 38.2604 1.73828 0.182946 1.73531 0.124097 0 
+Test mu: 5 -1.02225 -1.55989 -1 
+CheckMatch: tketa 1.73531 tkphi 0.124097 mueta -1.02225 muphi -1.55989 dR2_tk_mu 10.4399
+
+phisector sw4 0
+phisector sw4 0
+actual phi 1.57958
+Test prop track: 37.7801 1.73694 0.183178 1.73365 0.123798 0 
+Test mu: 140 -0.511125 2.35619 -1 
+CheckMatch: tketa 1.73365 tkphi 0.123798 mueta -0.511125 muphi 2.35619 dR2_tk_mu 10.0226
+
+phisector sw4 0
+phisector sw8 2
+actual phi 2.85933
+Test prop track: 38.0989 -1.74227 0.066534 -1.74032 0.081574 0 
+Test mu: 140 -0.489375 2.35619 -1 
+CheckMatch: tketa -1.74032 tkphi 0.081574 mueta -0.489375 muphi 2.35619 dR2_tk_mu 6.73876
+
+phisector sw8 2
+phisector sw0 2
+actual phi 0.230973
+Test prop track: 30.5049 -0.955329 0.230973 -0.955258 0.290509 0 
+Test mu: 41 1.74 2.65072 1 
+CheckMatch: tketa -0.955258 tkphi 0.290509 mueta 1.74 muphi 2.65072 dR2_tk_mu 12.835
+
+phisector sw0 2
+phisector sw5 1
+actual phi 1.86028
+Test prop track: 29.8988 0.951396 0.114779 0.952112 0.00996036 0 
+Test mu: 42 -1.76175 -0.403607 -1 
+CheckMatch: tketa 0.952112 tkphi 0.00996036 mueta -1.76175 muphi -0.403607 dR2_tk_mu 7.53608
+
+phisector sw5 1
+phisector sw2 1
+actual phi 0.745185
+Test prop track: 27.7829 -2.28448 0.0469853 -2.28596 0.0552548 0 
+Test mu: 14.5 0.97875 -2.80344 1 
+CheckMatch: tketa -2.28596 tkphi 0.0552548 mueta 0.97875 muphi -2.80344 dR2_tk_mu 18.8305
+
+phisector sw2 1
+phisector sw6 2
+actual phi 2.25707
+Test prop track: 27.613 2.28133 0.162469 2.28234 0.110365 0 
+Test mu: 40.5 -0.97875 0.490874 -1 
+CheckMatch: tketa 2.28234 tkphi 0.110365 mueta -0.97875 muphi 0.490874 dR2_tk_mu 10.7795
+
+phisector sw6 2
+phisector sw3 0
+actual phi 1.17297
+Test prop track: 114.297 0.0877778 0.125673 0.100619 0.125569 0 
+Test mu: 50 2.28375 -1.76715 1 
+CheckMatch: tketa 0.100619 tkphi 0.125569 mueta 2.28375 muphi -1.76715 dR2_tk_mu 8.34843
+
+phisector sw3 0
+phisector sw7 1
+actual phi 2.68574
+Test prop track: 115.762 -0.0936132 0.242038 -0.0805667 0.198784 0 
+Test mu: 63.5 -2.262 1.42899 -1 
+CheckMatch: tketa -0.0805667 tkphi 0.198784 mueta -2.262 muphi 1.42899 dR2_tk_mu 6.27205
+
+phisector sw7 1
+phisector sw0 1
+actual phi 0.142689
+Test prop track: 23.5756 -1.09548 0.142689 -1.09324 0.0156083 0 
+Test mu: 126 0.10875 1.9635 -1 
+CheckMatch: tketa -1.09324 tkphi 0.0156083 mueta 0.10875 muphi 1.9635 dR2_tk_mu 5.23904
+
+phisector sw0 1
+phisector sw4 2
+actual phi 1.65532
+Test prop track: 23.3923 1.09431 0.258916 1.09649 0.343188 0 
+Test mu: 131 -0.054375 -1.22173 1 
+CheckMatch: tketa 1.09649 tkphi 0.343188 mueta -0.054375 muphi -1.22173 dR2_tk_mu 3.77346
+
+phisector sw4 2
+phisector sw5 0
+actual phi 1.77173
+Test prop track: 23.3923 1.09431 0.0262339 1.09649 0.110506 0 
+Test mu: 35.5 1.12013 -2.94524 -1 
+CheckMatch: tketa 1.09649 tkphi 0.110506 mueta 1.12013 muphi -2.94524 dR2_tk_mu 9.33816
+
+phisector sw5 0
+phisector sw0 1
+actual phi 0.0999218
+Test prop track: 57.1483 0.268255 0.0999218 0.264759 0.0346802 0 
+Test mu: 25.5 -1.12013 -0.0109084 1 
+CheckMatch: tketa 0.264759 tkphi 0.0346802 mueta -1.12013 muphi -0.0109084 dR2_tk_mu 1.91998
+
+phisector sw0 1
+phisector sw4 2
+actual phi 1.61263
+Test prop track: 57.5124 -0.27014 0.21623 -0.273429 0.237563 0 
+Test mu: 54 0.261 0 1 
+CheckMatch: tketa -0.273429 tkphi 0.237563 mueta 0.261 muphi 0 dR2_tk_mu 0.34205
+
+phisector sw4 2
+phisector sw4 0
+actual phi 1.43081
+Test prop track: 23.3319 -2.09234 0.0344057 -2.08811 0.0555435 0 
+Test mu: 72.5 -0.261 -3.04342 -1 
+CheckMatch: tketa -2.08811 tkphi 0.0555435 mueta -0.261 muphi -3.04342 dR2_tk_mu 12.9419
+
+phisector sw4 0
+phisector sw8 1
+actual phi 2.9434
+Test prop track: 23.5142 2.09802 0.150605 2.09389 0.0860344 0 
+Test mu: 45 2.07713 -0.632681 1 
+CheckMatch: tketa 2.09389 tkphi 0.0860344 mueta 2.07713 muphi -0.632681 dR2_tk_mu 0.516833
+
+phisector sw8 1
+phisector sw1 0
+actual phi 0.601042
+Test prop track: 75.8776 -1.09313 0.251942 -1.08568 0.197419 0 
+Test mu: 27 -2.10975 2.59618 -1 
+CheckMatch: tketa -1.08568 tkphi 0.197419 mueta -2.10975 muphi 2.59618 dR2_tk_mu 6.80275
+
+phisector sw1 0
+phisector sw5 2
+actual phi 1.88125
+Test prop track: 79.9063 1.09077 0.135748 1.09843 0.144989 0 
+Test mu: 140.5 1.12013 -2.44346 -1 
+CheckMatch: tketa 1.09843 tkphi 0.144989 mueta 1.12013 muphi -2.44346 dR2_tk_mu 6.70054
+
+phisector sw5 2
+phisector sw4 1
+actual phi 1.57643
+Test prop track: 28.3055 0.169115 0.180034 0.176257 0.245892 0 
+Test mu: 100.5 -1.07662 0.64359 1 
+CheckMatch: tketa 0.176257 tkphi 0.245892 mueta -1.07662 muphi 0.64359 dR2_tk_mu 1.72788
+
+phisector sw4 1
+phisector sw9 0
+actual phi 3.2054
+Test prop track: 28.3055 -0.178735 0.0634992 -0.172234 -0.0459917 0 
+Test mu: 29.5 0.184875 3.0216 -1 
+CheckMatch: tketa -0.172234 tkphi -0.0459917 mueta 0.184875 muphi 3.0216 dR2_tk_mu 9.53765
+
+phisector sw9 0
+phisector sw2 0
+actual phi 0.890828
+Test prop track: 22.7442 -2.29622 0.192628 -2.3028 0.13429 0 
+Test mu: 35 -0.163125 -0.305432 1 
+CheckMatch: tketa -2.3028 tkphi 0.13429 mueta -0.163125 muphi -0.305432 dR2_tk_mu 4.77156
+
+phisector sw2 0
+phisector sw6 2
+actual phi 2.17158
+Test prop track: 21.7054 2.29193 0.0769831 2.29839 0.0930889 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa 2.29839 tkphi 0.0930889 mueta 0 muphi 0 dR2_tk_mu 5.29126
+
+phisector sw6 2
+phisector sw3 2
+actual phi 1.25965
+Test prop track: 15.1247 0.819283 0.212347 0.81944 0.0264503 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa 0.81944 tkphi 0.0264503 mueta 0 muphi 0 dR2_tk_mu 0.672181
-test prop track 15.5145 -0.823602 0.0963283 -0.82321 0.234469 0 
-test mu 0 0 0 0 
+
+phisector sw3 2
+phisector sw8 1
+actual phi 2.88913
+Test prop track: 15.5145 -0.823602 0.0963283 -0.82321 0.234469 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -0.82321 tkphi 0.234469 mueta 0 muphi 0 dR2_tk_mu 0.73265
-test prop track 5.81793 -2.14103 0.117747 -2.13773 -0.0685341 0 
-test mu 0 0 0 0 
+
+phisector sw8 1
+phisector sw1 2
+actual phi 0.466847
+Test prop track: 5.81793 -2.14103 0.117747 -2.13773 -0.0685341 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -2.13773 tkphi -0.0685341 mueta 0 muphi 0 dR2_tk_mu 4.57458
-test prop track 5.79183 2.14283 0.236157 2.14023 0.380259 0 
-test mu 0 0 0 0 
-CheckMatch: tketa 2.14023 tkphi 0.380259 mueta 0 muphi 0 dR2_tk_mu 4.72516
-test prop track 5.70402 2.14419 0.00364557 2.14138 0.150115 0 
-test mu 29.5 2.3055 -1.78896 -1 
-CheckMatch: tketa 2.14138 tkphi 0.150115 mueta 2.3055 muphi -1.78896 dR2_tk_mu 3.78695
-test prop track 34.0734 -1.23733 0.0845394 -1.23111 0.127293 0 
-test mu 38.5 -2.31638 1.26536 1 
-CheckMatch: tketa -1.23111 tkphi 0.127293 mueta -2.31638 muphi 1.26536 dR2_tk_mu 2.473
-test prop track 33.9453 1.23419 0.200293 1.2283 0.112552 0 
-test mu 17.5 -0.84825 -0.479966 -1 
-CheckMatch: tketa 1.2283 tkphi 0.112552 mueta -0.84825 muphi -0.479966 dR2_tk_mu 4.66315
-test prop track 5.4957 -2.33216 0.243837 -2.32877 0.366452 0 
-test mu 16.5 0.84825 2.32347 1 
-CheckMatch: tketa -2.32877 tkphi 0.366452 mueta 0.84825 muphi 2.32347 dR2_tk_mu 13.9234
-test prop track 5.43616 -2.33367 0.0107237 -2.33027 0.134705 0 
-test mu 0 0 0 0 
+
+phisector sw1 2
+phisector sw6 0
+actual phi 2.33076
+Test prop track: 5.79183 2.14283 0.236157 2.14023 0.380259 0 
+Test mu: 29.5 2.3055 -1.78896 -1 
+CheckMatch: tketa 2.14023 tkphi 0.380259 mueta 2.3055 muphi -1.78896 dR2_tk_mu 4.73284
+
+phisector sw6 0
+phisector sw6 1
+actual phi 2.09825
+Test prop track: 5.70402 2.14419 0.00364557 2.14138 0.150115 0 
+Test mu: 38.5 -2.31638 1.26536 1 
+CheckMatch: tketa 2.14138 tkphi 0.150115 mueta -2.31638 muphi 1.26536 dR2_tk_mu 21.1154
+
+phisector sw6 1
+phisector sw4 1
+actual phi 1.48094
+Test prop track: 34.0734 -1.23733 0.0845394 -1.23111 0.127293 0 
+Test mu: 17.5 -0.84825 -0.479966 -1 
+CheckMatch: tketa -1.23111 tkphi 0.127293 mueta -0.84825 muphi -0.479966 dR2_tk_mu 0.515346
+
+phisector sw4 1
+phisector sw8 2
+actual phi 2.99309
+Test prop track: 33.9453 1.23419 0.200293 1.2283 0.112552 0 
+Test mu: 16.5 0.84825 2.32347 1 
+CheckMatch: tketa 1.2283 tkphi 0.112552 mueta 0.84825 muphi 2.32347 dR2_tk_mu 5.0326
+
+phisector sw8 2
+phisector sw3 0
+actual phi 1.29114
+Test prop track: 5.4957 -2.33216 0.243837 -2.32877 0.366452 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa -2.32877 tkphi 0.366452 mueta 0 muphi 0 dR2_tk_mu 5.55746
+
+phisector sw3 0
+phisector sw3 1
+actual phi 1.05802
+Test prop track: 5.43616 -2.33367 0.0107237 -2.33027 0.134705 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -2.33027 tkphi 0.134705 mueta 0 muphi 0 dR2_tk_mu 5.44832
-test prop track 5.44928 2.33179 0.125185 2.32849 -0.0433447 0 
-test mu 0 0 0 0 
-CheckMatch: tketa 2.32849 tkphi -0.0433447 mueta 0 muphi 0 dR2_tk_mu 5.42372
-test prop track 164.172 -0.153691 0.0873848 -0.144005 0.0806844 0 
-test mu 8.5 2.14237 -1.99622 -1 
-CheckMatch: tketa -0.144005 tkphi 0.0806844 mueta 2.14237 muphi -1.99622 dR2_tk_mu 9.54107
-test prop track 153.041 0.153691 0.203679 0.163167 0.165647 0 
-test mu 8.5 2.14237 -1.9744 -1 
-CheckMatch: tketa 0.163167 tkphi 0.165647 mueta 2.14237 muphi -1.9744 dR2_tk_mu 8.49708
-test prop track 41.803 -1.55016 0.247549 -1.5456 0.265762 0 
-test mu 90.5 1.19625 -0.370882 1 
-CheckMatch: tketa -1.5456 tkphi 0.265762 mueta 1.19625 muphi -0.370882 dR2_tk_mu 7.92306
-test prop track 41.803 1.55254 0.130497 1.54733 0.0683089 0 
-test mu 30.5 -1.25063 2.90161 -1 
-CheckMatch: tketa 1.54733 tkphi 0.0683089 mueta -1.25063 muphi 2.90161 dR2_tk_mu 15.8562
-test prop track 37.9389 -2.29467 0.0592903 -2.29439 0.0156992 0 
-test mu 7 2.35987 -1.24355 1 
-CheckMatch: tketa -2.29439 tkphi 0.0156992 mueta 2.35987 muphi -1.24355 dR2_tk_mu 23.2479
-test prop track 34.8627 2.28762 0.17592 2.28688 0.177988 0 
-test mu 5.5 -2.33812 2.18166 -1 
-CheckMatch: tketa 2.28688 tkphi 0.177988 mueta -2.33812 muphi 2.18166 dR2_tk_mu 25.4054
-test prop track 35.8311 2.30475 0.176285 2.30071 0.177398 0 
-test mu 140 -0.163125 2.14894 -1 
-CheckMatch: tketa 2.30071 tkphi 0.177398 mueta -0.163125 muphi 2.14894 dR2_tk_mu 9.95746
-test prop track 44.9226 1.3024 0.139147 1.29697 0.164297 0 
-test mu 140 0.163125 -1.02538 1 
+
+phisector sw3 1
+phisector sw7 2
+actual phi 2.56888
+Test prop track: 5.44928 2.33179 0.125185 2.32849 -0.0433447 0 
+Test mu: 8.5 2.14237 -1.99622 -1 
+CheckMatch: tketa 2.32849 tkphi -0.0433447 mueta 2.14237 muphi -1.99622 dR2_tk_mu 3.84836
+
+phisector sw7 2
+phisector sw3 1
+actual phi 1.13468
+Test prop track: 164.172 -0.153691 0.0873848 -0.144005 0.0806844 0 
+Test mu: 8.5 2.14237 -1.9744 -1 
+CheckMatch: tketa -0.144005 tkphi 0.0806844 mueta 2.14237 muphi -1.9744 dR2_tk_mu 9.45092
+
+phisector sw3 1
+phisector sw7 2
+actual phi 2.64738
+Test prop track: 153.041 0.153691 0.203679 0.163167 0.165647 0 
+Test mu: 90.5 1.19625 -0.370882 1 
+CheckMatch: tketa 0.163167 tkphi 0.165647 mueta 1.19625 muphi -0.370882 dR2_tk_mu 1.35512
+
+phisector sw7 2
+phisector sw1 1
+actual phi 0.596649
+Test prop track: 41.803 -1.55016 0.247549 -1.5456 0.265762 0 
+Test mu: 30.5 -1.25063 2.90161 -1 
+CheckMatch: tketa -1.5456 tkphi 0.265762 mueta -1.25063 muphi 2.90161 dR2_tk_mu 7.0347
+
+phisector sw1 1
+phisector sw6 0
+actual phi 2.2251
+Test prop track: 41.803 1.55254 0.130497 1.54733 0.0683089 0 
+Test mu: 7 2.35987 -1.24355 1 
+CheckMatch: tketa 1.54733 tkphi 0.0683089 mueta 2.35987 muphi -1.24355 dR2_tk_mu 2.38119
+
+phisector sw6 0
+phisector sw4 0
+actual phi 1.45569
+Test prop track: 37.9389 -2.29467 0.0592903 -2.29439 0.0156992 0 
+Test mu: 5.5 -2.33812 2.18166 -1 
+CheckMatch: tketa -2.29439 tkphi 0.0156992 mueta -2.33812 muphi 2.18166 dR2_tk_mu 4.69331
+
+phisector sw4 0
+phisector sw8 1
+actual phi 2.96872
+Test prop track: 34.8627 2.28762 0.17592 2.28688 0.177988 0 
+Test mu: 140 -0.163125 2.14894 -1 
+CheckMatch: tketa 2.28688 tkphi 0.177988 mueta -0.163125 muphi 2.14894 dR2_tk_mu 9.88718
+
+phisector sw8 1
+phisector sw0 2
+actual phi 0.139147
+Test prop track: 44.9226 1.3024 0.139147 1.29697 0.164297 0 
+Test mu: 140 0.163125 -1.02538 1 
 CheckMatch: tketa 1.29697 tkphi 0.164297 mueta 0.163125 muphi -1.02538 dR2_tk_mu 2.70093
-test prop track 47.0283 -1.30832 0.25591 -1.30275 0.190024 0 
-test mu 30.5 1.31588 -2.27984 1 
+
+phisector sw0 2
+phisector sw5 0
+actual phi 2.00141
+Test prop track: 47.0283 -1.30832 0.25591 -1.30275 0.190024 0 
+Test mu: 30.5 1.31588 -2.27984 1 
 CheckMatch: tketa -1.30275 tkphi 0.190024 mueta 1.31588 muphi -2.27984 dR2_tk_mu 12.9574
-test prop track 114.297 1.23209 0.219198 1.22707 0.216975 0 
-test mu 44.5 1.53338 -2.29074 1 
+
+phisector sw5 0
+phisector sw1 0
+actual phi 0.568298
+Test prop track: 114.297 1.23209 0.219198 1.22707 0.216975 0 
+Test mu: 44.5 1.53338 -2.29074 1 
 CheckMatch: tketa 1.22707 tkphi 0.216975 mueta 1.53338 muphi -2.29074 dR2_tk_mu 6.38248
-test prop track 100.327 -1.23629 0.102886 -1.2309 0.0590992 0 
-test mu 42 2.28375 -0.545415 -1 
+
+phisector sw1 0
+phisector sw5 2
+actual phi 1.84839
+Test prop track: 100.327 -1.23629 0.102886 -1.2309 0.0590992 0 
+Test mu: 42 2.28375 -0.545415 -1 
 CheckMatch: tketa -1.2309 tkphi 0.0590992 mueta 2.28375 muphi -0.545415 dR2_tk_mu 12.7182
-test prop track 64.0385 1.38538 0.15942 1.38295 0.107067 0 
-test mu 30 -2.31638 2.55254 1 
+
+phisector sw5 2
+phisector sw1 1
+actual phi 0.50852
+Test prop track: 64.0385 1.38538 0.15942 1.38295 0.107067 0 
+Test mu: 30 -2.31638 2.55254 1 
 CheckMatch: tketa 1.38295 tkphi 0.107067 mueta -2.31638 muphi 2.55254 dR2_tk_mu 19.6654
-test prop track 60.6003 -1.38538 0.043548 -1.38312 0.0538298 0 
-test mu 45.5 1.25063 0.370882 -1 
+
+phisector sw1 1
+phisector sw6 0
+actual phi 2.13815
+Test prop track: 60.6003 -1.38538 0.043548 -1.38312 0.0538298 0 
+Test mu: 45.5 1.25063 0.370882 -1 
 CheckMatch: tketa -1.38312 tkphi 0.0538298 mueta 1.25063 muphi 0.370882 dR2_tk_mu 7.03714
-test prop track 22.24 -2.265 0.0594891 -2.26541 0.0759384 0 
-test mu 45.5 -1.25063 -2.85798 1 
+
+phisector sw6 0
+phisector sw3 2
+actual phi 1.10679
+Test prop track: 22.24 -2.265 0.0594891 -2.26541 0.0759384 0 
+Test mu: 45.5 -1.25063 -2.85798 1 
 CheckMatch: tketa -2.26541 tkphi 0.0759384 mueta -1.25063 muphi -2.85798 dR2_tk_mu 9.63764
-test prop track 23.0932 2.25937 0.176815 2.26045 0.117999 0 
-test mu 100.5 1.19625 0.665407 -1 
+
+phisector sw3 2
+phisector sw8 0
+actual phi 2.96962
+Test prop track: 23.0932 2.25937 0.176815 2.26045 0.117999 0 
+Test mu: 100.5 1.19625 0.665407 -1 
 CheckMatch: tketa 2.26045 tkphi 0.117999 mueta 1.19625 muphi 0.665407 dR2_tk_mu 1.43218
-test prop track 85.9949 -1.40814 0.0901214 -1.41722 0.0907599 0 
-test mu 200.5 -1.19625 -2.51982 1 
+
+phisector sw8 0
+phisector sw1 0
+actual phi 0.439221
+Test prop track: 85.9949 -1.40814 0.0901214 -1.41722 0.0907599 0 
+Test mu: 200.5 -1.19625 -2.51982 1 
 CheckMatch: tketa -1.41722 tkphi 0.0907599 mueta -1.19625 muphi -2.51982 dR2_tk_mu 6.86395
-test prop track 85.1833 1.40814 0.206647 1.41766 0.162632 0 
-test mu 30.5 1.31588 0.785398 1 
+
+phisector sw1 0
+phisector sw5 1
+actual phi 1.95215
+Test prop track: 85.1833 1.40814 0.206647 1.41766 0.162632 0 
+Test mu: 30.5 1.31588 0.785398 1 
 CheckMatch: tketa 1.41766 tkphi 0.162632 mueta 1.31588 muphi 0.785398 dR2_tk_mu 0.398199
-test prop track 120.393 0.895116 0.0880003 0.893773 0.0455706 0 
-test mu 45.5 -1.31588 -2.29074 -1 
+
+phisector sw5 1
+phisector sw2 2
+actual phi 0.7862
+Test prop track: 120.393 0.895116 0.0880003 0.893773 0.0455706 0 
+Test mu: 45.5 -1.31588 -2.29074 -1 
 CheckMatch: tketa 0.893773 tkphi 0.0455706 mueta -1.31588 muphi -2.29074 dR2_tk_mu 10.3409
-test prop track 125.409 -0.903299 0.204143 -0.904263 0.202115 0 
-test mu 58.5 2.25113 -0.83994 1 
+
+phisector sw2 2
+phisector sw7 0
+actual phi 2.64784
+Test prop track: 125.409 -0.903299 0.204143 -0.904263 0.202115 0 
+Test mu: 58.5 2.25113 -0.83994 1 
 CheckMatch: tketa -0.904263 tkphi 0.202115 mueta 2.25113 muphi -0.83994 dR2_tk_mu 11.0424
-test prop track 3.63212 2.05709 0.156253 2.04934 -0.154639 0 
-test mu 58.5 2.25113 -0.818123 1 
+
+phisector sw7 0
+phisector sw3 1
+actual phi 1.20355
+Test prop track: 3.63212 2.05709 0.156253 2.04934 -0.154639 0 
+Test mu: 58.5 2.25113 -0.818123 1 
 CheckMatch: tketa 2.04934 tkphi -0.154639 mueta 2.25113 muphi -0.818123 dR2_tk_mu 0.480927
-test prop track 3.51614 -2.05167 0.0451246 -2.04237 0.318255 0 
-test mu 0 0 0 0 
+
+phisector sw3 1
+phisector sw8 0
+actual phi 2.83792
+Test prop track: 3.51614 -2.05167 0.0451246 -2.04237 0.318255 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -2.04237 tkphi 0.318255 mueta 0 muphi 0 dR2_tk_mu 4.27258
-test prop track 120.393 0.733278 0.180981 0.737685 0.138551 0 
-test mu 0 0 0 0 
+
+phisector sw8 0
+phisector sw1 2
+actual phi 0.530081
+Test prop track: 120.393 0.733278 0.180981 0.737685 0.138551 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa 0.737685 tkphi 0.138551 mueta 0 muphi 0 dR2_tk_mu 0.563376
-test prop track 127.175 -0.734802 0.0646071 -0.730316 0.0623042 0 
-test mu 0 0 0 0 
+
+phisector sw1 2
+phisector sw6 1
+actual phi 2.15921
+Test prop track: 127.175 -0.734802 0.0646071 -0.730316 0.0623042 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -0.730316 tkphi 0.0623042 mueta 0 muphi 0 dR2_tk_mu 0.537243
-test prop track 101.454 0.652027 0.0747437 0.665385 0.077388 0 
-test mu 0 0 0 0 
+
+phisector sw6 1
+phisector sw2 2
+actual phi 0.772944
+Test prop track: 101.454 0.652027 0.0747437 0.665385 0.077388 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa 0.665385 tkphi 0.077388 mueta 0 muphi 0 dR2_tk_mu 0.448726
-test prop track 89.4005 -0.656822 0.190379 -0.643674 0.140803 0 
-test mu 0 0 0 0 
+
+phisector sw2 2
+phisector sw7 0
+actual phi 2.63408
+Test prop track: 89.4005 -0.656822 0.190379 -0.643674 0.140803 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -0.643674 tkphi 0.140803 mueta 0 muphi 0 dR2_tk_mu 0.434142
-test prop track 173.643 -0.035149 0.19848 -0.0410047 0.162372 0 
-test mu 0 0 0 0 
+
+phisector sw7 0
+phisector sw3 1
+actual phi 1.24578
+Test prop track: 173.643 -0.035149 0.19848 -0.0410047 0.162372 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -0.0410047 tkphi 0.162372 mueta 0 muphi 0 dR2_tk_mu 0.0280459
 >>>> MATCH! <<<<
-test prop track 167.212 0.0253879 0.0819401 0.0194239 0.0749649 0 
-test mu 0 0 0 0 
+
+phisector sw3 1
+phisector sw8 0
+actual phi 2.87474
+Test prop track: 167.212 0.0253879 0.0819401 0.0194239 0.0749649 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa 0.0194239 tkphi 0.0749649 mueta 0 muphi 0 dR2_tk_mu 0.00599702
 >>>> MATCH! <<<<
-test prop track 38.9201 -2.13558 0.207689 -2.13738 0.161027 0 
-test mu 0 0 0 0 
+
+phisector sw8 0
+phisector sw4 0
+actual phi 1.60409
+Test prop track: 38.9201 -2.13558 0.207689 -2.13738 0.161027 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -2.13738 tkphi 0.161027 mueta 0 muphi 0 dR2_tk_mu 4.59434
-test prop track 41.4195 2.13056 0.0918305 2.13453 0.0933354 0 
-test mu 45.5 -1.31588 0.534507 -1 
+
+phisector sw4 0
+phisector sw8 2
+actual phi 2.88463
+Test prop track: 41.4195 2.13056 0.0918305 2.13453 0.0933354 0 
+Test mu: 45.5 -1.31588 0.534507 -1 
 CheckMatch: tketa 2.13453 tkphi 0.0933354 mueta -1.31588 muphi 0.534507 dR2_tk_mu 12.0999
-test prop track 125.409 -0.853481 0.251838 -0.84941 0.24981 0 
-test mu 111.5 1.42463 -2.65072 1 
+
+phisector sw8 2
+phisector sw1 2
+actual phi 0.600938
+Test prop track: 125.409 -0.853481 0.251838 -0.84941 0.24981 0 
+Test mu: 111.5 1.42463 -2.65072 1 
 CheckMatch: tketa -0.84941 tkphi 0.24981 mueta 1.42463 muphi -2.65072 dR2_tk_mu 13.5843
-test prop track 120.393 0.853481 0.134938 0.857322 0.0925083 0 
-test mu 140 0.880875 1.64715 1 
+
+phisector sw1 2
+phisector sw6 1
+actual phi 2.22954
+Test prop track: 120.393 0.853481 0.134938 0.857322 0.0925083 0 
+Test mu: 140 0.880875 1.64715 1 
 CheckMatch: tketa 0.857322 tkphi 0.0925083 mueta 0.880875 muphi 1.64715 dR2_tk_mu 2.41748
-test prop track 69.9958 1.55016 0.233241 1.55376 0.235356 0 
-test mu 140 -0.880875 -1.45081 -1 
+
+phisector sw6 1
+phisector sw1 0
+actual phi 0.582341
+Test prop track: 69.9958 1.55016 0.233241 1.55376 0.235356 0 
+Test mu: 140 -0.880875 -1.45081 -1 
 CheckMatch: tketa 1.55376 tkphi 0.235356 mueta -0.880875 muphi -1.45081 dR2_tk_mu 8.7706
-test prop track 69.4571 -1.54459 0.116994 -1.5481 0.070748 0 
-test mu 5 2.03362 1.88714 1 
+
+phisector sw1 0
+phisector sw5 2
+actual phi 1.86249
+Test prop track: 69.4571 -1.54459 0.116994 -1.5481 0.070748 0 
+Test mu: 5 2.03362 1.88714 1 
 CheckMatch: tketa -1.5481 tkphi 0.070748 mueta 2.03362 muphi 1.88714 dR2_tk_mu 16.128
-test prop track 81.3466 1.22578 0.0579314 1.22156 0.0637653 0 
-test mu 5.5 -2.10975 -0.632681 -1 
+
+phisector sw5 2
+phisector sw1 1
+actual phi 0.407031
+Test prop track: 81.3466 1.22578 0.0579314 1.22156 0.0637653 0 
+Test mu: 5.5 -2.10975 -0.632681 -1 
 CheckMatch: tketa 1.22156 tkphi 0.0637653 mueta -2.10975 muphi -0.632681 dR2_tk_mu 11.5827
-test prop track 76.5209 -1.2226 0.174945 -1.21859 0.123943 0 
-test mu 140 0.76125 1.0472 1 
+
+phisector sw1 1
+phisector sw5 2
+actual phi 1.92044
+Test prop track: 76.5209 -1.2226 0.174945 -1.21859 0.123943 0 
+Test mu: 140 0.76125 1.0472 1 
 CheckMatch: tketa -1.21859 tkphi 0.123943 mueta 0.76125 muphi 1.0472 dR2_tk_mu 4.77216
-test prop track 136.81 0.377676 0.242535 0.379763 0.238858 0 
-test mu 139.5 -0.728625 -2.05076 -1 
+
+phisector sw5 2
+phisector sw1 2
+actual phi 0.591635
+Test prop track: 136.81 0.377676 0.242535 0.379763 0.238858 0 
+Test mu: 139.5 -0.728625 -2.05076 -1 
 CheckMatch: tketa 0.379763 tkphi 0.238858 mueta -0.728625 muphi -2.05076 dR2_tk_mu 6.47088
-test prop track 130.862 -0.372205 0.126042 -0.370513 0.0852613 0 
-test mu 0 0 0 0 
+
+phisector sw1 2
+phisector sw6 1
+actual phi 2.22064
+Test prop track: 130.862 -0.372205 0.126042 -0.370513 0.0852613 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -0.370513 tkphi 0.0852613 mueta 0 muphi 0 dR2_tk_mu 0.144549
->>>> MATCH! <<<<
-test prop track 75.8776 1.43926 0.131231 1.44 0.0849341 0 
-test mu 0 0 0 0 
+
+phisector sw6 1
+phisector sw1 2
+actual phi 0.480331
+Test prop track: 75.8776 1.43926 0.131231 1.44 0.0849341 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa 1.44 tkphi 0.0849341 mueta 0 muphi 0 dR2_tk_mu 2.08081
-test prop track 64.0385 -1.43751 0.248169 -1.43837 0.255456 0 
-test mu 111 0.685125 1.69079 -1 
+
+phisector sw1 2
+phisector sw6 0
+actual phi 2.34277
+Test prop track: 64.0385 -1.43751 0.248169 -1.43837 0.255456 0 
+Test mu: 111 0.685125 1.69079 -1 
 CheckMatch: tketa -1.43837 tkphi 0.255456 mueta 0.685125 muphi 1.69079 dR2_tk_mu 6.56939
-test prop track 6.39932 -1.43663 0.241427 -1.43749 0.51108 0 
-test mu 97 -0.641625 -1.51625 1 
-CheckMatch: tketa -1.43749 tkphi 0.51108 mueta -0.641625 muphi -1.51625 dR2_tk_mu 4.74349
-test prop track 127.175 -0.910084 0.168406 -0.917169 0.166103 0 
-test mu 0 0 0 0 
-CheckMatch: tketa -0.917169 tkphi 0.166103 mueta 0 muphi 0 dR2_tk_mu 0.868789
-test prop track 120.393 0.911434 0.0521127 0.904208 0.009683 0 
-test mu 0 0 0 0 
+
+phisector sw6 0
+phisector sw1 2
+actual phi 0.517506
+Test prop track: 127.175 -0.910084 0.168406 -0.917169 0.166103 0 
+Test mu: 97 -0.641625 -1.51625 1 
+CheckMatch: tketa -0.917169 tkphi 0.166103 mueta -0.641625 muphi -1.51625 dR2_tk_mu 2.90625
+
+phisector sw1 2
+phisector sw6 1
+actual phi 2.14671
+Test prop track: 120.393 0.911434 0.0521127 0.904208 0.009683 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa 0.904208 tkphi 0.009683 mueta 0 muphi 0 dR2_tk_mu 0.817686
-test prop track 5.12744 1.50067 0.0265559 1.5033 0.346826 0 
-test mu 140 -0.054375 2.2362 1 
-CheckMatch: tketa 1.5033 tkphi 0.346826 mueta -0.054375 muphi 2.2362 dR2_tk_mu 5.9961
-test prop track 5.12744 1.51141 0.0263996 1.51272 0.34385 0 
-test mu 140 0.054375 -0.883573 -1 
-CheckMatch: tketa 1.51272 tkphi 0.34385 mueta 0.054375 muphi -0.883573 dR2_tk_mu 3.63334
-test prop track 5.21031 -1.49735 0.140956 -1.49965 -0.220365 0 
-test mu 0 0 0 0 
-CheckMatch: tketa -1.49965 tkphi -0.220365 mueta 0 muphi 0 dR2_tk_mu 2.29751
-test prop track 5.26805 -1.48983 0.140331 -1.49114 -0.219187 0 
-test mu 0 0 0 0 
+
+phisector sw6 1
+phisector sw0 1
+actual phi 0.0265559
+Test prop track: 5.12744 1.50067 0.0265559 1.5033 0.346826 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa 1.5033 tkphi 0.346826 mueta 0 muphi 0 dR2_tk_mu 2.3802
+
+phisector sw0 1
+phisector sw0 1
+actual phi 0.0263996
+Test prop track: 5.12744 1.51141 0.0263996 1.51272 0.34385 0 
+Test mu: 140 -0.054375 2.2362 1 
+CheckMatch: tketa 1.51272 tkphi 0.34385 mueta -0.054375 muphi 2.2362 dR2_tk_mu 6.03679
+
+phisector sw0 1
+phisector sw4 2
+actual phi 1.53736
+Test prop track: 5.21031 -1.49735 0.140956 -1.49965 -0.220365 0 
+Test mu: 140 0.054375 -0.883573 -1 
+CheckMatch: tketa -1.49965 tkphi -0.220365 mueta 0.054375 muphi -0.883573 dR2_tk_mu 2.85484
+
+phisector sw4 2
+phisector sw4 2
+actual phi 1.53673
+Test prop track: 5.26805 -1.48983 0.140331 -1.49114 -0.219187 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -1.49114 tkphi -0.219187 mueta 0 muphi 0 dR2_tk_mu 2.27153
-test prop track 150.491 0.683746 0.216391 0.692831 0.178084 0 
-test mu 80 2.14237 -0.403607 -1 
-CheckMatch: tketa 0.692831 tkphi 0.178084 mueta 2.14237 muphi -0.403607 dR2_tk_mu 2.43954
-test prop track 153.041 -0.6806 0.0998697 -0.671327 0.0942687 0 
-test mu 62.5 -2.15325 2.69435 1 
-CheckMatch: tketa -0.671327 tkphi 0.0942687 mueta -2.15325 muphi 2.69435 dR2_tk_mu 8.95653
-test prop track 77.8401 -1.19584 0.116961 -1.19389 0.124556 0 
-test mu 140 -0.84825 1.15628 -1 
-CheckMatch: tketa -1.19389 tkphi 0.124556 mueta -0.84825 muphi 1.15628 dR2_tk_mu 1.18392
-test prop track 71.6625 1.19151 0.233283 1.18968 0.179258 0 
-test mu 140 0.84825 -2.02895 1 
-CheckMatch: tketa 1.18968 tkphi 0.179258 mueta 0.84825 muphi -2.02895 dR2_tk_mu 4.99273
-test prop track 21.8103 0.660011 0.125905 0.667572 0.217873 0 
-test mu 70.5 1.31588 0.676315 -1 
-CheckMatch: tketa 0.667572 tkphi 0.217873 mueta 1.31588 muphi 0.676315 dR2_tk_mu 0.630466
-test prop track 21.6534 -0.660011 0.242246 -0.652363 0.105821 0 
-test mu 45.5 -1.31588 -2.50891 1 
-CheckMatch: tketa -0.652363 tkphi 0.105821 mueta -1.31588 muphi -2.50891 dR2_tk_mu 7.27707
-test prop track 8.36832 -0.00195312 0.141273 -0.0106889 0.416011 0 
-test mu 200.5 1.19625 0.741765 -1 
-CheckMatch: tketa -0.0106889 tkphi 0.416011 mueta 1.19625 muphi 0.741765 dR2_tk_mu 1.56282
-test prop track 8.29912 -0.00390624 0.257022 -0.012855 -0.0638219 0 
-test mu 140.5 -1.19625 -2.45437 1 
-CheckMatch: tketa -0.012855 tkphi -0.0638219 mueta -1.19625 muphi -2.45437 dR2_tk_mu 7.11514
-test prop track 125.409 0.920862 0.138901 0.931114 0.136873 0 
-test mu 140 0.36975 1.14537 -1 
-CheckMatch: tketa 0.931114 tkphi 0.136873 mueta 0.36975 muphi 1.14537 dR2_tk_mu 1.3322
-test prop track 108.789 -0.923547 0.25519 -0.913389 0.210562 0 
-test mu 140 -0.36975 -2.02895 1 
-CheckMatch: tketa -0.913389 tkphi 0.210562 mueta -0.36975 muphi -2.02895 dR2_tk_mu 5.31093
-test prop track 9.34725 -2.28251 0.0931704 -2.2846 0.161007 0 
-test mu 5 1.31588 0.992656 -1 
-CheckMatch: tketa -2.2846 tkphi 0.161007 mueta 1.31588 muphi 0.992656 dR2_tk_mu 13.655
-test prop track 9.30871 2.28133 0.20936 2.28437 0.0978852 0 
-test mu 70.5 -1.31588 -2.0944 -1 
-CheckMatch: tketa 2.28437 tkphi 0.0978852 mueta -1.31588 muphi -2.0944 dR2_tk_mu 17.7679
-test prop track 6.87173 -1.7469 0.169065 -1.75039 -0.0573871 0 
-test mu 140 -0.89175 1.06901 -1 
-CheckMatch: tketa -1.75039 tkphi -0.0573871 mueta -0.89175 muphi 1.06901 dR2_tk_mu 2.00605
-test prop track 6.77885 1.77172 0.0532869 1.77257 0.233181 0 
-test mu 140 0.880875 -2.1053 1 
-CheckMatch: tketa 1.77257 tkphi 0.233181 mueta 0.880875 muphi -2.1053 dR2_tk_mu 6.26363
-test prop track 145.636 -0.0136715 0.0460857 -0.0256022 0.0413092 0 
-test mu 12.5 1.50075 0.327249 -1 
-CheckMatch: tketa -0.0256022 tkphi 0.0413092 mueta 1.50075 muphi 0.327249 dR2_tk_mu 2.41151
-test prop track 143.325 0.00585935 0.162668 -0.00617879 0.123536 0 
-test mu 0 0 0 0 
-CheckMatch: tketa -0.00617879 tkphi 0.123536 mueta 0 muphi 0 dR2_tk_mu 0.0152994
->>>> MATCH! <<<<
-test prop track 85.1833 1.03533 0.221996 1.03648 0.171046 0 
-test mu 0 0 0 0 
+
+phisector sw4 2
+phisector sw1 2
+actual phi 0.565491
+Test prop track: 150.491 0.683746 0.216391 0.692831 0.178084 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa 0.692831 tkphi 0.178084 mueta 0 muphi 0 dR2_tk_mu 0.511728
+
+phisector sw1 2
+phisector sw6 1
+actual phi 2.19447
+Test prop track: 153.041 -0.6806 0.0998697 -0.671327 0.0942687 0 
+Test mu: 80 2.14237 -0.403607 -1 
+CheckMatch: tketa -0.671327 tkphi 0.0942687 mueta 2.14237 muphi -0.403607 dR2_tk_mu 8.1648
+
+phisector sw6 1
+phisector sw0 1
+actual phi 0.116961
+Test prop track: 77.8401 -1.19584 0.116961 -1.19389 0.124556 0 
+Test mu: 62.5 -2.15325 2.69435 1 
+CheckMatch: tketa -1.19389 tkphi 0.124556 mueta -2.15325 muphi 2.69435 dR2_tk_mu 7.52422
+
+phisector sw0 1
+phisector sw4 2
+actual phi 1.62968
+Test prop track: 71.6625 1.19151 0.233283 1.18968 0.179258 0 
+Test mu: 140 -0.84825 1.15628 -1 
+CheckMatch: tketa 1.18968 tkphi 0.179258 mueta -0.84825 muphi 1.15628 dR2_tk_mu 5.10773
+
+phisector sw4 2
+phisector sw1 0
+actual phi 0.475005
+Test prop track: 21.8103 0.660011 0.125905 0.667572 0.217873 0 
+Test mu: 140 0.84825 -2.02895 1 
+CheckMatch: tketa 0.667572 tkphi 0.217873 mueta 0.84825 muphi -2.02895 dR2_tk_mu 5.08083
+
+phisector sw1 0
+phisector sw5 1
+actual phi 1.98775
+Test prop track: 21.6534 -0.660011 0.242246 -0.652363 0.105821 0 
+Test mu: 70.5 1.31588 0.676315 -1 
+CheckMatch: tketa -0.652363 tkphi 0.105821 mueta 1.31588 muphi 0.676315 dR2_tk_mu 4.19943
+
+phisector sw5 1
+phisector sw4 1
+actual phi 1.53767
+Test prop track: 8.36832 -0.00195312 0.141273 -0.0106889 0.416011 0 
+Test mu: 45.5 -1.31588 -2.50891 1 
+CheckMatch: tketa -0.0106889 tkphi 0.416011 mueta -1.31588 muphi -2.50891 dR2_tk_mu 10.2587
+
+phisector sw4 1
+phisector sw8 2
+actual phi 3.04982
+Test prop track: 8.29912 -0.00390624 0.257022 -0.012855 -0.0638219 0 
+Test mu: 200.5 1.19625 0.741765 -1 
+CheckMatch: tketa -0.012855 tkphi -0.0638219 mueta 1.19625 muphi 0.741765 dR2_tk_mu 2.11091
+
+phisector sw8 2
+phisector sw1 1
+actual phi 0.488001
+Test prop track: 125.409 0.920862 0.138901 0.931114 0.136873 0 
+Test mu: 140.5 -1.19625 -2.45437 1 
+CheckMatch: tketa 0.931114 tkphi 0.136873 mueta -1.19625 muphi -2.45437 dR2_tk_mu 11.2402
+
+phisector sw1 1
+phisector sw5 2
+actual phi 2.00069
+Test prop track: 108.789 -0.923547 0.25519 -0.913389 0.210562 0 
+Test mu: 140 0.36975 1.14537 -1 
+CheckMatch: tketa -0.913389 tkphi 0.210562 mueta 0.36975 muphi 1.14537 dR2_tk_mu 2.52031
+
+phisector sw5 2
+phisector sw2 2
+actual phi 0.79137
+Test prop track: 9.34725 -2.28251 0.0931704 -2.2846 0.161007 0 
+Test mu: 140 -0.36975 -2.02895 1 
+CheckMatch: tketa -2.2846 tkphi 0.161007 mueta -0.36975 muphi -2.02895 dR2_tk_mu 8.46254
+
+phisector sw2 2
+phisector sw7 0
+actual phi 2.65306
+Test prop track: 9.30871 2.28133 0.20936 2.28437 0.0978852 0 
+Test mu: 5 1.31588 0.992656 -1 
+CheckMatch: tketa 2.28437 tkphi 0.0978852 mueta 1.31588 muphi 0.992656 dR2_tk_mu 1.7386
+
+phisector sw7 0
+phisector sw0 2
+actual phi 0.169065
+Test prop track: 6.87173 -1.7469 0.169065 -1.75039 -0.0573871 0 
+Test mu: 70.5 -1.31588 -2.0944 -1 
+CheckMatch: tketa -1.75039 tkphi -0.0573871 mueta -1.31588 muphi -2.0944 dR2_tk_mu 4.33821
+
+phisector sw0 2
+phisector sw5 1
+actual phi 1.79879
+Test prop track: 6.77885 1.77172 0.0532869 1.77257 0.233181 0 
+Test mu: 140 -0.89175 1.06901 -1 
+CheckMatch: tketa 1.77257 tkphi 0.233181 mueta -0.89175 muphi 1.06901 dR2_tk_mu 7.79722
+
+phisector sw5 1
+phisector sw4 0
+actual phi 1.44249
+Test prop track: 145.636 -0.0136715 0.0460857 -0.0256022 0.0413092 0 
+Test mu: 140 0.880875 -2.1053 1 
+CheckMatch: tketa -0.0256022 tkphi 0.0413092 mueta 0.880875 muphi -2.1053 dR2_tk_mu 5.42964
+
+phisector sw4 0
+phisector sw8 1
+actual phi 2.95547
+Test prop track: 143.325 0.00585935 0.162668 -0.00617879 0.123536 0 
+Test mu: 12.5 1.50075 0.327249 -1 
+CheckMatch: tketa -0.00617879 tkphi 0.123536 mueta 1.50075 muphi 0.327249 dR2_tk_mu 2.31233
+
+phisector sw8 1
+phisector sw1 0
+actual phi 0.571096
+Test prop track: 85.1833 1.03533 0.221996 1.03648 0.171046 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa 1.03648 tkphi 0.171046 mueta 0 muphi 0 dR2_tk_mu 1.10354
-test prop track 95.0467 -1.04025 0.105461 -1.03905 0.109754 0 
-test mu 0 0 0 0 
+
+phisector sw1 0
+phisector sw5 2
+actual phi 1.85096
+Test prop track: 95.0467 -1.04025 0.105461 -1.03905 0.109754 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -1.03905 tkphi 0.109754 mueta 0 muphi 0 dR2_tk_mu 1.09166
-test prop track 12.7715 2.08232 0.197865 2.08199 0.0964369 0 
-test mu 0 0 0 0 
+
+phisector sw5 2
+phisector sw1 2
+actual phi 0.546965
+Test prop track: 12.7715 2.08232 0.197865 2.08199 0.0964369 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa 2.08199 tkphi 0.0964369 mueta 0 muphi 0 dR2_tk_mu 4.34398
-test prop track 12.3353 -2.08711 0.0810832 -2.08724 0.141295 0 
-test mu 0 0 0 0 
+
+phisector sw1 2
+phisector sw6 1
+actual phi 2.17568
+Test prop track: 12.3353 -2.08711 0.0810832 -2.08724 0.141295 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -2.08724 tkphi 0.141295 mueta 0 muphi 0 dR2_tk_mu 4.37653
-test prop track 3.06915 -1.26318 0.0547499 -1.26582 0.741588 0 
-test mu 140 0.685125 1.09083 1 
-CheckMatch: tketa -1.26582 tkphi 0.741588 mueta 0.685125 muphi 1.09083 dR2_tk_mu 3.92814
-test prop track 3.14505 1.26114 0.175513 1.26337 -0.535109 0 
-test mu 140 -0.6525 -2.01804 -1 
-CheckMatch: tketa 1.26337 tkphi -0.535109 mueta -0.6525 muphi -2.01804 dR2_tk_mu 5.86964
-test prop track 13.1817 2.30475 0.145103 2.3061 0.0613007 0 
-test mu 200.5 1.19625 -3.09796 -1 
-CheckMatch: tketa 2.3061 tkphi 0.0613007 mueta 1.19625 muphi -3.09796 dR2_tk_mu 11.2127
-test prop track 13.7226 -2.31091 0.0301683 -2.31178 0.0676706 0 
-test mu 140.5 -1.19625 0.109083 1 
-CheckMatch: tketa -2.31178 tkphi 0.0676706 mueta -1.19625 muphi 0.109083 dR2_tk_mu 1.24613
-test prop track 104.994 1.26625 0.0993111 1.26719 0.0980691 0 
-test mu 24 0.685125 0.665407 -1 
-CheckMatch: tketa 1.26719 tkphi 0.0980691 mueta 0.685125 muphi 0.665407 dR2_tk_mu 0.660668
-test prop track 100.327 -1.26625 0.215297 -1.26707 0.171904 0 
-test mu 22 -0.641625 -2.71617 1 
-CheckMatch: tketa -1.26707 tkphi 0.171904 mueta -0.641625 muphi -2.71617 dR2_tk_mu 8.73214
-test prop track 81.3466 0.56849 0.0467249 0.583931 -0.00559897 0 
-test mu 9 0.054375 -3.06523 -1 
-CheckMatch: tketa 0.583931 tkphi -0.00559897 mueta 0.054375 muphi -3.06523 dR2_tk_mu 9.6418
-test prop track 84.3876 -0.56849 0.163241 -0.553231 0.170832 0 
-test mu 8 0 -0.610865 1 
-CheckMatch: tketa -0.553231 tkphi 0.170832 mueta 0 muphi -0.610865 dR2_tk_mu 0.917116
-test prop track 53.4286 0.410268 0.257003 0.424796 0.188738 0 
-test mu 0 0 0 0 
-CheckMatch: tketa 0.424796 tkphi 0.188738 mueta 0 muphi 0 dR2_tk_mu 0.216073
-test prop track 53.7467 -0.417457 0.140487 -0.402775 0.164844 0 
-test mu 0 0 0 0 
+
+phisector sw6 1
+phisector sw4 0
+actual phi 1.45115
+Test prop track: 3.06915 -1.26318 0.0547499 -1.26582 0.741588 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa -1.26582 tkphi 0.741588 mueta 0 muphi 0 dR2_tk_mu 2.15224
+
+phisector sw4 0
+phisector sw8 1
+actual phi 2.96831
+Test prop track: 3.14505 1.26114 0.175513 1.26337 -0.535109 0 
+Test mu: 140 0.685125 1.09083 1 
+CheckMatch: tketa 1.26337 tkphi -0.535109 mueta 0.685125 muphi 1.09083 dR2_tk_mu 2.97805
+
+phisector sw8 1
+phisector sw3 2
+actual phi 1.1924
+Test prop track: 13.1817 2.30475 0.145103 2.3061 0.0613007 0 
+Test mu: 140 -0.6525 -2.01804 -1 
+CheckMatch: tketa 2.3061 tkphi 0.0613007 mueta -0.6525 muphi -2.01804 dR2_tk_mu 13.077
+
+phisector sw3 2
+phisector sw8 1
+actual phi 2.82297
+Test prop track: 13.7226 -2.31091 0.0301683 -2.31178 0.0676706 0 
+Test mu: 200.5 1.19625 -3.09796 -1 
+CheckMatch: tketa -2.31178 tkphi 0.0676706 mueta 1.19625 muphi -3.09796 dR2_tk_mu 22.3275
+
+phisector sw8 1
+phisector sw1 0
+actual phi 0.448411
+Test prop track: 104.994 1.26625 0.0993111 1.26719 0.0980691 0 
+Test mu: 140.5 -1.19625 0.109083 1 
+CheckMatch: tketa 1.26719 tkphi 0.0980691 mueta -1.19625 muphi 0.109083 dR2_tk_mu 6.06864
+
+phisector sw1 0
+phisector sw5 1
+actual phi 1.9608
+Test prop track: 100.327 -1.26625 0.215297 -1.26707 0.171904 0 
+Test mu: 24 0.685125 0.665407 -1 
+CheckMatch: tketa -1.26707 tkphi 0.171904 mueta 0.685125 muphi 0.665407 dR2_tk_mu 4.0546
+
+phisector sw5 1
+phisector sw1 0
+actual phi 0.395825
+Test prop track: 81.3466 0.56849 0.0467249 0.583931 -0.00559897 0 
+Test mu: 22 -0.641625 -2.71617 1 
+CheckMatch: tketa 0.583931 tkphi -0.00559897 mueta -0.641625 muphi -2.71617 dR2_tk_mu 8.84917
+
+phisector sw1 0
+phisector sw5 1
+actual phi 1.90874
+Test prop track: 84.3876 -0.56849 0.163241 -0.553231 0.170832 0 
+Test mu: 9 0.054375 -3.06523 -1 
+CheckMatch: tketa -0.553231 tkphi 0.170832 mueta 0.054375 muphi -3.06523 dR2_tk_mu 10.8413
+
+phisector sw5 1
+phisector sw0 1
+actual phi 0.257003
+Test prop track: 53.4286 0.410268 0.257003 0.424796 0.188738 0 
+Test mu: 8 0 -0.610865 1 
+CheckMatch: tketa 0.424796 tkphi 0.188738 mueta 0 muphi -0.610865 dR2_tk_mu 0.819817
+
+phisector sw0 1
+phisector sw5 0
+actual phi 1.88599
+Test prop track: 53.7467 -0.417457 0.140487 -0.402775 0.164844 0 
+Test mu: 0 0 0 0 
 CheckMatch: tketa -0.402775 tkphi 0.164844 mueta 0 muphi 0 dR2_tk_mu 0.189401
+
+phisector sw5 0
+phisector sw4 0
+actual phi 1.63765
+Test prop track: 3.29542 1.50564 0.241252 1.50783 -0.310696 0 
+Test mu: 0 0 0 0 
+CheckMatch: tketa 1.50783 tkphi -0.310696 mueta 0 muphi 0 dR2_tk_mu 2.37009
+
+phisector sw4 0
+phisector sw8 2
+actual phi 2.92058
+Test prop track: 3.23984 -1.51141 0.12778 -1.51303 0.644637 0 
+Test mu: 120.5 0.924375 0.818123 -1 
+CheckMatch: tketa -1.51303 tkphi 0.644637 mueta 0.924375 muphi 0.818123 dR2_tk_mu 5.97104
+
+phisector sw8 2
+phisector sw8 2
+actual phi 2.92067
+Test prop track: 3.248 -1.5015 0.12787 -1.50225 0.647697 0 
+Test mu: 140.5 -0.924375 -2.3671 1 
+CheckMatch: tketa -1.50225 tkphi 0.647697 mueta -0.924375 muphi -2.3671 dR2_tk_mu 9.42295
+
+phisector sw8 2
+phisector sw1 2
+actual phi 0.578941
+Test prop track: 17.7396 -0.0585603 0.229841 -0.0462235 0.0681302 0 
+Test mu: 15 2.28375 -1.54898 1 
+CheckMatch: tketa -0.0462235 tkphi 0.0681302 mueta 2.28375 muphi -1.54898 dR2_tk_mu 8.04382
+
+phisector sw1 2
+phisector sw6 1
+actual phi 2.20881
+Test prop track: 18.1314 0.0507594 0.114206 0.0634207 0.22926 0 
+Test mu: 14.5 -2.29463 1.75624 -1 
+CheckMatch: tketa 0.0634207 tkphi 0.22926 mueta -2.29463 muphi 1.75624 dR2_tk_mu 7.89204
+
+phisector sw6 1
+phisector sw1 0
+actual phi 0.5309
+Test prop track: 15.7858 1.73828 0.1818 1.74665 0.0713 0 
+Test mu: 7 1.7835 -2.55254 -1 
+CheckMatch: tketa 1.74665 tkphi 0.0713 mueta 1.7835 muphi -2.55254 dR2_tk_mu 6.88592
+
+phisector sw1 0
+phisector sw5 2
+actual phi 1.81036
+Test prop track: 15.7034 -1.7316 0.064858 -1.73981 0.134349 0 
+Test mu: 8 -1.77262 0.141808 1 
+CheckMatch: tketa -1.73981 tkphi 0.134349 mueta -1.77262 muphi 0.141808 dR2_tk_mu 0.00113242
 >>>> MATCH! <<<<
-test prop track 3.29542 1.50564 0.241252 1.50783 -0.310696 0 
-test mu 120.5 0.924375 0.818123 -1 
-CheckMatch: tketa 1.50783 tkphi -0.310696 mueta 0.924375 muphi 0.818123 dR2_tk_mu 1.61465
-test prop track 3.23984 -1.51141 0.12778 -1.51303 0.644637 0 
-test mu 140.5 -0.924375 -2.3671 1 
-CheckMatch: tketa -1.51303 tkphi 0.644637 mueta -0.924375 muphi -2.3671 dR2_tk_mu 9.41709
-test prop track 3.248 -1.5015 0.12787 -1.50225 0.647697 0 
-test mu 15 2.28375 -1.54898 1 
-CheckMatch: tketa -1.50225 tkphi 0.647697 mueta 2.28375 muphi -1.54898 dR2_tk_mu 19.1592
-test prop track 17.7396 -0.0585603 0.229841 -0.0462235 0.0681302 0 
-test mu 14.5 -2.29463 1.75624 -1 
-CheckMatch: tketa -0.0462235 tkphi 0.0681302 mueta -2.29463 muphi 1.75624 dR2_tk_mu 7.90502
-test prop track 18.1314 0.0507594 0.114206 0.0634207 0.22926 0 
-test mu 7 1.7835 -2.55254 -1 
-CheckMatch: tketa 0.0634207 tkphi 0.22926 mueta 1.7835 muphi -2.55254 dR2_tk_mu 10.6971
-test prop track 15.7858 1.73828 0.1818 1.74665 0.0713 0 
-test mu 8 -1.77262 0.141808 1 
-CheckMatch: tketa 1.74665 tkphi 0.0713 mueta -1.77262 muphi 0.141808 dR2_tk_mu 12.3902
-test prop track 15.7034 -1.7316 0.064858 -1.73981 0.134349 0 
-test mu 140 0 2.57436 -1 
-CheckMatch: tketa -1.73981 tkphi 0.134349 mueta 0 muphi 2.57436 dR2_tk_mu 8.9806
+
+phisector sw5 2
  Finished 
 INFO: [SIM 1] CSim done with 0 errors.
 INFO: [SIM 3] *************** CSIM finish ***************

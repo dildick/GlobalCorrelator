@@ -34,6 +34,8 @@ typedef ap_int<10> chisq_t;  // chi^2 (0 - 100; 0.1 steps)
 typedef ap_int<1> q_t;       // charge
 typedef ap_int<11> z0_t;     // z0  (1 mm over +/-14.9 cm)
 typedef ap_int<3> bx_t;     // z0  (1 mm over +/-14.9 cm)
+typedef ap_int<4> sector_t;     // 9 phi sectors --> 4 bits  
+typedef ap_int<2> subsector_t;     // 3 phi subsectors --> 2 bits  
 
 // before the decimal point, after the decimal point
 typedef ap_fixed<15,2> finvpt_t;  // inverse pt [1% at 100 GeV]
@@ -89,6 +91,8 @@ struct TrackObj_tkmu {
   int q;
   int VALID;
   int BX;
+  int sector;
+  int subsector;
   // constructor
   TrackObj_tkmu() :
     rinv(0),
@@ -99,7 +103,9 @@ struct TrackObj_tkmu {
     z0(0),
     q(0),
     VALID(0),
-    BX(0)
+    BX(0),
+    sector(0),
+    subsector(0)
   {
   }
 };
@@ -169,6 +175,8 @@ struct TkObj_tkmu {
     chisq_t hwX2;
     q_t VALID;   // VALID bit
     bx_t hwBX;    // bunch crossing 3-bit counter
+    sector_t hwSector;
+    subsector_t hwSubsector;
   // constructor
   TkObj_tkmu() : 
     hwRinv(0),
@@ -180,7 +188,9 @@ struct TkObj_tkmu {
     hwQ(0),
     hwX2(0),
     VALID(0),
-    hwBX(0)
+    hwBX(0),
+    hwSector(0),
+    hwSubsector(0)
   {
   }
 };

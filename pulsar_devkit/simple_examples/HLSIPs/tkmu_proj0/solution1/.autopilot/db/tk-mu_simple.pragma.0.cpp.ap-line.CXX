@@ -648,21 +648,21 @@
 #pragma line 952 "/usr/include/stdlib.h" 2 3 4 ::: 40575
 #pragma line 964 "/usr/include/stdlib.h" 3 4 ::: 40578
 #pragma line 26 "src/tk-mu_simple.h" 2 ::: 40580
-#pragma line 69 "src/tk-mu_simple.h" ::: 40615
-#pragma line 81 "src/tk-mu_simple.h" ::: 40617
-#pragma line 23 "src/tk-mu_simple.cpp" 2 ::: 41190
-#pragma line 1 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 1 3 ::: 41191
-#pragma line 41 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 3 ::: 41233
-#pragma line 50 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 3 ::: 41234
-#pragma line 76 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 3 ::: 41236
-#pragma line 480 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 3 ::: 41628
-#pragma line 730 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 3 ::: 41631
-#pragma line 24 "src/tk-mu_simple.cpp" 2 ::: 41745
-#pragma line 1 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cassert" 1 3 ::: 41746
-#pragma line 43 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cassert" 3 ::: 41790
-#pragma line 1 "/usr/include/assert.h" 1 3 4 ::: 41792
-#pragma line 44 "/usr/include/assert.h" 3 4 ::: 41814
-#pragma line 65 "/usr/include/assert.h" 3 4 ::: 41819
-#pragma line 98 "/usr/include/assert.h" 3 4 ::: 41840
-#pragma line 45 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cassert" 2 3 ::: 41846
-#pragma line 25 "src/tk-mu_simple.cpp" 2 ::: 41847
+#pragma line 71 "src/tk-mu_simple.h" ::: 40617
+#pragma line 83 "src/tk-mu_simple.h" ::: 40619
+#pragma line 23 "src/tk-mu_simple.cpp" 2 ::: 41200
+#pragma line 1 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 1 3 ::: 41201
+#pragma line 41 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 3 ::: 41243
+#pragma line 50 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 3 ::: 41244
+#pragma line 76 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 3 ::: 41246
+#pragma line 480 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 3 ::: 41638
+#pragma line 730 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cmath" 3 ::: 41641
+#pragma line 24 "src/tk-mu_simple.cpp" 2 ::: 41755
+#pragma line 1 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cassert" 1 3 ::: 41756
+#pragma line 43 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cassert" 3 ::: 41800
+#pragma line 1 "/usr/include/assert.h" 1 3 4 ::: 41802
+#pragma line 44 "/usr/include/assert.h" 3 4 ::: 41824
+#pragma line 65 "/usr/include/assert.h" 3 4 ::: 41829
+#pragma line 98 "/usr/include/assert.h" 3 4 ::: 41850
+#pragma line 45 "/opt/Xilinx/Vivado_HLS/2016.4/lnx64/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/cassert" 2 3 ::: 41856
+#pragma line 25 "src/tk-mu_simple.cpp" 2 ::: 41857
