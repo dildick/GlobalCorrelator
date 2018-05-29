@@ -5,8 +5,8 @@
   Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 ================================================================
 INFO: [HLS 200-10] Running '/opt/Xilinx/Vivado_HLS/2016.4/bin/unwrapped/lnx64.o/vivado_hls'
-INFO: [HLS 200-10] For user 'dildick' on host 'cmstca' (Linux_x86_64 version 3.10.0-693.21.1.el7.x86_64) on Wed May 16 10:41:07 CDT 2018
-INFO: [HLS 200-10] On os "CentOS Linux release 7.4.1708 (Core) "
+INFO: [HLS 200-10] For user 'dildick' on host 'cmstca' (Linux_x86_64 version 3.10.0-862.3.2.el7.x86_64) on Tue May 29 13:50:06 CDT 2018
+INFO: [HLS 200-10] On os "CentOS Linux release 7.5.1804 (Core) "
 INFO: [HLS 200-10] In directory '/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/src'
 run_hls_tkmu.tcl can't be opened.
 couldn't read file "run_hls_tkmu.tcl": no such file or directory

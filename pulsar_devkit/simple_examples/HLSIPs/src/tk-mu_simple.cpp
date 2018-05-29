@@ -31,6 +31,14 @@ Negative values in binary are generated assuming "One's complement"
 PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in)
 {
   PropTkObj_tkmu out;
+  // assign basic variables
+  out.hwRinv = in.hwRinv; 
+  out.hwPt   = in.hwPt; 
+  out.hwZ0   = in.hwZ0; 
+  out.hwQ    = in.hwQ; 
+  out.hwX2   = in.hwX2; 
+  out.VALID  = in.VALID; 
+  out.hwBX   = in.hwBX; 
 
     /* Hardware implementation of the track propagation */
     feta_t boundary(1.1);           // barrel/endcap boundary

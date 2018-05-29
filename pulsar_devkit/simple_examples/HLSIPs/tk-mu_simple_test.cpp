@@ -38,6 +38,8 @@ void split(const std::string &s,
 float rinv2pt(const float& rinv);
 float sinhEta2eta(const float& sinhEta);
 void isNegative( std::string& bit_value, bool& isNeg);
+float normalizePhi(float phi);
+
 
 int main() 
 {
@@ -224,6 +226,9 @@ void read_track_file( const std::string &file_name, std::vector<std::string> &va
             if (lineComment == 0) continue;
             if (lineComment != std::string::npos) newstring = line.substr(0,lineComment);
 
+	    // ignore all tracks starting with "01" for now
+	    if (line.substr(0,3) == "01 ") continue;
+
             // remove all white spaces at the end of the string
             std::size_t space_pos = newstring.rfind(" ");
             while ( space_pos != std::string::npos && space_pos == newstring.size()-1 ) {
@@ -261,38 +266,32 @@ void read_muon_file( const std::string &file_name, std::vector<std::string> &val
         while (std::getline(ifile, line)) {
             std::string newstring(line);
 
- 	    // if line starts with "Begin processing the" -- ignore
-	    if (newstring.find("Begin processing the") != std::string::npos) continue;
-	    
-	    // bool wantToProcess(false);
-	    
-	    // check if we want to process this line 
-	    for (int iC=0; iC < comments.size(); ++iC){
-	      // allow for comments
-	      std::size_t lineComment = line.find(comments[iC]);
+	    std::string muonType = newstring.substr(0,5);
+	    bool wantToProcess(false);
 
-	      if (lineComment == 0) continue;
-	      if (lineComment != std::string::npos) {
-		newstring = line.substr(0,lineComment);
-		// wantToProcess = true;
-		std::cout << "newstring " << std::endl;
+	    // check if we want to process this line 
+	    for (int iC = 0; iC < comments.size(); ++iC){
+	      // allow for comments
+	      if (comments[iC] == muonType){
+		wantToProcess = true;
+		break;
 	      }
 	    }
 	    
-	    // if (!wantToProcess) continue;
+	    if (!wantToProcess) continue;
 	    
             // remove all white spaces at the end of the string
-            std::size_t space_pos = newstring.rfind(" ");
+	    std::size_t space_pos = newstring.rfind(" ");
             while ( space_pos != std::string::npos && space_pos == newstring.size()-1 ) {
-                newstring = newstring.substr(0, newstring.rfind(" "));
-                space_pos = newstring.rfind(" ");
+	      newstring = newstring.substr(0, newstring.rfind(" "));
+	      space_pos = newstring.rfind(" ");
             }
 
             // ignore empty lines
             if(newstring.length()==0) continue;
 
             values.push_back(newstring); // put values into vector
-        }
+	}
 
         ifile.close();
     }
@@ -414,13 +413,7 @@ void decode_sw_muon_data(const std::string &data_sw, MuonObj_tkmu& in_muon_sw)
   in_muon_sw.pt  = std::atof(values_sw.at(1).c_str());
   in_muon_sw.eta = std::atof(values_sw.at(2).c_str());
   // keep in mind that muon phi is from 0 to 2pi
-  in_muon_sw.phi = std::atof(values_sw.at(3).c_str());
-  // normalize
-  if (in_muon_sw.phi <= -M_PI)
-    in_muon_sw.phi += 2*M_PI;
-  if (in_muon_sw.phi > M_PI)
-    in_muon_sw.phi -= 2*M_PI;
-  
+  in_muon_sw.phi = normalizePhi(std::atof(values_sw.at(3).c_str()));
   in_muon_sw.q   = std::atoi(values_sw.at(4).c_str());
 
   if (false){
@@ -464,11 +457,22 @@ void decode_hw_muon_data(const std::string &data_fw, MuObj_tkmu& in_muon_hw)
 
    third frame:
    B0  Empty
-   31   0                                                                                                                                                                                                        
-   fourth frame:                                                                                                                                              B1 phi H/F eta qual pT                                                                                                                                     31  30  22  21  12   8  0                                                                                                                                                                                     
-   fifth frame:                                                                                                                                               B2 track addresses VCH CH                                                                                                                                  31 30               1  0                                                                                                                                                                                      
-   sixth frame:                                                                                                                                               Empty                                                                                                                                                      31   0                                                                                                                                                    */
+   31   0                                                                                                                                                                                                   
+
+   fourth frame:                                                                                                                                              
+   B1 phi H/F eta qual pT                                                                                                                                     
+   31  30  22  21  12   8  0                                                                                                                                                                                
+   
+   fifth frame:                                                                                                                                             
+   B2 track addresses VCH CH                                                                                                                          
+   31 30               1  0                                                                                                                                                                                
+   
+   sixth frame:                                                                                                                               
+   Empty                                                                                                                                                    
+   31   0                    
+  */
   
+
   // it is slightly difference for the first muon than for the second muon
   // int B0, B1, B2, BX0, SE;
   std::string pt_str, eta_str, phi_str, q_str;
@@ -494,20 +498,16 @@ void decode_hw_muon_data(const std::string &data_fw, MuObj_tkmu& in_muon_hw)
 	      << " phi " << phi_str << " "
 	      << " q " << q_str << std::endl;
   }
-
-
-
-  // if (iMuon == 1){
-  //   B0 = std::atoi(frame3.at(0));
-  //   in_track_hw.hwPhi = std::bitset<19>(phi_str).to_ulong();   //std::stoi(values_fw.at(2).c_str(),NULL,2);
-  
-
-  // } else if (iMuon == 2) {
-
-  // } else {
-  //   std::cout << "Corrupted muon data format" << std::endl;
-  // }
 }
 
+float normalizePhi(float outPhi)
+{
+  float returnValue = outPhi;
+  if (returnValue <= -M_PI)
+    returnValue += 2*M_PI;
+  if (returnValue > M_PI)
+    returnValue -= 2*M_PI;
+  return returnValue;
+}
 
 // THE END

@@ -5,7 +5,7 @@
   Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 ================================================================
 INFO: [HLS 200-10] Running '/opt/Xilinx/Vivado_HLS/2016.4/bin/unwrapped/lnx64.o/vivado_hls'
-INFO: [HLS 200-10] For user 'dildick' on host 'cmstca' (Linux_x86_64 version 3.10.0-693.21.1.el7.x86_64) on Thu May 24 19:26:42 CDT 2018
+INFO: [HLS 200-10] For user 'dildick' on host 'cmstca' (Linux_x86_64 version 3.10.0-862.3.2.el7.x86_64) on Tue May 29 14:05:53 CDT 2018
 INFO: [HLS 200-10] On os "CentOS Linux release 7.5.1804 (Core) "
 INFO: [HLS 200-10] In directory '/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs'
 INFO: [HLS 200-10] Opening and resetting project '/data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/tkmu_proj0'.
@@ -23,254 +23,249 @@ INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
    Compiling ../../../../src/tk-mu_simple.cpp in debug mode
    Generating csim.exe
 test prop track 53.4286 -0.624604 0.105362 -0.627441 0.0370971 0 
-test mu 22 0 0 0 
-CheckMatch: tketa -0.627441 tkphi 0.0370971 mueta 0 muphi 0 dR2_tk_mu 0.395058
-test prop track 54.724 0.629474 0.221977 0.626467 0.245509 0 
-test mu 22 0 0 0 
-CheckMatch: tketa 0.626467 tkphi 0.245509 mueta 0 muphi 0 dR2_tk_mu 0.452736
-test prop track 3.84232 -2.06735 0.143228 -2.06346 0.388733 0 
 test mu 59 -0.6525 2.80344 1 
-CheckMatch: tketa -2.06346 tkphi 0.388733 mueta -0.6525 muphi 2.80344 dR2_tk_mu 7.8216
-test prop track 3.90209 2.0654 0.253457 2.06321 -0.0337443 0 
+CheckMatch: tketa -0.627441 tkphi 0.0370971 mueta -0.6525 muphi 2.80344 dR2_tk_mu 7.65325
+test prop track 54.724 0.629474 0.221977 0.626467 0.245509 0 
 test mu 57 0.641625 -0.239983 -1 
-CheckMatch: tketa 2.06321 tkphi -0.0337443 mueta 0.641625 muphi -0.239983 dR2_tk_mu 2.06343
-test prop track 42.1936 -1.69268 0.238709 -1.69229 0.181971 0 
+CheckMatch: tketa 0.626467 tkphi 0.245509 mueta 0.641625 muphi -0.239983 dR2_tk_mu 0.235933
+test prop track 3.84232 -2.06735 0.143228 -2.06346 0.388733 0 
 test mu 4.5 2.07713 -0.567232 1 
-CheckMatch: tketa -1.69229 tkphi 0.181971 mueta 2.07713 muphi -0.567232 dR2_tk_mu 14.7698
-test prop track 42.1936 1.6857 0.122832 1.68455 0.136223 0 
+CheckMatch: tketa -2.06346 tkphi 0.388733 mueta 2.07713 muphi -0.567232 dR2_tk_mu 18.0583
+test prop track 3.90209 2.0654 0.253457 2.06321 -0.0337443 0 
 test mu 4.5 -2.088 3.10887 -1 
-CheckMatch: tketa 1.68455 tkphi 0.136223 mueta -2.088 muphi 3.10887 dR2_tk_mu 23.0687
-test prop track 14.0209 -1.4198 0.244258 -1.42353 0.357919 0 
+CheckMatch: tketa 2.06321 tkphi -0.0337443 mueta -2.088 muphi 3.10887 dR2_tk_mu 27.1085
+test prop track 42.1936 -1.69268 0.238709 -1.69229 0.181971 0 
 test mu 63 1.67475 -0.359974 -1 
-CheckMatch: tketa -1.42353 tkphi 0.357919 mueta 1.67475 muphi -0.359974 dR2_tk_mu 10.1147
-test prop track 13.8276 1.4198 0.126463 1.42362 -0.0315651 0 
+CheckMatch: tketa -1.69229 tkphi 0.181971 mueta 1.67475 muphi -0.359974 dR2_tk_mu 11.6307
+test prop track 42.1936 1.6857 0.122832 1.68455 0.136223 0 
 test mu 46 -1.70738 2.71617 1 
-CheckMatch: tketa 1.42362 tkphi -0.0315651 mueta -1.70738 muphi 2.71617 dR2_tk_mu 17.3532
+CheckMatch: tketa 1.68455 tkphi 0.136223 mueta -1.70738 muphi 2.71617 dR2_tk_mu 18.1613
+test prop track 14.0209 -1.4198 0.244258 -1.42353 0.357919 0 
+test mu 0 0 0 0 
+CheckMatch: tketa -1.42353 tkphi 0.357919 mueta 0 muphi 0 dR2_tk_mu 2.15454
+test prop track 13.8276 1.4198 0.126463 1.42362 -0.0315651 0 
+test mu 0 0 0 0 
+CheckMatch: tketa 1.42362 tkphi -0.0315651 mueta 0 muphi 0 dR2_tk_mu 2.02769
 test prop track 53.1144 -0.0624594 0.157531 -0.0589506 0.0889914 0 
-test mu 0 0 0 0 
-CheckMatch: tketa -0.0589506 tkphi 0.0889914 mueta 0 muphi 0 dR2_tk_mu 0.0113946
->>>> MATCH! <<<<
-test prop track 54.724 0.0585603 0.0412376 0.0616445 0.0647697 0 
-test mu 0 0 0 0 
-CheckMatch: tketa 0.0616445 tkphi 0.0647697 mueta 0 muphi 0 dR2_tk_mu 0.00799516
->>>> MATCH! <<<<
-test prop track 77.1746 1.31617 0.0840754 1.31302 0.0353155 0 
 test mu 12.5 1.31588 -0.981748 1 
-CheckMatch: tketa 1.31302 tkphi 0.0353155 mueta 1.31588 muphi -0.981748 dR2_tk_mu 1.03443
-test prop track 90.2942 -1.32104 0.200596 -1.31804 0.201549 0 
+CheckMatch: tketa -0.0589506 tkphi 0.0889914 mueta 1.31588 muphi -0.981748 dR2_tk_mu 3.03663
+test prop track 54.724 0.0585603 0.0412376 0.0616445 0.0647697 0 
 test mu 16.5 -1.31588 2.42164 -1 
-CheckMatch: tketa -1.31804 tkphi 0.201549 mueta -1.31588 muphi 2.42164 dR2_tk_mu 4.92883
-test prop track 132.786 -0.973535 0.0958691 -0.971774 0.0553633 0 
+CheckMatch: tketa 0.0616445 tkphi 0.0647697 mueta -1.31588 muphi 2.42164 dR2_tk_mu 7.45242
+test prop track 77.1746 1.31617 0.0840754 1.31302 0.0353155 0 
 test mu 60.5 -0.054375 1.46171 1 
-CheckMatch: tketa -0.971774 tkphi 0.0553633 mueta -0.054375 muphi 1.46171 dR2_tk_mu 2.81944
-test prop track 130.862 0.968355 0.212347 0.969698 0.209494 0 
+CheckMatch: tketa 1.31302 tkphi 0.0353155 mueta -0.054375 muphi 1.46171 dR2_tk_mu 3.90437
+test prop track 90.2942 -1.32104 0.200596 -1.31804 0.201549 0 
 test mu 54 0.054375 -1.5817 -1 
-CheckMatch: tketa 0.969698 tkphi 0.209494 mueta 0.054375 muphi -1.5817 dR2_tk_mu 4.04621
-test prop track 41.6104 2.0119 0.246332 2.01658 0.250538 0 
+CheckMatch: tketa -1.31804 tkphi 0.201549 mueta 0.054375 muphi -1.5817 dR2_tk_mu 5.06352
+test prop track 132.786 -0.973535 0.0958691 -0.971774 0.0553633 0 
 test mu 50.5 1.31588 0.949023 1 
-CheckMatch: tketa 2.01658 tkphi 0.250538 mueta 1.31588 muphi 0.949023 dR2_tk_mu 0.978864
-test prop track 40.1308 -2.01087 0.130052 -2.01544 0.0809668 0 
+CheckMatch: tketa -0.971774 tkphi 0.0553633 mueta 1.31588 muphi 0.949023 dR2_tk_mu 6.03197
+test prop track 130.862 0.968355 0.212347 0.969698 0.209494 0 
 test mu 90.5 -1.31588 -2.14894 -1 
-CheckMatch: tketa -2.01544 tkphi 0.0809668 mueta -1.31588 muphi -2.14894 dR2_tk_mu 5.46185
-test prop track 6.1973 -2.03825 0.12368 -2.03631 0.272678 0 
+CheckMatch: tketa 0.969698 tkphi 0.209494 mueta -1.31588 muphi -2.14894 dR2_tk_mu 10.786
+test prop track 41.6104 2.0119 0.246332 2.01658 0.250538 0 
 test mu 140.5 1.0005 -2.37801 -1 
-CheckMatch: tketa -2.03631 tkphi 0.272678 mueta 1.0005 muphi -2.37801 dR2_tk_mu 16.2484
-test prop track 6.16346 2.03373 0.235949 2.03267 0.0410925 0 
+CheckMatch: tketa 2.01658 tkphi 0.250538 mueta 1.0005 muphi -2.37801 dR2_tk_mu 7.94168
+test prop track 40.1308 -2.01087 0.130052 -2.01544 0.0809668 0 
 test mu 140.5 -1.0005 0.730857 1 
-CheckMatch: tketa 2.03267 tkphi 0.0410925 mueta -1.0005 muphi 0.730857 dR2_tk_mu 9.67589
-test prop track 11.5911 1.58912 0.109642 1.58313 0.228736 0 
+CheckMatch: tketa -2.01544 tkphi 0.0809668 mueta -1.0005 muphi 0.730857 dR2_tk_mu 1.45245
+test prop track 6.1973 -2.03825 0.12368 -2.03631 0.272678 0 
 test mu 74.5 2.02275 1.14537 -1 
-CheckMatch: tketa 1.58313 tkphi 0.228736 mueta 2.02275 muphi 1.14537 dR2_tk_mu 1.03349
-test prop track 11.8341 -1.58605 0.225666 -1.58069 0.0671394 0 
+CheckMatch: tketa -2.03631 tkphi 0.272678 mueta 2.02275 muphi 1.14537 dR2_tk_mu 17.2376
+test prop track 6.16346 2.03373 0.235949 2.03267 0.0410925 0 
 test mu 74.5 2.02275 1.16719 -1 
-CheckMatch: tketa -1.58069 tkphi 0.0671394 mueta 2.02275 muphi 1.16719 dR2_tk_mu 14.1949
-test prop track 53.4286 -1.80101 0.0867078 -1.80225 0.0399426 0 
+CheckMatch: tketa 2.03267 tkphi 0.0410925 mueta 2.02275 muphi 1.16719 dR2_tk_mu 1.26819
+test prop track 11.5911 1.58912 0.109642 1.58313 0.228736 0 
 test mu 8.5 2.001 -0.458148 1 
-CheckMatch: tketa -1.80225 tkphi 0.0399426 mueta 2.001 muphi -0.458148 dR2_tk_mu 14.7128
-test prop track 54.724 1.79471 0.203603 1.79766 0.206182 0 
+CheckMatch: tketa 1.58313 tkphi 0.228736 mueta 2.001 muphi -0.458148 dR2_tk_mu 0.646424
+test prop track 11.8341 -1.58605 0.225666 -1.58069 0.0671394 0 
 test mu 8 -2.088 3.03251 -1 
-CheckMatch: tketa 1.79766 tkphi 0.206182 mueta -2.088 muphi 3.03251 dR2_tk_mu 23.0864
-test prop track 13.9559 -2.35849 0.0283029 -2.36455 0.0624473 0 
+CheckMatch: tketa -1.58069 tkphi 0.0671394 mueta -2.088 muphi 3.03251 dR2_tk_mu 9.05078
+test prop track 53.4286 -1.80101 0.0867078 -1.80225 0.0399426 0 
 test mu 9.5 1.57687 3.01069 -1 
-CheckMatch: tketa -2.36455 tkphi 0.0624473 mueta 1.57687 muphi 3.01069 dR2_tk_mu 24.227
-test prop track 13.0862 2.35886 0.142968 2.3641 0.0621752 0 
+CheckMatch: tketa -1.80225 tkphi 0.0399426 mueta 1.57687 muphi 3.01069 dR2_tk_mu 20.2438
+test prop track 54.724 1.79471 0.203603 1.79766 0.206182 0 
 test mu 38 -1.59862 -0.425424 1 
-CheckMatch: tketa 2.3641 tkphi 0.0621752 mueta -1.59862 muphi -0.425424 dR2_tk_mu 15.941
-test prop track 19.2937 -2.33554 0.263234 -2.33804 0.282669 0 
+CheckMatch: tketa 1.79766 tkphi 0.206182 mueta -1.59862 muphi -0.425424 dR2_tk_mu 11.9336
+test prop track 13.9559 -2.35849 0.0283029 -2.36455 0.0624473 0 
 test mu 1.5 1.7835 -1.00356 1 
-CheckMatch: tketa -2.33804 tkphi 0.282669 mueta 1.7835 muphi -1.00356 dR2_tk_mu 18.6415
-test prop track 71.6625 -1.5557 0.274052 -1.56456 0.228658 0 
+CheckMatch: tketa -2.36455 tkphi 0.0624473 mueta 1.7835 muphi -1.00356 dR2_tk_mu 18.3427
+test prop track 13.0862 2.35886 0.142968 2.3641 0.0621752 0 
 test mu 7 1.7835 -0.981748 -1 
-CheckMatch: tketa -1.56456 tkphi 0.228658 mueta 1.7835 muphi -0.981748 dR2_tk_mu 12.6746
-test prop track 70.5424 -1.59446 0.0415027 -1.60816 -0.00354953 0 
+CheckMatch: tketa 2.3641 tkphi 0.0621752 mueta 1.7835 muphi -0.981748 dR2_tk_mu 1.42688
+test prop track 19.2937 -2.33554 0.263234 -2.33804 0.282669 0 
 test mu 14 2.38162 3.04342 1 
-CheckMatch: tketa -1.60816 tkphi -0.00354953 mueta 2.38162 muphi 3.04342 dR2_tk_mu 25.2024
-test prop track 69.4571 -1.59674 0.04155 -1.61063 -0.00382051 0 
+CheckMatch: tketa -2.33804 tkphi 0.282669 mueta 2.38162 muphi 3.04342 dR2_tk_mu 29.8969
+test prop track 71.6625 -1.5557 0.274052 -1.56456 0.228658 0 
 test mu 9 2.38162 3.06523 1 
-CheckMatch: tketa -1.61063 tkphi -0.00382051 mueta 2.38162 muphi 3.06523 dR2_tk_mu 25.3572
-test prop track 69.9958 1.59902 0.157962 1.61328 0.158768 0 
+CheckMatch: tketa -1.56456 tkphi 0.228658 mueta 2.38162 muphi 3.06523 dR2_tk_mu 23.6186
+test prop track 70.5424 -1.59446 0.0415027 -1.60816 -0.00354953 0 
 test mu 89 1.58775 -1.72351 -1 
-CheckMatch: tketa 1.61328 tkphi 0.158768 mueta 1.58775 muphi -1.72351 dR2_tk_mu 3.54363
-test prop track 41.6104 1.87379 0.0537083 1.87948 0.061569 0 
+CheckMatch: tketa -1.60816 tkphi -0.00354953 mueta 1.58775 muphi -1.72351 dR2_tk_mu 13.1721
+test prop track 69.9958 1.59902 0.157962 1.61328 0.158768 0 
 test mu 56.5 -1.58775 1.37445 1 
-CheckMatch: tketa 1.87948 tkphi 0.061569 mueta -1.58775 muphi 1.37445 dR2_tk_mu 13.7453
-test prop track 43.2031 -1.88196 0.17031 -1.88713 0.119808 0 
+CheckMatch: tketa 1.61328 tkphi 0.158768 mueta -1.58775 muphi 1.37445 dR2_tk_mu 11.7245
+test prop track 41.6104 1.87379 0.0537083 1.87948 0.061569 0 
 test mu 57 1.8705 2.11621 -1 
-CheckMatch: tketa -1.88713 tkphi 0.119808 mueta 1.8705 muphi 2.11621 dR2_tk_mu 18.1054
-test prop track 98.1464 0.924885 0.171091 0.925177 0.17456 0 
+CheckMatch: tketa 1.87948 tkphi 0.061569 mueta 1.8705 muphi 2.11621 dR2_tk_mu 4.22164
+test prop track 43.2031 -1.88196 0.17031 -1.88713 0.119808 0 
 test mu 10 1.8705 2.13803 -1 
-CheckMatch: tketa 0.925177 tkphi 0.17456 mueta 1.8705 muphi 2.13803 dR2_tk_mu 4.74884
+CheckMatch: tketa -1.88713 tkphi 0.119808 mueta 1.8705 muphi 2.13803 dR2_tk_mu 18.193
+test prop track 98.1464 0.924885 0.171091 0.925177 0.17456 0 
+test mu 0 0 0 0 
+CheckMatch: tketa 0.925177 tkphi 0.17456 mueta 0 muphi 0 dR2_tk_mu 0.886423
 test prop track 83.6059 -0.92622 0.0556021 -0.92571 0.00410262 0 
 test mu 0 0 0 0 
 CheckMatch: tketa -0.92571 tkphi 0.00410262 mueta 0 muphi 0 dR2_tk_mu 0.856955
 test prop track 4.40892 1.59065 0.222366 1.5861 0.569902 0 
-test mu 0 0 0 0 
-CheckMatch: tketa 1.5861 tkphi 0.569902 mueta 0 muphi 0 dR2_tk_mu 2.8405
-test prop track 4.44145 1.5975 0.222517 1.59201 0.565414 0 
 test mu 90.5 0.924375 1.77805 -1 
-CheckMatch: tketa 1.59201 tkphi 0.565414 mueta 0.924375 muphi 1.77805 dR2_tk_mu 1.91623
-test prop track 4.40032 -1.59674 0.335648 -1.59298 -0.0508633 0 
+CheckMatch: tketa 1.5861 tkphi 0.569902 mueta 0.924375 muphi 1.77805 dR2_tk_mu 1.89751
+test prop track 4.44145 1.5975 0.222517 1.59201 0.565414 0 
 test mu 140.5 -0.859125 -1.40717 1 
-CheckMatch: tketa -1.59298 tkphi -0.0508633 mueta -0.859125 muphi -1.40717 dR2_tk_mu 2.37812
-test prop track 4.38748 -1.60432 0.103591 -1.60119 -0.281694 0 
+CheckMatch: tketa 1.59201 tkphi 0.565414 mueta -0.859125 muphi -1.40717 dR2_tk_mu 9.89916
+test prop track 4.40032 -1.59674 0.335648 -1.59298 -0.0508633 0 
 test mu 47 1.62038 1.73442 -1 
-CheckMatch: tketa -1.60119 tkphi -0.281694 mueta 1.62038 muphi 1.73442 dR2_tk_mu 14.4432
-test prop track 78.5167 -0.155621 0.0702696 -0.151621 0.0168462 0 
+CheckMatch: tketa -1.59298 tkphi -0.0508633 mueta 1.62038 muphi 1.73442 dR2_tk_mu 13.5129
+test prop track 4.38748 -1.60432 0.103591 -1.60119 -0.281694 0 
 test mu 5 -1.653 -2.21439 1 
-CheckMatch: tketa -0.151621 tkphi 0.0168462 mueta -1.653 muphi -2.21439 dR2_tk_mu 7.23254
-test prop track 78.5167 0.153691 0.186625 0.157587 0.196415 0 
+CheckMatch: tketa -1.60119 tkphi -0.281694 mueta -1.653 muphi -2.21439 dR2_tk_mu 3.73798
+test prop track 78.5167 -0.155621 0.0702696 -0.151621 0.0168462 0 
 test mu 93 -0.163125 2.09439 1 
-CheckMatch: tketa 0.157587 tkphi 0.196415 mueta -0.163125 muphi 2.09439 dR2_tk_mu 3.70518
-test prop track 40.8573 0.386769 0.052108 0.388056 0.0910312 0 
+CheckMatch: tketa -0.151621 tkphi 0.0168462 mueta -0.163125 muphi 2.09439 dR2_tk_mu 4.31634
+test prop track 78.5167 0.153691 0.186625 0.157587 0.196415 0 
 test mu 111 0.163125 -0.992657 -1 
-CheckMatch: tketa 0.388056 tkphi 0.0910312 mueta 0.163125 muphi -0.992657 dR2_tk_mu 1.22497
-test prop track 39.9533 -0.397641 0.168302 -0.396063 0.0843713 0 
+CheckMatch: tketa 0.157587 tkphi 0.196415 mueta 0.163125 muphi -0.992657 dR2_tk_mu 1.41392
+test prop track 40.8573 0.386769 0.052108 0.388056 0.0910312 0 
 test mu 38.5 0.41325 2.63981 -1 
-CheckMatch: tketa -0.396063 tkphi 0.0843713 mueta 0.41325 muphi 2.63981 dR2_tk_mu 7.18526
-test prop track 114.297 -0.174888 0.111379 -0.177092 0.0678499 0 
+CheckMatch: tketa 0.388056 tkphi 0.0910312 mueta 0.41325 muphi 2.63981 dR2_tk_mu 6.49691
+test prop track 39.9533 -0.397641 0.168302 -0.396063 0.0843713 0 
 test mu 40 -0.41325 -0.64359 1 
-CheckMatch: tketa -0.177092 tkphi 0.0678499 mueta -0.41325 muphi -0.64359 dR2_tk_mu 0.561918
-test prop track 122.02 0.167189 0.227924 0.165193 0.226446 0 
+CheckMatch: tketa -0.396063 tkphi 0.0843713 mueta -0.41325 muphi -0.64359 dR2_tk_mu 0.530223
+test prop track 114.297 -0.174888 0.111379 -0.177092 0.0678499 0 
 test mu 126 -0.163125 1.21082 1 
-CheckMatch: tketa 0.165193 tkphi 0.226446 mueta -0.163125 muphi 1.21082 dR2_tk_mu 1.07679
-test prop track 57.5124 0.20558 0.17458 0.208501 0.195913 0 
+CheckMatch: tketa -0.177092 tkphi 0.0678499 mueta -0.163125 muphi 1.21082 dR2_tk_mu 1.30658
+test prop track 122.02 0.167189 0.227924 0.165193 0.226446 0 
 test mu 139.5 0.163125 -1.88714 -1 
-CheckMatch: tketa 0.208501 tkphi 0.195913 mueta 0.163125 muphi -1.88714 dR2_tk_mu 4.34116
-test prop track 56.434 -0.215134 0.0582723 -0.212114 -0.00751894 0 
+CheckMatch: tketa 0.165193 tkphi 0.226446 mueta 0.163125 muphi -1.88714 dR2_tk_mu 4.46724
+test prop track 57.5124 0.20558 0.17458 0.208501 0.195913 0 
 test mu 65 0.184875 2.73798 -1 
-CheckMatch: tketa -0.212114 tkphi -0.00751894 mueta 0.184875 muphi 2.73798 dR2_tk_mu 7.69539
-test prop track 58.2545 -0.713336 0.22121 -0.711316 0.156793 0 
+CheckMatch: tketa 0.208501 tkphi 0.195913 mueta 0.184875 muphi 2.73798 dR2_tk_mu 6.46269
+test prop track 56.434 -0.215134 0.0582723 -0.212114 -0.00751894 0 
 test mu 81.5 -0.184875 -0.490873 1 
-CheckMatch: tketa -0.711316 tkphi 0.156793 mueta -0.184875 muphi -0.490873 dR2_tk_mu 0.696611
-test prop track 59.7976 0.711792 0.104983 0.714067 0.124667 0 
+CheckMatch: tketa -0.212114 tkphi -0.00751894 mueta -0.184875 muphi -0.490873 dR2_tk_mu 0.234373
+test prop track 58.2545 -0.713336 0.22121 -0.711316 0.156793 0 
 test mu 67 0.696 -0.130899 -1 
-CheckMatch: tketa 0.714067 tkphi 0.124667 mueta 0.696 muphi -0.130899 dR2_tk_mu 0.0656407
->>>> MATCH! <<<<
-test prop track 43.2031 -0.985101 0.113354 -0.992991 0.148979 0 
+CheckMatch: tketa -0.711316 tkphi 0.156793 mueta 0.696 muphi -0.130899 dR2_tk_mu 2.0633
+test prop track 59.7976 0.711792 0.104983 0.714067 0.124667 0 
 test mu 0 0 0 0 
-CheckMatch: tketa -0.992991 tkphi 0.148979 mueta 0 muphi 0 dR2_tk_mu 1.00823
-test prop track 42.5917 0.983822 0.229903 0.975994 0.14982 0 
+CheckMatch: tketa 0.714067 tkphi 0.124667 mueta 0 muphi 0 dR2_tk_mu 0.525434
+test prop track 43.2031 -0.985101 0.113354 -0.992991 0.148979 0 
 test mu 40.5 0.97875 -2.67254 1 
-CheckMatch: tketa 0.975994 tkphi 0.14982 mueta 0.97875 muphi -2.67254 dR2_tk_mu 7.9657
-test prop track 64.0385 -1.38353 0.261459 -1.38692 0.270262 0 
+CheckMatch: tketa -0.992991 tkphi 0.148979 mueta 0.97875 muphi -2.67254 dR2_tk_mu 11.8487
+test prop track 42.5917 0.983822 0.229903 0.975994 0.14982 0 
 test mu 60.5 -0.859125 0.589049 -1 
-CheckMatch: tketa -1.38692 tkphi 0.270262 mueta -0.859125 muphi 0.589049 dR2_tk_mu 0.380197
-test prop track 148.024 0.725638 0.121184 0.732907 0.116133 0 
+CheckMatch: tketa 0.975994 tkphi 0.14982 mueta -0.859125 muphi 0.589049 dR2_tk_mu 3.56058
+test prop track 64.0385 -1.38353 0.261459 -1.38692 0.270262 0 
 test mu 90.5 1.31588 1.00356 1 
-CheckMatch: tketa 0.732907 tkphi 0.116133 mueta 1.31588 muphi 1.00356 dR2_tk_mu 1.12739
-test prop track 143.325 -0.724104 0.237549 -0.716661 0.198417 0 
+CheckMatch: tketa -1.38692 tkphi 0.270262 mueta 1.31588 muphi 1.00356 dR2_tk_mu 7.84285
+test prop track 148.024 0.725638 0.121184 0.732907 0.116133 0 
 test mu 45.5 -1.31588 -2.08349 -1 
-CheckMatch: tketa -0.716661 tkphi 0.198417 mueta -1.31588 muphi -2.08349 dR2_tk_mu 5.56615
-test prop track 132.786 0.826474 0.194546 0.815283 0.15404 0 
+CheckMatch: tketa 0.732907 tkphi 0.116133 mueta -1.31588 muphi -2.08349 dR2_tk_mu 9.03584
+test prop track 143.325 -0.724104 0.237549 -0.716661 0.198417 0 
 test mu 140 0.728625 1.49444 -1 
-CheckMatch: tketa 0.815283 tkphi 0.15404 mueta 0.728625 muphi 1.49444 dR2_tk_mu 1.80418
-test prop track 143.325 -0.830772 0.0784792 -0.842007 0.0739776 0 
+CheckMatch: tketa -0.716661 tkphi 0.198417 mueta 0.728625 muphi 1.49444 dR2_tk_mu 3.76852
+test prop track 132.786 0.826474 0.194546 0.815283 0.15404 0 
 test mu 140 -0.728625 -1.69079 1 
-CheckMatch: tketa -0.842007 tkphi 0.0739776 mueta -0.728625 muphi -1.69079 dR2_tk_mu 3.12725
-test prop track 138.915 -0.346538 0.0598963 -0.353469 0.020215 0 
+CheckMatch: tketa 0.815283 tkphi 0.15404 mueta -0.728625 muphi -1.69079 dR2_tk_mu 5.78704
+test prop track 143.325 -0.830772 0.0784792 -0.842007 0.0739776 0 
 test mu 140 0.80475 1.29809 1 
-CheckMatch: tketa -0.353469 tkphi 0.020215 mueta 0.80475 muphi 1.29809 dR2_tk_mu 2.97443
-test prop track 138.915 0.346538 0.17627 0.339407 0.172318 0 
+CheckMatch: tketa -0.842007 tkphi 0.0739776 mueta 0.80475 muphi 1.29809 dR2_tk_mu 4.21026
+test prop track 138.915 -0.346538 0.0598963 -0.353469 0.020215 0 
 test mu 200.5 0.84825 1.29809 1 
-CheckMatch: tketa 0.339407 tkphi 0.172318 mueta 0.84825 muphi 1.29809 dR2_tk_mu 1.52628
+CheckMatch: tketa -0.353469 tkphi 0.020215 mueta 0.84825 muphi 1.29809 dR2_tk_mu 3.07709
+test prop track 138.915 0.346538 0.17627 0.339407 0.172318 0 
+test mu 0 0 0 0 
+CheckMatch: tketa 0.339407 tkphi 0.172318 mueta 0 muphi 0 dR2_tk_mu 0.144891
+>>>> MATCH! <<<<
 test prop track 99.2245 1.02792 0.201932 1.02758 0.155105 0 
 test mu 0 0 0 0 
 CheckMatch: tketa 1.02758 tkphi 0.155105 mueta 0 muphi 0 dR2_tk_mu 1.07999
 test prop track 106.228 -1.03163 0.0853253 -1.03204 0.0868703 0 
-test mu 0 0 0 0 
-CheckMatch: tketa -1.03204 tkphi 0.0868703 mueta 0 muphi 0 dR2_tk_mu 1.07265
-test prop track 145.636 -0.512433 0.0587032 -0.504355 0.0539267 0 
 test mu 140 -0.36975 2.32347 1 
-CheckMatch: tketa -0.504355 tkphi 0.0539267 mueta -0.36975 muphi 2.32347 dR2_tk_mu 5.16895
-test prop track 141.085 0.510711 0.175148 0.518983 0.135742 0 
+CheckMatch: tketa -1.03204 tkphi 0.0868703 mueta -0.36975 muphi 2.32347 dR2_tk_mu 5.441
+test prop track 145.636 -0.512433 0.0587032 -0.504355 0.0539267 0 
 test mu 140 0.36975 -0.785398 -1 
-CheckMatch: tketa 0.518983 tkphi 0.135742 mueta 0.36975 muphi -0.785398 dR2_tk_mu 0.870769
-test prop track 38.2604 1.73828 0.182946 1.73531 0.124097 0 
+CheckMatch: tketa -0.504355 tkphi 0.0539267 mueta 0.36975 muphi -0.785398 dR2_tk_mu 1.46853
+test prop track 141.085 0.510711 0.175148 0.518983 0.135742 0 
 test mu 100.5 1.0005 1.52716 1 
-CheckMatch: tketa 1.73531 tkphi 0.124097 mueta 1.0005 muphi 1.52716 dR2_tk_mu 2.50854
-test prop track 37.7801 1.73694 0.183178 1.73365 0.123798 0 
+CheckMatch: tketa 0.518983 tkphi 0.135742 mueta 1.0005 muphi 1.52716 dR2_tk_mu 2.16791
+test prop track 38.2604 1.73828 0.182946 1.73531 0.124097 0 
 test mu 5 -1.02225 -1.55989 -1 
-CheckMatch: tketa 1.73365 tkphi 0.123798 mueta -1.02225 muphi -1.55989 dR2_tk_mu 10.4298
-test prop track 38.0989 -1.74227 0.066534 -1.74032 0.081574 0 
+CheckMatch: tketa 1.73531 tkphi 0.124097 mueta -1.02225 muphi -1.55989 dR2_tk_mu 10.4399
+test prop track 37.7801 1.73694 0.183178 1.73365 0.123798 0 
 test mu 140 -0.511125 2.35619 -1 
-CheckMatch: tketa -1.74032 tkphi 0.081574 mueta -0.511125 muphi 2.35619 dR2_tk_mu 6.68482
-test prop track 30.5049 -0.955329 0.230973 -0.955258 0.290509 0 
+CheckMatch: tketa 1.73365 tkphi 0.123798 mueta -0.511125 muphi 2.35619 dR2_tk_mu 10.0226
+test prop track 38.0989 -1.74227 0.066534 -1.74032 0.081574 0 
 test mu 140 -0.489375 2.35619 -1 
-CheckMatch: tketa -0.955258 tkphi 0.290509 mueta -0.489375 muphi 2.35619 dR2_tk_mu 4.4841
-test prop track 29.8988 0.951396 0.114779 0.952112 0.00996036 0 
+CheckMatch: tketa -1.74032 tkphi 0.081574 mueta -0.489375 muphi 2.35619 dR2_tk_mu 6.73876
+test prop track 30.5049 -0.955329 0.230973 -0.955258 0.290509 0 
 test mu 41 1.74 2.65072 1 
-CheckMatch: tketa 0.952112 tkphi 0.00996036 mueta 1.74 muphi 2.65072 dR2_tk_mu 7.59437
-test prop track 27.7829 -2.28448 0.0469853 -2.28596 0.0552548 0 
+CheckMatch: tketa -0.955258 tkphi 0.290509 mueta 1.74 muphi 2.65072 dR2_tk_mu 12.835
+test prop track 29.8988 0.951396 0.114779 0.952112 0.00996036 0 
 test mu 42 -1.76175 -0.403607 -1 
-CheckMatch: tketa -2.28596 tkphi 0.0552548 mueta -1.76175 muphi -0.403607 dR2_tk_mu 0.485355
-test prop track 27.613 2.28133 0.162469 2.28234 0.110365 0 
+CheckMatch: tketa 0.952112 tkphi 0.00996036 mueta -1.76175 muphi -0.403607 dR2_tk_mu 7.53608
+test prop track 27.7829 -2.28448 0.0469853 -2.28596 0.0552548 0 
 test mu 14.5 0.97875 -2.80344 1 
-CheckMatch: tketa 2.28234 tkphi 0.110365 mueta 0.97875 muphi -2.80344 dR2_tk_mu 10.1896
-test prop track 114.297 0.0877778 0.125673 0.100619 0.125569 0 
+CheckMatch: tketa -2.28596 tkphi 0.0552548 mueta 0.97875 muphi -2.80344 dR2_tk_mu 18.8305
+test prop track 27.613 2.28133 0.162469 2.28234 0.110365 0 
 test mu 40.5 -0.97875 0.490874 -1 
-CheckMatch: tketa 0.100619 tkphi 0.125569 mueta -0.97875 muphi 0.490874 dR2_tk_mu 1.29849
-test prop track 115.762 -0.0936132 0.242038 -0.0805667 0.198784 0 
+CheckMatch: tketa 2.28234 tkphi 0.110365 mueta -0.97875 muphi 0.490874 dR2_tk_mu 10.7795
+test prop track 114.297 0.0877778 0.125673 0.100619 0.125569 0 
 test mu 50 2.28375 -1.76715 1 
-CheckMatch: tketa -0.0805667 tkphi 0.198784 mueta 2.28375 muphi -1.76715 dR2_tk_mu 9.45487
-test prop track 23.5756 -1.09548 0.142689 -1.09324 0.0156083 0 
+CheckMatch: tketa 0.100619 tkphi 0.125569 mueta 2.28375 muphi -1.76715 dR2_tk_mu 8.34843
+test prop track 115.762 -0.0936132 0.242038 -0.0805667 0.198784 0 
 test mu 63.5 -2.262 1.42899 -1 
-CheckMatch: tketa -1.09324 tkphi 0.0156083 mueta -2.262 muphi 1.42899 dR2_tk_mu 3.36365
-test prop track 23.3923 1.09431 0.258916 1.09649 0.343188 0 
+CheckMatch: tketa -0.0805667 tkphi 0.198784 mueta -2.262 muphi 1.42899 dR2_tk_mu 6.27205
+test prop track 23.5756 -1.09548 0.142689 -1.09324 0.0156083 0 
 test mu 126 0.10875 1.9635 -1 
-CheckMatch: tketa 1.09649 tkphi 0.343188 mueta 0.10875 muphi 1.9635 dR2_tk_mu 3.60102
-test prop track 23.3923 1.09431 0.0262339 1.09649 0.110506 0 
+CheckMatch: tketa -1.09324 tkphi 0.0156083 mueta 0.10875 muphi 1.9635 dR2_tk_mu 5.23904
+test prop track 23.3923 1.09431 0.258916 1.09649 0.343188 0 
 test mu 131 -0.054375 -1.22173 1 
-CheckMatch: tketa 1.09649 tkphi 0.110506 mueta -0.054375 muphi -1.22173 dR2_tk_mu 3.09934
-test prop track 57.1483 0.268255 0.0999218 0.264759 0.0346802 0 
+CheckMatch: tketa 1.09649 tkphi 0.343188 mueta -0.054375 muphi -1.22173 dR2_tk_mu 3.77346
+test prop track 23.3923 1.09431 0.0262339 1.09649 0.110506 0 
 test mu 35.5 1.12013 -2.94524 -1 
-CheckMatch: tketa 0.264759 tkphi 0.0346802 mueta 1.12013 muphi -2.94524 dR2_tk_mu 9.61159
-test prop track 57.5124 -0.27014 0.21623 -0.273429 0.237563 0 
+CheckMatch: tketa 1.09649 tkphi 0.110506 mueta 1.12013 muphi -2.94524 dR2_tk_mu 9.33816
+test prop track 57.1483 0.268255 0.0999218 0.264759 0.0346802 0 
 test mu 25.5 -1.12013 -0.0109084 1 
-CheckMatch: tketa -0.273429 tkphi 0.237563 mueta -1.12013 muphi -0.0109084 dR2_tk_mu 0.778633
-test prop track 23.3319 -2.09234 0.0344057 -2.08811 0.0555435 0 
+CheckMatch: tketa 0.264759 tkphi 0.0346802 mueta -1.12013 muphi -0.0109084 dR2_tk_mu 1.91998
+test prop track 57.5124 -0.27014 0.21623 -0.273429 0.237563 0 
 test mu 54 0.261 0 1 
-CheckMatch: tketa -2.08811 tkphi 0.0555435 mueta 0.261 muphi 0 dR2_tk_mu 5.5214
-test prop track 23.5142 2.09802 0.150605 2.09389 0.0860344 0 
+CheckMatch: tketa -0.273429 tkphi 0.237563 mueta 0.261 muphi 0 dR2_tk_mu 0.34205
+test prop track 23.3319 -2.09234 0.0344057 -2.08811 0.0555435 0 
 test mu 72.5 -0.261 -3.04342 -1 
-CheckMatch: tketa 2.09389 tkphi 0.0860344 mueta -0.261 muphi -3.04342 dR2_tk_mu 15.339
-test prop track 75.8776 -1.09313 0.251942 -1.08568 0.197419 0 
+CheckMatch: tketa -2.08811 tkphi 0.0555435 mueta -0.261 muphi -3.04342 dR2_tk_mu 12.9419
+test prop track 23.5142 2.09802 0.150605 2.09389 0.0860344 0 
 test mu 45 2.07713 -0.632681 1 
-CheckMatch: tketa -1.08568 tkphi 0.197419 mueta 2.07713 muphi -0.632681 dR2_tk_mu 10.6924
-test prop track 79.9063 1.09077 0.135748 1.09843 0.144989 0 
+CheckMatch: tketa 2.09389 tkphi 0.0860344 mueta 2.07713 muphi -0.632681 dR2_tk_mu 0.516833
+test prop track 75.8776 -1.09313 0.251942 -1.08568 0.197419 0 
 test mu 27 -2.10975 2.59618 -1 
-CheckMatch: tketa 1.09843 tkphi 0.144989 mueta -2.10975 muphi 2.59618 dR2_tk_mu 16.3007
-test prop track 28.3055 0.169115 0.180034 0.176257 0.245892 0 
+CheckMatch: tketa -1.08568 tkphi 0.197419 mueta -2.10975 muphi 2.59618 dR2_tk_mu 6.80275
+test prop track 79.9063 1.09077 0.135748 1.09843 0.144989 0 
 test mu 140.5 1.12013 -2.44346 -1 
-CheckMatch: tketa 0.176257 tkphi 0.245892 mueta 1.12013 muphi -2.44346 dR2_tk_mu 8.12351
-test prop track 28.3055 -0.178735 0.0634992 -0.172234 -0.0459917 0 
+CheckMatch: tketa 1.09843 tkphi 0.144989 mueta 1.12013 muphi -2.44346 dR2_tk_mu 6.70054
+test prop track 28.3055 0.169115 0.180034 0.176257 0.245892 0 
 test mu 100.5 -1.07662 0.64359 1 
-CheckMatch: tketa -0.172234 tkphi -0.0459917 mueta -1.07662 muphi 0.64359 dR2_tk_mu 1.29345
-test prop track 22.7442 -2.29622 0.192628 -2.3028 0.13429 0 
+CheckMatch: tketa 0.176257 tkphi 0.245892 mueta -1.07662 muphi 0.64359 dR2_tk_mu 1.72788
+test prop track 28.3055 -0.178735 0.0634992 -0.172234 -0.0459917 0 
 test mu 29.5 0.184875 3.0216 -1 
-CheckMatch: tketa -2.3028 tkphi 0.13429 mueta 0.184875 muphi 3.0216 dR2_tk_mu 14.5251
-test prop track 21.7054 2.29193 0.0769831 2.29839 0.0930889 0 
+CheckMatch: tketa -0.172234 tkphi -0.0459917 mueta 0.184875 muphi 3.0216 dR2_tk_mu 9.53765
+test prop track 22.7442 -2.29622 0.192628 -2.3028 0.13429 0 
 test mu 35 -0.163125 -0.305432 1 
-CheckMatch: tketa 2.29839 tkphi 0.0930889 mueta -0.163125 muphi -0.305432 dR2_tk_mu 6.21788
+CheckMatch: tketa -2.3028 tkphi 0.13429 mueta -0.163125 muphi -0.305432 dR2_tk_mu 4.77156
+test prop track 21.7054 2.29193 0.0769831 2.29839 0.0930889 0 
+test mu 0 0 0 0 
+CheckMatch: tketa 2.29839 tkphi 0.0930889 mueta 0 muphi 0 dR2_tk_mu 5.29126
 test prop track 15.1247 0.819283 0.212347 0.81944 0.0264503 0 
 test mu 0 0 0 0 
 CheckMatch: tketa 0.81944 tkphi 0.0264503 mueta 0 muphi 0 dR2_tk_mu 0.672181
@@ -281,47 +276,44 @@ test prop track 5.81793 -2.14103 0.117747 -2.13773 -0.0685341 0
 test mu 0 0 0 0 
 CheckMatch: tketa -2.13773 tkphi -0.0685341 mueta 0 muphi 0 dR2_tk_mu 4.57458
 test prop track 5.79183 2.14283 0.236157 2.14023 0.380259 0 
-test mu 0 0 0 0 
-CheckMatch: tketa 2.14023 tkphi 0.380259 mueta 0 muphi 0 dR2_tk_mu 4.72516
-test prop track 5.70402 2.14419 0.00364557 2.14138 0.150115 0 
 test mu 29.5 2.3055 -1.78896 -1 
-CheckMatch: tketa 2.14138 tkphi 0.150115 mueta 2.3055 muphi -1.78896 dR2_tk_mu 3.78695
-test prop track 34.0734 -1.23733 0.0845394 -1.23111 0.127293 0 
+CheckMatch: tketa 2.14023 tkphi 0.380259 mueta 2.3055 muphi -1.78896 dR2_tk_mu 4.73284
+test prop track 5.70402 2.14419 0.00364557 2.14138 0.150115 0 
 test mu 38.5 -2.31638 1.26536 1 
-CheckMatch: tketa -1.23111 tkphi 0.127293 mueta -2.31638 muphi 1.26536 dR2_tk_mu 2.473
-test prop track 33.9453 1.23419 0.200293 1.2283 0.112552 0 
+CheckMatch: tketa 2.14138 tkphi 0.150115 mueta -2.31638 muphi 1.26536 dR2_tk_mu 21.1154
+test prop track 34.0734 -1.23733 0.0845394 -1.23111 0.127293 0 
 test mu 17.5 -0.84825 -0.479966 -1 
-CheckMatch: tketa 1.2283 tkphi 0.112552 mueta -0.84825 muphi -0.479966 dR2_tk_mu 4.66315
-test prop track 5.4957 -2.33216 0.243837 -2.32877 0.366452 0 
+CheckMatch: tketa -1.23111 tkphi 0.127293 mueta -0.84825 muphi -0.479966 dR2_tk_mu 0.515346
+test prop track 33.9453 1.23419 0.200293 1.2283 0.112552 0 
 test mu 16.5 0.84825 2.32347 1 
-CheckMatch: tketa -2.32877 tkphi 0.366452 mueta 0.84825 muphi 2.32347 dR2_tk_mu 13.9234
+CheckMatch: tketa 1.2283 tkphi 0.112552 mueta 0.84825 muphi 2.32347 dR2_tk_mu 5.0326
+test prop track 5.4957 -2.33216 0.243837 -2.32877 0.366452 0 
+test mu 0 0 0 0 
+CheckMatch: tketa -2.32877 tkphi 0.366452 mueta 0 muphi 0 dR2_tk_mu 5.55746
 test prop track 5.43616 -2.33367 0.0107237 -2.33027 0.134705 0 
 test mu 0 0 0 0 
 CheckMatch: tketa -2.33027 tkphi 0.134705 mueta 0 muphi 0 dR2_tk_mu 5.44832
 test prop track 5.44928 2.33179 0.125185 2.32849 -0.0433447 0 
-test mu 0 0 0 0 
-CheckMatch: tketa 2.32849 tkphi -0.0433447 mueta 0 muphi 0 dR2_tk_mu 5.42372
-test prop track 164.172 -0.153691 0.0873848 -0.144005 0.0806844 0 
 test mu 8.5 2.14237 -1.99622 -1 
-CheckMatch: tketa -0.144005 tkphi 0.0806844 mueta 2.14237 muphi -1.99622 dR2_tk_mu 9.54107
-test prop track 153.041 0.153691 0.203679 0.163167 0.165647 0 
+CheckMatch: tketa 2.32849 tkphi -0.0433447 mueta 2.14237 muphi -1.99622 dR2_tk_mu 3.84836
+test prop track 164.172 -0.153691 0.0873848 -0.144005 0.0806844 0 
 test mu 8.5 2.14237 -1.9744 -1 
-CheckMatch: tketa 0.163167 tkphi 0.165647 mueta 2.14237 muphi -1.9744 dR2_tk_mu 8.49708
-test prop track 41.803 -1.55016 0.247549 -1.5456 0.265762 0 
+CheckMatch: tketa -0.144005 tkphi 0.0806844 mueta 2.14237 muphi -1.9744 dR2_tk_mu 9.45092
+test prop track 153.041 0.153691 0.203679 0.163167 0.165647 0 
 test mu 90.5 1.19625 -0.370882 1 
-CheckMatch: tketa -1.5456 tkphi 0.265762 mueta 1.19625 muphi -0.370882 dR2_tk_mu 7.92306
-test prop track 41.803 1.55254 0.130497 1.54733 0.0683089 0 
+CheckMatch: tketa 0.163167 tkphi 0.165647 mueta 1.19625 muphi -0.370882 dR2_tk_mu 1.35512
+test prop track 41.803 -1.55016 0.247549 -1.5456 0.265762 0 
 test mu 30.5 -1.25063 2.90161 -1 
-CheckMatch: tketa 1.54733 tkphi 0.0683089 mueta -1.25063 muphi 2.90161 dR2_tk_mu 15.8562
-test prop track 37.9389 -2.29467 0.0592903 -2.29439 0.0156992 0 
+CheckMatch: tketa -1.5456 tkphi 0.265762 mueta -1.25063 muphi 2.90161 dR2_tk_mu 7.0347
+test prop track 41.803 1.55254 0.130497 1.54733 0.0683089 0 
 test mu 7 2.35987 -1.24355 1 
-CheckMatch: tketa -2.29439 tkphi 0.0156992 mueta 2.35987 muphi -1.24355 dR2_tk_mu 23.2479
-test prop track 34.8627 2.28762 0.17592 2.28688 0.177988 0 
+CheckMatch: tketa 1.54733 tkphi 0.0683089 mueta 2.35987 muphi -1.24355 dR2_tk_mu 2.38119
+test prop track 37.9389 -2.29467 0.0592903 -2.29439 0.0156992 0 
 test mu 5.5 -2.33812 2.18166 -1 
-CheckMatch: tketa 2.28688 tkphi 0.177988 mueta -2.33812 muphi 2.18166 dR2_tk_mu 25.4054
-test prop track 35.8311 2.30475 0.176285 2.30071 0.177398 0 
+CheckMatch: tketa -2.29439 tkphi 0.0156992 mueta -2.33812 muphi 2.18166 dR2_tk_mu 4.69331
+test prop track 34.8627 2.28762 0.17592 2.28688 0.177988 0 
 test mu 140 -0.163125 2.14894 -1 
-CheckMatch: tketa 2.30071 tkphi 0.177398 mueta -0.163125 muphi 2.14894 dR2_tk_mu 9.95746
+CheckMatch: tketa 2.28688 tkphi 0.177988 mueta -0.163125 muphi 2.14894 dR2_tk_mu 9.88718
 test prop track 44.9226 1.3024 0.139147 1.29697 0.164297 0 
 test mu 140 0.163125 -1.02538 1 
 CheckMatch: tketa 1.29697 tkphi 0.164297 mueta 0.163125 muphi -1.02538 dR2_tk_mu 2.70093
@@ -421,76 +413,72 @@ CheckMatch: tketa 1.44 tkphi 0.0849341 mueta 0 muphi 0 dR2_tk_mu 2.08081
 test prop track 64.0385 -1.43751 0.248169 -1.43837 0.255456 0 
 test mu 111 0.685125 1.69079 -1 
 CheckMatch: tketa -1.43837 tkphi 0.255456 mueta 0.685125 muphi 1.69079 dR2_tk_mu 6.56939
-test prop track 6.39932 -1.43663 0.241427 -1.43749 0.51108 0 
-test mu 97 -0.641625 -1.51625 1 
-CheckMatch: tketa -1.43749 tkphi 0.51108 mueta -0.641625 muphi -1.51625 dR2_tk_mu 4.74349
 test prop track 127.175 -0.910084 0.168406 -0.917169 0.166103 0 
-test mu 0 0 0 0 
-CheckMatch: tketa -0.917169 tkphi 0.166103 mueta 0 muphi 0 dR2_tk_mu 0.868789
+test mu 97 -0.641625 -1.51625 1 
+CheckMatch: tketa -0.917169 tkphi 0.166103 mueta -0.641625 muphi -1.51625 dR2_tk_mu 2.90625
 test prop track 120.393 0.911434 0.0521127 0.904208 0.009683 0 
 test mu 0 0 0 0 
 CheckMatch: tketa 0.904208 tkphi 0.009683 mueta 0 muphi 0 dR2_tk_mu 0.817686
 test prop track 5.12744 1.50067 0.0265559 1.5033 0.346826 0 
-test mu 140 -0.054375 2.2362 1 
-CheckMatch: tketa 1.5033 tkphi 0.346826 mueta -0.054375 muphi 2.2362 dR2_tk_mu 5.9961
-test prop track 5.12744 1.51141 0.0263996 1.51272 0.34385 0 
-test mu 140 0.054375 -0.883573 -1 
-CheckMatch: tketa 1.51272 tkphi 0.34385 mueta 0.054375 muphi -0.883573 dR2_tk_mu 3.63334
-test prop track 5.21031 -1.49735 0.140956 -1.49965 -0.220365 0 
 test mu 0 0 0 0 
-CheckMatch: tketa -1.49965 tkphi -0.220365 mueta 0 muphi 0 dR2_tk_mu 2.29751
+CheckMatch: tketa 1.5033 tkphi 0.346826 mueta 0 muphi 0 dR2_tk_mu 2.3802
+test prop track 5.12744 1.51141 0.0263996 1.51272 0.34385 0 
+test mu 140 -0.054375 2.2362 1 
+CheckMatch: tketa 1.51272 tkphi 0.34385 mueta -0.054375 muphi 2.2362 dR2_tk_mu 6.03679
+test prop track 5.21031 -1.49735 0.140956 -1.49965 -0.220365 0 
+test mu 140 0.054375 -0.883573 -1 
+CheckMatch: tketa -1.49965 tkphi -0.220365 mueta 0.054375 muphi -0.883573 dR2_tk_mu 2.85484
 test prop track 5.26805 -1.48983 0.140331 -1.49114 -0.219187 0 
 test mu 0 0 0 0 
 CheckMatch: tketa -1.49114 tkphi -0.219187 mueta 0 muphi 0 dR2_tk_mu 2.27153
 test prop track 150.491 0.683746 0.216391 0.692831 0.178084 0 
-test mu 80 2.14237 -0.403607 -1 
-CheckMatch: tketa 0.692831 tkphi 0.178084 mueta 2.14237 muphi -0.403607 dR2_tk_mu 2.43954
-test prop track 153.041 -0.6806 0.0998697 -0.671327 0.0942687 0 
-test mu 62.5 -2.15325 2.69435 1 
-CheckMatch: tketa -0.671327 tkphi 0.0942687 mueta -2.15325 muphi 2.69435 dR2_tk_mu 8.95653
-test prop track 77.8401 -1.19584 0.116961 -1.19389 0.124556 0 
-test mu 140 -0.84825 1.15628 -1 
-CheckMatch: tketa -1.19389 tkphi 0.124556 mueta -0.84825 muphi 1.15628 dR2_tk_mu 1.18392
-test prop track 71.6625 1.19151 0.233283 1.18968 0.179258 0 
-test mu 140 0.84825 -2.02895 1 
-CheckMatch: tketa 1.18968 tkphi 0.179258 mueta 0.84825 muphi -2.02895 dR2_tk_mu 4.99273
-test prop track 21.8103 0.660011 0.125905 0.667572 0.217873 0 
-test mu 70.5 1.31588 0.676315 -1 
-CheckMatch: tketa 0.667572 tkphi 0.217873 mueta 1.31588 muphi 0.676315 dR2_tk_mu 0.630466
-test prop track 21.6534 -0.660011 0.242246 -0.652363 0.105821 0 
-test mu 45.5 -1.31588 -2.50891 1 
-CheckMatch: tketa -0.652363 tkphi 0.105821 mueta -1.31588 muphi -2.50891 dR2_tk_mu 7.27707
-test prop track 8.36832 -0.00195312 0.141273 -0.0106889 0.416011 0 
-test mu 200.5 1.19625 0.741765 -1 
-CheckMatch: tketa -0.0106889 tkphi 0.416011 mueta 1.19625 muphi 0.741765 dR2_tk_mu 1.56282
-test prop track 8.29912 -0.00390624 0.257022 -0.012855 -0.0638219 0 
-test mu 140.5 -1.19625 -2.45437 1 
-CheckMatch: tketa -0.012855 tkphi -0.0638219 mueta -1.19625 muphi -2.45437 dR2_tk_mu 7.11514
-test prop track 125.409 0.920862 0.138901 0.931114 0.136873 0 
-test mu 140 0.36975 1.14537 -1 
-CheckMatch: tketa 0.931114 tkphi 0.136873 mueta 0.36975 muphi 1.14537 dR2_tk_mu 1.3322
-test prop track 108.789 -0.923547 0.25519 -0.913389 0.210562 0 
-test mu 140 -0.36975 -2.02895 1 
-CheckMatch: tketa -0.913389 tkphi 0.210562 mueta -0.36975 muphi -2.02895 dR2_tk_mu 5.31093
-test prop track 9.34725 -2.28251 0.0931704 -2.2846 0.161007 0 
-test mu 5 1.31588 0.992656 -1 
-CheckMatch: tketa -2.2846 tkphi 0.161007 mueta 1.31588 muphi 0.992656 dR2_tk_mu 13.655
-test prop track 9.30871 2.28133 0.20936 2.28437 0.0978852 0 
-test mu 70.5 -1.31588 -2.0944 -1 
-CheckMatch: tketa 2.28437 tkphi 0.0978852 mueta -1.31588 muphi -2.0944 dR2_tk_mu 17.7679
-test prop track 6.87173 -1.7469 0.169065 -1.75039 -0.0573871 0 
-test mu 140 -0.89175 1.06901 -1 
-CheckMatch: tketa -1.75039 tkphi -0.0573871 mueta -0.89175 muphi 1.06901 dR2_tk_mu 2.00605
-test prop track 6.77885 1.77172 0.0532869 1.77257 0.233181 0 
-test mu 140 0.880875 -2.1053 1 
-CheckMatch: tketa 1.77257 tkphi 0.233181 mueta 0.880875 muphi -2.1053 dR2_tk_mu 6.26363
-test prop track 145.636 -0.0136715 0.0460857 -0.0256022 0.0413092 0 
-test mu 12.5 1.50075 0.327249 -1 
-CheckMatch: tketa -0.0256022 tkphi 0.0413092 mueta 1.50075 muphi 0.327249 dR2_tk_mu 2.41151
-test prop track 143.325 0.00585935 0.162668 -0.00617879 0.123536 0 
 test mu 0 0 0 0 
-CheckMatch: tketa -0.00617879 tkphi 0.123536 mueta 0 muphi 0 dR2_tk_mu 0.0152994
->>>> MATCH! <<<<
+CheckMatch: tketa 0.692831 tkphi 0.178084 mueta 0 muphi 0 dR2_tk_mu 0.511728
+test prop track 153.041 -0.6806 0.0998697 -0.671327 0.0942687 0 
+test mu 80 2.14237 -0.403607 -1 
+CheckMatch: tketa -0.671327 tkphi 0.0942687 mueta 2.14237 muphi -0.403607 dR2_tk_mu 8.1648
+test prop track 77.8401 -1.19584 0.116961 -1.19389 0.124556 0 
+test mu 62.5 -2.15325 2.69435 1 
+CheckMatch: tketa -1.19389 tkphi 0.124556 mueta -2.15325 muphi 2.69435 dR2_tk_mu 7.52422
+test prop track 71.6625 1.19151 0.233283 1.18968 0.179258 0 
+test mu 140 -0.84825 1.15628 -1 
+CheckMatch: tketa 1.18968 tkphi 0.179258 mueta -0.84825 muphi 1.15628 dR2_tk_mu 5.10773
+test prop track 21.8103 0.660011 0.125905 0.667572 0.217873 0 
+test mu 140 0.84825 -2.02895 1 
+CheckMatch: tketa 0.667572 tkphi 0.217873 mueta 0.84825 muphi -2.02895 dR2_tk_mu 5.08083
+test prop track 21.6534 -0.660011 0.242246 -0.652363 0.105821 0 
+test mu 70.5 1.31588 0.676315 -1 
+CheckMatch: tketa -0.652363 tkphi 0.105821 mueta 1.31588 muphi 0.676315 dR2_tk_mu 4.19943
+test prop track 8.36832 -0.00195312 0.141273 -0.0106889 0.416011 0 
+test mu 45.5 -1.31588 -2.50891 1 
+CheckMatch: tketa -0.0106889 tkphi 0.416011 mueta -1.31588 muphi -2.50891 dR2_tk_mu 10.2587
+test prop track 8.29912 -0.00390624 0.257022 -0.012855 -0.0638219 0 
+test mu 200.5 1.19625 0.741765 -1 
+CheckMatch: tketa -0.012855 tkphi -0.0638219 mueta 1.19625 muphi 0.741765 dR2_tk_mu 2.11091
+test prop track 125.409 0.920862 0.138901 0.931114 0.136873 0 
+test mu 140.5 -1.19625 -2.45437 1 
+CheckMatch: tketa 0.931114 tkphi 0.136873 mueta -1.19625 muphi -2.45437 dR2_tk_mu 11.2402
+test prop track 108.789 -0.923547 0.25519 -0.913389 0.210562 0 
+test mu 140 0.36975 1.14537 -1 
+CheckMatch: tketa -0.913389 tkphi 0.210562 mueta 0.36975 muphi 1.14537 dR2_tk_mu 2.52031
+test prop track 9.34725 -2.28251 0.0931704 -2.2846 0.161007 0 
+test mu 140 -0.36975 -2.02895 1 
+CheckMatch: tketa -2.2846 tkphi 0.161007 mueta -0.36975 muphi -2.02895 dR2_tk_mu 8.46254
+test prop track 9.30871 2.28133 0.20936 2.28437 0.0978852 0 
+test mu 5 1.31588 0.992656 -1 
+CheckMatch: tketa 2.28437 tkphi 0.0978852 mueta 1.31588 muphi 0.992656 dR2_tk_mu 1.7386
+test prop track 6.87173 -1.7469 0.169065 -1.75039 -0.0573871 0 
+test mu 70.5 -1.31588 -2.0944 -1 
+CheckMatch: tketa -1.75039 tkphi -0.0573871 mueta -1.31588 muphi -2.0944 dR2_tk_mu 4.33821
+test prop track 6.77885 1.77172 0.0532869 1.77257 0.233181 0 
+test mu 140 -0.89175 1.06901 -1 
+CheckMatch: tketa 1.77257 tkphi 0.233181 mueta -0.89175 muphi 1.06901 dR2_tk_mu 7.79722
+test prop track 145.636 -0.0136715 0.0460857 -0.0256022 0.0413092 0 
+test mu 140 0.880875 -2.1053 1 
+CheckMatch: tketa -0.0256022 tkphi 0.0413092 mueta 0.880875 muphi -2.1053 dR2_tk_mu 5.42964
+test prop track 143.325 0.00585935 0.162668 -0.00617879 0.123536 0 
+test mu 12.5 1.50075 0.327249 -1 
+CheckMatch: tketa -0.00617879 tkphi 0.123536 mueta 1.50075 muphi 0.327249 dR2_tk_mu 2.31233
 test prop track 85.1833 1.03533 0.221996 1.03648 0.171046 0 
 test mu 0 0 0 0 
 CheckMatch: tketa 1.03648 tkphi 0.171046 mueta 0 muphi 0 dR2_tk_mu 1.10354
@@ -504,396 +492,63 @@ test prop track 12.3353 -2.08711 0.0810832 -2.08724 0.141295 0
 test mu 0 0 0 0 
 CheckMatch: tketa -2.08724 tkphi 0.141295 mueta 0 muphi 0 dR2_tk_mu 4.37653
 test prop track 3.06915 -1.26318 0.0547499 -1.26582 0.741588 0 
-test mu 140 0.685125 1.09083 1 
-CheckMatch: tketa -1.26582 tkphi 0.741588 mueta 0.685125 muphi 1.09083 dR2_tk_mu 3.92814
-test prop track 3.14505 1.26114 0.175513 1.26337 -0.535109 0 
-test mu 140 -0.6525 -2.01804 -1 
-CheckMatch: tketa 1.26337 tkphi -0.535109 mueta -0.6525 muphi -2.01804 dR2_tk_mu 5.86964
-test prop track 13.1817 2.30475 0.145103 2.3061 0.0613007 0 
-test mu 200.5 1.19625 -3.09796 -1 
-CheckMatch: tketa 2.3061 tkphi 0.0613007 mueta 1.19625 muphi -3.09796 dR2_tk_mu 11.2127
-test prop track 13.7226 -2.31091 0.0301683 -2.31178 0.0676706 0 
-test mu 140.5 -1.19625 0.109083 1 
-CheckMatch: tketa -2.31178 tkphi 0.0676706 mueta -1.19625 muphi 0.109083 dR2_tk_mu 1.24613
-test prop track 104.994 1.26625 0.0993111 1.26719 0.0980691 0 
-test mu 24 0.685125 0.665407 -1 
-CheckMatch: tketa 1.26719 tkphi 0.0980691 mueta 0.685125 muphi 0.665407 dR2_tk_mu 0.660668
-test prop track 100.327 -1.26625 0.215297 -1.26707 0.171904 0 
-test mu 22 -0.641625 -2.71617 1 
-CheckMatch: tketa -1.26707 tkphi 0.171904 mueta -0.641625 muphi -2.71617 dR2_tk_mu 8.73214
-test prop track 81.3466 0.56849 0.0467249 0.583931 -0.00559897 0 
-test mu 9 0.054375 -3.06523 -1 
-CheckMatch: tketa 0.583931 tkphi -0.00559897 mueta 0.054375 muphi -3.06523 dR2_tk_mu 9.6418
-test prop track 84.3876 -0.56849 0.163241 -0.553231 0.170832 0 
-test mu 8 0 -0.610865 1 
-CheckMatch: tketa -0.553231 tkphi 0.170832 mueta 0 muphi -0.610865 dR2_tk_mu 0.917116
-test prop track 53.4286 0.410268 0.257003 0.424796 0.188738 0 
 test mu 0 0 0 0 
-CheckMatch: tketa 0.424796 tkphi 0.188738 mueta 0 muphi 0 dR2_tk_mu 0.216073
+CheckMatch: tketa -1.26582 tkphi 0.741588 mueta 0 muphi 0 dR2_tk_mu 2.15224
+test prop track 3.14505 1.26114 0.175513 1.26337 -0.535109 0 
+test mu 140 0.685125 1.09083 1 
+CheckMatch: tketa 1.26337 tkphi -0.535109 mueta 0.685125 muphi 1.09083 dR2_tk_mu 2.97805
+test prop track 13.1817 2.30475 0.145103 2.3061 0.0613007 0 
+test mu 140 -0.6525 -2.01804 -1 
+CheckMatch: tketa 2.3061 tkphi 0.0613007 mueta -0.6525 muphi -2.01804 dR2_tk_mu 13.077
+test prop track 13.7226 -2.31091 0.0301683 -2.31178 0.0676706 0 
+test mu 200.5 1.19625 -3.09796 -1 
+CheckMatch: tketa -2.31178 tkphi 0.0676706 mueta 1.19625 muphi -3.09796 dR2_tk_mu 22.3275
+test prop track 104.994 1.26625 0.0993111 1.26719 0.0980691 0 
+test mu 140.5 -1.19625 0.109083 1 
+CheckMatch: tketa 1.26719 tkphi 0.0980691 mueta -1.19625 muphi 0.109083 dR2_tk_mu 6.06864
+test prop track 100.327 -1.26625 0.215297 -1.26707 0.171904 0 
+test mu 24 0.685125 0.665407 -1 
+CheckMatch: tketa -1.26707 tkphi 0.171904 mueta 0.685125 muphi 0.665407 dR2_tk_mu 4.0546
+test prop track 81.3466 0.56849 0.0467249 0.583931 -0.00559897 0 
+test mu 22 -0.641625 -2.71617 1 
+CheckMatch: tketa 0.583931 tkphi -0.00559897 mueta -0.641625 muphi -2.71617 dR2_tk_mu 8.84917
+test prop track 84.3876 -0.56849 0.163241 -0.553231 0.170832 0 
+test mu 9 0.054375 -3.06523 -1 
+CheckMatch: tketa -0.553231 tkphi 0.170832 mueta 0.054375 muphi -3.06523 dR2_tk_mu 10.8413
+test prop track 53.4286 0.410268 0.257003 0.424796 0.188738 0 
+test mu 8 0 -0.610865 1 
+CheckMatch: tketa 0.424796 tkphi 0.188738 mueta 0 muphi -0.610865 dR2_tk_mu 0.819817
 test prop track 53.7467 -0.417457 0.140487 -0.402775 0.164844 0 
 test mu 0 0 0 0 
 CheckMatch: tketa -0.402775 tkphi 0.164844 mueta 0 muphi 0 dR2_tk_mu 0.189401
 >>>> MATCH! <<<<
 test prop track 3.29542 1.50564 0.241252 1.50783 -0.310696 0 
-test mu 120.5 0.924375 0.818123 -1 
-CheckMatch: tketa 1.50783 tkphi -0.310696 mueta 0.924375 muphi 0.818123 dR2_tk_mu 1.61465
+test mu 0 0 0 0 
+CheckMatch: tketa 1.50783 tkphi -0.310696 mueta 0 muphi 0 dR2_tk_mu 2.37009
 test prop track 3.23984 -1.51141 0.12778 -1.51303 0.644637 0 
-test mu 140.5 -0.924375 -2.3671 1 
-CheckMatch: tketa -1.51303 tkphi 0.644637 mueta -0.924375 muphi -2.3671 dR2_tk_mu 9.41709
+test mu 120.5 0.924375 0.818123 -1 
+CheckMatch: tketa -1.51303 tkphi 0.644637 mueta 0.924375 muphi 0.818123 dR2_tk_mu 5.97104
 test prop track 3.248 -1.5015 0.12787 -1.50225 0.647697 0 
-test mu 15 2.28375 -1.54898 1 
-CheckMatch: tketa -1.50225 tkphi 0.647697 mueta 2.28375 muphi -1.54898 dR2_tk_mu 19.1592
+test mu 140.5 -0.924375 -2.3671 1 
+CheckMatch: tketa -1.50225 tkphi 0.647697 mueta -0.924375 muphi -2.3671 dR2_tk_mu 9.42295
 test prop track 17.7396 -0.0585603 0.229841 -0.0462235 0.0681302 0 
-test mu 14.5 -2.29463 1.75624 -1 
-CheckMatch: tketa -0.0462235 tkphi 0.0681302 mueta -2.29463 muphi 1.75624 dR2_tk_mu 7.90502
+test mu 15 2.28375 -1.54898 1 
+CheckMatch: tketa -0.0462235 tkphi 0.0681302 mueta 2.28375 muphi -1.54898 dR2_tk_mu 8.04382
 test prop track 18.1314 0.0507594 0.114206 0.0634207 0.22926 0 
-test mu 7 1.7835 -2.55254 -1 
-CheckMatch: tketa 0.0634207 tkphi 0.22926 mueta 1.7835 muphi -2.55254 dR2_tk_mu 10.6971
+test mu 14.5 -2.29463 1.75624 -1 
+CheckMatch: tketa 0.0634207 tkphi 0.22926 mueta -2.29463 muphi 1.75624 dR2_tk_mu 7.89204
 test prop track 15.7858 1.73828 0.1818 1.74665 0.0713 0 
-test mu 8 -1.77262 0.141808 1 
-CheckMatch: tketa 1.74665 tkphi 0.0713 mueta -1.77262 muphi 0.141808 dR2_tk_mu 12.3902
+test mu 7 1.7835 -2.55254 -1 
+CheckMatch: tketa 1.74665 tkphi 0.0713 mueta 1.7835 muphi -2.55254 dR2_tk_mu 6.88592
 test prop track 15.7034 -1.7316 0.064858 -1.73981 0.134349 0 
-test mu 140 0 2.57436 -1 
-CheckMatch: tketa -1.73981 tkphi 0.134349 mueta 0 muphi 2.57436 dR2_tk_mu 8.9806
+test mu 8 -1.77262 0.141808 1 
+CheckMatch: tketa -1.73981 tkphi 0.134349 mueta -1.77262 muphi 0.141808 dR2_tk_mu 0.00113242
+>>>> MATCH! <<<<
  Finished 
 INFO: [SIM 211-1] CSim done with 0 errors.
 INFO: [SIM 211-3] *************** CSIM finish ***************
 INFO: [HLS 200-10] Analyzing design file 'src/tk-mu_simple.cpp' ... 
 INFO: [HLS 200-10] Validating synthesis directives ...
-INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:31 ; elapsed = 00:00:16 . Memory (MB): peak = 437.828 ; gain = 33.504 ; free physical = 32435 ; free virtual = 60549
-INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:31 ; elapsed = 00:00:16 . Memory (MB): peak = 437.828 ; gain = 33.504 ; free physical = 32419 ; free virtual = 60548
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:33 ; elapsed = 00:00:16 . Memory (MB): peak = 437.832 ; gain = 33.504 ; free physical = 60231 ; free virtual = 61907
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:34 ; elapsed = 00:00:17 . Memory (MB): peak = 437.832 ; gain = 33.504 ; free physical = 60215 ; free virtual = 61906
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:40 ; elapsed = 00:00:25 . Memory (MB): peak = 629.824 ; gain = 225.500 ; free physical = 32282 ; free virtual = 60426
-INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [XFORM 203-602] Inlining function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:68) automatically.
-INFO: [XFORM 203-602] Inlining function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:127) automatically.
-INFO: [XFORM 203-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:131) automatically.
-INFO: [XFORM 203-602] Inlining function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:145) automatically.
-INFO: [XFORM 203-602] Inlining function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:163) automatically.
-INFO: [XFORM 203-602] Inlining function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:167) automatically.
-INFO: [XFORM 203-602] Inlining function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:182) automatically.
-INFO: [XFORM 203-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:200) automatically.
-INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:41 ; elapsed = 00:00:26 . Memory (MB): peak = 629.824 ; gain = 225.500 ; free physical = 32272 ; free virtual = 60419
-INFO: [XFORM 203-602] Inlining function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:68) automatically.
-INFO: [XFORM 203-602] Inlining function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:127) automatically.
-INFO: [XFORM 203-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:131) automatically.
-INFO: [XFORM 203-602] Inlining function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:145) automatically.
-INFO: [XFORM 203-602] Inlining function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:163) automatically.
-INFO: [XFORM 203-602] Inlining function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:167) automatically.
-INFO: [XFORM 203-602] Inlining function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:182) automatically.
-INFO: [XFORM 203-602] Inlining function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'tkmu_simple_hw' (src/tk-mu_simple.cpp:200) automatically.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (src/tk-mu_simple.cpp:71:16) in function 'tkmu_simple_hw'... converting 20 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.cpp:71:16) to (src/tk-mu_simple.cpp:95:9) in function 'tkmu_simple_hw'... converting 38 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.cpp:183:9) to (src/tk-mu_simple.cpp:220:5) in function 'tkmu_simple_hw'... converting 5 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:516:19) to (src/tk-mu_simple.h:530:5) in function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:563:22) to (src/tk-mu_simple.h:579:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (src/tk-mu_simple.h:579:5) in function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:329:23) to (src/tk-mu_simple.h:344:5) in function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:422:29) to (src/tk-mu_simple.h:438:5) in function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:375:30) to (src/tk-mu_simple.h:391:5) in function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:468:24) to (src/tk-mu_simple.h:484:5) in function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>'... converting 6 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/tk-mu_simple.h:614:22) to (src/tk-mu_simple.h:630:5) in function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>'... converting 6 basic blocks.
-INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:43 ; elapsed = 00:00:28 . Memory (MB): peak = 645.828 ; gain = 241.504 ; free physical = 32201 ; free virtual = 60366
-WARNING: [XFORM 203-631] Renaming function 'tanh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:521:5) into tanh.
-WARNING: [XFORM 203-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:568:5) into invCosh.
-WARNING: [XFORM 203-631] Renaming function 'invCosh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:568:5) into invCosh.1.
-WARNING: [XFORM 203-631] Renaming function 'deta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:334:5) into deta_LUT.
-WARNING: [XFORM 203-631] Renaming function 'delta_plus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:427:5) into delta_plus_LUT.
-WARNING: [XFORM 203-631] Renaming function 'delta_minus_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:380:5) into delta_minus_LUT.
-WARNING: [XFORM 203-631] Renaming function 'delta_LUT<ap_fixed<11, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<19, 3, (ap_q_mode)5, (ap_o_mode)3, 0>, 1024>' (src/tk-mu_simple.h:473:5) into delta_LUT.
-WARNING: [XFORM 203-631] Renaming function 'arcsinh<ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, ap_fixed<14, 4, (ap_q_mode)5, (ap_o_mode)3, 0>, 8192>' (src/tk-mu_simple.h:619:5) into arcsinh.
-INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:45 ; elapsed = 00:00:30 . Memory (MB): peak = 773.828 ; gain = 369.504 ; free physical = 32123 ; free virtual = 60293
-INFO: [HLS 200-10] Starting hardware synthesis ...
-INFO: [HLS 200-10] Synthesizing 'tkmu_simple_hw' ...
-WARNING: [SYN 201-103] Legalizing function name 'invCosh.1' to 'invCosh_1'.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Implementing module 'arcsinh' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function 'arcsinh'.
-INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 11.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 30 seconds; current allocated memory: 281.809 MB.
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.09 seconds; current allocated memory: 282.087 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Implementing module 'delta_LUT' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function 'delta_LUT'.
-INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 282.362 MB.
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.09 seconds; current allocated memory: 282.549 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Implementing module 'delta_plus_LUT' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function 'delta_plus_LUT'.
-INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 282.790 MB.
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 282.977 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Implementing module 'delta_minus_LUT' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function 'delta_minus_LUT'.
-INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 283.234 MB.
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 283.420 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Implementing module 'tanh' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function 'tanh'.
-INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 11.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 283.657 MB.
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 283.831 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Implementing module 'deta_LUT' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function 'deta_LUT'.
-INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.15 seconds; current allocated memory: 284.035 MB.
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 284.221 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Implementing module 'invCosh_1' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function 'invCosh.1'.
-INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 7.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.15 seconds; current allocated memory: 284.385 MB.
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.04 seconds; current allocated memory: 284.488 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Implementing module 'invCosh' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function 'invCosh'.
-INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.11 seconds; current allocated memory: 284.645 MB.
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.06 seconds; current allocated memory: 284.791 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Implementing module 'tkmu_simple_hw' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SCHED 204-11] Starting scheduling ...
-WARNING: [SCHED 204-21] Estimated clock period (4.89ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.38ns).
-WARNING: [SCHED 204-21] The critical path consists of the following:
-	'mul' operation ('r.V', src/tk-mu_simple.cpp:71) (4.89 ns)
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.65 seconds; current allocated memory: 287.977 MB.
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 1.73 seconds; current allocated memory: 290.919 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'arcsinh' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SYN 201-210] Renamed object name 'arcsinh_arcsinh_table9' to 'arcsinh_arcsinh_tbkb' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_29ns_27s_55_7' to 'tkmu_simple_hw_mucud' due to the length limit 20
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mucud': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'arcsinh'.
-INFO: [HLS 200-111]  Elapsed time: 1.6 seconds; current allocated memory: 291.643 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'delta_LUT' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SYN 201-210] Renamed object name 'delta_LUT_delta_table5' to 'delta_LUT_delta_tdEe' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_23ns_21s_44_5' to 'tkmu_simple_hw_mueOg' due to the length limit 20
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'delta_LUT'.
-INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 292.814 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'delta_plus_LUT' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SYN 201-210] Renamed object name 'delta_plus_LUT_delta_plus_table4' to 'delta_plus_LUT_defYi' due to the length limit 20
-WARNING: [RTGEN 206-101] RTL name 'tkmu_simple_hw_mueOg' is changed to 'tkmu_simple_hw_mueOg_x' due to conflict.
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'delta_plus_LUT'.
-INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 293.887 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'delta_minus_LUT' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SYN 201-210] Renamed object name 'delta_minus_LUT_delta_minus_table3' to 'delta_minus_LUT_dg8j' due to the length limit 20
-WARNING: [RTGEN 206-101] RTL name 'tkmu_simple_hw_mueOg' is changed to 'tkmu_simple_hw_mueOg_x' due to conflict.
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'delta_minus_LUT'.
-INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 294.991 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'tanh' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_29ns_26s_55_7' to 'tkmu_simple_hw_muhbi' due to the length limit 20
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muhbi': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'tanh'.
-INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 296.064 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'deta_LUT' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SYN 201-210] Renamed object name 'deta_LUT_deta_table8' to 'deta_LUT_deta_tabibs' due to the length limit 20
-WARNING: [RTGEN 206-101] RTL name 'tkmu_simple_hw_mueOg' is changed to 'tkmu_simple_hw_mueOg_x' due to conflict.
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mueOg': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'deta_LUT'.
-INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 297.082 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'invCosh_1' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SYN 201-210] Renamed object name 'invCosh_1_cosh_table7' to 'invCosh_1_cosh_tajbC' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_26ns_24ns_49_5' to 'tkmu_simple_hw_mukbM' due to the length limit 20
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mukbM': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'invCosh_1'.
-INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 298.033 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'invCosh' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_27ns_25ns_51_5' to 'tkmu_simple_hw_mulbW' due to the length limit 20
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mulbW': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'invCosh'.
-INFO: [HLS 200-111]  Elapsed time: 0.1 seconds; current allocated memory: 298.691 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'tkmu_simple_hw' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwRinv_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwPt_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwSinhEta_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwEta_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwPhi_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwZ0_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwQ_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwX2_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_VALID_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwBX_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwPropEta_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/agg_result_hwPropPhi_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwRinv_V' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwPt_V' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwSinhEta_V' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwEta_V' to 'ap_vld'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwPhi_V' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwZ0_V' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwQ_V' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwX2_V' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_VALID_V' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'tkmu_simple_hw/in_hwBX_V' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on function 'tkmu_simple_hw' to 'ap_ctrl_hs'.
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_dmul_64ns_64ns_64_8_max_dsp' to 'tkmu_simple_hw_dmmb6' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_sitodp_64s_64_6' to 'tkmu_simple_hw_sincg' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_6s_10ns_17_3' to 'tkmu_simple_hw_muocq' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_19ns_19s_38_5' to 'tkmu_simple_hw_mupcA' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_38s_17ns_51_5' to 'tkmu_simple_hw_muqcK' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_mul_13s_11ns_24_1' to 'tkmu_simple_hw_murcU' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_mul_15s_17ns_32_1' to 'tkmu_simple_hw_musc4' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mac_muladd_15s_11ns_19ns_19_1' to 'tkmu_simple_hw_matde' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_mul_6s_11ns_17_1' to 'tkmu_simple_hw_muudo' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_am_addmul_13s_7s_11ns_26_1' to 'tkmu_simple_hw_amvdy' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_mul_18ns_19s_35_1' to 'tkmu_simple_hw_muwdI' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'tkmu_simple_hw_mul_mul_19ns_17ns_35_1' to 'tkmu_simple_hw_muxdS' due to the length limit 20
-WARNING: [RTGEN 206-101] Port 'tkmu_simple_hw/in_hwPt_V' has no fanin or fanout and is left dangling.
-               Please use C simulation to confirm this function argument can be read from or written to.
-WARNING: [RTGEN 206-101] Port 'tkmu_simple_hw/in_hwX2_V' has no fanin or fanout and is left dangling.
-               Please use C simulation to confirm this function argument can be read from or written to.
-WARNING: [RTGEN 206-101] Port 'tkmu_simple_hw/in_VALID_V' has no fanin or fanout and is left dangling.
-               Please use C simulation to confirm this function argument can be read from or written to.
-WARNING: [RTGEN 206-101] Port 'tkmu_simple_hw/in_hwBX_V' has no fanin or fanout and is left dangling.
-               Please use C simulation to confirm this function argument can be read from or written to.
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_amvdy': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_dmmb6': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_matde': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muocq': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_mupcA': 2 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muqcK': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_murcU': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_musc4': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muudo': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muwdI': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_muxdS': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'tkmu_simple_hw_sincg': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'tkmu_simple_hw'.
-INFO: [HLS 200-111]  Elapsed time: 0.27 seconds; current allocated memory: 303.553 MB.
-INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_mucud_MulnS_0'
-INFO: [RTMG 210-279] Implementing memory 'arcsinh_arcsinh_tbkb_rom' using auto ROMs.
-INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_mueOg_MulnS_1'
-INFO: [RTMG 210-279] Implementing memory 'delta_LUT_delta_tdEe_rom' using auto ROMs.
-INFO: [RTMG 210-279] Implementing memory 'delta_plus_LUT_defYi_rom' using auto ROMs.
-INFO: [RTMG 210-279] Implementing memory 'delta_minus_LUT_dg8j_rom' using auto ROMs.
-INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_muhbi_MulnS_2'
-INFO: [RTMG 210-279] Implementing memory 'tanh_tanh_table2_rom' using auto ROMs.
-INFO: [RTMG 210-279] Implementing memory 'deta_LUT_deta_tabibs_rom' using auto ROMs.
-INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_mukbM_MulnS_3'
-INFO: [RTMG 210-279] Implementing memory 'invCosh_1_cosh_tajbC_rom' using auto ROMs.
-INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_mulbW_MulnS_4'
-INFO: [RTMG 210-279] Implementing memory 'invCosh_cosh_table1_rom' using auto ROMs.
-INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_muocq_MulnS_5'
-INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_mupcA_MulnS_6'
-INFO: [RTMG 210-282] Generating pipelined core: 'tkmu_simple_hw_muqcK_MulnS_7'
-INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:54 ; elapsed = 00:00:41 . Memory (MB): peak = 837.832 ; gain = 433.508 ; free physical = 32072 ; free virtual = 60258
-INFO: [SYSC 207-301] Generating SystemC RTL for tkmu_simple_hw.
-INFO: [VHDL 208-304] Generating VHDL RTL for tkmu_simple_hw.
-INFO: [VLOG 209-307] Generating Verilog RTL for tkmu_simple_hw.
-INFO: [IMPL 213-8] Exporting RTL as an IP in IP-XACT.
-
-****** Vivado v2016.4 (64-bit)
-  **** SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
-  **** IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
-    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
-
-source run_ippack.tcl -notrace
-INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2016.4/data/ip'.
-WARNING: [IP_Flow 19-4832] The IP name 'tkmu_simple_hw_ap_dmul_6_max_dsp_64' you have specified is long. The Windows operating system has path length limitations. It is recommended you use shorter names to reduce the likelihood of issues.
-INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'tkmu_simple_hw_ap_dmul_6_max_dsp_64'...
-INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'tkmu_simple_hw_ap_dmul_6_max_dsp_64'...
-WARNING: [IP_Flow 19-4832] The IP name 'tkmu_simple_hw_ap_sitodp_4_no_dsp_64' you have specified is long. The Windows operating system has path length limitations. It is recommended you use shorter names to reduce the likelihood of issues.
-INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'tkmu_simple_hw_ap_sitodp_4_no_dsp_64'...
-INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'tkmu_simple_hw_ap_sitodp_4_no_dsp_64'...
-INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2016.4/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Thu May 24 19:27:31 2018...
-INFO: [HLS 200-112] Total elapsed time: 65.72 seconds; peak allocated memory: 303.553 MB.
