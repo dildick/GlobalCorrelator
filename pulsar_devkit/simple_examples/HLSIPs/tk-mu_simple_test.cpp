@@ -108,6 +108,7 @@ int main()
 	// obtain the track-muon by matching the track to the muon
         TrackMuonObj_tkmu out_trackmuon_sw;
 	out_trackmuon_sw = match_sw(prop_track_sw, in_muon_sw);
+	std::cout << std::endl;
 	
 	if (false){
 	  std::cout << " REF : eta = " << in_track_sw.eta 
@@ -218,12 +219,18 @@ void read_track_file( const std::string &file_name, std::vector<std::string> &va
     std::string line("");
     if (ifile.is_open()){
 
+      std::string phisector = "";
         while (std::getline(ifile, line)) {
 	    std::string newstring(line);
 	    
             // allow for comments
             std::size_t lineComment = line.find(comment);
-            if (lineComment == 0) continue;
+            if (lineComment == 0) {
+	      std::vector<std::string> values_bx;
+	      split(newstring,' ',values_bx);
+	      phisector = values_bx.at(7); // extract the track phi sector
+	      continue;
+	    }
             if (lineComment != std::string::npos) newstring = line.substr(0,lineComment);
 
 	    // ignore all tracks starting with "01" for now
@@ -239,7 +246,7 @@ void read_track_file( const std::string &file_name, std::vector<std::string> &va
             // ignore empty lines
             if(newstring.length()==0) continue;
 
-            values.push_back(newstring); // put values into vector
+            values.push_back(newstring + " " + phisector); // put values into vector
         }
 
         ifile.close();
@@ -339,7 +346,9 @@ void decode_sw_track_data(const std::string &data_sw, TrackObj_tkmu& in_track_sw
   // setup Rinv
   float rinv    = std::atof(values_sw.at(1).c_str());
   float sinhEta = std::atof(values_sw.at(3).c_str());
-  
+  int sector = std::atoi(values_sw.at(11).c_str());
+  std::cout << "phisector sw" << sector << std::endl;
+
   in_track_sw.rinv = rinv;
   in_track_sw.pt  = rinv2pt(rinv);           // 1.360636778;
   in_track_sw.sinheta = sinhEta;
