@@ -85,97 +85,204 @@ int main()
 		"../../../../config/hw_track_data.dat",
 		"../../../../config/hw_muon_data.dat");
 
+    // propagate the tracks
+    for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
+      Event event = events[iEvent];
+      for (unsigned int iHwTrack = 0; iHwTrack < event.hwTracks.size(); ++iHwTrack){
+	HwTrack hwTrack = event.hwTracks[iHwTrack];
+	HwPropTrack prop_track_hw = tkmu_simple_hw(hwTrack);
+	event.hwPropTracks.push_back(prop_track_hw);
+      } 
+    }
+    for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
+      Event event = events[iEvent];
+      for (unsigned int iSwTrack = 0; iSwTrack < event.swTracks.size(); ++iSwTrack){
+	SwTrack swTrack = event.swTracks[iSwTrack];
+	SwPropTrack prop_track_sw = tkmu_simple_ref(swTrack);
+	event.swPropTracks.push_back(prop_track_sw);
+      } 
+    }
+
+    // match the tracks and muons 
+    for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
+      Event event = events[iEvent];
+      for (unsigned int iHwMuon = 0; iHwMuon < event.hwMuons.size(); ++iHwMuon){
+	HwMuon hwMuon = event.hwMuons[iHwMuon];
+	// check all possible matches!
+	for (unsigned int iHwPropTrack = 0; 
+	     iHwPropTrack < event.hwPropTracks.size(); ++iHwPropTrack){
+	  HwPropTrack hwPropTrack = event.hwPropTracks[iHwPropTrack];
+	  HwTrackMuon hwTrackMuon = match_hw(hwPropTrack, hwMuon);
+	  event.hwTrackMuons.push_back(hwTrackMuon);
+	} 
+      }
+    }
+    for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
+      Event event = events[iEvent];
+      for (unsigned int iSwMuon = 0; iSwMuon < event.swMuons.size(); ++iSwMuon){
+	SwMuon swMuon = event.swMuons[iSwMuon];
+	// check all possible matches!
+	for (unsigned int iSwPropTrack = 0; 
+	     iSwPropTrack < event.swPropTracks.size(); ++iSwPropTrack){
+	  SwPropTrack swPropTrack = event.swPropTracks[iSwPropTrack];
+	  SwTrackMuon swTrackMuon = match_sw(swPropTrack, swMuon);
+	  event.swTrackMuons.push_back(swTrackMuon);
+	} 
+      }
+    }
+
     for (unsigned int i = 0; i < events.size(); ++i){
       std::cout << events[i] << std::endl;
     }
 
-    return 0;
-
-    // software data I/O
-    std::vector<std::string> sw_track_data;
-    read_track_file("../../../../config/sw_track_data.dat",sw_track_data,"BX");
-
-    std::vector<std::string> sw_muon_data;
-    read_muon_file("../../../../config/sw_muon_data.dat",sw_muon_data, muonComment);
+    std::cout << " Finished " << std::endl;
 
     std::ofstream software_output;
     software_output.open("../../../../software_prop.txt");
 
-    // firmware data I/O
-    std::vector<std::string> hw_track_data;
-    read_track_file("../../../../config/hw_track_data.dat",hw_track_data,"BX");
-
-    std::vector<std::string> hw_muon_data;
-    read_muon_file("../../../../config/hw_muon_data.dat",hw_muon_data, muonComment);
-
     std::ofstream firmware_output;
     firmware_output.open("../../../../firmware_prop.txt");
 
-    // start the loop on the events...
-    for (unsigned int i=0,size=sw_track_data.size();i<size;i++){
-
-        // :: SOFTWARE :: //
-        std::string track_data_sw = sw_track_data[i];
-        std::string muon_data_sw = sw_muon_data[i];
-
-	// define the reference track and decode the 
-	// data from the data file
-        SwTrack in_track_sw;
-	decode_sw_track_data(track_data_sw, in_track_sw);
-	std::cout << "Test track: " << in_track_sw << std::endl;
-	  
-	// define the propagated track and obtain it by 
-	// propagating the reference track to the second 
-	// muon station
-        SwPropTrack prop_track_sw = tkmu_simple_ref(in_track_sw);
-	std::cout << "Test prop track: " << prop_track_sw << std::endl;
-
-	// define the reference track and decode the data 
-	// from the sim muon data file
-        SwMuon in_muon_sw;
-	decode_sw_muon_data(muon_data_sw, in_muon_sw);
-	std::cout << "Test mu: " << in_muon_sw << std::endl;
-
-	// obtain the track-muon by matching the track to the muon
-        SwTrackMuon out_trackmuon_sw;
-	out_trackmuon_sw = match_sw(prop_track_sw, in_muon_sw);
-	std::cout << std::endl;
-	
-	writeOutputSW(software_output, in_track_sw, prop_track_sw,
-		      in_muon_sw, out_trackmuon_sw);
-
-        // :: FIRMWARE :: //
-        std::string track_data_fw = hw_track_data[i];
-        std::string muon_data_fw = hw_muon_data[i];
-	
-	// get the track 
-        HwTrack in_track_hw;
-	decode_hw_track_data(track_data_fw, in_track_hw);
-
-	// propagate the track
-        HwPropTrack prop_track_hw;
-        prop_track_hw = tkmu_simple_hw(in_track_hw);
-
-	// get the muon
-        HwMuon in_muon_hw;
-	decode_hw_muon_data(muon_data_fw, in_muon_hw);
-
-	// match the track with the muon
-        HwTrackMuon out_trackmuon_hw;
-	out_trackmuon_hw = match_hw(prop_track_hw, in_muon_hw);
-
-	writeOutputHW(firmware_output, in_track_hw, prop_track_hw,
-		      in_muon_hw, out_trackmuon_hw);
-    }
-
-    std::cout << " Finished " << std::endl;
+    // 	writeOutputSW(software_output, in_track_sw, prop_track_sw,
+    // 		      in_muon_sw, out_trackmuon_sw);
+    // 	writeOutputHW(firmware_output, in_track_hw, prop_track_hw,
+    // 		      in_muon_hw, out_trackmuon_hw);
 
     software_output.close();
     firmware_output.close();
-
+    
     return 0;
 }
 
+void eventReader(std::vector<Event>& events, 
+		 const std::string& simTrackFile,
+		 const std::string& swTrack,
+		 const std::string& swMuon,
+		 const std::string& hwTrack,
+		 const std::string& hwMuon)
+{
+  events.clear();
+
+  // step 1: generate as many events as there are in the truth file
+  std::ifstream ifile(simTrackFile.c_str());
+  
+  if (!ifile) {
+    std::cout << "File does not exist: " << simTrackFile << std::endl;
+    std::cout << "Exiting. " << std::endl;
+    exit(0);
+  }
+  
+  // open the file and put the truth data into a vector
+  std::string line("");
+  if (ifile.is_open()){
+    
+    while (std::getline(ifile, line)) {
+      std::string newString(line);
+
+      // create a new event
+      if (newString.substr(0,5) == "Event"){
+	Event newEvent;
+	std::vector<std::string> values;
+	split(newString,' ',values);
+	newEvent.eventNumber = std::atoi( values.at(1).c_str() );
+	newEvent.BX = std::atoi( values.at(3).c_str() );	
+	events.push_back(newEvent);
+      }
+      
+      if (newString.substr(0,8) == "SimTrack"){
+	SimTrack newSimTrack;
+	std::vector<std::string> values;
+	split(newString,' ',values);
+	newSimTrack.index =  std::atof( values.at(1).c_str() );
+	newSimTrack.pt =  std::atof( values.at(2).c_str() );
+	newSimTrack.eta = std::atof( values.at(3).c_str() );
+	newSimTrack.phi = std::atof( values.at(4).c_str() );
+	newSimTrack.q  =  std::atoi( values.at(5).c_str() );
+	events.back().simTracks.push_back(newSimTrack);
+      }
+    }
+  }
+
+  ifile.close();
+
+  // step 3: read the Sw tracks
+  std::ifstream swTrackFile(swTrack.c_str());
+  
+  if (!swTrackFile) {
+    std::cout << "File does not exist: " << swTrack << std::endl;
+    std::cout << "Exiting. " << std::endl;
+    exit(0);
+  }
+  
+  // open the file and put the truth data into a vector
+  line = "";
+  /*
+  if (swTrackFile.is_open()){
+    
+    std::string phisector;
+    int eventNumber;
+    int BX;
+    while (std::getline(swTrackFile, line)) {
+      std::string newString(line);
+      // create a new event
+      if (newString.substr(0,2) == "BX"){
+	std::vector<std::string> values;
+	split(newString,' ',values);
+	eventNumber = std::atoi( values.at(3).c_str() );
+	phisector = values.at(7);
+      }
+      // add attributes
+      else{
+	SwTrack newTrack;
+	// std::cout << "eventNumber "  << eventNumber << std::endl;
+	// decode_sw_track_data(newString + " " + phisector, newTrack);
+	events[eventNumber-1].swTracks.push_back(newTrack);
+      }
+    }
+  }
+  */
+  swTrackFile.close();
+
+  /*
+  // step 3: read the Hw tracks
+  std::ifstream hwTrackFile(hwTrack.c_str());
+  
+  if (!hwTrackFile) {
+    std::cout << "File does not exist: " << hwTrack << std::endl;
+    std::cout << "Exiting. " << std::endl;
+    exit(0);
+  }
+  
+  // open the file and put the truth data into a vector
+  line = "";
+  if (hwTrackFile.is_open()){
+    
+    std::string phisector;
+    int eventNumber;
+    int BX;
+    while (std::getline(hwTrackFile, line)) {
+      std::string newString(line);
+
+      // create a new event
+      if (newString.substr(0,2) == "BX"){
+	std::vector<std::string> values;
+	split(newString,' ',values);
+	eventNumber = std::atoi( values.at(3).c_str() );
+	phisector = values.at(7);
+      }
+      // add attributes
+      else{
+	HwTrack newTrack;
+	decode_hw_track_data(newString + " " + phisector, newTrack);
+	events[eventNumber-1].hwTracks.push_back(newTrack);
+      }
+    }
+  }
+  hwTrackFile.close();
+  */
+  return;
+  
+} 
 
 
 
@@ -564,133 +671,5 @@ void writeOutputHW(std::ofstream& firmware_output,
     << "\n";
 }
 
-void eventReader(std::vector<Event>& events, 
-		 const std::string& simTrackFile,
-		 const std::string& swTrack,
-		 const std::string& swMuon,
-		 const std::string& hwTrack,
-		 const std::string& hwMuon)
-{
-  events.clear();
-
-  // step 1: generate as many events as there are in the truth file
-  std::ifstream ifile(simTrackFile.c_str());
-  
-  if (!ifile) {
-    std::cout << "File does not exist: " << simTrackFile << std::endl;
-    std::cout << "Exiting. " << std::endl;
-    exit(0);
-  }
-  
-  // open the file and put the truth data into a vector
-  std::string line("");
-  if (ifile.is_open()){
-    
-    while (std::getline(ifile, line)) {
-      std::string newString(line);
-
-      // create a new event
-      if (newString.substr(0,5) == "Event"){
-	Event newEvent;
-	std::vector<std::string> values;
-	split(newString,' ',values);
-	newEvent.eventNumber = std::atoi( values.at(1).c_str() );
-	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	events.push_back(newEvent);
-      }
-      
-      if (newString.substr(0,8) == "SimTrack"){
-	SimTrack newSimTrack;
-	std::vector<std::string> values;
-	split(newString,' ',values);
-	newSimTrack.index =  std::atof( values.at(1).c_str() );
-	newSimTrack.pt =  std::atof( values.at(2).c_str() );
-	newSimTrack.eta = std::atof( values.at(3).c_str() );
-	newSimTrack.phi = std::atof( values.at(4).c_str() );
-	newSimTrack.q  =  std::atoi( values.at(5).c_str() );
-	events.back().simTracks.push_back(newSimTrack);
-      }
-    }
-  }
-
-  ifile.close();
-
-  // step 3: read the Sw tracks
-  std::ifstream swTrackFile(swTrack.c_str());
-  
-  if (!swTrackFile) {
-    std::cout << "File does not exist: " << swTrack << std::endl;
-    std::cout << "Exiting. " << std::endl;
-    exit(0);
-  }
-  
-  // open the file and put the truth data into a vector
-  line = "";
-  if (swTrackFile.is_open()){
-    
-    std::string phisector;
-    int eventNumber;
-    int BX;
-    while (std::getline(swTrackFile, line)) {
-      std::string newString(line);
-
-      // create a new event
-      if (newString.substr(0,2) == "BX"){
-	std::vector<std::string> values;
-	split(newString,' ',values);
-	eventNumber = std::atoi( values.at(3).c_str() );
-	phisector = values.at(7);
-      }
-      // add attributes
-      else{
-	SwTrack newTrack;
-	decode_sw_track_data(newString + " " + phisector, newTrack);
-	events[eventNumber-1].swTracks.push_back(newTrack);
-      }
-    }
-  }
-  swTrackFile.close();
-
-  return;
-  
-  // step 2: read the Hw tracks
-  std::ifstream hwTrackFile(hwTrack.c_str());
-  
-  if (!hwTrackFile) {
-    std::cout << "File does not exist: " << hwTrack << std::endl;
-    std::cout << "Exiting. " << std::endl;
-    exit(0);
-  }
-  
-  // open the file and put the truth data into a vector
-  line = "";
-  if (hwTrackFile.is_open()){
-    
-    std::string phisector;
-    int eventNumber;
-    int BX;
-    while (std::getline(hwTrackFile, line)) {
-      std::string newString(line);
-
-      // create a new event
-      if (newString.substr(0,2) == "BX"){
-	std::vector<std::string> values;
-	split(newString,' ',values);
-	eventNumber = std::atoi( values.at(3).c_str() );
-	phisector = values.at(7);
-      }
-      // add attributes
-      else{
-	HwTrack newTrack;
-	decode_hw_track_data(newString + " " + phisector, newTrack);
-	events[eventNumber-1].hwTracks.push_back(newTrack);
-      }
-    }
-  }
-  hwTrackFile.close();
-
-  return;
-  
-} 
 
 // THE END
