@@ -10,9 +10,9 @@ Propagate track to muon system
 #include "src/tk-mu_simple.h"
 
 
-PropTrackObj_tkmu tkmu_simple_ref( const TrackObj_tkmu& in ){
+SwPropTrack tkmu_simple_ref( const SwTrack& in ){
 
-  PropTrackObj_tkmu out(in);
+  SwPropTrack out(in);
 
    /* C++ implementation of the track propagation algorithm */
     float tk_pt   = in.pt;

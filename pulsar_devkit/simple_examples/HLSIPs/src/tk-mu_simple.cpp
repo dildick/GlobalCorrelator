@@ -28,9 +28,9 @@ Negative values in binary are generated assuming "One's complement"
 
 
 
-PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in)
+HwPropTrack tkmu_simple_hw(  HwTrack& in)
 {
-  PropTkObj_tkmu out(in);
+  HwPropTrack out(in);
   // assign basic variables
   // out.hwRinv = in.hwRinv; 
   // out.hwPt   = in.hwPt; 
@@ -228,9 +228,9 @@ PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in)
     return out;
 }
 
-TkMuObj_tkmu match_hw(const PropTkObj_tkmu& inTrack, const MuObj_tkmu& inMuon)
+HwTrackMuon match_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
 {
-  TkMuObj_tkmu outTrack;
+  HwTrackMuon outTrack;
   feta_t tkEta = inTrack.hwPropEta;
   fphi_t tkPhi = inTrack.hwPropPhi;
 
@@ -251,10 +251,9 @@ TkMuObj_tkmu match_hw(const PropTkObj_tkmu& inTrack, const MuObj_tkmu& inMuon)
   return outTrack;
 }
 
-TrackMuonObj_tkmu match_sw(const PropTrackObj_tkmu& inTrack, 
-			   const MuonObj_tkmu& inMuon)
+SwTrackMuon match_sw(const SwPropTrack& inTrack, const SwMuon& inMuon)
 {
-  TrackMuonObj_tkmu outTrack;
+  SwTrackMuon outTrack;
   float tketa = inTrack.propEta;
   float tkphi = inTrack.propPhi;
   

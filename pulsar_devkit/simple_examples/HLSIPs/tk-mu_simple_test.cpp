@@ -28,29 +28,38 @@ void read_muon_file(const std::string &file_name,
 		    const std::vector<std::string> &comment);
 
 // functions to decode data
-void decode_sw_track_data(const std::string &word, TrackObj_tkmu&);
-void decode_hw_track_data(const std::string &word, TkObj_tkmu&);
-void decode_sw_muon_data(const std::string &word, MuonObj_tkmu&);
-void decode_hw_muon_data(const std::string &word, MuObj_tkmu&);
+void decode_sw_track_data(const std::string &word, SwTrack&);
+void decode_hw_track_data(const std::string &word, HwTrack&);
+void decode_sw_muon_data(const std::string &word, SwMuon&);
+void decode_hw_muon_data(const std::string &word, HwMuon&);
 
+// helpers
 void split(const std::string &s, 
 	   char delim, std::vector<std::string> &elems);
 float rinv2pt(const float& rinv);
 float sinhEta2eta(const float& sinhEta);
 void isNegative( std::string& bit_value, bool& isNeg);
 float normalizePhi(float phi);
+
 // dump output
 void writeOutputSW(std::ofstream&,
-		   const TrackObj_tkmu&, 
-		   const PropTrackObj_tkmu&,
-		   const MuonObj_tkmu&,
-		   const TrackMuonObj_tkmu&);
+		   const SwTrack&, 
+		   const SwPropTrack&,
+		   const SwMuon&,
+		   const SwTrackMuon&);
 
 void writeOutputHW(std::ofstream&,
-		   const TkObj_tkmu&, 
-		   const PropTkObj_tkmu&,
-		   const MuObj_tkmu&,
-		   const TkMuObj_tkmu&);
+		   const HwTrack&, 
+		   const HwPropTrack&,
+		   const HwMuon&,
+		   const HwTrackMuon&);
+
+void eventReader(std::vector<Event>& events, 
+		 const std::string& simTrackFile,
+		 const std::string& swTrack,
+		 const std::string& swMuon,
+		 const std::string& hwTrack,
+		 const std::string& hwMuon); 
 
 int main() 
 {
@@ -68,7 +77,19 @@ int main()
     muonComment.push_back("MuonE");
 
     // truth information I/O (CMSSW SimTrack)
-    std::vector<std::string> true_track_data;
+    std::vector<Event> events;
+    eventReader(events, 
+		"../../../../config/sim_track_data.dat",
+		"../../../../config/sw_track_data.dat",
+		"../../../../config/sw_muon_data.dat",
+		"../../../../config/hw_track_data.dat",
+		"../../../../config/hw_muon_data.dat");
+
+    for (unsigned int i = 0; i < events.size(); ++i){
+      std::cout << events[i] << std::endl;
+    }
+
+    return 0;
 
     // software data I/O
     std::vector<std::string> sw_track_data;
@@ -99,24 +120,24 @@ int main()
 
 	// define the reference track and decode the 
 	// data from the data file
-        TrackObj_tkmu in_track_sw;
+        SwTrack in_track_sw;
 	decode_sw_track_data(track_data_sw, in_track_sw);
 	std::cout << "Test track: " << in_track_sw << std::endl;
 	  
 	// define the propagated track and obtain it by 
 	// propagating the reference track to the second 
 	// muon station
-        PropTrackObj_tkmu prop_track_sw = tkmu_simple_ref(in_track_sw);
+        SwPropTrack prop_track_sw = tkmu_simple_ref(in_track_sw);
 	std::cout << "Test prop track: " << prop_track_sw << std::endl;
 
 	// define the reference track and decode the data 
 	// from the sim muon data file
-        MuonObj_tkmu in_muon_sw;
+        SwMuon in_muon_sw;
 	decode_sw_muon_data(muon_data_sw, in_muon_sw);
 	std::cout << "Test mu: " << in_muon_sw << std::endl;
 
 	// obtain the track-muon by matching the track to the muon
-        TrackMuonObj_tkmu out_trackmuon_sw;
+        SwTrackMuon out_trackmuon_sw;
 	out_trackmuon_sw = match_sw(prop_track_sw, in_muon_sw);
 	std::cout << std::endl;
 	
@@ -128,19 +149,19 @@ int main()
         std::string muon_data_fw = hw_muon_data[i];
 	
 	// get the track 
-        TkObj_tkmu in_track_hw;
+        HwTrack in_track_hw;
 	decode_hw_track_data(track_data_fw, in_track_hw);
 
 	// propagate the track
-        PropTkObj_tkmu prop_track_hw;
+        HwPropTrack prop_track_hw;
         prop_track_hw = tkmu_simple_hw(in_track_hw);
 
 	// get the muon
-        MuObj_tkmu in_muon_hw;
+        HwMuon in_muon_hw;
 	decode_hw_muon_data(muon_data_fw, in_muon_hw);
 
 	// match the track with the muon
-        TkMuObj_tkmu out_trackmuon_hw;
+        HwTrackMuon out_trackmuon_hw;
 	out_trackmuon_hw = match_hw(prop_track_hw, in_muon_hw);
 
 	writeOutputHW(firmware_output, in_track_hw, prop_track_hw,
@@ -303,7 +324,7 @@ void isNegative(std::string& bit_value, bool& isNeg){
     return;
 }
 
-void decode_sw_track_data(const std::string &data_sw, TrackObj_tkmu& in_track_sw)
+void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
 {
   std::vector<std::string> values_sw;
   split(data_sw,' ',values_sw);
@@ -312,7 +333,7 @@ void decode_sw_track_data(const std::string &data_sw, TrackObj_tkmu& in_track_sw
   float rinv    = std::atof(values_sw.at(1).c_str());
   float sinhEta = std::atof(values_sw.at(3).c_str());
   int sector = std::atoi(values_sw.at(11).c_str());
-  std::cout << "phisector sw" << sector << std::endl;
+  // std::cout << "phisector sw " << sector << std::endl;
 
   in_track_sw.rinv = rinv;
   in_track_sw.pt  = rinv2pt(rinv);           // 1.360636778;
@@ -335,11 +356,14 @@ void decode_sw_track_data(const std::string &data_sw, TrackObj_tkmu& in_track_sw
   }
 }
 
-void decode_hw_track_data(const std::string &data_fw, TkObj_tkmu& in_track_hw)
+void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
 {
   std::vector<std::string> values_fw;
   split(data_fw,' ',values_fw);
-  
+
+  // for (unsigned uu=0; uu<values_fw.size(); ++uu){
+  //   std::cout << "rinv" << values_fw.at(uu) << std::endl;
+  // }
   // setup Rinv
   bool isNegativeCharge(false);
   std::string rinv_str = values_fw.at(1);
@@ -377,7 +401,7 @@ void decode_hw_track_data(const std::string &data_fw, TkObj_tkmu& in_track_hw)
   if (DEBUG) std::cout << " Looping over data - hwZ0 = " << in_track_hw.hwZ0 << std::endl;
 }
 
-void decode_sw_muon_data(const std::string &data_sw, MuonObj_tkmu& in_muon_sw)
+void decode_sw_muon_data(const std::string &data_sw, SwMuon& in_muon_sw)
 {
   std::vector<std::string> values_sw;
   split(data_sw,' ',values_sw);
@@ -400,7 +424,7 @@ void decode_sw_muon_data(const std::string &data_sw, MuonObj_tkmu& in_muon_sw)
   }
 }
 
-void decode_hw_muon_data(const std::string &data_fw, MuObj_tkmu& in_muon_hw)
+void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
 {
   std::vector<std::string> values_fw;
   split(data_fw,' ',values_fw);
@@ -485,10 +509,10 @@ float normalizePhi(float outPhi)
 }
 
 void writeOutputSW(std::ofstream& software_output,
-		   const TrackObj_tkmu& in_track_sw, 
-		   const PropTrackObj_tkmu& prop_track_sw,
-		   const MuonObj_tkmu& in_muon_sw,
-		   const TrackMuonObj_tkmu& out_trackmuon_sw)
+		   const SwTrack& in_track_sw, 
+		   const SwPropTrack& prop_track_sw,
+		   const SwMuon& in_muon_sw,
+		   const SwTrackMuon& out_trackmuon_sw)
 {
   // dump output to "track software" file
   software_output 
@@ -513,10 +537,10 @@ void writeOutputSW(std::ofstream& software_output,
 }
 
 void writeOutputHW(std::ofstream& firmware_output,
-		   const TkObj_tkmu& in_track_hw, 
-		   const PropTkObj_tkmu& prop_track_hw,
-		   const MuObj_tkmu& in_muon_hw,
-		   const TkMuObj_tkmu& out_trackmuon_hw)
+		   const HwTrack& in_track_hw, 
+		   const HwPropTrack& prop_track_hw,
+		   const HwMuon& in_muon_hw,
+		   const HwTrackMuon& out_trackmuon_hw)
 {
   // save results to file
   firmware_output 
@@ -539,5 +563,134 @@ void writeOutputHW(std::ofstream& firmware_output,
     << out_trackmuon_hw.hwQ
     << "\n";
 }
+
+void eventReader(std::vector<Event>& events, 
+		 const std::string& simTrackFile,
+		 const std::string& swTrack,
+		 const std::string& swMuon,
+		 const std::string& hwTrack,
+		 const std::string& hwMuon)
+{
+  events.clear();
+
+  // step 1: generate as many events as there are in the truth file
+  std::ifstream ifile(simTrackFile.c_str());
+  
+  if (!ifile) {
+    std::cout << "File does not exist: " << simTrackFile << std::endl;
+    std::cout << "Exiting. " << std::endl;
+    exit(0);
+  }
+  
+  // open the file and put the truth data into a vector
+  std::string line("");
+  if (ifile.is_open()){
+    
+    while (std::getline(ifile, line)) {
+      std::string newString(line);
+
+      // create a new event
+      if (newString.substr(0,5) == "Event"){
+	Event newEvent;
+	std::vector<std::string> values;
+	split(newString,' ',values);
+	newEvent.eventNumber = std::atoi( values.at(1).c_str() );
+	newEvent.BX = std::atoi( values.at(3).c_str() );	
+	events.push_back(newEvent);
+      }
+      
+      if (newString.substr(0,8) == "SimTrack"){
+	SimTrack newSimTrack;
+	std::vector<std::string> values;
+	split(newString,' ',values);
+	newSimTrack.index =  std::atof( values.at(1).c_str() );
+	newSimTrack.pt =  std::atof( values.at(2).c_str() );
+	newSimTrack.eta = std::atof( values.at(3).c_str() );
+	newSimTrack.phi = std::atof( values.at(4).c_str() );
+	newSimTrack.q  =  std::atoi( values.at(5).c_str() );
+	events.back().simTracks.push_back(newSimTrack);
+      }
+    }
+  }
+
+  ifile.close();
+
+  // step 3: read the Sw tracks
+  std::ifstream swTrackFile(swTrack.c_str());
+  
+  if (!swTrackFile) {
+    std::cout << "File does not exist: " << swTrack << std::endl;
+    std::cout << "Exiting. " << std::endl;
+    exit(0);
+  }
+  
+  // open the file and put the truth data into a vector
+  line = "";
+  if (swTrackFile.is_open()){
+    
+    std::string phisector;
+    int eventNumber;
+    int BX;
+    while (std::getline(swTrackFile, line)) {
+      std::string newString(line);
+
+      // create a new event
+      if (newString.substr(0,2) == "BX"){
+	std::vector<std::string> values;
+	split(newString,' ',values);
+	eventNumber = std::atoi( values.at(3).c_str() );
+	phisector = values.at(7);
+      }
+      // add attributes
+      else{
+	SwTrack newTrack;
+	decode_sw_track_data(newString + " " + phisector, newTrack);
+	events[eventNumber-1].swTracks.push_back(newTrack);
+      }
+    }
+  }
+  swTrackFile.close();
+
+  return;
+  
+  // step 2: read the Hw tracks
+  std::ifstream hwTrackFile(hwTrack.c_str());
+  
+  if (!hwTrackFile) {
+    std::cout << "File does not exist: " << hwTrack << std::endl;
+    std::cout << "Exiting. " << std::endl;
+    exit(0);
+  }
+  
+  // open the file and put the truth data into a vector
+  line = "";
+  if (hwTrackFile.is_open()){
+    
+    std::string phisector;
+    int eventNumber;
+    int BX;
+    while (std::getline(hwTrackFile, line)) {
+      std::string newString(line);
+
+      // create a new event
+      if (newString.substr(0,2) == "BX"){
+	std::vector<std::string> values;
+	split(newString,' ',values);
+	eventNumber = std::atoi( values.at(3).c_str() );
+	phisector = values.at(7);
+      }
+      // add attributes
+      else{
+	HwTrack newTrack;
+	decode_hw_track_data(newString + " " + phisector, newTrack);
+	events[eventNumber-1].hwTracks.push_back(newTrack);
+      }
+    }
+  }
+  hwTrackFile.close();
+
+  return;
+  
+} 
 
 // THE END

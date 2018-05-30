@@ -4,7 +4,8 @@
 #include "ap_fixed.h"
 #include "ap_int.h"
 #include <stdlib.h>
-
+#include <vector>
+#include <sstream>
 
 typedef ap_int<15> invpt_t;  // inverse pt [1% at 100 GeV]
 typedef ap_int<12> pt_t;     // convert from RINV
@@ -60,7 +61,23 @@ typedef ap_int<4> quality_m;
 
 
 // -- Define structs for physics objects in software
-struct TrackObj_tkmu {
+struct SimTrack {
+  int index;
+  float pt;
+  float eta;
+  float phi;
+  int q;
+  // constructor
+  SimTrack() :
+    pt(0),
+    eta(0),
+    phi(0),
+    q(0)
+  {
+  }
+};
+
+struct SwTrack {
   float rinv;
   float pt;
   float sinheta;
@@ -71,7 +88,7 @@ struct TrackObj_tkmu {
   int VALID;
   int BX;
   // constructor
-  TrackObj_tkmu() :
+  SwTrack() :
     rinv(0),
     pt(0),
     sinheta(0),
@@ -85,18 +102,18 @@ struct TrackObj_tkmu {
   }
 };
 
-struct PropTrackObj_tkmu : public TrackObj_tkmu {
+struct SwPropTrack : public SwTrack {
   float propEta;
   float propPhi;
   // constructor
-  PropTrackObj_tkmu() : 
-    TrackObj_tkmu(),
+  SwPropTrack() : 
+    SwTrack(),
     propEta(0),
     propPhi(0)
   {
   }
   // copy constructor
-  PropTrackObj_tkmu(const TrackObj_tkmu& ref)
+  SwPropTrack(const SwTrack& ref)
     {
       rinv = ref.rinv;
       pt = ref.pt;
@@ -112,7 +129,7 @@ struct PropTrackObj_tkmu : public TrackObj_tkmu {
     }
 };
 
-struct MuonObj_tkmu {
+struct SwMuon {
   float pt;
   float eta;
   float phi;
@@ -120,7 +137,7 @@ struct MuonObj_tkmu {
   int VALID;
   int BX;
   // constructor
-  MuonObj_tkmu() : 
+  SwMuon() : 
     pt(0),
     eta(0),
     phi(0),
@@ -131,7 +148,7 @@ struct MuonObj_tkmu {
   }
 };
 
-struct TrackMuonObj_tkmu 
+struct SwTrackMuon 
 {
   float pt;
   float eta;
@@ -140,7 +157,7 @@ struct TrackMuonObj_tkmu
   int VALID;   // VALID bit
   int BX;    // bunch crossing
   // constructor
-  TrackMuonObj_tkmu() : 
+  SwTrackMuon() : 
     pt(0),
     eta(0),
     phi(0),
@@ -153,7 +170,7 @@ struct TrackMuonObj_tkmu
 
 
 // -- Define structs for physics objects in hardware
-struct TkObj_tkmu 
+struct HwTrack 
 {
   invpt_t hwRinv;
   pt_t hwPt;
@@ -168,7 +185,7 @@ struct TkObj_tkmu
   bx_t hwBX;    // bunch crossing 3-bit counter
   /* sector_t hwSector; */
   // constructor
-  TkObj_tkmu() : 
+  HwTrack() : 
     hwRinv(0),
     hwPt(0),
     hwSinhEta(0),  
@@ -184,19 +201,19 @@ struct TkObj_tkmu
   }
 };
 
-struct PropTkObj_tkmu : public TkObj_tkmu 
+struct HwPropTrack : public HwTrack 
 {
   eta_t hwPropEta;
   phi_t hwPropPhi;
   // constructor
- PropTkObj_tkmu() : 
-  TkObj_tkmu(),
+ HwPropTrack() : 
+  HwTrack(),
     hwPropEta(0),
     hwPropPhi(0)
       {
       }
   // copy constructor
-  PropTkObj_tkmu(const TkObj_tkmu& ref)
+  HwPropTrack(const HwTrack& ref)
     {
       hwRinv = ref.hwRinv;
       hwPt = ref.hwPt;
@@ -213,7 +230,7 @@ struct PropTkObj_tkmu : public TkObj_tkmu
     }
 };
 
-struct MuObj_tkmu {
+struct HwMuon {
     pt_t hwPt;
     eta_t hwEta;
     phi_t hwPhi;
@@ -221,7 +238,7 @@ struct MuObj_tkmu {
     q_t VALID;   // VALID bit
     bx_t hwBX;    // bunch crossing
   // constructor
-  MuObj_tkmu() : 
+  HwMuon() : 
     hwPt(0),
     hwEta(0),
     hwPhi(0),
@@ -232,7 +249,7 @@ struct MuObj_tkmu {
   }
 };
 
-struct TkMuObj_tkmu {
+struct HwTrackMuon {
     pt_t hwPt;
     eta_m hwEta;
     phi_m hwPhi;
@@ -240,7 +257,7 @@ struct TkMuObj_tkmu {
     q_t VALID;   // VALID bit
     bx_t hwBX;    // bunch crossing
   // constructor
-  TkMuObj_tkmu() : 
+  HwTrackMuon() : 
     hwPt(0),
     hwEta(0),
     hwPhi(0),
@@ -251,11 +268,87 @@ struct TkMuObj_tkmu {
   }
 };
 
+struct Event 
+{
+  int eventNumber;
+  int BX;
+  std::vector<SimTrack> simTracks;
 
+  std::vector<SwTrack> swTracks;
+  std::vector<SwPropTrack> swPropTracks;
+  std::vector<SwMuon> swMuons;
+  std::vector<SwTrackMuon> swTrackMuons;
+
+  std::vector<HwTrack> hwTracks;
+  std::vector<HwPropTrack> hwPropTracks;
+  std::vector<HwMuon> hwMuons;
+  std::vector<HwTrackMuon> hwTrackMuons;
+
+  Event(){
+    simTracks.clear();
+
+    swTracks.clear();
+    swPropTracks.clear();
+    swMuons.clear();
+    swTrackMuons.clear();
+
+    hwTracks.clear();
+    hwPropTracks.clear();
+    hwMuons.clear();
+    hwTrackMuons.clear();
+  }
+};
 
 namespace {
 
-std::ostream& operator << (std::ostream& os, const TkObj_tkmu& rhs)
+std::ostream& operator << (std::ostream& os, const SimTrack& rhs)
+{
+    os << " pT: " << rhs.pt << " " 
+       << " eta: " << rhs.eta << " "
+       << " phi: " << rhs.phi << " " 
+       << " Q: " << rhs.q << " ";
+    return os;
+}
+
+std::ostream& operator << (std::ostream& os, const SwTrack& rhs)
+{
+    os << " pT: " << rhs.pt << " " 
+       << " eta: " << rhs.eta << " "
+       << " phi: " << rhs.phi << " " 
+       << " Q: " << rhs.q << " ";
+    return os;
+}
+
+std::ostream& operator << (std::ostream& os, const SwPropTrack& rhs)
+{
+    os << " pT: " << rhs.pt << " " 
+       << " eta: " << rhs.eta << " "
+       << " phi: " << rhs.phi << " " 
+       << " eta_prop: " << rhs.propEta << " " 
+       << " phi_prop: " << rhs.propPhi << " "
+       << " Q: " << rhs.q << " ";
+    return os;
+}
+
+std::ostream& operator << (std::ostream& os, const SwMuon& rhs)
+{
+    os << " pT: " << rhs.pt << " " 
+       << " eta: " << rhs.eta << " "
+       << " phi: " << rhs.phi << " " 
+       << " Q: " << rhs.q << " ";
+    return os;
+}
+
+std::ostream& operator << (std::ostream& os, const SwTrackMuon& rhs)
+{
+    os << " pT: " << rhs.pt << " " 
+       << " eta: " << rhs.eta << " "
+       << " phi: " << rhs.phi << " " 
+       << " Q: " << rhs.q << " ";
+    return os;
+}
+
+std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 {
     os << "Rinv: " << rhs.hwRinv << " " 
        << "pT: " << rhs.hwPt << " " 
@@ -269,7 +362,7 @@ std::ostream& operator << (std::ostream& os, const TkObj_tkmu& rhs)
    return os;
 }
 
-std::ostream& operator << (std::ostream& os, const PropTkObj_tkmu& rhs)
+std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 {
     os << "Rinv: " << rhs.hwRinv << " " 
        << "pT: " << rhs.hwPt << " " 
@@ -285,42 +378,82 @@ std::ostream& operator << (std::ostream& os, const PropTkObj_tkmu& rhs)
    return os;
 }
 
-std::ostream& operator << (std::ostream& os, const TrackObj_tkmu& rhs)
+std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 {
-    os << " pT: " << rhs.pt << " " 
-       << " eta: " << rhs.eta << " "
-       << " phi: " << rhs.phi << " " 
-       << " Q: " << rhs.q << " ";
-    return os;
+    os << "pT: " << rhs.hwPt << " " 
+       << "eta: " << rhs.hwEta << " "
+       << "phi: " << rhs.hwPhi << " " 
+       << "Q: " << rhs.hwQ << " "
+       << "Valid: " << rhs.VALID << " "
+       << "BX: " << rhs.hwBX << " ";
+   return os;
 }
 
-std::ostream& operator << (std::ostream& os, const PropTrackObj_tkmu& rhs)
+std::ostream& operator << (std::ostream& os, const HwTrackMuon& rhs)
 {
-    os << " pT: " << rhs.pt << " " 
-       << " eta: " << rhs.eta << " "
-       << " phi: " << rhs.phi << " " 
-       << " eta_prop: " << rhs.propEta << " " 
-       << " phi_prop: " << rhs.propPhi << " "
-       << " Q: " << rhs.q << " ";
-    return os;
+    os << "pT: " << rhs.hwPt << " " 
+       << "eta: " << rhs.hwEta << " "
+       << "phi: " << rhs.hwPhi << " " 
+       << "Q: " << rhs.hwQ << " "
+       << "Valid: " << rhs.VALID << " "
+       << "BX: " << rhs.hwBX << " ";
+   return os;
 }
 
-std::ostream& operator << (std::ostream& os, const MuonObj_tkmu& rhs)
-{
-    os << " pT: " << rhs.pt << " " 
-       << " eta: " << rhs.eta << " "
-       << " phi: " << rhs.phi << " " 
-       << " Q: " << rhs.q << " ";
-    return os;
-}
+/* template <class T> */
+/* std::ostringstream printCollection(const std::vector<T>& rhs, std::string collection)    */
+/* {  */
+/*   std::ostringstream os; */
+/*   os << collection << ": " << rhs.size() << std::endl;  */
+/*   for (unsigned i=0; i<rhs.size(); ++i) {  */
+/*     os << "  " << rhs[i] << std::endl;  */
+/*   } */
+/*   return os; */
+/* }  */
+  /* os << printCollection(rhs.simTracks, "SimTracks").str() << std::endl; */
 
-std::ostream& operator << (std::ostream& os, const TrackMuonObj_tkmu& rhs)
+std::ostream& operator << (std::ostream& os, const Event& rhs)
 {
-    os << " pT: " << rhs.pt << " " 
-       << " eta: " << rhs.eta << " "
-       << " phi: " << rhs.phi << " " 
-       << " Q: " << rhs.q << " ";
-    return os;
+  os << "Event: " << rhs.eventNumber << " " 
+     << "BX: " << rhs.BX << " " << std::endl
+     << "SimTracks: " << rhs.simTracks.size() << std::endl;
+  for (unsigned i=0; i<rhs.simTracks.size(); ++i)
+    os << "  " << rhs.simTracks[i] << std::endl;
+
+  os << "SwTracks: " << rhs.swTracks.size() << std::endl;
+  for (unsigned i=0; i<rhs.swTracks.size(); ++i){
+    os << "  " << rhs.swTracks[i] << std::endl;
+  }  
+  os << "SwPropTracks: " << rhs.swPropTracks.size() << std::endl;
+  for (unsigned i=0; i<rhs.swPropTracks.size(); ++i) {
+    os << "  " << rhs.swPropTracks[i] << std::endl;
+  }
+  os << "SwMuons: " << rhs.swMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.swMuons.size(); ++i) { 
+    os << "  " << rhs.swMuons[i] << std::endl;
+  }
+  os << "SwTrackMuons: " << rhs.swTrackMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.swTrackMuons.size(); ++i) { 
+    os << "  " << rhs.swTrackMuons[i] << std::endl;
+  } 
+    
+  os << "HwTracks: " << rhs.hwTracks.size() << std::endl;
+  for (unsigned i=0; i<rhs.hwTracks.size(); ++i) {
+    os << "  " << rhs.hwTracks[i] << std::endl;
+  }
+  os << "HwPropTracks: " << rhs.hwPropTracks.size() << std::endl;
+  for (unsigned i=0; i<rhs.hwPropTracks.size(); ++i) {
+    os << "  " << rhs.hwPropTracks[i] << std::endl;
+  }
+  os << "HwMuons: " << rhs.hwMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.hwMuons.size(); ++i) { 
+    os << "  " << rhs.hwMuons[i] << std::endl;
+  }
+  os << "HwTrackMuons: " << rhs.hwTrackMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.hwTrackMuons.size(); ++i) { 
+    os << "  " << rhs.hwTrackMuons[i] << std::endl;
+  } 
+  return os;  
 }
 
 }

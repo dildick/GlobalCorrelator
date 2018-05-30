@@ -27,10 +27,10 @@ if rinv<0: rinv+=16384 then multiply by INVRINV_CONVERSION
 #define DEBUG 0
 
 // reference and hardware functions
-PropTrackObj_tkmu tkmu_simple_ref( const TrackObj_tkmu& in );
-PropTkObj_tkmu tkmu_simple_hw(  TkObj_tkmu& in );
-TkMuObj_tkmu match_hw(const PropTkObj_tkmu&, const MuObj_tkmu&);
-TrackMuonObj_tkmu match_sw(const PropTrackObj_tkmu&, const MuonObj_tkmu&);
+SwPropTrack tkmu_simple_ref( const SwTrack& in );
+HwPropTrack tkmu_simple_hw (       HwTrack& in );
+HwTrackMuon match_hw(const HwPropTrack&, const HwMuon&);
+SwTrackMuon match_sw(const SwPropTrack&, const SwMuon&);
 
 // template functions
 template<class data_T, int N_TABLE>
