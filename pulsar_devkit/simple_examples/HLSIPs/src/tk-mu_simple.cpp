@@ -247,6 +247,8 @@ HwTrackMuon match_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
     outTrack.hwQ = inTrack.hwQ;
     outTrack.VALID = inTrack.VALID and inMuon.VALID; 
     outTrack.hwBX = inTrack.hwBX;
+  } else {
+    outTrack.VALID = 0;     
   }
   return outTrack;
 }
@@ -263,22 +265,24 @@ SwTrackMuon match_sw(const SwPropTrack& inTrack, const SwMuon& inMuon)
   // dR calculation
   float dR2_tk_mu = dr2_int (tketa, tkphi, mueta, muphi);
 
-  std::cout 
-    << "CheckMatch: tketa " << tketa
-    << " tkphi " << tkphi
-    << " mueta " << mueta
-    << " muphi " << muphi
-    << " dR2_tk_mu " << dR2_tk_mu
-    << std::endl;
+  // std::cout 
+  //   << "CheckMatch: tketa " << tketa
+  //   << " tkphi " << tkphi
+  //   << " mueta " << mueta
+  //   << " muphi " << muphi
+  //   << " dR2_tk_mu " << dR2_tk_mu
+  //   << std::endl;
 
   if (dR2_tk_mu < 0.2) {
-    std::cout << ">>>> MATCH! <<<<" << std::endl;
+    // std::cout << ">>>> MATCH! <<<<" << std::endl;
     outTrack.pt = inTrack.pt;
     outTrack.eta = inMuon.eta;
     outTrack.phi = inMuon.phi;
     outTrack.q = inTrack.q;
     outTrack.VALID = inTrack.VALID and inMuon.VALID; 
     outTrack.BX = inTrack.BX;
+  } else {
+    outTrack.VALID = 0;     
   }
   return outTrack;
 }

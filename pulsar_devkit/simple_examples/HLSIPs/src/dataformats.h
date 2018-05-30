@@ -6,6 +6,13 @@
 #include <stdlib.h>
 #include <vector>
 #include <sstream>
+#include <bitset>
+
+const int N_BINS_TRACK_INVPT = 15;
+const int N_BINS_TRACK_PT = 15;
+const int N_BINS_TRACK_ETA = 15;
+const int N_BINS_TRACK_PHI = 19;
+const int N_BINS_TRACK_X2 = 10;
 
 typedef ap_int<15> invpt_t;  // inverse pt [1% at 100 GeV]
 typedef ap_int<12> pt_t;     // convert from RINV
@@ -183,7 +190,7 @@ struct HwTrack
   chisq_t hwX2;
   q_t VALID;   // VALID bit
   bx_t hwBX;    // bunch crossing 3-bit counter
-  /* sector_t hwSector; */
+  //  sector_t hwSector;
   // constructor
   HwTrack() : 
     hwRinv(0),
@@ -195,7 +202,7 @@ struct HwTrack
     hwQ(0),
     hwX2(0),
     VALID(0),
-    hwBX(0)
+      hwBX(0)//,
     /* hwSector(0) */
   {
   }
@@ -303,100 +310,100 @@ namespace {
 
 std::ostream& operator << (std::ostream& os, const SimTrack& rhs)
 {
-    os << " pT: " << rhs.pt << " " 
-       << " eta: " << rhs.eta << " "
-       << " phi: " << rhs.phi << " " 
-       << " Q: " << rhs.q << " ";
-    return os;
+  os << " pT: " << rhs.pt << " " 
+     << " eta: " << rhs.eta << " "
+     << " phi: " << rhs.phi << " " 
+     << " Q: " << rhs.q << " ";
+  return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwTrack& rhs)
 {
-    os << " pT: " << rhs.pt << " " 
-       << " eta: " << rhs.eta << " "
-       << " phi: " << rhs.phi << " " 
-       << " Q: " << rhs.q << " ";
-    return os;
+  os << " pT: " << rhs.pt << " " 
+     << " eta: " << rhs.eta << " "
+     << " phi: " << rhs.phi << " " 
+     << " Q: " << rhs.q << " ";
+  return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwPropTrack& rhs)
 {
-    os << " pT: " << rhs.pt << " " 
-       << " eta: " << rhs.eta << " "
-       << " phi: " << rhs.phi << " " 
-       << " eta_prop: " << rhs.propEta << " " 
-       << " phi_prop: " << rhs.propPhi << " "
-       << " Q: " << rhs.q << " ";
-    return os;
+  os << " pT: " << rhs.pt << " " 
+     << " eta: " << rhs.eta << " "
+     << " phi: " << rhs.phi << " " 
+     << " eta_prop: " << rhs.propEta << " " 
+     << " phi_prop: " << rhs.propPhi << " "
+     << " Q: " << rhs.q << " ";
+  return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwMuon& rhs)
 {
-    os << " pT: " << rhs.pt << " " 
-       << " eta: " << rhs.eta << " "
-       << " phi: " << rhs.phi << " " 
-       << " Q: " << rhs.q << " ";
-    return os;
+  os << " pT: " << rhs.pt << " " 
+     << " eta: " << rhs.eta << " "
+     << " phi: " << rhs.phi << " " 
+     << " Q: " << rhs.q << " ";
+  return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwTrackMuon& rhs)
 {
-    os << " pT: " << rhs.pt << " " 
-       << " eta: " << rhs.eta << " "
-       << " phi: " << rhs.phi << " " 
-       << " Q: " << rhs.q << " ";
-    return os;
+  os << " pT: " << rhs.pt << " " 
+     << " eta: " << rhs.eta << " "
+     << " phi: " << rhs.phi << " " 
+     << " Q: " << rhs.q << " ";
+  return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 {
-    os << "Rinv: " << rhs.hwRinv << " " 
-       << "pT: " << rhs.hwPt << " " 
-       << "eta: " << rhs.hwEta << " "
-       << "phi: " << rhs.hwPhi << " " 
-       << "Z0: " << rhs.hwZ0 << " " 
-       << "Q: " << rhs.hwQ << " "
-       << "X2: " << rhs.hwX2 << " " 
-       << "Valid: " << rhs.VALID << " "
-       << "BX: " << rhs.hwBX << " ";
+  os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << " " 
+     /* << "pT: " << std::bitset<12>(rhs.hwPt) << " "  */
+     << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << " "
+     << "phi: " << std::bitset<19>(rhs.hwPhi) << " " 
+     << "Z0: " << std::bitset<11>(rhs.hwZ0) << " " 
+     << "Q: " << std::bitset<1>(rhs.hwQ) << " "
+     /* << "X2: " << std::bitset<10>(rhs.hwX2) << " "  */
+     << "Valid: " << std::bitset<1>(rhs.VALID) << " "
+     << "BX: " << std::bitset<3>(rhs.hwBX) << " ";
    return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 {
-    os << "Rinv: " << rhs.hwRinv << " " 
-       << "pT: " << rhs.hwPt << " " 
-       << "eta: " << rhs.hwEta << " "
-       << "phi: " << rhs.hwPhi << " " 
-       << "eta_prop: " << rhs.hwPropEta << " " 
-       << "phi_prop: " << rhs.hwPropPhi << " "
-       << "Z0: " << rhs.hwZ0 << " " 
-       << "Q: " << rhs.hwQ << " "
-       << "X2: " << rhs.hwX2 << " " 
-       << "Valid: " << rhs.VALID << " "
-       << "BX: " << rhs.hwBX << " ";
-   return os;
+  os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << " " 
+     /* << "pT: " << std::bitset<12>(rhs.hwPt) << " "  */
+     << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << " "
+     << "phi: " << std::bitset<19>(rhs.hwPhi) << " " 
+     << "eta_prop: " << std::bitset<14>(rhs.hwPropEta) << " " 
+     << "phi_prop: " << std::bitset<19>(rhs.hwPropPhi) << " "
+     << "Z0: " << std::bitset<11>(rhs.hwZ0) << " " 
+     << "Q: " << std::bitset<1>(rhs.hwQ) << " "
+     /* << "X2: " << std::bitset<10>(rhs.hwX2) << " "  */
+     << "Valid: " << std::bitset<1>(rhs.VALID) << " "
+     << "BX: " << std::bitset<3>(rhs.hwBX) << " ";
+  return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 {
-    os << "pT: " << rhs.hwPt << " " 
-       << "eta: " << rhs.hwEta << " "
-       << "phi: " << rhs.hwPhi << " " 
-       << "Q: " << rhs.hwQ << " "
-       << "Valid: " << rhs.VALID << " "
-       << "BX: " << rhs.hwBX << " ";
+  os << "pT: " << std::bitset<9>(rhs.hwPt) << " " 
+     << "eta: " << std::bitset<10>(rhs.hwEta) << " "
+     << "phi: " << std::bitset<9>(rhs.hwPhi) << " " 
+     << "Q: " << std::bitset<1>(rhs.hwQ) << " "
+     << "Valid: " << std::bitset<1>(rhs.VALID) << " "
+     << "BX: " << std::bitset<3>(rhs.hwBX) << " ";
    return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwTrackMuon& rhs)
 {
-    os << "pT: " << rhs.hwPt << " " 
-       << "eta: " << rhs.hwEta << " "
-       << "phi: " << rhs.hwPhi << " " 
-       << "Q: " << rhs.hwQ << " "
-       << "Valid: " << rhs.VALID << " "
-       << "BX: " << rhs.hwBX << " ";
+  os << "pT: " << std::bitset<12>(rhs.hwPt) << " " 
+     << "eta: " << std::bitset<10>(rhs.hwEta) << " "
+     << "phi: " << std::bitset<9>(rhs.hwPhi) << " " 
+     << "Q: " << std::bitset<1>(rhs.hwQ) << " "
+     << "Valid: " << std::bitset<1>(rhs.VALID) << " "
+     << "BX: " << std::bitset<3>(rhs.hwBX) << " ";
    return os;
 }
 

@@ -77,22 +77,20 @@ int main()
 		"../../../../config/hw_track_data.dat",
 		"../../../../config/hw_muon_data.dat");
 
-    // propagate the tracks
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
-      // std::cout << "Ievent " << events[iEvent] << std::endl;
+      // propagate the tracks
       for (unsigned int iHwTrack = 0; iHwTrack < events[iEvent].hwTracks.size(); ++iHwTrack){
 	HwTrack hwTrack = events[iEvent].hwTracks[iHwTrack];
 	HwPropTrack prop_track_hw = tkmu_simple_hw(hwTrack);
 	events[iEvent].hwPropTracks.push_back(prop_track_hw);
       } 
-      // std::cout << "check sw tracks " << events[iEvent].swTracks.size() << std::endl;
+      // propagate the tracks
       for (unsigned int iSwTrack = 0; iSwTrack < events[iEvent].swTracks.size(); ++iSwTrack){
 	SwTrack swTrack = events[iEvent].swTracks[iSwTrack];
-	// std::cout << swTrack << std::endl; 
 	SwPropTrack prop_track_sw = tkmu_simple_ref(swTrack);
-	// std::cout << prop_track_sw << std::endl; 
 	events[iEvent].swPropTracks.push_back(prop_track_sw);
       } 
+
       for (unsigned int iHwMuon = 0; iHwMuon < events[iEvent].hwMuons.size(); ++iHwMuon){
 	HwMuon hwMuon = events[iEvent].hwMuons[iHwMuon];
 	// check all possible matches!
@@ -100,7 +98,9 @@ int main()
 	     iHwPropTrack < events[iEvent].hwPropTracks.size(); ++iHwPropTrack){
 	  HwPropTrack hwPropTrack = events[iEvent].hwPropTracks[iHwPropTrack];
 	  HwTrackMuon hwTrackMuon = match_hw(hwPropTrack, hwMuon);
-	  events[iEvent].hwTrackMuons.push_back(hwTrackMuon);
+
+	  if (hwTrackMuon.VALID)
+	    events[iEvent].hwTrackMuons.push_back(hwTrackMuon);
 	}
       } 
       for (unsigned int iSwMuon = 0; iSwMuon < events[iEvent].swMuons.size(); ++iSwMuon){
@@ -110,7 +110,9 @@ int main()
 	     iSwPropTrack < events[iEvent].swPropTracks.size(); ++iSwPropTrack){
 	  SwPropTrack swPropTrack = events[iEvent].swPropTracks[iSwPropTrack];
 	  SwTrackMuon swTrackMuon = match_sw(swPropTrack, swMuon);
-	  events[iEvent].swTrackMuons.push_back(swTrackMuon);
+
+	  if (swTrackMuon.VALID)
+	    events[iEvent].swTrackMuons.push_back(swTrackMuon);
 	} 
       }
     }
@@ -179,6 +181,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() );
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
+	if (newEvent.eventNumber > 1) break;
 	events.push_back(newEvent);
       }
       
@@ -227,6 +230,7 @@ void eventReader(std::vector<Event>& events,
       // add attributes
       else{
        	SwTrack newTrack;
+	newTrack.BX = 0;
 	// std::cout << "eventNumber "  << eventNumber <<  " " << newString + " " + phisector << std::endl;
 	decode_sw_track_data(newString + " " + phisector, newTrack);
 	if (newTrack.VALID)
@@ -267,6 +271,7 @@ void eventReader(std::vector<Event>& events,
       // add attributes
       else{
 	HwTrack newTrack;
+	newTrack.hwBX = std::bitset<3>(eventNumber).to_ulong();
 	decode_hw_track_data(newString + " " + phisector, newTrack);
 	//if (newTrack.VALID)
 	  events[eventNumber-1].hwTracks.push_back(newTrack);
@@ -303,6 +308,7 @@ void eventReader(std::vector<Event>& events,
       // add attributes
       else{
        	SwMuon newMuon;
+	newMuon.BX = eventNumber;
 	decode_sw_muon_data(newString, newMuon);
 	if (newMuon.VALID)
 	  events[eventNumber-1].swMuons.push_back(newMuon);
@@ -339,9 +345,11 @@ void eventReader(std::vector<Event>& events,
       // add attributes
       else{
        	HwMuon newMuon;
+	newMuon.hwBX = std::bitset<3>(eventNumber).to_ulong();
 	decode_hw_muon_data(newString, newMuon);
-	if (newMuon.VALID)
-	  events[eventNumber-1].hwMuons.push_back(newMuon);
+	
+	//if (newMuon.VALID)
+	events[eventNumber-1].hwMuons.push_back(newMuon);
       }
     }
   }
@@ -362,35 +370,37 @@ void split(const std::string &s, char delim, std::vector<std::string> &elems) {
 }
 
 
-float rinv2pt(const float& rinv){
-    /* Convert rinv to pT 
-       pt = (0.3*3.8/100.0)/irinv
-    */
-    float pt(-999.);
-    float r = (rinv>0) ? rinv : -rinv;
-    pt = 0.0114 / r;
-    return pt;
+float rinv2pt(const float& rinv)
+{
+  /* Convert rinv to pT 
+     pt = (0.3*3.8/100.0)/irinv
+  */
+  float pt(-999.);
+  float r = (rinv>0) ? rinv : -rinv;
+  pt = 0.0114 / r;
+  return pt;
 }
 
 
-float sinhEta2eta(const float& sinhEta){
-    /* Convert sinhEta to eta */
-    float eta(-999.);
-    eta = log( sinhEta + sqrt(1+pow(sinhEta,2)) );
-    return eta;
+float sinhEta2eta(const float& sinhEta)
+{
+  /* Convert sinhEta to eta */
+  float eta(-999.);
+  eta = log( sinhEta + sqrt(1+pow(sinhEta,2)) );
+  return eta;
 }
 
 
-void isNegative(std::string& bit_value, bool& isNeg){
-    /* Convert string of signed bit value to unsigned */
-    isNeg = false;
-    const char bit_value_0 = bit_value[0];
-    if (bit_value_0 == '1'){
-        bit_value = bit_value.replace(0,1,"0");
-        isNeg = true;
-    }
-
-    return;
+void isNegative(std::string& bit_value, bool& isNeg)
+{
+  /* Convert string of signed bit value to unsigned */
+  isNeg = false;
+  const char bit_value_0 = bit_value[0];
+  if (bit_value_0 == '1'){
+    bit_value = bit_value.replace(0,1,"0");
+    isNeg = true;
+  }
+  return;
 }
 
 void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
@@ -411,28 +421,12 @@ void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
   in_track_sw.z0  = std::atof(values_sw.at(4).c_str()); //-4.72;
   in_track_sw.q   = (rinv>0) ? 1 : -1;       //-1;
   in_track_sw.VALID = in_track_sw.pt > 0;
-  
-  if (false){
-    std::cout << "Decode track software data " 
-	      << data_sw
-	      << " pt " << in_track_sw.pt
-	      << " rinv " << in_track_sw.rinv
-	      << " eta " << in_track_sw.eta
-	      << " phi " << in_track_sw.phi
-	      << " q " << in_track_sw.q 
-	      << " z0 " << in_track_sw.z0 
-	      << std::endl;
-  }
 }
 
 void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
 {
   std::vector<std::string> values_fw;
   split(data_fw,' ',values_fw);
-
-  // for (unsigned uu=0; uu<values_fw.size(); ++uu){
-  //   std::cout << "   test " << values_fw.at(uu) << std::endl;
-  // }
 
   // setup Rinv
   bool isNegativeCharge(false);
@@ -470,7 +464,7 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   
   if (DEBUG) std::cout << " Looping over data - hwZ0 = " << in_track_hw.hwZ0 << std::endl;
 
-  in_track_hw.VALID = in_track_hw.hwEta != 0 and in_track_hw.hwPhi !=0 and in_track_hw.hwQ != 0;;
+  in_track_hw.VALID = std::bitset<1>(rinv_str != "000000000000000").to_ulong();
 }
 
 void decode_sw_muon_data(const std::string &data_sw, SwMuon& in_muon_sw)
@@ -486,15 +480,6 @@ void decode_sw_muon_data(const std::string &data_sw, SwMuon& in_muon_sw)
   in_muon_sw.phi = normalizePhi(std::atof(values_sw.at(3).c_str()));
   in_muon_sw.q   = std::atoi(values_sw.at(4).c_str());
   in_muon_sw.VALID = int(in_muon_sw.pt > 0);
-  
-  if (false){
-    std::cout << "Decode muon software data " 
-	      << data_sw
-	      << " pt " << in_muon_sw.pt
-	      << " eta " << in_muon_sw.eta
-	      << " phi " << in_muon_sw.phi
-	      << " q " << in_muon_sw.q << std::endl;
-  }
 }
 
 void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
@@ -556,7 +541,7 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
   in_muon_hw.hwEta = std::bitset<10>(eta_str).to_ulong();
   in_muon_hw.hwPhi = std::bitset<9>(phi_str).to_ulong();
   in_muon_hw.hwQ = std::bitset<1>(q_str).to_ulong();
-  in_muon_hw.VALID = in_muon_hw.hwEta != 0 and in_muon_hw.hwPhi != 0 and in_muon_hw.hwQ != 0;
+  //in_muon_hw.VALID = in_muon_hw.hwEta != 0 and in_muon_hw.hwPhi != 0 and in_muon_hw.hwQ != 0;
 
   if (false) {
     std::cout << "data_fw " << data_fw << std::endl;
