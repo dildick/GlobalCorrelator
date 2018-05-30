@@ -19,11 +19,6 @@ HLS with c++
 #include "ap_fixed.h"
 #include "src/tk-mu_simple.h"
 
-// functions to read text files
-void read_muon_file(const std::string &file_name, 
-		    std::vector<std::string> &values, 
-		    const std::vector<std::string> &comment);
-
 // functions to decode data
 void decode_sw_track_data(const std::string &word, SwTrack&);
 void decode_hw_track_data(const std::string &word, HwTrack&);
@@ -143,6 +138,15 @@ int main()
     return 0;
 }
 
+std::string keepOnlyDigits(std::string input)
+{
+  std::string target = "";
+  for(std::string::size_type i = 0; i < input.size(); ++i) {
+    if (std::isdigit(input[i])) target += input[i];
+  }
+  return target;
+}
+
 void eventReader(std::vector<Event>& events, 
 		 const std::string& simTrackFile,
 		 const std::string& swTrack,
@@ -223,9 +227,10 @@ void eventReader(std::vector<Event>& events,
       // add attributes
       else{
        	SwTrack newTrack;
-	std::cout << "eventNumber "  << eventNumber <<  " " << newString + " " + phisector << std::endl;
+	// std::cout << "eventNumber "  << eventNumber <<  " " << newString + " " + phisector << std::endl;
 	decode_sw_track_data(newString + " " + phisector, newTrack);
-       	events[eventNumber-1].swTracks.push_back(newTrack);
+	if (newTrack.VALID)
+	  events[eventNumber-1].swTracks.push_back(newTrack);
       }
     }
   }
@@ -257,20 +262,90 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	eventNumber = std::atoi( values.at(3).c_str() );
 	if (eventNumber > events.size()) break;
-	std::cout << "eventNumber " << eventNumber << std::endl;
 	phisector = values.at(7);
       }
       // add attributes
       else{
 	HwTrack newTrack;
 	decode_hw_track_data(newString + " " + phisector, newTrack);
-	events[eventNumber-1].hwTracks.push_back(newTrack);
+	//if (newTrack.VALID)
+	  events[eventNumber-1].hwTracks.push_back(newTrack);
       }
     }
   }
   hwTrackFile.close();
-  return;
+
+
+  // step 4: read the Sw muons
+  std::ifstream swMuonFile(swMuon.c_str());
   
+  if (!swMuonFile) {
+    std::cout << "File does not exist: " << swMuon << std::endl;
+    std::cout << "Exiting. " << std::endl;
+    exit(0);
+  }
+  
+  // open the file and put the truth data into a vector
+  line = "";
+  if (swMuonFile.is_open()){
+    
+    int eventNumber;
+    int BX;
+    while (std::getline(swMuonFile, line)) {
+      std::string newString(line);
+      // create a new event
+      if (newString.substr(0,5) == "Begin"){
+	std::vector<std::string> values;
+	split(newString,' ',values);
+	eventNumber = std::atoi(keepOnlyDigits( values.at(3)).c_str() );
+	if (eventNumber > events.size()) break;
+      }
+      // add attributes
+      else{
+       	SwMuon newMuon;
+	decode_sw_muon_data(newString, newMuon);
+	if (newMuon.VALID)
+	  events[eventNumber-1].swMuons.push_back(newMuon);
+      }
+    }
+  }
+  swMuonFile.close();
+
+
+  // step 5: read the Hw muons
+  std::ifstream hwMuonFile(hwMuon.c_str());
+  
+  if (!hwMuonFile) {
+    std::cout << "File does not exist: " << hwMuon << std::endl;
+    std::cout << "Exiting. " << std::endl;
+    exit(0);
+  }
+  
+  // open the file and put the truth data into a vector
+  line = "";
+  if (hwMuonFile.is_open()){
+    
+    int eventNumber;
+    int BX;
+    while (std::getline(hwMuonFile, line)) {
+      std::string newString(line);
+      // create a new event
+      if (newString.substr(0,5) == "Begin"){
+	std::vector<std::string> values;
+	split(newString,' ',values);
+	eventNumber = std::atoi(keepOnlyDigits( values.at(3)).c_str() );
+	if (eventNumber > events.size()) break;
+      }
+      // add attributes
+      else{
+       	HwMuon newMuon;
+	decode_hw_muon_data(newString, newMuon);
+	if (newMuon.VALID)
+	  events[eventNumber-1].hwMuons.push_back(newMuon);
+      }
+    }
+  }
+  hwMuonFile.close();
 } 
 
 
@@ -283,57 +358,6 @@ void split(const std::string &s, char delim, std::vector<std::string> &elems) {
     while (getline(ss, item, delim)) {
         elems.push_back(item);
     }
-    return;
-}
-
-
-void read_muon_file( const std::string &file_name, std::vector<std::string> &values, const std::vector<std::string> &comments ) {
-    /* Read in a generic file and put it into a vector of strings */
-    std::ifstream ifile(file_name.c_str());
-
-    if (!ifile) {
-        std::cout << "File does not exist: " << file_name << std::endl;
-        std::cout << "Exiting. " << std::endl;
-        exit(0);
-    }
-
-    // open the file and put the data into a vector
-    std::string line("");
-    if (ifile.is_open()){
-
-        while (std::getline(ifile, line)) {
-            std::string newstring(line);
-
-	    std::string muonType = newstring.substr(0,5);
-	    bool wantToProcess(false);
-
-	    // check if we want to process this line 
-	    for (int iC = 0; iC < comments.size(); ++iC){
-	      // allow for comments
-	      if (comments[iC] == muonType){
-		wantToProcess = true;
-		break;
-	      }
-	    }
-	    
-	    if (!wantToProcess) continue;
-	    
-            // remove all white spaces at the end of the string
-	    std::size_t space_pos = newstring.rfind(" ");
-            while ( space_pos != std::string::npos && space_pos == newstring.size()-1 ) {
-	      newstring = newstring.substr(0, newstring.rfind(" "));
-	      space_pos = newstring.rfind(" ");
-            }
-
-            // ignore empty lines
-            if(newstring.length()==0) continue;
-
-            values.push_back(newstring); // put values into vector
-	}
-
-        ifile.close();
-    }
-
     return;
 }
 
@@ -386,7 +410,8 @@ void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
   in_track_sw.phi = std::atof(values_sw.at(2).c_str()); // 1.26735;
   in_track_sw.z0  = std::atof(values_sw.at(4).c_str()); //-4.72;
   in_track_sw.q   = (rinv>0) ? 1 : -1;       //-1;
-
+  in_track_sw.VALID = in_track_sw.pt > 0;
+  
   if (false){
     std::cout << "Decode track software data " 
 	      << data_sw
@@ -444,6 +469,8 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   if (isNegativeZ0) in_track_hw.hwZ0 *= -1;
   
   if (DEBUG) std::cout << " Looping over data - hwZ0 = " << in_track_hw.hwZ0 << std::endl;
+
+  in_track_hw.VALID = in_track_hw.hwEta != 0 and in_track_hw.hwPhi !=0 and in_track_hw.hwQ != 0;;
 }
 
 void decode_sw_muon_data(const std::string &data_sw, SwMuon& in_muon_sw)
@@ -458,7 +485,8 @@ void decode_sw_muon_data(const std::string &data_sw, SwMuon& in_muon_sw)
   // keep in mind that muon phi is from 0 to 2pi
   in_muon_sw.phi = normalizePhi(std::atof(values_sw.at(3).c_str()));
   in_muon_sw.q   = std::atoi(values_sw.at(4).c_str());
-
+  in_muon_sw.VALID = int(in_muon_sw.pt > 0);
+  
   if (false){
     std::cout << "Decode muon software data " 
 	      << data_sw
@@ -528,6 +556,7 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
   in_muon_hw.hwEta = std::bitset<10>(eta_str).to_ulong();
   in_muon_hw.hwPhi = std::bitset<9>(phi_str).to_ulong();
   in_muon_hw.hwQ = std::bitset<1>(q_str).to_ulong();
+  in_muon_hw.VALID = in_muon_hw.hwEta != 0 and in_muon_hw.hwPhi != 0 and in_muon_hw.hwQ != 0;
 
   if (false) {
     std::cout << "data_fw " << data_fw << std::endl;
