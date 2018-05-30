@@ -20,9 +20,6 @@ HLS with c++
 #include "src/tk-mu_simple.h"
 
 // functions to read text files
-void read_track_file(const std::string &file_name, 
-	       std::vector<std::string> &values, 
-	       const std::string &comment);
 void read_muon_file(const std::string &file_name, 
 		    std::vector<std::string> &values, 
 		    const std::vector<std::string> &comment);
@@ -155,7 +152,6 @@ void eventReader(std::vector<Event>& events,
 {
   events.clear();
 
-  // step 1: generate as many events as there are in the truth file
   std::ifstream ifile(simTrackFile.c_str());
   
   if (!ifile) {
@@ -164,6 +160,7 @@ void eventReader(std::vector<Event>& events,
     exit(0);
   }
   
+  // step 1: generate as many events as there are in the truth file
   // open the file and put the truth data into a vector
   std::string line("");
   if (ifile.is_open()){
@@ -197,7 +194,7 @@ void eventReader(std::vector<Event>& events,
 
   ifile.close();
 
-  // step 3: read the Sw tracks
+  // step 2: read the Sw tracks
   std::ifstream swTrackFile(swTrack.c_str());
   
   if (!swTrackFile) {
@@ -220,6 +217,7 @@ void eventReader(std::vector<Event>& events,
 	std::vector<std::string> values;
 	split(newString,' ',values);
 	eventNumber = std::atoi( values.at(3).c_str() );
+	if (eventNumber > events.size()) break;
 	phisector = values.at(7);
       }
       // add attributes
@@ -233,7 +231,7 @@ void eventReader(std::vector<Event>& events,
   }
   swTrackFile.close();
 
-  /*
+
   // step 3: read the Hw tracks
   std::ifstream hwTrackFile(hwTrack.c_str());
   
@@ -258,6 +256,8 @@ void eventReader(std::vector<Event>& events,
 	std::vector<std::string> values;
 	split(newString,' ',values);
 	eventNumber = std::atoi( values.at(3).c_str() );
+	if (eventNumber > events.size()) break;
+	std::cout << "eventNumber " << eventNumber << std::endl;
 	phisector = values.at(7);
       }
       // add attributes
@@ -269,7 +269,6 @@ void eventReader(std::vector<Event>& events,
     }
   }
   hwTrackFile.close();
-  */
   return;
   
 } 
@@ -284,57 +283,6 @@ void split(const std::string &s, char delim, std::vector<std::string> &elems) {
     while (getline(ss, item, delim)) {
         elems.push_back(item);
     }
-    return;
-}
-
-
-void read_track_file( const std::string &file_name, std::vector<std::string> &values, const std::string &comment ) {
-    /* Read in a generic file and put it into a vector of strings */
-    std::ifstream ifile(file_name.c_str());
-
-    if (!ifile) {
-        std::cout << "File does not exist: " << file_name << std::endl;
-        std::cout << "Exiting. " << std::endl;
-        exit(0);
-    }
-
-    // open the file and put the data into a vector
-    std::string line("");
-    if (ifile.is_open()){
-
-      std::string phisector = "";
-        while (std::getline(ifile, line)) {
-	    std::string newstring(line);
-	    
-            // allow for comments
-            std::size_t lineComment = line.find(comment);
-            if (lineComment == 0) {
-	      std::vector<std::string> values_bx;
-	      split(newstring,' ',values_bx);
-	      phisector = values_bx.at(7); // extract the track phi sector
-	      continue;
-	    }
-            if (lineComment != std::string::npos) newstring = line.substr(0,lineComment);
-
-	    // ignore all tracks starting with "01" for now
-	    if (line.substr(0,3) == "01 ") continue;
-
-            // remove all white spaces at the end of the string
-            std::size_t space_pos = newstring.rfind(" ");
-            while ( space_pos != std::string::npos && space_pos == newstring.size()-1 ) {
-                newstring = newstring.substr(0, newstring.rfind(" "));
-                space_pos = newstring.rfind(" ");
-            }
-
-            // ignore empty lines
-            if(newstring.length()==0) continue;
-
-            values.push_back(newstring + " " + phisector); // put values into vector
-        }
-
-        ifile.close();
-    }
-
     return;
 }
 
@@ -425,15 +373,11 @@ void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
 {
   std::vector<std::string> values_sw;
   split(data_sw,' ',values_sw);
-  for (unsigned i = 0; i < values_sw.size(); ++i){
-    std::cout << values_sw[i] << std::endl;
-  }
   
   // setup Rinv
   float rinv    = std::atof(values_sw.at(1).c_str());
   float sinhEta = std::atof(values_sw.at(3).c_str());
   int sector = std::atoi(values_sw.at(11).c_str());
-  std::cout << "phisector sw " << sector << std::endl;
 
   in_track_sw.rinv = rinv;
   in_track_sw.pt  = rinv2pt(rinv);           // 1.360636778;
@@ -462,8 +406,9 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   split(data_fw,' ',values_fw);
 
   // for (unsigned uu=0; uu<values_fw.size(); ++uu){
-  //   std::cout << "rinv" << values_fw.at(uu) << std::endl;
+  //   std::cout << "   test " << values_fw.at(uu) << std::endl;
   // }
+
   // setup Rinv
   bool isNegativeCharge(false);
   std::string rinv_str = values_fw.at(1);
