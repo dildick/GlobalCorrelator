@@ -87,50 +87,42 @@ int main()
 
     // propagate the tracks
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
-      Event event = events[iEvent];
-      for (unsigned int iHwTrack = 0; iHwTrack < event.hwTracks.size(); ++iHwTrack){
-	HwTrack hwTrack = event.hwTracks[iHwTrack];
+      // std::cout << "Ievent " << events[iEvent] << std::endl;
+      for (unsigned int iHwTrack = 0; iHwTrack < events[iEvent].hwTracks.size(); ++iHwTrack){
+	HwTrack hwTrack = events[iEvent].hwTracks[iHwTrack];
 	HwPropTrack prop_track_hw = tkmu_simple_hw(hwTrack);
-	event.hwPropTracks.push_back(prop_track_hw);
+	events[iEvent].hwPropTracks.push_back(prop_track_hw);
       } 
-    }
-    for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
-      Event event = events[iEvent];
-      for (unsigned int iSwTrack = 0; iSwTrack < event.swTracks.size(); ++iSwTrack){
-	SwTrack swTrack = event.swTracks[iSwTrack];
+      // std::cout << "check sw tracks " << events[iEvent].swTracks.size() << std::endl;
+      for (unsigned int iSwTrack = 0; iSwTrack < events[iEvent].swTracks.size(); ++iSwTrack){
+	SwTrack swTrack = events[iEvent].swTracks[iSwTrack];
+	// std::cout << swTrack << std::endl; 
 	SwPropTrack prop_track_sw = tkmu_simple_ref(swTrack);
-	event.swPropTracks.push_back(prop_track_sw);
+	// std::cout << prop_track_sw << std::endl; 
+	events[iEvent].swPropTracks.push_back(prop_track_sw);
       } 
-    }
-
-    // match the tracks and muons 
-    for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
-      Event event = events[iEvent];
-      for (unsigned int iHwMuon = 0; iHwMuon < event.hwMuons.size(); ++iHwMuon){
-	HwMuon hwMuon = event.hwMuons[iHwMuon];
+      for (unsigned int iHwMuon = 0; iHwMuon < events[iEvent].hwMuons.size(); ++iHwMuon){
+	HwMuon hwMuon = events[iEvent].hwMuons[iHwMuon];
 	// check all possible matches!
 	for (unsigned int iHwPropTrack = 0; 
-	     iHwPropTrack < event.hwPropTracks.size(); ++iHwPropTrack){
-	  HwPropTrack hwPropTrack = event.hwPropTracks[iHwPropTrack];
+	     iHwPropTrack < events[iEvent].hwPropTracks.size(); ++iHwPropTrack){
+	  HwPropTrack hwPropTrack = events[iEvent].hwPropTracks[iHwPropTrack];
 	  HwTrackMuon hwTrackMuon = match_hw(hwPropTrack, hwMuon);
-	  event.hwTrackMuons.push_back(hwTrackMuon);
-	} 
-      }
-    }
-    for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
-      Event event = events[iEvent];
-      for (unsigned int iSwMuon = 0; iSwMuon < event.swMuons.size(); ++iSwMuon){
-	SwMuon swMuon = event.swMuons[iSwMuon];
+	  events[iEvent].hwTrackMuons.push_back(hwTrackMuon);
+	}
+      } 
+      for (unsigned int iSwMuon = 0; iSwMuon < events[iEvent].swMuons.size(); ++iSwMuon){
+	SwMuon swMuon = events[iEvent].swMuons[iSwMuon];
 	// check all possible matches!
 	for (unsigned int iSwPropTrack = 0; 
-	     iSwPropTrack < event.swPropTracks.size(); ++iSwPropTrack){
-	  SwPropTrack swPropTrack = event.swPropTracks[iSwPropTrack];
+	     iSwPropTrack < events[iEvent].swPropTracks.size(); ++iSwPropTrack){
+	  SwPropTrack swPropTrack = events[iEvent].swPropTracks[iSwPropTrack];
 	  SwTrackMuon swTrackMuon = match_sw(swPropTrack, swMuon);
-	  event.swTrackMuons.push_back(swTrackMuon);
+	  events[iEvent].swTrackMuons.push_back(swTrackMuon);
 	} 
       }
     }
-
+    
     for (unsigned int i = 0; i < events.size(); ++i){
       std::cout << events[i] << std::endl;
     }
