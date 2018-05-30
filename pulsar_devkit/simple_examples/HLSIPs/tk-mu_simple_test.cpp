@@ -216,7 +216,6 @@ void eventReader(std::vector<Event>& events,
   
   // open the file and put the truth data into a vector
   line = "";
-  /*
   if (swTrackFile.is_open()){
     
     std::string phisector;
@@ -233,14 +232,13 @@ void eventReader(std::vector<Event>& events,
       }
       // add attributes
       else{
-	SwTrack newTrack;
-	// std::cout << "eventNumber "  << eventNumber << std::endl;
-	// decode_sw_track_data(newString + " " + phisector, newTrack);
-	events[eventNumber-1].swTracks.push_back(newTrack);
+       	SwTrack newTrack;
+	std::cout << "eventNumber "  << eventNumber <<  " " << newString + " " + phisector << std::endl;
+	decode_sw_track_data(newString + " " + phisector, newTrack);
+       	events[eventNumber-1].swTracks.push_back(newTrack);
       }
     }
   }
-  */
   swTrackFile.close();
 
   /*
@@ -435,12 +433,15 @@ void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
 {
   std::vector<std::string> values_sw;
   split(data_sw,' ',values_sw);
+  for (unsigned i = 0; i < values_sw.size(); ++i){
+    std::cout << values_sw[i] << std::endl;
+  }
   
   // setup Rinv
   float rinv    = std::atof(values_sw.at(1).c_str());
   float sinhEta = std::atof(values_sw.at(3).c_str());
   int sector = std::atoi(values_sw.at(11).c_str());
-  // std::cout << "phisector sw " << sector << std::endl;
+  std::cout << "phisector sw " << sector << std::endl;
 
   in_track_sw.rinv = rinv;
   in_track_sw.pt  = rinv2pt(rinv);           // 1.360636778;
