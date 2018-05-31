@@ -76,6 +76,7 @@ struct SimTrack {
   int q;
   // constructor
   SimTrack() :
+    index(0),
     pt(0),
     eta(0),
     phi(0),
@@ -85,6 +86,7 @@ struct SimTrack {
 };
 
 struct SwTrack {
+  int index;
   float rinv;
   float pt;
   float sinheta;
@@ -92,10 +94,12 @@ struct SwTrack {
   float phi;
   float z0;
   int q;
-  int VALID;
+  int valid;
   int BX;
+  int sector;
   // constructor
   SwTrack() :
+    index(0),
     rinv(0),
     pt(0),
     sinheta(0),
@@ -103,8 +107,9 @@ struct SwTrack {
     phi(0),
     z0(0),
     q(0),
-    VALID(0),
-    BX(0)
+    valid(0),
+    BX(0),
+    sector(0)
   {
   }
 };
@@ -122,6 +127,7 @@ struct SwPropTrack : public SwTrack {
   // copy constructor
   SwPropTrack(const SwTrack& ref)
     {
+      index = ref.index;
       rinv = ref.rinv;
       pt = ref.pt;
       sinheta = ref.sinheta;
@@ -129,27 +135,30 @@ struct SwPropTrack : public SwTrack {
       phi = ref.phi;
       z0 = ref.z0;
       q = ref.q;
-      VALID = ref.VALID;
+      valid = ref.valid;
       BX = ref.BX;
       propEta = 0;
       propPhi = 0;
+      sector = ref.sector;
     }
 };
 
 struct SwMuon {
+  int index;
   float pt;
   float eta;
   float phi;
   int q;
-  int VALID;
+  int valid;
   int BX;
   // constructor
   SwMuon() : 
+    index(0),
     pt(0),
     eta(0),
     phi(0),
     q(0),
-    VALID(0),
+    valid(0),
     BX(0)
   {
   }
@@ -157,19 +166,21 @@ struct SwMuon {
 
 struct SwTrackMuon 
 {
+  int index;
   float pt;
   float eta;
   float phi;
   int q;
-  int VALID;   // VALID bit
+  int valid;   // valid bit
   int BX;    // bunch crossing
   // constructor
   SwTrackMuon() : 
+    index(0),
     pt(0),
     eta(0),
     phi(0),
     q(0),
-    VALID(0),
+    valid(0),
     BX(0)
   {
   }
@@ -185,12 +196,15 @@ struct HwTrack
   eta_t hwEta;
   phi_t hwPhi;
   z0_t hwZ0;  // same precision at eta_t (Accoring to Dan: z0 precision needed to get precision on eta, which derives from z0)
+  sector_t hwSector;
   // test precision of z0 11 to 14 
   q_t hwQ;
   chisq_t hwX2;
-  q_t VALID;   // VALID bit
+  q_t hwValid;   // valid bit
   bx_t hwBX;    // bunch crossing 3-bit counter
-  //  sector_t hwSector;
+  bx_t hwBX2;    // bunch crossing 3-bit counter */
+  bx_t hwBX3;    // bunch crossing 3-bit counter */
+  bx_t hwBX4;    // bunch crossing 3-bit counter */
   // constructor
   HwTrack() : 
     hwRinv(0),
@@ -199,11 +213,14 @@ struct HwTrack
     hwEta(0),
     hwPhi(0),
     hwZ0(0),
+    hwSector(0),
     hwQ(0),
     hwX2(0),
-    VALID(0),
-      hwBX(0)//,
-    /* hwSector(0) */
+    hwValid(0),
+      hwBX(0)
+      , hwBX2(0)
+      , hwBX3(0)
+      , hwBX4(0) 
   {
   }
 };
@@ -228,9 +245,10 @@ struct HwPropTrack : public HwTrack
       hwEta = ref.hwEta;
       hwPhi = ref.hwPhi;
       hwZ0 = ref.hwZ0;
+      hwSector = ref.hwSector;
       hwQ = ref.hwQ;
       hwX2 = ref.hwX2;
-      VALID = ref.VALID;
+      hwValid = ref.hwValid;
       hwBX = ref.hwBX;
       hwPropEta = 0;
       hwPropPhi = 0;
@@ -242,7 +260,7 @@ struct HwMuon {
     eta_t hwEta;
     phi_t hwPhi;
     q_t hwQ;
-    q_t VALID;   // VALID bit
+    q_t hwValid;   // valid bit
     bx_t hwBX;    // bunch crossing
   // constructor
   HwMuon() : 
@@ -250,7 +268,7 @@ struct HwMuon {
     hwEta(0),
     hwPhi(0),
     hwQ(0),
-    VALID(0),
+    hwValid(0),
     hwBX(0)
   {
   }
@@ -261,7 +279,7 @@ struct HwTrackMuon {
     eta_m hwEta;
     phi_m hwPhi;
     q_t hwQ;
-    q_t VALID;   // VALID bit
+    q_t hwValid;   // valid bit
     bx_t hwBX;    // bunch crossing
   // constructor
   HwTrackMuon() : 
@@ -269,7 +287,7 @@ struct HwTrackMuon {
     hwEta(0),
     hwPhi(0),
     hwQ(0),
-    VALID(0),
+    hwValid(0),
     hwBX(0)
   {
   }
@@ -310,119 +328,109 @@ namespace {
 
 std::ostream& operator << (std::ostream& os, const SimTrack& rhs)
 {
-  os << " pT: " << rhs.pt << " " 
-     << " eta: " << rhs.eta << " "
-     << " phi: " << rhs.phi << " " 
-     << " Q: " << rhs.q << " ";
+  os << "pT: " << rhs.pt << ", " 
+     << "eta: " << rhs.eta << ", "
+     << "phi: " << rhs.phi << ", " 
+     << "Q: " << rhs.q;
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwTrack& rhs)
 {
-  os << " pT: " << rhs.pt << " " 
-     << " eta: " << rhs.eta << " "
-     << " phi: " << rhs.phi << " " 
-     << " Q: " << rhs.q << " ";
+  os << "pT: " << rhs.pt << ", " 
+     << "eta: " << rhs.eta << ", "
+     << "phi: " << rhs.phi << ", " 
+     << "sector: " << rhs.sector << ","
+     << "Q: " << rhs.q;
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwPropTrack& rhs)
 {
-  os << " pT: " << rhs.pt << " " 
-     << " eta: " << rhs.eta << " "
-     << " phi: " << rhs.phi << " " 
-     << " eta_prop: " << rhs.propEta << " " 
-     << " phi_prop: " << rhs.propPhi << " "
-     << " Q: " << rhs.q << " ";
+  os << "pT: " << rhs.pt << ", " 
+     << "eta: " << rhs.eta << ", "
+     << "phi: " << rhs.phi << ", " 
+     << "eta_prop: " << rhs.propEta << ", " 
+     << "phi_prop: " << rhs.propPhi << ", "
+     << "sector: " << rhs.sector << ","
+     << "Q: " << rhs.q;
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwMuon& rhs)
 {
-  os << " pT: " << rhs.pt << " " 
-     << " eta: " << rhs.eta << " "
-     << " phi: " << rhs.phi << " " 
-     << " Q: " << rhs.q << " ";
+  os << "pT: " << rhs.pt << ", " 
+     << "eta: " << rhs.eta << ", "
+     << "phi: " << rhs.phi << ", " 
+     << "Q: " << rhs.q;
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwTrackMuon& rhs)
 {
-  os << " pT: " << rhs.pt << " " 
-     << " eta: " << rhs.eta << " "
-     << " phi: " << rhs.phi << " " 
-     << " Q: " << rhs.q << " ";
+  os << "pT: " << rhs.pt << ", " 
+     << "eta: " << rhs.eta << ", "
+     << "phi: " << rhs.phi << ", " 
+     << "Q: " << rhs.q;
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 {
-  os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << " " 
-     /* << "pT: " << std::bitset<12>(rhs.hwPt) << " "  */
-     << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << " "
-     << "phi: " << std::bitset<19>(rhs.hwPhi) << " " 
-     << "Z0: " << std::bitset<11>(rhs.hwZ0) << " " 
-     << "Q: " << std::bitset<1>(rhs.hwQ) << " "
-     /* << "X2: " << std::bitset<10>(rhs.hwX2) << " "  */
-     << "Valid: " << std::bitset<1>(rhs.VALID) << " "
-     << "BX: " << std::bitset<3>(rhs.hwBX) << " ";
+  os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << ", " 
+     /* << "pT: " << std::bitset<12>(rhs.hwPt) << ", "  */
+     << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << ", "
+     << "phi: " << std::bitset<19>(rhs.hwPhi) << ", " 
+     << "Z0: " << std::bitset<11>(rhs.hwZ0) << ", " 
+     << "Q: " << std::bitset<1>(rhs.hwQ) << ", "
+     /* << "X2: " << std::bitset<10>(rhs.hwX2) << ", "  */
+     << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
+     << "BX: " << std::bitset<3>(rhs.hwBX);
    return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 {
-  os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << " " 
-     /* << "pT: " << std::bitset<12>(rhs.hwPt) << " "  */
-     << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << " "
-     << "phi: " << std::bitset<19>(rhs.hwPhi) << " " 
-     << "eta_prop: " << std::bitset<14>(rhs.hwPropEta) << " " 
-     << "phi_prop: " << std::bitset<19>(rhs.hwPropPhi) << " "
-     << "Z0: " << std::bitset<11>(rhs.hwZ0) << " " 
-     << "Q: " << std::bitset<1>(rhs.hwQ) << " "
-     /* << "X2: " << std::bitset<10>(rhs.hwX2) << " "  */
-     << "Valid: " << std::bitset<1>(rhs.VALID) << " "
-     << "BX: " << std::bitset<3>(rhs.hwBX) << " ";
+  os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << ", " 
+     /* << "pT: " << std::bitset<12>(rhs.hwPt) << ", "  */
+     << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << ", "
+     << "phi: " << std::bitset<19>(rhs.hwPhi) << ", " 
+     << "eta_prop: " << std::bitset<14>(rhs.hwPropEta) << ", " 
+     << "phi_prop: " << std::bitset<19>(rhs.hwPropPhi) << ", "
+     << "Z0: " << std::bitset<11>(rhs.hwZ0) << ", " 
+     << "Q: " << std::bitset<1>(rhs.hwQ) << ", "
+     /* << "X2: " << std::bitset<10>(rhs.hwX2) << ", "  */
+     << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
+     << "BX: " << std::bitset<3>(rhs.hwBX);
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 {
-  os << "pT: " << std::bitset<9>(rhs.hwPt) << " " 
-     << "eta: " << std::bitset<10>(rhs.hwEta) << " "
-     << "phi: " << std::bitset<9>(rhs.hwPhi) << " " 
-     << "Q: " << std::bitset<1>(rhs.hwQ) << " "
-     << "Valid: " << std::bitset<1>(rhs.VALID) << " "
-     << "BX: " << std::bitset<3>(rhs.hwBX) << " ";
+  os << "pT: " << std::bitset<9>(rhs.hwPt) << ", " 
+     << "eta: " << std::bitset<10>(rhs.hwEta) << ", "
+     << "phi: " << std::bitset<9>(rhs.hwPhi) << ", " 
+     << "Q: " << std::bitset<1>(rhs.hwQ) << ", "
+     << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
+     << "BX: " << std::bitset<3>(rhs.hwBX);
    return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwTrackMuon& rhs)
 {
-  os << "pT: " << std::bitset<12>(rhs.hwPt) << " " 
-     << "eta: " << std::bitset<10>(rhs.hwEta) << " "
-     << "phi: " << std::bitset<9>(rhs.hwPhi) << " " 
-     << "Q: " << std::bitset<1>(rhs.hwQ) << " "
-     << "Valid: " << std::bitset<1>(rhs.VALID) << " "
-     << "BX: " << std::bitset<3>(rhs.hwBX) << " ";
+  os << "pT: " << std::bitset<12>(rhs.hwPt) << ", " 
+     << "eta: " << std::bitset<10>(rhs.hwEta) << ", "
+     << "phi: " << std::bitset<9>(rhs.hwPhi) << ", " 
+     << "Q: " << std::bitset<1>(rhs.hwQ) << ", "
+     << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
+     << "BX: " << std::bitset<3>(rhs.hwBX);
    return os;
 }
 
-/* template <class T> */
-/* std::ostringstream printCollection(const std::vector<T>& rhs, std::string collection)    */
-/* {  */
-/*   std::ostringstream os; */
-/*   os << collection << ": " << rhs.size() << std::endl;  */
-/*   for (unsigned i=0; i<rhs.size(); ++i) {  */
-/*     os << "  " << rhs[i] << std::endl;  */
-/*   } */
-/*   return os; */
-/* }  */
-  /* os << printCollection(rhs.simTracks, "SimTracks").str() << std::endl; */
-
 std::ostream& operator << (std::ostream& os, const Event& rhs)
 {
-  os << "Event: " << rhs.eventNumber << " " 
-     << "BX: " << rhs.BX << " " << std::endl
+  os << "Event: " << rhs.eventNumber << ", " 
+     << "BX: " << rhs.BX << ", " << std::endl
      << "SimTracks: " << rhs.simTracks.size() << std::endl;
   for (unsigned i=0; i<rhs.simTracks.size(); ++i)
     os << "  " << rhs.simTracks[i] << std::endl;

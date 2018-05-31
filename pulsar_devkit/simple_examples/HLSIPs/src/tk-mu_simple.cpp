@@ -30,15 +30,7 @@ Negative values in binary are generated assuming "One's complement"
 
 HwPropTrack tkmu_simple_hw(  HwTrack& in)
 {
-  HwPropTrack out(in);
-  // assign basic variables
-  // out.hwRinv = in.hwRinv; 
-  // out.hwPt   = in.hwPt; 
-  // out.hwZ0   = in.hwZ0; 
-  // out.hwQ    = in.hwQ; 
-  // out.hwX2   = in.hwX2; 
-  // out.VALID  = in.VALID; 
-  // out.hwBX   = in.hwBX; 
+  HwPropTrack out = in;
 
     /* Hardware implementation of the track propagation */
     feta_t boundary(1.1);           // barrel/endcap boundary
@@ -245,10 +237,10 @@ HwTrackMuon match_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
     outTrack.hwEta = inMuon.hwEta;
     outTrack.hwPhi = inMuon.hwPhi;
     outTrack.hwQ = inTrack.hwQ;
-    outTrack.VALID = inTrack.VALID and inMuon.VALID; 
+    outTrack.hwValid = inTrack.hwValid and inMuon.hwValid; 
     outTrack.hwBX = inTrack.hwBX;
   } else {
-    outTrack.VALID = 0;     
+    outTrack.hwValid = 0;     
   }
   return outTrack;
 }
@@ -279,10 +271,10 @@ SwTrackMuon match_sw(const SwPropTrack& inTrack, const SwMuon& inMuon)
     outTrack.eta = inMuon.eta;
     outTrack.phi = inMuon.phi;
     outTrack.q = inTrack.q;
-    outTrack.VALID = inTrack.VALID and inMuon.VALID; 
+    outTrack.valid = inTrack.valid and inMuon.valid; 
     outTrack.BX = inTrack.BX;
   } else {
-    outTrack.VALID = 0;     
+    outTrack.valid = 0;     
   }
   return outTrack;
 }

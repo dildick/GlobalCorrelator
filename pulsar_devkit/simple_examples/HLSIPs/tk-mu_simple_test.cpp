@@ -34,17 +34,8 @@ void isNegative( std::string& bit_value, bool& isNeg);
 float normalizePhi(float phi);
 
 // dump output
-void writeOutputSW(std::ofstream&,
-		   const SwTrack&, 
-		   const SwPropTrack&,
-		   const SwMuon&,
-		   const SwTrackMuon&);
-
-void writeOutputHW(std::ofstream&,
-		   const HwTrack&, 
-		   const HwPropTrack&,
-		   const HwMuon&,
-		   const HwTrackMuon&);
+void writeOutput(std::ofstream&,		   
+		 const Event&);
 
 void eventReader(std::vector<Event>& events, 
 		 const std::string& simTrackFile,
@@ -99,7 +90,7 @@ int main()
 	  HwPropTrack hwPropTrack = events[iEvent].hwPropTracks[iHwPropTrack];
 	  HwTrackMuon hwTrackMuon = match_hw(hwPropTrack, hwMuon);
 
-	  if (hwTrackMuon.VALID)
+	  if (hwTrackMuon.hwValid)
 	    events[iEvent].hwTrackMuons.push_back(hwTrackMuon);
 	}
       } 
@@ -111,31 +102,22 @@ int main()
 	  SwPropTrack swPropTrack = events[iEvent].swPropTracks[iSwPropTrack];
 	  SwTrackMuon swTrackMuon = match_sw(swPropTrack, swMuon);
 
-	  if (swTrackMuon.VALID)
+	  if (swTrackMuon.valid)
 	    events[iEvent].swTrackMuons.push_back(swTrackMuon);
 	} 
       }
     }
+
     
+    std::ofstream data_output;
+    data_output.open("../../../../output_data.txt");
     for (unsigned int i = 0; i < events.size(); ++i){
       std::cout << events[i] << std::endl;
+      writeOutput(data_output, events[i]);
     }
-
+    data_output.close();
+    
     std::cout << " Finished " << std::endl;
-
-    std::ofstream software_output;
-    software_output.open("../../../../software_prop.txt");
-
-    std::ofstream firmware_output;
-    firmware_output.open("../../../../firmware_prop.txt");
-
-    // 	writeOutputSW(software_output, in_track_sw, prop_track_sw,
-    // 		      in_muon_sw, out_trackmuon_sw);
-    // 	writeOutputHW(firmware_output, in_track_hw, prop_track_hw,
-    // 		      in_muon_hw, out_trackmuon_hw);
-
-    software_output.close();
-    firmware_output.close();
     
     return 0;
 }
@@ -181,7 +163,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() );
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	if (newEvent.eventNumber > 1) break;
+	// if (newEvent.eventNumber > 1) break;
 	events.push_back(newEvent);
       }
       
@@ -233,7 +215,7 @@ void eventReader(std::vector<Event>& events,
 	newTrack.BX = 0;
 	// std::cout << "eventNumber "  << eventNumber <<  " " << newString + " " + phisector << std::endl;
 	decode_sw_track_data(newString + " " + phisector, newTrack);
-	if (newTrack.VALID)
+	if (newTrack.valid)
 	  events[eventNumber-1].swTracks.push_back(newTrack);
       }
     }
@@ -273,7 +255,7 @@ void eventReader(std::vector<Event>& events,
 	HwTrack newTrack;
 	newTrack.hwBX = std::bitset<3>(eventNumber).to_ulong();
 	decode_hw_track_data(newString + " " + phisector, newTrack);
-	//if (newTrack.VALID)
+	//if (newTrack.hwValid)
 	  events[eventNumber-1].hwTracks.push_back(newTrack);
       }
     }
@@ -310,7 +292,7 @@ void eventReader(std::vector<Event>& events,
        	SwMuon newMuon;
 	newMuon.BX = eventNumber;
 	decode_sw_muon_data(newString, newMuon);
-	if (newMuon.VALID)
+	if (newMuon.valid)
 	  events[eventNumber-1].swMuons.push_back(newMuon);
       }
     }
@@ -348,7 +330,7 @@ void eventReader(std::vector<Event>& events,
 	newMuon.hwBX = std::bitset<3>(eventNumber).to_ulong();
 	decode_hw_muon_data(newString, newMuon);
 	
-	//if (newMuon.VALID)
+	//if (newMuon.hwValid)
 	events[eventNumber-1].hwMuons.push_back(newMuon);
       }
     }
@@ -411,7 +393,6 @@ void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
   // setup Rinv
   float rinv    = std::atof(values_sw.at(1).c_str());
   float sinhEta = std::atof(values_sw.at(3).c_str());
-  int sector = std::atoi(values_sw.at(11).c_str());
 
   in_track_sw.rinv = rinv;
   in_track_sw.pt  = rinv2pt(rinv);           // 1.360636778;
@@ -420,7 +401,8 @@ void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
   in_track_sw.phi = std::atof(values_sw.at(2).c_str()); // 1.26735;
   in_track_sw.z0  = std::atof(values_sw.at(4).c_str()); //-4.72;
   in_track_sw.q   = (rinv>0) ? 1 : -1;       //-1;
-  in_track_sw.VALID = in_track_sw.pt > 0;
+  in_track_sw.valid = in_track_sw.pt > 0;
+  in_track_sw.sector = std::atoi(values_sw.at(11).c_str());
 }
 
 void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
@@ -464,7 +446,7 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   
   if (DEBUG) std::cout << " Looping over data - hwZ0 = " << in_track_hw.hwZ0 << std::endl;
 
-  in_track_hw.VALID = std::bitset<1>(rinv_str != "000000000000000").to_ulong();
+  in_track_hw.hwValid = std::bitset<1>(rinv_str != "000000000000000").to_ulong();
 }
 
 void decode_sw_muon_data(const std::string &data_sw, SwMuon& in_muon_sw)
@@ -479,7 +461,7 @@ void decode_sw_muon_data(const std::string &data_sw, SwMuon& in_muon_sw)
   // keep in mind that muon phi is from 0 to 2pi
   in_muon_sw.phi = normalizePhi(std::atof(values_sw.at(3).c_str()));
   in_muon_sw.q   = std::atoi(values_sw.at(4).c_str());
-  in_muon_sw.VALID = int(in_muon_sw.pt > 0);
+  in_muon_sw.valid = int(in_muon_sw.pt > 0);
 }
 
 void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
@@ -541,7 +523,7 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
   in_muon_hw.hwEta = std::bitset<10>(eta_str).to_ulong();
   in_muon_hw.hwPhi = std::bitset<9>(phi_str).to_ulong();
   in_muon_hw.hwQ = std::bitset<1>(q_str).to_ulong();
-  //in_muon_hw.VALID = in_muon_hw.hwEta != 0 and in_muon_hw.hwPhi != 0 and in_muon_hw.hwQ != 0;
+  //in_muon_hw.hwValid = in_muon_hw.hwEta != 0 and in_muon_hw.hwPhi != 0 and in_muon_hw.hwQ != 0;
 
   if (false) {
     std::cout << "data_fw " << data_fw << std::endl;
@@ -567,61 +549,44 @@ float normalizePhi(float outPhi)
   return returnValue;
 }
 
-void writeOutputSW(std::ofstream& software_output,
-		   const SwTrack& in_track_sw, 
-		   const SwPropTrack& prop_track_sw,
-		   const SwMuon& in_muon_sw,
-		   const SwTrackMuon& out_trackmuon_sw)
+template <class T> 
+T matchingTrack(const SimTrack& simTrack, const std::vector<T> collection)
 {
-  // dump output to "track software" file
-  software_output 
-    // track properties
-    << in_track_sw.rinv      << "," 
-    << in_track_sw.eta       << "," 
-    << prop_track_sw.propEta << "," 
-    << in_track_sw.phi       << "," 
-    << prop_track_sw.propPhi << ","
-    << in_track_sw.z0        << ","
-    // muon properties
-    << in_muon_sw.pt         << "," 
-    << in_muon_sw.eta        << "," 
-    << in_muon_sw.phi        << "," 
-    << in_muon_sw.q          << ","
-    // track-muon properties
-    << out_trackmuon_sw.pt         << "," 
-    << out_trackmuon_sw.eta        << "," 
-    << out_trackmuon_sw.phi        << "," 
-    << out_trackmuon_sw.q
-    << "\n";
+  T matchingT;
+  // find the best matching T
+  for (unsigned iT = 0; iT < collection.size(); iT++){
+    // do eta based matching for now! 
+    // relatively loose cut
+    // phi and or charge may be misassigned 
+    if (fabs(collection[iT].eta - simTrack.eta) < 0.2){
+      matchingT = collection[iT];
+      break;
+    }
+  }
+  return matchingT;
 }
 
-void writeOutputHW(std::ofstream& firmware_output,
-		   const HwTrack& in_track_hw, 
-		   const HwPropTrack& prop_track_hw,
-		   const HwMuon& in_muon_hw,
-		   const HwTrackMuon& out_trackmuon_hw)
+void writeOutput(std::ofstream& output,		   
+		   const Event& event)
 {
-  // save results to file
-  firmware_output 
-    // track properties
-    << in_track_hw.hwRinv*INVRINV_CONVERSION     << "," 
-    << in_track_hw.hwEta*INVETA_CONVERSION       << "," 
-    << prop_track_hw.hwPropEta*INVETA_CONVERSION << ","
-    << in_track_hw.hwPhi*INVPHI_CONVERSION       << "," 
-    << prop_track_hw.hwPropPhi*INVPHI_CONVERSION << ","
-    << in_track_hw.hwZ0*INVZ_CONVERSION          << "," 
-    // muon properties
-    << in_muon_hw.hwPt         << "," 
-    << in_muon_hw.hwEta        << "," 
-    << in_muon_hw.hwPhi        << "," 
-    << in_muon_hw.hwQ          << ","
-    // track-muon properties
-    << out_trackmuon_hw.hwPt         << "," 
-    << out_trackmuon_hw.hwEta        << "," 
-    << out_trackmuon_hw.hwPhi        << "," 
-    << out_trackmuon_hw.hwQ
-    << "\n";
-}
+  for (unsigned iSimTrack = 0; iSimTrack < event.simTracks.size(); iSimTrack++){
+    output << "Event: " << event.eventNumber << ","
+	   << " BX: " << event.BX << ","
+	   << " pT: " << event.simTracks[iSimTrack].pt << "," 
+	   << " eta: " << event.simTracks[iSimTrack].eta << ","
+	   << " phi: " << event.simTracks[iSimTrack].phi << "," 
+	   << " Q: " << event.simTracks[iSimTrack].q << ",";
+    const SwTrack& matchingSwTrack =         matchingTrack(event.simTracks[iSimTrack], event.swTracks);
+    const SwPropTrack& matchingSwPropTrack = matchingTrack(event.simTracks[iSimTrack], event.swPropTracks);
+    const SwMuon& matchingSwMuon =           matchingTrack(event.simTracks[iSimTrack], event.swMuons);
+    const SwTrackMuon& matchingSwTrackMuon = matchingTrack(event.simTracks[iSimTrack], event.swTrackMuons);
 
+    //    output << matchingSwTrack << ",";
+    output << matchingSwPropTrack << ",";
+    output << matchingSwMuon << ",";
+    output << matchingSwTrackMuon << ",";
+    output << std::endl;
+  }
+}
 
 // THE END
