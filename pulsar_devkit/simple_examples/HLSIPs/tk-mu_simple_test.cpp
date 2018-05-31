@@ -16,10 +16,13 @@ HLS with c++
 #include <stdlib.h>
 #include <math.h>
 
+#include <sys/types.h>
+#include <dirent.h>
+
 #include "ap_fixed.h"
 #include "src/tk-mu_simple.h"
 
-// functions to decode data
+// functions to decode track and muon data
 void decode_sw_track_data(const std::string &word, SwTrack&);
 void decode_hw_track_data(const std::string &word, HwTrack&);
 void decode_sw_muon_data(const std::string &word, SwMuon&);
@@ -31,18 +34,57 @@ void split(const std::string &s,
 float rinv2pt(const float& rinv);
 float sinhEta2eta(const float& sinhEta);
 void isNegative( std::string& bit_value, bool& isNeg);
+
+// normalize phi in [-pi,+pi] window
 float normalizePhi(float phi);
 
-// dump output
-void writeOutput(std::ofstream&,		   
-		 const Event&);
+// dump event output
+void writeOutput(std::ofstream&, const Event&);
 
+/*
+  Collect data files from a specific directory
+ */
+void getDataFiles(const std::string& directory,
+		  const std::string& simTrackPattern, std::vector<std::string>& simTrackFiles,
+		  const std::string& swTrackPattern, std::vector<std::string>& swTrackFiles,
+		  const std::string& swMuonPattern, std::vector<std::string>& swMuonFiles,
+		  const std::string& hwTrackPattern, std::vector<std::string>& hwTrackFiles,
+		  const std::string& hwMuonPattern, std::vector<std::string>& hwMuonFiles);
+
+/*
+  read events from a collection of files
+  events       - the vector with events (output)
+  simTrackFiles - files containing SimTrack information
+  swTracks      - files containing TT track information in floating point format
+  hwTracks      - files containing TT track information in binary format
+  swMuons       - files containing muon information in floating point format
+  hwMuons       - files containing muon information in binary format
+*/
+void eventReader(std::vector<Event>& events,
+		 const std::vector<std::string>& simTrackFiles,
+		 const std::vector<std::string>& swTrackFiles,
+		 const std::vector<std::string>& swMuonFiles,
+		 const std::vector<std::string>& hwTrackFiles,
+		 const std::vector<std::string>& hwMuonFiles);
+
+/*
+  read events from a single file
+  events       - the vector with events (output)
+  simTrackFile - file containing SimTrack information
+  swTrack      - file containing TT track information in floating point format
+  hwTrack      - file containing TT track information in binary format
+  swMuon       - file containing muon information in floating point format
+  hwMuon       - file containing muon information in binary format
+  batchNumber  - each file contains 100 events. batch number 0,1,2... 
+                 denotes which batch is being processed
+*/
 void eventReader(std::vector<Event>& events, 
 		 const std::string& simTrackFile,
-		 const std::string& swTrack,
-		 const std::string& swMuon,
-		 const std::string& hwTrack,
-		 const std::string& hwMuon); 
+		 const std::string& swTrackFile,
+		 const std::string& swMuonFile,
+		 const std::string& hwTrackFile,
+		 const std::string& hwMuonFile,
+		 int batchNumber); 
 
 int main() 
 {
@@ -59,15 +101,38 @@ int main()
     muonComment.push_back("MuonO");
     muonComment.push_back("MuonE");
 
-    // truth information I/O (CMSSW SimTrack)
-    std::vector<Event> events;
-    eventReader(events, 
-		"../../../../config/sim_track_data.dat",
-		"../../../../config/sw_track_data.dat",
-		"../../../../config/sw_muon_data.dat",
-		"../../../../config/hw_track_data.dat",
-		"../../../../config/hw_muon_data.dat");
+    std::string directory = "../../../../data/";
 
+    std::string simTrackPattern = "sim_track_data";
+    std::string swTrackPattern = "sw_track_data";
+    std::string swMuonPattern = "sw_muon_data";
+    std::string hwTrackPattern = "hw_track_data";
+    std::string hwMuonPattern = "hw_muon_data";
+
+    std::vector<std::string> simTrackFiles;
+    std::vector<std::string> swTrackFiles;
+    std::vector<std::string> swMuonFiles;
+    std::vector<std::string> hwTrackFiles;
+    std::vector<std::string> hwMuonFiles;
+    
+    getDataFiles(directory,
+		 simTrackPattern, simTrackFiles,
+		 swTrackPattern,  swTrackFiles,
+		 swMuonPattern,   swMuonFiles,
+		 hwTrackPattern,  hwTrackFiles,
+		 hwMuonPattern,   hwMuonFiles);
+
+    // truth information I/O (CMSSW SimTrack)
+    // 
+    std::vector<Event> events;
+    eventReader(events,
+		simTrackFiles,
+		swTrackFiles,
+		swMuonFiles,
+		hwTrackFiles,
+		hwMuonFiles);
+    
+    // process the tracks and muons
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
       // propagate the tracks
       for (unsigned int iHwTrack = 0; iHwTrack < events[iEvent].hwTracks.size(); ++iHwTrack){
@@ -131,14 +196,87 @@ std::string keepOnlyDigits(std::string input)
   return target;
 }
 
+void getDataFiles(const std::string& directory,
+		  const std::string& simTrackPattern, std::vector<std::string>& simTrackFiles,
+		  const std::string& swTrackPattern, std::vector<std::string>& swTrackFiles,
+		  const std::string& swMuonPattern, std::vector<std::string>& swMuonFiles,
+		  const std::string& hwTrackPattern, std::vector<std::string>& hwTrackFiles,
+		  const std::string& hwMuonPattern, std::vector<std::string>& hwMuonFiles)
+{
+  simTrackFiles.clear();
+  swTrackFiles.clear();
+  swMuonFiles.clear();
+  hwTrackFiles.clear();
+  hwMuonFiles.clear();
+
+  bool debug(false);
+
+  DIR* dirp = opendir(directory.c_str());
+  struct dirent * dp;
+  while ((dp = readdir(dirp)) != NULL) {
+    if (debug) std::cout << "Directory " << directory << " open " << std::endl;
+    std::string fileName(dp->d_name);
+    // check if file matches the simtrack pattern
+    if (fileName.find(simTrackPattern.c_str())!=std::string::npos){
+      if (debug) std::cout << "Adding file " << directory + dp->d_name << std::endl;
+      simTrackFiles.push_back(directory + dp->d_name);
+    }
+    // check if file matches the swTrack pattern
+    if (fileName.find(swTrackPattern.c_str())!=std::string::npos){
+      if (debug) std::cout << "Adding file " << directory + dp->d_name << std::endl;
+      swTrackFiles.push_back(directory + dp->d_name);
+    }
+    // check if file matches the hwTrack pattern
+    if (fileName.find(hwTrackPattern.c_str())!=std::string::npos){
+      if (debug) std::cout << "Adding file " << directory + dp->d_name << std::endl;
+      hwTrackFiles.push_back(directory + dp->d_name);
+    }
+    // check if file matches the swMuon pattern
+    if (fileName.find(swMuonPattern.c_str())!=std::string::npos){
+      if (debug) std::cout << "Adding file " << directory + dp->d_name << std::endl;
+      swMuonFiles.push_back(directory + dp->d_name);
+    }
+    // check if file matches the hwMuon pattern
+    if (fileName.find(hwMuonPattern.c_str())!=std::string::npos){
+      if (debug) std::cout << "Adding file " << directory + dp->d_name << std::endl;
+      hwMuonFiles.push_back(directory + dp->d_name);
+    }
+  }
+  closedir(dirp);
+}
+
+void eventReader(std::vector<Event>& events, 
+		 const std::vector<std::string>& simTrackFiles,
+		 const std::vector<std::string>& swTracks,
+		 const std::vector<std::string>& swMuons,
+		 const std::vector<std::string>& hwTracks,
+		 const std::vector<std::string>& hwMuons)
+{
+  events.clear();
+  // keep in mind that the event number is per file, not for the entire dataset
+  // find a way to introduce a global event number
+  // I assume that each file has 100 events...
+  for (unsigned int iFile = 0; iFile < simTrackFiles.size(); iFile++){
+    eventReader(events, 
+		simTrackFiles[iFile], 
+		swTracks[iFile], 
+		swMuons[iFile], 
+		hwTracks[iFile], 
+		hwMuons[iFile],
+		iFile);
+  }
+}
+
 void eventReader(std::vector<Event>& events, 
 		 const std::string& simTrackFile,
 		 const std::string& swTrack,
 		 const std::string& swMuon,
 		 const std::string& hwTrack,
-		 const std::string& hwMuon)
+		 const std::string& hwMuon,
+		 int batchNumber)
 {
-  events.clear();
+
+  // todo: extend the interface for a set of files
 
   std::ifstream ifile(simTrackFile.c_str());
   
