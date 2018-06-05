@@ -96,7 +96,13 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
         inhwPhi = -1*(in.hwPhi+262144)*INVPHI_CONVERSION;
     else
         inhwPhi = in.hwPhi*INVPHI_CONVERSION;
-    if (DEBUG) std::cout << " -- phi  = " << inhwPhi << std::endl;
+
+    // convert to a global phi value
+    in.hwPhiGlobal = inhwPhi + phiOffSetValues[in.hwSector-1];
+    //std::cout << "debugging global track phi value " << in.hwPhiGlobal << " " << inhwPhi << " " << in.hwSector << " " << phiOffSetValues[in.hwSector-1] << std::endl;
+
+   
+    if (DEBUG) std::cout << " -- phi  = " << inhwPhi <<  std::endl;
 
     // Rinv -> 1/pT (16384 = 2^14; number of unsigned bits)
     finvpt_t inhwRinv;
@@ -191,7 +197,7 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     // ** calculate the propagated eta ** //
     if (DEBUG) std::cout << " FIRMWARE : -- ETA calculation " << inhwEta + deta << std::endl;
     eta_t etaconv(ETA_CONVERSION);
-    out.hwPropEta = (inhwEta + deta)*etaconv;
+    out.hwPropEta = (inhwEta + deta);//*etaconv;
 
 
     // ** calculate the propagated phi ** //
@@ -203,10 +209,10 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     tmp_A *= inhwInvPt;       // 1.464 * 1/pT
     tmp_B *= dzCorrPhi;       // cosh(1.7) * dzCorrPhi
     fphi_t tmp_val4   = tmp_A * tmp_B * invCoshEta_Phi;
-    fphi_t outPropPhi = inhwPhi - tmp_val4 - M_PI_144;
+    fphi_t outPropPhi = in.hwPhiGlobal - tmp_val4 - M_PI_144;
 
-    out.hwPropPhi = outPropPhi*PHI_CONVERSION;
-
+    out.hwPropPhi = outPropPhi;//*PHI_CONVERSION;
+    
     // Print results to screen for debugging
     if (DEBUG) std::cout << " FIRMWARE :    invCoshEta = " << invCoshEta_Phi << std::endl;
     if (DEBUG) std::cout << " FIRMWARE :    1.464/pT   = " << tmp_A << std::endl;
@@ -214,7 +220,7 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     if (DEBUG) std::cout << " FIRMWARE :    1.464*cosh(1.7)*dzcorrphi / (pT*cosh(etaProp)) = " << tmp_val4 << std::endl;
     if (DEBUG) std::cout << " FIRMWARE : hwPropPhi     = " << outPropPhi << std::endl;
 
-    if (DEBUG) std::cout << " FIRMWARE : in.hwPhi      = " << in.hwPhi << std::endl;
+    if (DEBUG) std::cout << " FIRMWARE : in.hwPhiGlobal      = " << in.hwPhiGlobal << std::endl;
     if (DEBUG) std::cout << " FIRMWARE : out.hwPropPhi = " << out.hwPropPhi << std::endl;
 
     return out;
@@ -223,14 +229,24 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
 HwTrackMuon match_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
 {
   HwTrackMuon outTrack;
-  feta_t tkEta = inTrack.hwPropEta;
-  fphi_t tkPhi = inTrack.hwPropPhi;
+  feta_t tkEta = inTrack.hwPropEta;// * ETA_CONVERSION;
+  fphi_t tkPhi = inTrack.hwPropPhi;// * PHI_CONVERSION;
 
   feta_m muEta = inMuon.hwEta;
   fphi_m muPhi = inMuon.hwPhi;
 
   // dR calculation
   feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
+
+  bool debug(true);
+  if (debug){
+    std::cout << "Prop track eta " << tkEta << std::endl;
+    std::cout << "Prop track phi " << tkPhi << std::endl;
+    std::cout << "muon eta " << muEta << std::endl;
+    std::cout << "muon phi " << muPhi << std::endl;
+    std::cout << "dR " << dR2_tk_mu << std::endl;
+  }
+
 
   if (dR2_tk_mu < 0.2) {
     outTrack.hwPt = inTrack.hwPt;
@@ -245,38 +261,5 @@ HwTrackMuon match_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
   return outTrack;
 }
 
-SwTrackMuon match_sw(const SwPropTrack& inTrack, const SwMuon& inMuon)
-{
-  SwTrackMuon outTrack;
-  float tketa = inTrack.propEta;
-  float tkphi = inTrack.propPhi;
-  
-  float mueta = inMuon.eta;
-  float muphi = inMuon.phi;
-
-  // dR calculation
-  float dR2_tk_mu = dr2_int (tketa, tkphi, mueta, muphi);
-
-  // std::cout 
-  //   << "CheckMatch: tketa " << tketa
-  //   << " tkphi " << tkphi
-  //   << " mueta " << mueta
-  //   << " muphi " << muphi
-  //   << " dR2_tk_mu " << dR2_tk_mu
-  //   << std::endl;
-
-  if (dR2_tk_mu < 0.2) {
-    // std::cout << ">>>> MATCH! <<<<" << std::endl;
-    outTrack.pt = inTrack.pt;
-    outTrack.eta = inMuon.eta;
-    outTrack.phi = inMuon.phi;
-    outTrack.q = inTrack.q;
-    outTrack.valid = inTrack.valid and inMuon.valid; 
-    outTrack.BX = inTrack.BX;
-  } else {
-    outTrack.valid = 0;     
-  }
-  return outTrack;
-}
 
 // THE END

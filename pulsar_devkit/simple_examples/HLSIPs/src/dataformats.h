@@ -22,7 +22,7 @@ typedef ap_int<10> chisq_t;  // chi^2 (0 - 100; 0.1 steps)
 typedef ap_int<1> q_t;       // charge
 typedef ap_int<11> z0_t;     // z0  (1 mm over +/-14.9 cm)
 typedef ap_int<3> bx_t;     // z0  (1 mm over +/-14.9 cm)
-typedef ap_int<5> sector_t;
+typedef ap_uint<5> sector_t;
 
 // before the decimal point, after the decimal point
 typedef ap_fixed<15,2> finvpt_t;  // inverse pt [1% at 100 GeV]
@@ -195,6 +195,7 @@ struct HwTrack
   eta_t hwSinhEta;
   eta_t hwEta;
   phi_t hwPhi;
+  fphi_t hwPhiGlobal;
   z0_t hwZ0;  // same precision at eta_t (Accoring to Dan: z0 precision needed to get precision on eta, which derives from z0)
   sector_t hwSector;
   // test precision of z0 11 to 14 
@@ -212,6 +213,7 @@ struct HwTrack
     hwSinhEta(0),  
     hwEta(0),
     hwPhi(0),
+    hwPhiGlobal(0),
     hwZ0(0),
     hwSector(0),
     hwQ(0),
@@ -244,6 +246,7 @@ struct HwPropTrack : public HwTrack
       hwSinhEta = ref.hwSinhEta;
       hwEta = ref.hwEta;
       hwPhi = ref.hwPhi;
+      hwPhiGlobal = ref.hwPhiGlobal;
       hwZ0 = ref.hwZ0;
       hwSector = ref.hwSector;
       hwQ = ref.hwQ;
@@ -381,6 +384,7 @@ std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
      /* << "pT: " << std::bitset<12>(rhs.hwPt) << ", "  */
      << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << ", "
      << "phi: " << std::bitset<19>(rhs.hwPhi) << ", " 
+     << "phiGlobal: " << std::bitset<19>(rhs.hwPhiGlobal) << ", " 
      << "Z0: " << std::bitset<11>(rhs.hwZ0) << ", " 
      << "Q: " << std::bitset<1>(rhs.hwQ) << ", "
      /* << "X2: " << std::bitset<10>(rhs.hwX2) << ", "  */
@@ -393,8 +397,6 @@ std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 {
   os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << ", " 
      /* << "pT: " << std::bitset<12>(rhs.hwPt) << ", "  */
-     << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << ", "
-     << "phi: " << std::bitset<19>(rhs.hwPhi) << ", " 
      << "eta_prop: " << std::bitset<14>(rhs.hwPropEta) << ", " 
      << "phi_prop: " << std::bitset<19>(rhs.hwPropPhi) << ", "
      << "Z0: " << std::bitset<11>(rhs.hwZ0) << ", " 

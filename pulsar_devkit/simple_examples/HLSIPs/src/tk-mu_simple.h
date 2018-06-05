@@ -26,11 +26,49 @@ if rinv<0: rinv+=16384 then multiply by INVRINV_CONVERSION
 
 #define DEBUG 0
 
+namespace {
+
+fphi_t phiOffSetValues[27] = {
+  -0.0387851, // 1
+  0.193925, // 2
+  0.426636, // 3
+  0.659347, // 4
+  0.892057, // 5
+  1.124768, // 6
+  1.357478, // 7
+  1.590189, // 8
+  1.822899, // 9
+  2.055610, // 10
+  2.288321, // 11
+  2.521031, // 12
+  2.753742, // 13
+  2.986452, // 14
+  -3.064022, // 15
+  -2.831312, // 16
+  -2.598601, // 17
+  -2.365891, // 18
+  -2.133180, // 19
+  -1.900470, // 20
+  -1.667759, // 21
+  -1.435049, // 22
+  -1.202338, // 23
+  -0.969627, // 24
+  -0.736917, // 25
+  -0.504206, // 26
+  -0.271496  // 27
+};
+
+}
+
 // reference and hardware functions
 SwPropTrack tkmu_simple_ref( const SwTrack& in );
 HwPropTrack tkmu_simple_hw (       HwTrack& in );
 HwTrackMuon match_hw(const HwPropTrack&, const HwMuon&);
 SwTrackMuon match_sw(const SwPropTrack&, const SwMuon&);
+
+// decode track eta and phi
+feta_t decode_track_eta(const HwTrack&);
+fphi_t decode_track_phi(const HwTrack&);
 
 // template functions
 template<class data_T, int N_TABLE>

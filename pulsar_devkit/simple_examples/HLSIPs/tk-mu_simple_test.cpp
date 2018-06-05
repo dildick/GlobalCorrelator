@@ -35,6 +35,10 @@ float rinv2pt(const float& rinv);
 float sinhEta2eta(const float& sinhEta);
 void isNegative( std::string& bit_value, bool& isNeg);
 
+// calculate offset in phi
+float getPhiOffset(int sector, float offset = -0.0387851);
+fphi_t getPhiOffsetBinary(int sector, float offset = -0.0387851);
+
 // normalize phi in [-pi,+pi] window
 float normalizePhi(float phi);
 
@@ -114,7 +118,8 @@ int main()
     std::vector<std::string> swMuonFiles;
     std::vector<std::string> hwTrackFiles;
     std::vector<std::string> hwMuonFiles;
-    
+
+    // get all data files    
     getDataFiles(directory,
 		 simTrackPattern, simTrackFiles,
 		 swTrackPattern,  swTrackFiles,
@@ -209,7 +214,7 @@ void getDataFiles(const std::string& directory,
   hwTrackFiles.clear();
   hwMuonFiles.clear();
 
-  bool debug(false);
+  bool debug(true);
 
   DIR* dirp = opendir(directory.c_str());
   struct dirent * dp;
@@ -299,9 +304,9 @@ void eventReader(std::vector<Event>& events,
 	Event newEvent;
 	std::vector<std::string> values;
 	split(newString,' ',values);
-	newEvent.eventNumber = std::atoi( values.at(1).c_str() );
+	newEvent.eventNumber = std::atoi( values.at(1).c_str() ) + (batchNumber * 100);
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	// if (newEvent.eventNumber > 1) break;
+	if (newEvent.eventNumber > 1) break;
 	events.push_back(newEvent);
       }
       
@@ -343,7 +348,7 @@ void eventReader(std::vector<Event>& events,
       if (newString.substr(0,2) == "BX"){
 	std::vector<std::string> values;
 	split(newString,' ',values);
-	eventNumber = std::atoi( values.at(3).c_str() );
+	eventNumber = std::atoi( values.at(3).c_str() ) + (batchNumber * 100);
 	if (eventNumber > events.size()) break;
 	phisector = values.at(7);
       }
@@ -384,7 +389,7 @@ void eventReader(std::vector<Event>& events,
       if (newString.substr(0,2) == "BX"){
 	std::vector<std::string> values;
 	split(newString,' ',values);
-	eventNumber = std::atoi( values.at(3).c_str() );
+	eventNumber = std::atoi( values.at(3).c_str() ) + (batchNumber * 100);
 	if (eventNumber > events.size()) break;
 	phisector = values.at(7);
       }
@@ -422,7 +427,7 @@ void eventReader(std::vector<Event>& events,
       if (newString.substr(0,5) == "Begin"){
 	std::vector<std::string> values;
 	split(newString,' ',values);
-	eventNumber = std::atoi(keepOnlyDigits( values.at(3)).c_str() );
+	eventNumber = std::atoi(keepOnlyDigits( values.at(3)).c_str() ) + (batchNumber * 100);
 	if (eventNumber > events.size()) break;
       }
       // add attributes
@@ -459,7 +464,7 @@ void eventReader(std::vector<Event>& events,
       if (newString.substr(0,5) == "Begin"){
 	std::vector<std::string> values;
 	split(newString,' ',values);
-	eventNumber = std::atoi(keepOnlyDigits( values.at(3)).c_str() );
+	eventNumber = std::atoi(keepOnlyDigits( values.at(3)).c_str() ) + (batchNumber * 100);
 	if (eventNumber > events.size()) break;
       }
       // add attributes
@@ -584,6 +589,8 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   
   if (DEBUG) std::cout << " Looping over data - hwZ0 = " << in_track_hw.hwZ0 << std::endl;
 
+  // global phi
+  in_track_hw.hwSector = std::atoi(values_fw.at(11).c_str());
   in_track_hw.hwValid = std::bitset<1>(rinv_str != "000000000000000").to_ulong();
 }
 
@@ -613,16 +620,18 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
 
   std::string dataword = values_fw.at(1);
 
-  // split up in 3 frames
-  std::string frame1 = dataword.substr(64,32);
-  std::string frame2 = dataword.substr(32,32);
+  // split up in 3 frames 
   std::string frame3 = dataword.substr(0,32);
+  std::string frame2 = dataword.substr(32,32);
+  std::string frame1 = dataword.substr(64,32);
 
   // note that here, you must be careful with how the information is encoded
   /* now insert the bits into the datawords
 
    96-bit words look like
-
+   frame3-frame2-frame1
+   
+   // first muon
    first frame:
    BX0 phi H/F eta qual pT
    31  30  22  21  12   8  0
@@ -635,9 +644,11 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
    B0  Empty
    31   0                                                                                                                                                                                                   
 
+   // seccond muon
    fourth frame:                                                                                                                                              
    B1 phi H/F eta qual pT                                                                                                                                     
    31  30  22  21  12   8  0                                                                                                                                                                                
+
    
    fifth frame:                                                                                                                                             
    B2 track addresses VCH CH                                                                                                                          
@@ -648,14 +659,13 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
    31   0                    
   */
   
-
   // it is slightly difference for the first muon than for the second muon
   // int B0, B1, B2, BX0, SE;
   std::string pt_str, eta_str, phi_str, q_str;
-  pt_str = frame2.substr(23,9);
-  eta_str = frame2.substr(10,10);
-  phi_str = frame2.substr(1,9);
-  q_str = frame3.substr(0,1);
+  pt_str = frame1.substr(23,9);
+  eta_str = frame1.substr(10,10);
+  phi_str = frame1.substr(1,9);
+  q_str = frame2.substr(0,1);
 
   in_muon_hw.hwPt = std::bitset<9>(pt_str).to_ulong();
   in_muon_hw.hwEta = std::bitset<10>(eta_str).to_ulong();
@@ -725,6 +735,18 @@ void writeOutput(std::ofstream& output,
     output << matchingSwTrackMuon << ",";
     output << std::endl;
   }
+}
+
+float getPhiOffset(int sector, float offset)
+{
+  // calculate the global phi value
+  // 0.23271056693 = 2. * M_PI / 27.
+  return offset + (sector - 1 ) * 0.23271056693;
+}
+
+fphi_t getPhiOffsetBinary(int sector, float offset)
+{
+  return fphi_t(getPhiOffset(sector, offset));
 }
 
 // THE END
