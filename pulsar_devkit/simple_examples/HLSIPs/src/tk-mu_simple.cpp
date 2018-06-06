@@ -30,6 +30,8 @@ Negative values in binary are generated assuming "One's complement"
 
 HwPropTrack tkmu_simple_hw(  HwTrack& in)
 {
+  bool debug(true);
+
   HwPropTrack out = in;
 
     /* Hardware implementation of the track propagation */
@@ -52,29 +54,67 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
 
     // ** convert inputs (ap_int<>) to ap_fixed<> for internal use ** //
 
+    if (debug) std::cout << " FIRMWARE : Pt calculation " << std::endl;
+
+    // first convert to unsigned (16384 = 2^14; number of unsigned bits)
+    finvpt_t inhwRinv;
+    std::cout << "in.hwQ " << in.hwQ << std::endl;
+    if (in.hwQ==0) {// positive charge
+      inhwRinv = (in.hwRinv+16384)*INVRINV_CONVERSION;
+      if (debug) std::cout << " -- inhwRinv = " << in.hwRinv+16384 << std::endl;
+    }
+    else {           // negative charge
+      inhwRinv = in.hwRinv*INVRINV_CONVERSION;
+      if (debug) std::cout << " -- inhwRinv = " << in.hwRinv << std::endl;
+    }
+
+    if (debug) std::cout << " -- rinv   = " << inhwRinv << std::endl;
+
+    // pT = 3.8 * 0.3 * 0.01 * (1/Rinv)
+    // 1/pT = 100/(3.8*0.3) * Rinv = 87.7192982456 * Rinv 
+    // we use fphi_t here because Dan found out that this solution
+    // seems to work. other solutions conflict with the phi determination
+    fphi_t invPt_f1(0.7192982456); // 87.7192982456 - 87
+    fphi_t inhwInvPt(inhwRinv*invPt_f1);
+    inhwInvPt += inhwRinv*87;  // PT_CONVERSION
+    in.hwPt = 1./float(inhwInvPt);
+    // finvpt_t invPt_conversion_factor = 87.7192982456;
+    // finvpt_t inhwInvPt = inhwRinv * invPt_conversion_factor;
+
+    if (in.hwQ==1) inhwInvPt*=-1;
+
+    if (debug) std::cout << " -- invptf = " << invPt_f1 << std::endl;
+    if (debug) std::cout << " -- invpt  = " << inhwInvPt << std::endl;
+    if (debug) std::cout << " -- invpt (float)  = " << inhwInvPt.to_float() << std::endl;
+    if (debug) std::cout << " -- pt (float) = " << in.hwPt << std::endl;
+
+
+
+
+
     // sinhEta -> eta (8192 = 2^13; number of unsigned bits)
-    if (DEBUG) std::cout << " FIRMWARE : SinhEta calculation " << in.hwSinhEta << std::endl;
+    if (debug) std::cout << " FIRMWARE : SinhEta calculation " << in.hwSinhEta << std::endl;
     feta_t sinhEta;
     feta_t absSinhEta;
     if (in.hwSinhEta<0){
-        absSinhEta = (in.hwSinhEta+8192)*INVETA_CONVERSION;     // use ap_fixed<>
+        absSinhEta =    (in.hwSinhEta+8192)*INVETA_CONVERSION;     // use ap_fixed<>
         sinhEta    = -1*(in.hwSinhEta+8192)*INVETA_CONVERSION;
     }
     else{
         absSinhEta = in.hwSinhEta*INVETA_CONVERSION;
         sinhEta    = in.hwSinhEta*INVETA_CONVERSION;
     }
-    if (DEBUG) std::cout << " -- |sinheta| = " << absSinhEta << std::endl;
+    if (debug) std::cout << " -- |sinheta| = " << absSinhEta << std::endl;
     arcsinh(absSinhEta, inhwEta);
     feta_t abshwEta = inhwEta;
     if (in.hwSinhEta<0) inhwEta*=-1;
     in.hwEta = inhwEta*ETA_CONVERSION;             // set input eta ap_int
 
-    if (DEBUG) std::cout << " -- sinheta = " << sinhEta << std::endl;
-    if (DEBUG) std::cout << " -- eta     = " << inhwEta << std::endl;
+    if (debug) std::cout << " -- sinheta = " << sinhEta << std::endl;
+    if (debug) std::cout << " -- eta     = " << inhwEta << std::endl;
 
     // Z0 (1024 = 2^10; number of unsigned bits)
-    if (DEBUG) std::cout << " FIRMWARE : z0 calculation " << std::endl;
+    if (debug) std::cout << " FIRMWARE : z0 calculation " << std::endl;
     fz0_t inhwZ0;
     fz0_t absInhwZ0;
     if (in.hwZ0<0) {
@@ -86,9 +126,9 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
         absInhwZ0 = in.hwZ0*INVZ_CONVERSION;
     }
 
-    if (DEBUG) std::cout << " -- inz0 = " << in.hwZ0 << std::endl;
-    if (DEBUG) std::cout << " -- z0   = " << inhwZ0 << std::endl;
-    if (DEBUG) std::cout << " -- |z0| = " << absInhwZ0 << std::endl;
+    if (debug) std::cout << " -- inz0 = " << in.hwZ0 << std::endl;
+    if (debug) std::cout << " -- z0   = " << inhwZ0 << std::endl;
+    if (debug) std::cout << " -- |z0| = " << absInhwZ0 << std::endl;
 
     // Phi0 (262144 = 2^18; number of unsigned bits)
     fphi_t inhwPhi;
@@ -99,33 +139,16 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
 
     // convert to a global phi value
     in.hwPhiGlobal = inhwPhi + phiOffSetValues[in.hwSector-1];
-    //std::cout << "debugging global track phi value " << in.hwPhiGlobal << " " << inhwPhi << " " << in.hwSector << " " << phiOffSetValues[in.hwSector-1] << std::endl;
-
-   
-    if (DEBUG) std::cout << " -- phi  = " << inhwPhi <<  std::endl;
-
-    // Rinv -> 1/pT (16384 = 2^14; number of unsigned bits)
-    finvpt_t inhwRinv;
-    if (in.hwRinv<0)
-        inhwRinv = (in.hwRinv+16384)*INVRINV_CONVERSION;
-    else
-        inhwRinv = in.hwRinv*INVRINV_CONVERSION;
-
-    fphi_t invPt_f1(0.719297);
-    fphi_t inhwInvPt(inhwRinv*invPt_f1);
-    inhwInvPt += inhwRinv*87;  // PT_CONVERSION
-    if (in.hwQ<0) inhwInvPt*=-1;
-
-    if (DEBUG) std::cout << " -- inrinv = " << in.hwRinv << std::endl;
-    if (DEBUG) std::cout << " -- rinv   = " << inhwRinv << std::endl;
-    if (DEBUG) std::cout << " -- invptf = " << invPt_f1 << std::endl;
-    if (DEBUG) std::cout << " -- invpt  = " << inhwInvPt << std::endl;
+    std::cout << "debugging global track phi value: global " << in.hwPhiGlobal << " local " << inhwPhi << " sector " 
+			 << in.hwSector << " offset " << phiOffSetValues[in.hwSector-1] << std::endl;
+    
+    if (debug) std::cout << " -- phi  = " << inhwPhi <<  std::endl;
 
     // Do the calculations!
-    if (DEBUG) std::cout << " FIRMWARE : Eta calculation " << std::endl;
+    if (debug) std::cout << " FIRMWARE : Eta calculation " << std::endl;
     if (abshwEta < boundary){
         // barrel
-        if (DEBUG) std::cout << " FIRMWARE : -- Barrel " << std::endl;
+        if (debug) std::cout << " FIRMWARE : -- Barrel " << std::endl;
         dzCorrPhi = unity;            // convert 1.0 to eta_t
         etaProp   = boundary;         // 1.1;
 
@@ -137,13 +160,13 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
         invCosh(abshwEta,invCoshEta_EtaBarrel);               // LUT: 1/cosh(|eta|)
         deta *= invCoshEta_EtaBarrel;
 
-        if (DEBUG) std::cout << " FIRMWARE :       deta       = " << deta << std::endl;
-        if (DEBUG) std::cout << " FIRMWARE :       invCoshEta = " << invCoshEta_EtaBarrel << std::endl;
-        if (DEBUG) std::cout << " FIRMWARE :       dzCorrPhi  = " << dzCorrPhi << std::endl;
+        if (debug) std::cout << " FIRMWARE :       deta       = " << deta << std::endl;
+        if (debug) std::cout << " FIRMWARE :       invCoshEta = " << invCoshEta_EtaBarrel << std::endl;
+        if (debug) std::cout << " FIRMWARE :       dzCorrPhi  = " << dzCorrPhi << std::endl;
     }
     else {
         // endcap
-        if (DEBUG) std::cout << " FIRMWARE : -- Endcap " << std::endl;
+        if (debug) std::cout << " FIRMWARE : -- Endcap " << std::endl;
         etaProp = abshwEta;
 
         // LUT: z0/850.
@@ -155,7 +178,7 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
             delta_LUT(inhwZ0,delta);
         }
 
-        if (DEBUG) std::cout << " FIRMWARE :       delta   = " << delta << std::endl;
+        if (debug) std::cout << " FIRMWARE :       delta   = " << delta << std::endl;
 
         // Only LUTs for
         // 1)  z0 / (850+z0)
@@ -182,26 +205,27 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
                 delta_plus_LUT(inhwZ0,deta);                                    // LUT: delta / (1+delta)
         }
 
-        if (DEBUG) std::cout << " FIRMWARE :       deta      = " << deta << std::endl;
+        if (debug) std::cout << " FIRMWARE :       deta      = " << deta << std::endl;
 
         feta_t tanhEta;
         tanh(inhwEta,tanhEta);  // handles the sign internally
         deta*=tanhEta;
 
-        if (DEBUG) std::cout << " FIRMWARE :       deta      = " << deta << std::endl;
-        if (DEBUG) std::cout << " FIRMWARE :       tanhEta   = " << tanhEta << std::endl;
-        if (DEBUG) std::cout << " FIRMWARE :       dzCorrPhi = " << dzCorrPhi << std::endl;
+        if (debug) std::cout << " FIRMWARE :       deta      = " << deta << std::endl;
+        if (debug) std::cout << " FIRMWARE :       tanhEta   = " << tanhEta << std::endl;
+        if (debug) std::cout << " FIRMWARE :       dzCorrPhi = " << dzCorrPhi << std::endl;
     }
 
 
     // ** calculate the propagated eta ** //
-    if (DEBUG) std::cout << " FIRMWARE : -- ETA calculation " << inhwEta + deta << std::endl;
+    if (debug) std::cout << " FIRMWARE : -- ETA calculation " << inhwEta + deta << std::endl;
     eta_t etaconv(ETA_CONVERSION);
-    out.hwPropEta = (inhwEta + deta);//*etaconv;
+    out.hwPropEta = (inhwEta + deta)*etaconv;
+    std::cout << " FIRMWARE : out.hwPropEta = " << out.hwPropEta << std::endl;
 
 
     // ** calculate the propagated phi ** //
-    if (DEBUG) std::cout << " FIRMWARE : -- Phi calculation " << std::endl;
+    if (debug) std::cout << " FIRMWARE : -- Phi calculation " << std::endl;
 
     invCosh(etaProp,invCoshEta_Phi);            // LUT: 1/cosh(x)
 
@@ -211,17 +235,21 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     fphi_t tmp_val4   = tmp_A * tmp_B * invCoshEta_Phi;
     fphi_t outPropPhi = in.hwPhiGlobal - tmp_val4 - M_PI_144;
 
-    out.hwPropPhi = outPropPhi;//*PHI_CONVERSION;
+    out.hwPropPhi = outPropPhi*PHI_CONVERSION;
     
     // Print results to screen for debugging
-    if (DEBUG) std::cout << " FIRMWARE :    invCoshEta = " << invCoshEta_Phi << std::endl;
-    if (DEBUG) std::cout << " FIRMWARE :    1.464/pT   = " << tmp_A << std::endl;
-    if (DEBUG) std::cout << " FIRMWARE :    cosh(1.7)*dzcorrphi = " << tmp_B << std::endl;
-    if (DEBUG) std::cout << " FIRMWARE :    1.464*cosh(1.7)*dzcorrphi / (pT*cosh(etaProp)) = " << tmp_val4 << std::endl;
-    if (DEBUG) std::cout << " FIRMWARE : hwPropPhi     = " << outPropPhi << std::endl;
+    if (debug) std::cout << " FIRMWARE :    invCoshEta = " << invCoshEta_Phi << std::endl;
+    if (debug) std::cout << " FIRMWARE :    1.464/pT   = " << tmp_A << std::endl;
+    if (debug) std::cout << " FIRMWARE :    cosh(1.7)*dzcorrphi = " << tmp_B << std::endl;
+    if (debug) std::cout << " FIRMWARE :    1.464*cosh(1.7)*dzcorrphi / (pT*cosh(etaProp)) = " << tmp_val4 << std::endl;
+    //if (debug) 
+    std::cout << " FIRMWARE : hwPropPhi     = " << outPropPhi << std::endl;
 
-    if (DEBUG) std::cout << " FIRMWARE : in.hwPhiGlobal      = " << in.hwPhiGlobal << std::endl;
-    if (DEBUG) std::cout << " FIRMWARE : out.hwPropPhi = " << out.hwPropPhi << std::endl;
+    //if (debug) 
+    std::cout << " FIRMWARE : in.hwPhiGlobal      = " << in.hwPhiGlobal << std::endl;
+    //if (debug) 
+    std::cout << " FIRMWARE : out.hwPropPhi = " << out.hwPropPhi << std::endl;
+    
 
     return out;
 }
@@ -229,8 +257,8 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
 HwTrackMuon match_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
 {
   HwTrackMuon outTrack;
-  feta_t tkEta = inTrack.hwPropEta;// * ETA_CONVERSION;
-  fphi_t tkPhi = inTrack.hwPropPhi;// * PHI_CONVERSION;
+  feta_t tkEta = inTrack.hwPropEta * INVETA_CONVERSION;
+  fphi_t tkPhi = inTrack.hwPropPhi * INVPHI_CONVERSION;
 
   feta_m muEta = inMuon.hwEta;
   fphi_m muPhi = inMuon.hwPhi;
@@ -238,7 +266,7 @@ HwTrackMuon match_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
   // dR calculation
   feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
 
-  bool debug(true);
+  bool debug(false);
   if (debug){
     std::cout << "Prop track eta " << tkEta << std::endl;
     std::cout << "Prop track phi " << tkPhi << std::endl;
@@ -248,7 +276,7 @@ HwTrackMuon match_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
   }
 
 
-  if (dR2_tk_mu < 0.2) {
+  if (dR2_tk_mu < 0.2*0.2) {
     outTrack.hwPt = inTrack.hwPt;
     outTrack.hwEta = inMuon.hwEta;
     outTrack.hwPhi = inMuon.hwPhi;

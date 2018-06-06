@@ -25,6 +25,7 @@ import matplotlib
 matplotlib.use("PDF")
 matplotlib.rc('text', usetex=True)
 matplotlib.rc('font', family='sans-serif')
+import numpy as np
 
 import matplotlib.pyplot as plt
 params = {'text.latex.preamble' : [r'\usepackage{amsmath}']}
@@ -143,37 +144,28 @@ for fw in f1:
     #print fw
     dataBinary = fw.split(',')
     t1 = Track()  # binary
+    t1.simPhi = float(dataBinary[4][5:])
+    t1.swTrackPhi = float(dataBinary[8][5:])
+    t1.swTrackSector = float(dataBinary[11][8:])
+    tracks.append(t1)
 
-    #print dataBinary
-    print float(dataBinary[4][5:]), float(dataBinary[8][5:]), float(dataBinary[11][8:])
-    #print dataBinary[8]
-    #print dataBinary[11]
     continue
 
-    t1.rinv    = bit2int(dataBinary[1])
-    t1.phi     = bit2int(dataBinary[2])
-    t1.sinhEta = bit2int(dataBinary[3])
-    t1.z0      = bit2int(dataBinary[4])
-
-    t1.charge = -1 if dataBinary[1][0]=="1" else 1
-
-    tracksBinary.append(t1)
-
-    t2.index   = int(dataFloat[0])
-    t2.rinv    = float(dataFloat[1])
-    t2.phi     = float(dataFloat[2])
-    t2.sinhEta = float(dataFloat[3])
-    t2.z0      = float(dataFloat[4])
-    t2.charge = -1 if float(dataFloat[1])<0 else 1
-
-    tracksFloat.append(t2)
-
 print " Make input plots "
+
+simPhiData = [getattr(x,'simPhi') for x in tracks]
+swTrackPhiData  = [getattr(x,'swTrackPhi') for x in tracks]
+swTrackSectorData  = [getattr(x,'swTrackSector') for x in tracks]
+
+swTrackPhiMult = swTrackPhiData + swTrackSectorData * (2/9.)*np.pi
+
+plot2D(x_data=simPhiData,y_data=swTrackPhiMult,
+       x_label='Sim Phi',y_label='Sw Track Phi',
+       saveAs="simPhi_vs_SwTrackPhi.pdf")
+
 # Plot some of the inputs
 """
 
-    simPhi = [getattr(x,'simPhi') for x in tracksBinary]
-    swTrackPhi  = [getattr(x,feature) for x in tracksFloat]
 
 
     featureName = featureNames[feature]
@@ -184,9 +176,6 @@ print " Make input plots "
     plot1D(data=binaryData,label=featureName,extra_text="Binary",
            saveAs="tracks_binary_{0}.pdf".format(feature))
 
-    plot2D(x_data=binaryData,y_data=floatData,
-           x_label=featureName+"-binary",y_label=featureName+"-float",
-           saveAs="tracks_binaryFloat_{0}.pdf".format(feature))
 
 
 

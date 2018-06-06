@@ -68,6 +68,8 @@ SwPropTrack tkmu_simple_ref( const SwTrack& in ){
 
 SwTrackMuon match_sw(const SwPropTrack& inTrack, const SwMuon& inMuon)
 {
+  bool debug = false;
+
   SwTrackMuon outTrack;
   float tketa = inTrack.propEta;
   float tkphi = inTrack.propPhi;
@@ -77,17 +79,21 @@ SwTrackMuon match_sw(const SwPropTrack& inTrack, const SwMuon& inMuon)
 
   // dR calculation
   float dR2_tk_mu = dr2_int (tketa, tkphi, mueta, muphi);
-
-  // std::cout 
-  //   << "CheckMatch: tketa " << tketa
-  //   << " tkphi " << tkphi
-  //   << " mueta " << mueta
-  //   << " muphi " << muphi
-  //   << " dR2_tk_mu " << dR2_tk_mu
-  //   << std::endl;
-
-  if (dR2_tk_mu < 0.2) {
-    // std::cout << ">>>> MATCH! <<<<" << std::endl;
+  
+  if (debug){
+    std::cout 
+      << "CheckMatch: tketa " << tketa
+      << " tkphi " << tkphi
+      << " mueta " << mueta
+      << " muphi " << muphi
+      << " dR2_tk_mu " << dR2_tk_mu
+      << std::endl;
+  }
+  
+  if (dR2_tk_mu < 0.2 * 0.2) {
+    if (debug){
+      std::cout << ">>>> MATCH! <<<<" << std::endl;
+    }
     outTrack.pt = inTrack.pt;
     outTrack.eta = inMuon.eta;
     outTrack.phi = inMuon.phi;

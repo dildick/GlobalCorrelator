@@ -539,7 +539,7 @@ void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
 
   in_track_sw.rinv = rinv;
   in_track_sw.pt  = rinv2pt(rinv);           // 1.360636778;
-  in_track_sw.sinheta = sinhEta;
+  in_track_sw.sinhEta = sinhEta;
   in_track_sw.eta = sinhEta2eta(sinhEta);    //-2.265;
   in_track_sw.phi = std::atof(values_sw.at(2).c_str()); // 1.26735;
   in_track_sw.z0  = std::atof(values_sw.at(4).c_str()); //-4.72;
@@ -550,17 +550,22 @@ void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
 
 void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
 {
+  bool debug_hw_track(true);
+
   std::vector<std::string> values_fw;
   split(data_fw,' ',values_fw);
+  // for (unsigned int iData = 0; iData < values_fw.size(); iData++){
+  //   std::cout << "dump data " << iData << " " << values_fw[iData] << std::endl;
+  // }
 
-  // setup Rinv
-  bool isNegativeCharge(false);
-  std::string rinv_str = values_fw.at(1);
-  isNegative(rinv_str, isNegativeCharge);
+  // setup the charge
+  in_track_hw.hwQ = values_fw.at(1)[0];
+  if (debug_hw_track) std::cout << " Looping over data - hwQ = " << in_track_hw.hwQ << std::endl;
+  
+  // setup Rinv (signed)
+  std::string rinv_str = "0" + values_fw.at(1).substr(1,14);
   in_track_hw.hwRinv = std::bitset<15>(rinv_str).to_ulong();   
-  //std::stoi(values_fw.at(1).c_str(),NULL,2);
-  if (isNegativeCharge) in_track_hw.hwRinv *= -1;
-  in_track_hw.hwQ = (isNegativeCharge) ? -1 : 1;
+  if (debug_hw_track) std::cout << " Looping over data - hwRinv = " << rinv_str << " " <<in_track_hw.hwRinv << std::endl;
 
   // setup sinhEta
   bool isNegativeEta(false);
@@ -569,7 +574,7 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   in_track_hw.hwSinhEta = std::bitset<14>(eta_str).to_ulong();   //std::stoi(values_fw.at(3).c_str(),NULL,2);
   if (isNegativeEta) in_track_hw.hwSinhEta *= -1;
   
-  if (DEBUG) std::cout << " Looping over data - hwSinhEta = " << in_track_hw.hwSinhEta << std::endl;
+  if (debug_hw_track) std::cout << " Looping over data - hwSinhEta = " << in_track_hw.hwSinhEta << std::endl;
   
   // setup phi0
   bool isNegativePhi(false);
@@ -578,7 +583,7 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   in_track_hw.hwPhi = std::bitset<19>(phi_str).to_ulong();   //std::stoi(values_fw.at(2).c_str(),NULL,2);
   if (isNegativePhi) in_track_hw.hwPhi *= -1;
   
-  if (DEBUG) std::cout << " Looping over data - hwPhi = " << in_track_hw.hwPhi << std::endl;
+  if (debug_hw_track) std::cout << " Looping over data - hwPhi = " << in_track_hw.hwPhi << std::endl;
   
   // setup z0
   bool isNegativeZ0(false);
@@ -587,9 +592,9 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   in_track_hw.hwZ0 = std::bitset<12>(z0_str).to_ulong();   //std::stoi(values_fw.at(4).c_str(),NULL,2);
   if (isNegativeZ0) in_track_hw.hwZ0 *= -1;
   
-  if (DEBUG) std::cout << " Looping over data - hwZ0 = " << in_track_hw.hwZ0 << std::endl;
+  if (debug_hw_track) std::cout << " Looping over data - hwZ0 = " << in_track_hw.hwZ0 << std::endl;
 
-  // global phi
+  // sector and valid 
   in_track_hw.hwSector = std::atoi(values_fw.at(11).c_str());
   in_track_hw.hwValid = std::bitset<1>(rinv_str != "000000000000000").to_ulong();
 }

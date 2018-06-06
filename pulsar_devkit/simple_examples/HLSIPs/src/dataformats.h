@@ -19,7 +19,7 @@ typedef ap_int<12> pt_t;     // convert from RINV
 typedef ap_int<14> eta_t;    // eta [sinh(eta) measure to 0.005]
 typedef ap_int<19> phi_t;    // phi (50 micro-rad)
 typedef ap_int<10> chisq_t;  // chi^2 (0 - 100; 0.1 steps)
-typedef ap_int<1> q_t;       // charge
+typedef ap_uint<1> q_t;       // charge
 typedef ap_int<11> z0_t;     // z0  (1 mm over +/-14.9 cm)
 typedef ap_int<3> bx_t;     // z0  (1 mm over +/-14.9 cm)
 typedef ap_uint<5> sector_t;
@@ -89,7 +89,7 @@ struct SwTrack {
   int index;
   float rinv;
   float pt;
-  float sinheta;
+  float sinhEta;
   float eta;
   float phi;
   float z0;
@@ -102,7 +102,7 @@ struct SwTrack {
     index(0),
     rinv(0),
     pt(0),
-    sinheta(0),
+    sinhEta(0),
     eta(0),
     phi(0),
     z0(0),
@@ -130,7 +130,7 @@ struct SwPropTrack : public SwTrack {
       index = ref.index;
       rinv = ref.rinv;
       pt = ref.pt;
-      sinheta = ref.sinheta;
+      sinhEta = ref.sinhEta;
       eta = ref.eta;
       phi = ref.phi;
       z0 = ref.z0;
@@ -192,6 +192,7 @@ struct HwTrack
 {
   invpt_t hwRinv;
   pt_t hwPt;
+  fphi_t hw;
   eta_t hwSinhEta;
   eta_t hwEta;
   phi_t hwPhi;
@@ -341,6 +342,8 @@ std::ostream& operator << (std::ostream& os, const SimTrack& rhs)
 std::ostream& operator << (std::ostream& os, const SwTrack& rhs)
 {
   os << "pT: " << rhs.pt << ", " 
+     << "rinv: " << rhs.rinv << ", "
+     << "sinhEta: " << rhs.sinhEta << ", "
      << "eta: " << rhs.eta << ", "
      << "phi: " << rhs.phi << ", " 
      << "sector: " << rhs.sector << ","
@@ -351,6 +354,7 @@ std::ostream& operator << (std::ostream& os, const SwTrack& rhs)
 std::ostream& operator << (std::ostream& os, const SwPropTrack& rhs)
 {
   os << "pT: " << rhs.pt << ", " 
+     << "sinhEta: " << rhs.sinhEta << ", "
      << "eta: " << rhs.eta << ", "
      << "phi: " << rhs.phi << ", " 
      << "eta_prop: " << rhs.propEta << ", " 
@@ -381,7 +385,7 @@ std::ostream& operator << (std::ostream& os, const SwTrackMuon& rhs)
 std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 {
   os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << ", " 
-     /* << "pT: " << std::bitset<12>(rhs.hwPt) << ", "  */
+     << "pT: " << std::bitset<12>(rhs.hwPt) << ", "
      << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << ", "
      << "phi: " << std::bitset<19>(rhs.hwPhi) << ", " 
      << "phiGlobal: " << std::bitset<19>(rhs.hwPhiGlobal) << ", " 
@@ -396,7 +400,7 @@ std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 {
   os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << ", " 
-     /* << "pT: " << std::bitset<12>(rhs.hwPt) << ", "  */
+     << "pT: " << std::bitset<12>(rhs.hwPt) << ", "
      << "eta_prop: " << std::bitset<14>(rhs.hwPropEta) << ", " 
      << "phi_prop: " << std::bitset<19>(rhs.hwPropPhi) << ", "
      << "Z0: " << std::bitset<11>(rhs.hwZ0) << ", " 
