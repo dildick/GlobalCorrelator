@@ -63,8 +63,10 @@ fphi_t phiOffSetValues[27] = {
 // reference and hardware functions
 SwPropTrack tkmu_simple_ref( const SwTrack& in );
 HwPropTrack tkmu_simple_hw (       HwTrack& in );
+
 HwTrackMuon match_hw(const HwPropTrack&, const HwMuon&);
-SwTrackMuon match_sw(const SwPropTrack&, const SwMuon&);
+SwTrackMuon match_sw(const SwTrack&, const SwMuon&);
+SwTrackMuon match_prop_sw(const SwPropTrack&, const SwMuon&);
 
 // decode track eta and phi
 feta_t decode_track_eta(const HwTrack&);

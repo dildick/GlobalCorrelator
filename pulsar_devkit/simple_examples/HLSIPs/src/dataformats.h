@@ -306,12 +306,18 @@ struct Event
   std::vector<SwTrack> swTracks;
   std::vector<SwPropTrack> swPropTracks;
   std::vector<SwMuon> swMuons;
+  // non-propagated track and muons
   std::vector<SwTrackMuon> swTrackMuons;
+  // propagated track and muons
+  std::vector<SwTrackMuon> swPropTrackMuons;
 
   std::vector<HwTrack> hwTracks;
   std::vector<HwPropTrack> hwPropTracks;
   std::vector<HwMuon> hwMuons;
+  // non-propagated track and muons
   std::vector<HwTrackMuon> hwTrackMuons;
+  // propagated track and muons
+  std::vector<HwTrackMuon> hwPropTrackMuons;
 
   Event(){
     simTracks.clear();
@@ -320,11 +326,13 @@ struct Event
     swPropTracks.clear();
     swMuons.clear();
     swTrackMuons.clear();
+    swPropTrackMuons.clear();
 
     hwTracks.clear();
     hwPropTracks.clear();
     hwMuons.clear();
     hwTrackMuons.clear();
+    hwPropTrackMuons.clear();
   }
 };
 
@@ -438,13 +446,14 @@ std::ostream& operator << (std::ostream& os, const Event& rhs)
   os << "Event: " << rhs.eventNumber << ", " 
      << "BX: " << rhs.BX << ", " << std::endl
      << "SimTracks: " << rhs.simTracks.size() << std::endl;
-  for (unsigned i=0; i<rhs.simTracks.size(); ++i)
-    os << "  " << rhs.simTracks[i] << std::endl;
 
+  for (unsigned i=0; i<rhs.simTracks.size(); ++i){
+    os << "  " << rhs.simTracks[i] << std::endl;
+  }
   os << "SwTracks: " << rhs.swTracks.size() << std::endl;
   for (unsigned i=0; i<rhs.swTracks.size(); ++i){
     os << "  " << rhs.swTracks[i] << std::endl;
-  }  
+  }
   os << "SwPropTracks: " << rhs.swPropTracks.size() << std::endl;
   for (unsigned i=0; i<rhs.swPropTracks.size(); ++i) {
     os << "  " << rhs.swPropTracks[i] << std::endl;
@@ -456,8 +465,12 @@ std::ostream& operator << (std::ostream& os, const Event& rhs)
   os << "SwTrackMuons: " << rhs.swTrackMuons.size() << std::endl; 
   for (unsigned i=0; i<rhs.swTrackMuons.size(); ++i) { 
     os << "  " << rhs.swTrackMuons[i] << std::endl;
-  } 
-    
+  }
+  os << "SwPropTrackMuons: " << rhs.swPropTrackMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.swPropTrackMuons.size(); ++i) { 
+    os << "  " << rhs.swPropTrackMuons[i] << std::endl;
+  }
+
   os << "HwTracks: " << rhs.hwTracks.size() << std::endl;
   for (unsigned i=0; i<rhs.hwTracks.size(); ++i) {
     os << "  " << rhs.hwTracks[i] << std::endl;
