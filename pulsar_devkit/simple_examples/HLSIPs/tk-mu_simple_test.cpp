@@ -107,10 +107,10 @@ int main()
 
     std::string directory = "../../../../data/";
 
-    std::string simTrackPattern = "sim_track_data";
-    std::string swTrackPattern = "sw_track_data";
+    std::string simTrackPattern = "sim_muon_data";
+    std::string swTrackPattern = "CleanTracksAll_floating";
     std::string swMuonPattern = "sw_muon_data";
-    std::string hwTrackPattern = "hw_track_data";
+    std::string hwTrackPattern = "CleanTracksAll_binary";
     std::string hwMuonPattern = "hw_muon_data";
 
     std::vector<std::string> simTrackFiles;
@@ -127,6 +127,7 @@ int main()
 		 hwTrackPattern,  hwTrackFiles,
 		 hwMuonPattern,   hwMuonFiles);
 
+
     // truth information I/O (CMSSW SimTrack)
     // 
     std::vector<Event> events;
@@ -139,18 +140,20 @@ int main()
     
     // process the tracks and muons
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
+
       // propagate the tracks
       for (unsigned int iHwTrack = 0; iHwTrack < events[iEvent].hwTracks.size(); ++iHwTrack){
 	HwTrack hwTrack = events[iEvent].hwTracks[iHwTrack];
 	HwPropTrack prop_track_hw = tkmu_simple_hw(hwTrack);
 	events[iEvent].hwPropTracks.push_back(prop_track_hw);
       } 
+
       // propagate the tracks
       for (unsigned int iSwTrack = 0; iSwTrack < events[iEvent].swTracks.size(); ++iSwTrack){
 	SwTrack track_sw = events[iEvent].swTracks[iSwTrack];
 	SwPropTrack prop_track_sw = tkmu_simple_ref(track_sw);
 	events[iEvent].swPropTracks.push_back(prop_track_sw);
-	std::cout << "Track " << track_sw << " PropTrack " << prop_track_sw << std::endl; 
+	// std::cout << "Track " << track_sw << " PropTrack " << prop_track_sw << std::endl; 
       } 
 
       /*
@@ -177,25 +180,66 @@ int main()
       } 
       */
 
-      for (unsigned int iSwMuon = 0; iSwMuon < events[iEvent].swMuons.size(); ++iSwMuon){
+      for (unsigned int iSwMuon = 0; iSwMuon < events[iEvent].swMuons.size(); 
+	   ++iSwMuon){
 	SwMuon swMuon = events[iEvent].swMuons[iSwMuon];
+	std::cout << ">>Candidate muon " << swMuon << std::endl;
+
 	// check all possible matches!
+	float maxDeltaPt = 999;
+	SwTrackMuon candidateTrackMuon; 
 	for (unsigned int iSwTrack = 0; 
 	     iSwTrack < events[iEvent].swTracks.size(); ++iSwTrack){
 	  SwTrack swTrack = events[iEvent].swTracks[iSwTrack];
+	  std::cout << ">>Candidate track " << swTrack << std::endl;
 	  SwTrackMuon swTrackMuon = match_sw(swTrack, swMuon);
 
-	  if (swTrackMuon.valid)
-	    events[iEvent].swTrackMuons.push_back(swTrackMuon);
-	} 
+	  // check if valid or not
+	  if (not swTrackMuon.valid) continue;
+
+	  std::cout << ">>Candiate trackmuon " << swTrackMuon << std::endl;
+	  float deltaPt = fabs(swTrackMuon.pt - swMuon.pt); 
+	  std::cout << "Proto deltaPt " << deltaPt << " maxDeltaPt " << maxDeltaPt << std::endl;
+
+	  // retain the matching one that has the smallest delta Pt
+	  if ( deltaPt < maxDeltaPt){
+	    maxDeltaPt = deltaPt;
+	    candidateTrackMuon = swTrackMuon; 
+	  }	 
+	}
+	// add the match to the collection	
+	if (candidateTrackMuon.valid) {
+	  std::cout << "Adding trackmuon " << candidateTrackMuon << std::endl << std::endl;
+	  events[iEvent].swTrackMuons.push_back(candidateTrackMuon);
+	}
+
+	// check all possible matches!
+	maxDeltaPt = 999;
+	SwTrackMuon candidatePropTrackMuon; 
 	for (unsigned int iSwPropTrack = 0; 
 	     iSwPropTrack < events[iEvent].swPropTracks.size(); ++iSwPropTrack){
 	  SwPropTrack swPropTrack = events[iEvent].swPropTracks[iSwPropTrack];
-	  SwTrackMuon swPropTrackMuon = match_prop_sw(swPropTrack, swMuon);
+	  std::cout << ">>Candidate track " << swPropTrack << std::endl;
+	  SwTrackMuon swPropTrackMuon = match_sw(swPropTrack, swMuon);
 
-	  if (swPropTrackMuon.valid)
-	    events[iEvent].swPropTrackMuons.push_back(swPropTrackMuon);
-	} 
+	  // check if valid or not
+	  if (not swPropTrackMuon.valid) continue;
+
+	  std::cout << ">>Candiate trackmuon " << swPropTrackMuon << std::endl;
+	  float deltaPt = fabs(swPropTrackMuon.pt - swMuon.pt); 
+	  std::cout << "Proto deltaPt " << deltaPt << " maxDeltaPt " << maxDeltaPt << std::endl;
+
+	  // retain the matching one that has the smallest delta Pt
+	  if ( deltaPt < maxDeltaPt){
+	    maxDeltaPt = deltaPt;
+	    candidatePropTrackMuon = swPropTrackMuon; 
+	  }	 
+	}
+	// add the match to the collection	
+	if (candidatePropTrackMuon.valid) {
+	  std::cout << "Adding trackmuon " << candidatePropTrackMuon << std::endl << std::endl;
+	  events[iEvent].swPropTrackMuons.push_back(candidatePropTrackMuon);
+	}
       }
     }
 
@@ -301,7 +345,10 @@ void eventReader(std::vector<Event>& events,
 		 const std::string& hwMuon,
 		 int batchNumber)
 {
+  bool debug(true);
 
+  if (debug) std::cout << "BatchNumber " << batchNumber << std::endl;
+  
   // todo: extend the interface for a set of files
 
   std::ifstream ifile(simTrackFile.c_str());
@@ -314,6 +361,9 @@ void eventReader(std::vector<Event>& events,
   
   // step 1: generate as many events as there are in the truth file
   // open the file and put the truth data into a vector
+  
+  if (debug) std::cout << "Begin reading SimTrack file" << std::endl;
+
   std::string line("");
   if (ifile.is_open()){
     
@@ -327,7 +377,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() ) + (batchNumber * 100);
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	if (newEvent.eventNumber > 100) break;
+	if (newEvent.eventNumber > 1000000) break;
 	events.push_back(newEvent);
       }
       
@@ -346,6 +396,10 @@ void eventReader(std::vector<Event>& events,
   }
 
   ifile.close();
+
+  if (debug) std::cout << "End reading SimTrack file" << std::endl;
+
+  if (debug) std::cout << "Begin reading SwTrack file" << std::endl;
 
   // step 2: read the Sw tracks
   std::ifstream swTrackFile(swTrack.c_str());
@@ -377,7 +431,7 @@ void eventReader(std::vector<Event>& events,
       else{
        	SwTrack newTrack;
 	newTrack.BX = 0;
-	// std::cout << "eventNumber "  << eventNumber <<  " " << newString + " " + phisector << std::endl;
+	if (debug) std::cout << "eventNumber "  << eventNumber <<  " " << newString + " " + phisector << std::endl;
 	decode_sw_track_data(newString + " " + phisector, newTrack);
 	if (newTrack.valid)
 	  events[eventNumber-1].swTracks.push_back(newTrack);
@@ -386,6 +440,9 @@ void eventReader(std::vector<Event>& events,
   }
   swTrackFile.close();
 
+  if (debug) std::cout << "End reading SwTrack file" << std::endl;
+
+  if (debug) std::cout << "Begin reading HwTrack file" << std::endl;
 
   // step 3: read the Hw tracks
   std::ifstream hwTrackFile(hwTrack.c_str());
@@ -426,6 +483,9 @@ void eventReader(std::vector<Event>& events,
   }
   hwTrackFile.close();
 
+  if (debug) std::cout << "End reading HwTrack file" << std::endl;
+
+  if (debug) std::cout << "Begin reading SwMuon file" << std::endl;
 
   // step 4: read the Sw muons
   std::ifstream swMuonFile(swMuon.c_str());
@@ -448,11 +508,14 @@ void eventReader(std::vector<Event>& events,
       if (newString.substr(0,5) == "Begin"){
 	std::vector<std::string> values;
 	split(newString,' ',values);
-	eventNumber = std::atoi(keepOnlyDigits( values.at(3)).c_str() ) + (batchNumber * 100);
+	eventNumber = std::atoi(keepOnlyDigits( values.at(2)).c_str() ) + (batchNumber * 100);
 	if (eventNumber > events.size()) break;
       }
-      // add attributes
-      else{
+
+      if (newString.substr(0,5) == "MuonB" or
+	  newString.substr(0,5) == "MuonO" or
+	  newString.substr(0,5) == "MuonE" or
+	  newString.substr(0,5) == "Empty"){
        	SwMuon newMuon;
 	newMuon.BX = eventNumber;
 	decode_sw_muon_data(newString, newMuon);
@@ -463,6 +526,9 @@ void eventReader(std::vector<Event>& events,
   }
   swMuonFile.close();
 
+  if (debug) std::cout << "End reading SwMuon file" << std::endl;
+
+  if (debug) std::cout << "Begin reading HwMuon file" << std::endl;
 
   // step 5: read the Hw muons
   std::ifstream hwMuonFile(hwMuon.c_str());
@@ -485,21 +551,26 @@ void eventReader(std::vector<Event>& events,
       if (newString.substr(0,5) == "Begin"){
 	std::vector<std::string> values;
 	split(newString,' ',values);
-	eventNumber = std::atoi(keepOnlyDigits( values.at(3)).c_str() ) + (batchNumber * 100);
+	eventNumber = std::atoi(keepOnlyDigits( values.at(2)).c_str() ) + (batchNumber * 100);
 	if (eventNumber > events.size()) break;
       }
-      // add attributes
-      else{
+
+      if (newString.substr(0,5) == "MuonB" or
+	  newString.substr(0,5) == "MuonO" or
+	  newString.substr(0,5) == "MuonE" or
+	  newString.substr(0,5) == "Empty"){
        	HwMuon newMuon;
 	newMuon.hwBX = std::bitset<3>(eventNumber).to_ulong();
 	decode_hw_muon_data(newString, newMuon);
 	
-	//if (newMuon.hwValid)
-	events[eventNumber-1].hwMuons.push_back(newMuon);
+	if (newMuon.hwValid)
+	  events[eventNumber-1].hwMuons.push_back(newMuon);
       }
     }
   }
   hwMuonFile.close();
+
+  if (debug) std::cout << "End reading HwMuon file" << std::endl;
 } 
 
 
@@ -571,7 +642,7 @@ void decode_sw_track_data(const std::string &data_sw, SwTrack& in_track_sw)
 
 void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
 {
-  bool debug_hw_track(true);
+  bool debug_hw_track(false);
 
   std::vector<std::string> values_fw;
   split(data_fw,' ',values_fw);

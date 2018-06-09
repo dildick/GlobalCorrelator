@@ -70,7 +70,7 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
 
     if (debug) std::cout << " -- rinv   = " << inhwRinv << std::endl;
 
-    // pT = 3.8 * 0.3 * 0.01 * (1/Rinv)
+    // pT = 3.8 * 0.3 * 0.01 * (1/R)
     // 1/pT = 100/(3.8*0.3) * Rinv = 87.7192982456 * Rinv 
     // we use fphi_t here because Dan found out that this solution
     // seems to work. other solutions conflict with the phi determination
@@ -254,42 +254,7 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     return out;
 }
 
-HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
-{
-  HwTrackMuon outTrack;
-  feta_t tkEta = inTrack.hwEta * INVETA_CONVERSION;
-  fphi_t tkPhi = inTrack.hwPhi * INVPHI_CONVERSION;
-
-  feta_m muEta = inMuon.hwEta;
-  fphi_m muPhi = inMuon.hwPhi;
-
-  // dR calculation
-  feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
-
-  bool debug(false);
-  if (debug){
-    std::cout << "Prop track eta " << tkEta << std::endl;
-    std::cout << "Prop track phi " << tkPhi << std::endl;
-    std::cout << "muon eta " << muEta << std::endl;
-    std::cout << "muon phi " << muPhi << std::endl;
-    std::cout << "dR " << dR2_tk_mu << std::endl;
-  }
-
-
-  if (dR2_tk_mu < 0.2*0.2) {
-    outTrack.hwPt = inTrack.hwPt;
-    outTrack.hwEta = inMuon.hwEta;
-    outTrack.hwPhi = inMuon.hwPhi;
-    outTrack.hwQ = inTrack.hwQ;
-    outTrack.hwValid = inTrack.hwValid and inMuon.hwValid; 
-    outTrack.hwBX = inTrack.hwBX;
-  } else {
-    outTrack.hwValid = 0;     
-  }
-  return outTrack;
-}
-
-HwTrackMuon match_prop_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
+HwTrackMuon match_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
 {
   HwTrackMuon outTrack;
   feta_t tkEta = inTrack.hwPropEta * INVETA_CONVERSION;
