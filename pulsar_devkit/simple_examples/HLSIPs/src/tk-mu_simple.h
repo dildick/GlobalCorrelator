@@ -73,6 +73,12 @@ SwTrackMuon match_prop_sw(const SwPropTrack&, const SwMuon&);
 feta_t decode_track_eta(const HwTrack&);
 fphi_t decode_track_phi(const HwTrack&);
 
+// normalize phi in [-pi,+pi] window
+float normalizePhi(float phi);
+
+// calculate deltaR
+float deltaR(float eta1, float phi1, float eta2, float phi2);
+
 // template functions
 template<class data_T, int N_TABLE>
 void init_deta_table(data_T table_out[N_TABLE]){

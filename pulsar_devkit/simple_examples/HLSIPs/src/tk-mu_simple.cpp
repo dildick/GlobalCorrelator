@@ -30,7 +30,7 @@ Negative values in binary are generated assuming "One's complement"
 
 HwPropTrack tkmu_simple_hw(  HwTrack& in)
 {
-  bool debug(true);
+  bool debug(false);
 
   HwPropTrack out = in;
 
@@ -58,7 +58,7 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
 
     // first convert to unsigned (16384 = 2^14; number of unsigned bits)
     finvpt_t inhwRinv;
-    std::cout << "in.hwQ " << in.hwQ << std::endl;
+    // std::cout << "in.hwQ " << in.hwQ << std::endl;
     if (in.hwQ==0) {// positive charge
       inhwRinv = (in.hwRinv+16384)*INVRINV_CONVERSION;
       if (debug) std::cout << " -- inhwRinv = " << in.hwRinv+16384 << std::endl;
@@ -113,6 +113,8 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     if (debug) std::cout << " -- sinheta = " << sinhEta << std::endl;
     if (debug) std::cout << " -- eta     = " << inhwEta << std::endl;
 
+
+
     // Z0 (1024 = 2^10; number of unsigned bits)
     if (debug) std::cout << " FIRMWARE : z0 calculation " << std::endl;
     fz0_t inhwZ0;
@@ -139,7 +141,7 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
 
     // convert to a global phi value
     in.hwPhiGlobal = inhwPhi + phiOffSetValues[in.hwSector-1];
-    std::cout << "debugging global track phi value: global " << in.hwPhiGlobal << " local " << inhwPhi << " sector " 
+    if (debug) std::cout << "debugging global track phi value: global " << in.hwPhiGlobal << " local " << inhwPhi << " sector " 
 			 << in.hwSector << " offset " << phiOffSetValues[in.hwSector-1] << std::endl;
     
     if (debug) std::cout << " -- phi  = " << inhwPhi <<  std::endl;
@@ -221,7 +223,7 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     if (debug) std::cout << " FIRMWARE : -- ETA calculation " << inhwEta + deta << std::endl;
     eta_t etaconv(ETA_CONVERSION);
     out.hwPropEta = (inhwEta + deta)*etaconv;
-    std::cout << " FIRMWARE : out.hwPropEta = " << out.hwPropEta << std::endl;
+    if (debug) std::cout << " FIRMWARE : out.hwPropEta = " << out.hwPropEta << std::endl;
 
 
     // ** calculate the propagated phi ** //
@@ -243,12 +245,12 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     if (debug) std::cout << " FIRMWARE :    cosh(1.7)*dzcorrphi = " << tmp_B << std::endl;
     if (debug) std::cout << " FIRMWARE :    1.464*cosh(1.7)*dzcorrphi / (pT*cosh(etaProp)) = " << tmp_val4 << std::endl;
     //if (debug) 
-    std::cout << " FIRMWARE : hwPropPhi     = " << outPropPhi << std::endl;
+    if (debug) std::cout << " FIRMWARE : hwPropPhi     = " << outPropPhi << std::endl;
 
     //if (debug) 
-    std::cout << " FIRMWARE : in.hwPhiGlobal      = " << in.hwPhiGlobal << std::endl;
+    if (debug) std::cout << " FIRMWARE : in.hwPhiGlobal      = " << in.hwPhiGlobal << std::endl;
     //if (debug) 
-    std::cout << " FIRMWARE : out.hwPropPhi = " << out.hwPropPhi << std::endl;
+    if (debug) std::cout << " FIRMWARE : out.hwPropPhi = " << out.hwPropPhi << std::endl;
     
 
     return out;
@@ -281,7 +283,7 @@ HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
     outTrack.hwEta = inMuon.hwEta;
     outTrack.hwPhi = inMuon.hwPhi;
     outTrack.hwQ = inTrack.hwQ;
-    outTrack.hwValid = inTrack.hwValid and inMuon.hwValid; 
+    outTrack.hwValid = 1; 
     outTrack.hwBX = inTrack.hwBX;
   } else {
     outTrack.hwValid = 0;     
@@ -316,7 +318,7 @@ HwTrackMuon match_prop_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
     outTrack.hwEta = inMuon.hwEta;
     outTrack.hwPhi = inMuon.hwPhi;
     outTrack.hwQ = inTrack.hwQ;
-    outTrack.hwValid = inTrack.hwValid and inMuon.hwValid; 
+    outTrack.hwValid = 1; 
     outTrack.hwBX = inTrack.hwBX;
   } else {
     outTrack.hwValid = 0;     

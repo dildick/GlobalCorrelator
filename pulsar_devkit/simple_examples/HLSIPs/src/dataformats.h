@@ -41,6 +41,9 @@ typedef ap_int<10> eta_m;
 typedef ap_int<9> phi_m;
 typedef ap_int<4> quality_m;
 
+// dRcut
+#define dRmax = 0.2
+
 // size of the LUTs
 #define ETA_TABLE_SIZE 8192  // 13 unsigned bits
 #define Z0_TABLE_SIZE 1024   // 10 unsigned bits
@@ -56,16 +59,15 @@ typedef ap_int<4> quality_m;
 #define INV_Z0_RANGE 1/Z0_RANGE
 
 // Conversions between binary and floating point (using example file to derive)
-#define RINV_CONVERSION 1314233             // 1/(76090E-11)
+#define RINV_CONVERSION 792055              //1314229             // 1/0.000000760902077
 #define PT_CONVERSION 87719298E-6           // 1/(0.01*0.3*3.8); 87719298E-6
-#define ETA_CONVERSION 855                  // 1/0.0011698 = 854.84698
-#define PHI_CONVERSION 219037
-#define Z_CONVERSION 18                     // 1/0.05615 = 17.81
-#define INVRINV_CONVERSION 76090E-11
-#define INVETA_CONVERSION 11698E-7
-#define INVPHI_CONVERSION 456544E-11        // compare floating point and bit values from example file
-#define INVZ_CONVERSION 5615E-5             // 0.05615 -- shift of 1024 for negative values!
-
+#define ETA_CONVERSION 512                  //855   // 1/0.0011698 = 854.84698
+#define PHI_CONVERSION 211233               //original: 219037
+#define Z_CONVERSION 17                     //original: 18 // 1/0.05615 = 17.81 -> 18
+#define INVRINV_CONVERSION 1262538462E-15   //0.000001262538462  //original: 760902077E-15    // 0.000000760902077
+#define INVETA_CONVERSION 19531261E-10      //original: 11698E-7
+#define INVPHI_CONVERSION 4734119709E-15    //0.000004734119709  // original: 456544E-11
+#define INVZ_CONVERSION 5859375E-8          //0.05859375 //original: 56152375E-9         //0.056152375
 
 // -- Define structs for physics objects in software
 struct SimTrack {
@@ -470,7 +472,7 @@ std::ostream& operator << (std::ostream& os, const Event& rhs)
   for (unsigned i=0; i<rhs.swPropTrackMuons.size(); ++i) { 
     os << "  " << rhs.swPropTrackMuons[i] << std::endl;
   }
-
+  /*
   os << "HwTracks: " << rhs.hwTracks.size() << std::endl;
   for (unsigned i=0; i<rhs.hwTracks.size(); ++i) {
     os << "  " << rhs.hwTracks[i] << std::endl;
@@ -487,6 +489,7 @@ std::ostream& operator << (std::ostream& os, const Event& rhs)
   for (unsigned i=0; i<rhs.hwTrackMuons.size(); ++i) { 
     os << "  " << rhs.hwTrackMuons[i] << std::endl;
   } 
+  */
   return os;  
 }
 

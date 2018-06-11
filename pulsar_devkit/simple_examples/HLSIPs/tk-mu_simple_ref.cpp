@@ -78,7 +78,7 @@ SwTrackMuon match_sw(const SwTrack& inTrack, const SwMuon& inMuon)
   float muphi = inMuon.phi;
 
   // dR calculation
-  float dR2_tk_mu = dr2_int (tketa, tkphi, mueta, muphi);
+  float dR2_tk_mu = deltaR (tketa, tkphi, mueta, muphi);
   
   if (debug){
     std::cout 
@@ -90,18 +90,19 @@ SwTrackMuon match_sw(const SwTrack& inTrack, const SwMuon& inMuon)
       << std::endl;
   }
   
-  if (dR2_tk_mu < 0.2 * 0.2) {
+  if (dR2_tk_mu < 0.2) {
     if (debug){
-      std::cout << ">>>> MATCH! <<<<" << std::endl;
+      std::cout << ">>>> MATCHED! <<<<" << std::endl;
     }
     outTrack.pt = inTrack.pt;
     outTrack.eta = inMuon.eta;
     outTrack.phi = inMuon.phi;
     outTrack.q = inTrack.q;
-    outTrack.valid = inTrack.valid and inMuon.valid; 
+    outTrack.valid = 1; 
     outTrack.BX = inTrack.BX;
   } else {
     outTrack.valid = 0;     
+    if (debug) std::cout << ">>>> NOT MATCHED! <<<<" << std::endl;
   }
   return outTrack;
 }
@@ -118,7 +119,7 @@ SwTrackMuon match_prop_sw(const SwPropTrack& inTrack, const SwMuon& inMuon)
   float muphi = inMuon.phi;
 
   // dR calculation
-  float dR2_tk_mu = dr2_int (tketa, tkphi, mueta, muphi);
+  float dR2_tk_mu = deltaR (tketa, tkphi, mueta, muphi);
   
   if (debug){
     std::cout 
@@ -130,18 +131,37 @@ SwTrackMuon match_prop_sw(const SwPropTrack& inTrack, const SwMuon& inMuon)
       << std::endl;
   }
   
-  if (dR2_tk_mu < 0.2 * 0.2) {
+  if (dR2_tk_mu < 0.2) {
     if (debug){
-      std::cout << ">>>> MATCH! <<<<" << std::endl;
+      std::cout << ">>>> MATCHED! <<<<" << std::endl;
     }
     outTrack.pt = inTrack.pt;
     outTrack.eta = inMuon.eta;
     outTrack.phi = inMuon.phi;
     outTrack.q = inTrack.q;
-    outTrack.valid = inTrack.valid and inMuon.valid; 
+    outTrack.valid = 1; 
     outTrack.BX = inTrack.BX;
   } else {
     outTrack.valid = 0;     
+    if (debug) std::cout << ">>>> NOT MATCHED! <<<<" << std::endl;
   }
   return outTrack;
+}
+
+float normalizePhi(float outPhi)
+{
+  float returnValue = outPhi;
+  if (returnValue <= -M_PI)
+    returnValue += 2*M_PI;
+  if (returnValue > M_PI)
+    returnValue -= 2*M_PI;
+  return returnValue;
+}
+
+
+float deltaR(float eta1, float phi1, float eta2, float phi2)
+{
+  float dEta = eta1 - eta1;
+  float dPhi = normalizePhi(normalizePhi(phi1) - normalizePhi(phi2));
+  return sqrt(dEta*dEta + dPhi*dPhi);
 }
