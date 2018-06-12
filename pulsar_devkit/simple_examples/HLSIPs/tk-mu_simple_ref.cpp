@@ -148,17 +148,6 @@ SwTrackMuon match_prop_sw(const SwPropTrack& inTrack, const SwMuon& inMuon)
   return outTrack;
 }
 
-float normalizePhi(float outPhi)
-{
-  float returnValue = outPhi;
-  if (returnValue <= -M_PI)
-    returnValue += 2*M_PI;
-  if (returnValue > M_PI)
-    returnValue -= 2*M_PI;
-  return returnValue;
-}
-
-
 float deltaR(float eta1, float phi1, float eta2, float phi2)
 {
   float dEta = eta1 - eta1;

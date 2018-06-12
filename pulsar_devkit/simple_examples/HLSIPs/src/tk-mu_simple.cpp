@@ -30,7 +30,7 @@ Negative values in binary are generated assuming "One's complement"
 
 HwPropTrack tkmu_simple_hw(  HwTrack& in)
 {
-  bool debug(false);
+  bool debug(true);
 
   HwPropTrack out = in;
 
@@ -59,11 +59,11 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     // first convert to unsigned (16384 = 2^14; number of unsigned bits)
     finvpt_t inhwRinv;
     // std::cout << "in.hwQ " << in.hwQ << std::endl;
-    if (in.hwQ==0) {// positive charge
+    if (in.hwQ!=0) {
       inhwRinv = (in.hwRinv+16384)*INVRINV_CONVERSION;
       if (debug) std::cout << " -- inhwRinv = " << in.hwRinv+16384 << std::endl;
     }
-    else {           // negative charge
+    else {
       inhwRinv = in.hwRinv*INVRINV_CONVERSION;
       if (debug) std::cout << " -- inhwRinv = " << in.hwRinv << std::endl;
     }
@@ -87,10 +87,6 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     if (debug) std::cout << " -- invpt  = " << inhwInvPt << std::endl;
     if (debug) std::cout << " -- invpt (float)  = " << inhwInvPt.to_float() << std::endl;
     if (debug) std::cout << " -- pt (float) = " << in.hwPt << std::endl;
-
-
-
-
 
     // sinhEta -> eta (8192 = 2^13; number of unsigned bits)
     if (debug) std::cout << " FIRMWARE : SinhEta calculation " << in.hwSinhEta << std::endl;
@@ -262,8 +258,8 @@ HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
   feta_t tkEta = inTrack.hwEta * INVETA_CONVERSION;
   fphi_t tkPhi = inTrack.hwPhi * INVPHI_CONVERSION;
 
-  feta_m muEta = inMuon.hwEta;
-  fphi_m muPhi = inMuon.hwPhi;
+  feta_m muEta = (1- 2*std::bitset<9>(inMuon.hwEta)[8]) * from_twos_complement<9>(inMuon.hwEta) * MUONETA_CONVERSION;
+  fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
 
   // dR calculation
   feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);

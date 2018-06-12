@@ -37,8 +37,8 @@ typedef ap_fixed<9,3> fphi_m;    // phi (50 micro-rad)
 
 // muon data
 typedef ap_int<9> pt_m;
-typedef ap_int<10> eta_m;
-typedef ap_int<9> phi_m;
+typedef ap_int<9> eta_m;
+typedef ap_int<10> phi_m;
 typedef ap_int<4> quality_m;
 
 // dRcut
@@ -69,6 +69,28 @@ typedef ap_int<4> quality_m;
 #define INVPHI_CONVERSION 4734119709E-15    //0.000004734119709  // original: 456544E-11
 #define INVZ_CONVERSION 5859375E-8          //0.05859375 //original: 56152375E-9         //0.056152375
 
+// Muon conversions
+#define MUONETA_CONVERSION 0.010875
+#define MUONPHI_CONVERSION 0.010908
+
+namespace{
+
+float normalizePhi(float outPhi)
+{
+  float returnValue = outPhi;
+  if (returnValue <= -M_PI)
+    returnValue += 2*M_PI;
+  if (returnValue > M_PI)
+    returnValue -= 2*M_PI;
+  return returnValue;
+}
+
+template<int N>
+int from_twos_complement(int x) {
+  return (x & (1<<(N-1))) ? (~(x-1) & ((1<<N)-1)) : x;
+}
+ 
+}
 // -- Define structs for physics objects in software
 struct SimTrack {
   int index;
@@ -262,9 +284,9 @@ struct HwPropTrack : public HwTrack
 };
 
 struct HwMuon {
-    pt_t hwPt;
-    eta_t hwEta;
-    phi_t hwPhi;
+    pt_m hwPt;
+    eta_m hwEta;
+    phi_m hwPhi;
     q_t hwQ;
     q_t hwValid;   // valid bit
     bx_t hwBX;    // bunch crossing
@@ -337,6 +359,7 @@ struct Event
     hwPropTrackMuons.clear();
   }
 };
+
 
 namespace {
 
@@ -423,10 +446,17 @@ std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 {
-  os << "pT: " << std::bitset<9>(rhs.hwPt) << ", " 
-     << "eta: " << std::bitset<10>(rhs.hwEta) << ", "
-     << "phi: " << std::bitset<9>(rhs.hwPhi) << ", " 
-     << "Q: " << std::bitset<1>(rhs.hwQ) << ", "
+  //https://jiafulow.github.io/blog/2016/11/04/fixed-point-twos-complement-in-c++/
+  /* os << "pT: " << std::bitset<9>(rhs.hwPt) << ", "  */
+  /*    << "eta: " << std::bitset<9>(rhs.hwEta) << ", "  */
+  /*    << "phi: " << std::bitset<8>(rhs.hwPhi) << ", "   */
+  /*    << "Q: " << std::bitset<1>(rhs.hwQ) << ", "  */
+  /*    << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", " */
+  /*    << "BX: " << std::bitset<3>(rhs.hwBX);  */
+  os << "pT: " << (rhs.hwPt)*0.5 << ", " 
+     << "eta: " << (1- 2*std::bitset<9>(rhs.hwEta)[8]) * from_twos_complement<9>(rhs.hwEta) * MUONETA_CONVERSION << ", "
+     << "phi: " << normalizePhi(rhs.hwPhi * MUONPHI_CONVERSION) << ", "
+     << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
      << "BX: " << std::bitset<3>(rhs.hwBX);
    return os;
@@ -472,18 +502,18 @@ std::ostream& operator << (std::ostream& os, const Event& rhs)
   for (unsigned i=0; i<rhs.swPropTrackMuons.size(); ++i) { 
     os << "  " << rhs.swPropTrackMuons[i] << std::endl;
   }
-  /*
+  os << "HwMuons: " << rhs.hwMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.hwMuons.size(); ++i) { 
+    os << "  " << rhs.hwMuons[i] << std::endl;
+  }
   os << "HwTracks: " << rhs.hwTracks.size() << std::endl;
   for (unsigned i=0; i<rhs.hwTracks.size(); ++i) {
     os << "  " << rhs.hwTracks[i] << std::endl;
   }
+  /*
   os << "HwPropTracks: " << rhs.hwPropTracks.size() << std::endl;
   for (unsigned i=0; i<rhs.hwPropTracks.size(); ++i) {
     os << "  " << rhs.hwPropTracks[i] << std::endl;
-  }
-  os << "HwMuons: " << rhs.hwMuons.size() << std::endl; 
-  for (unsigned i=0; i<rhs.hwMuons.size(); ++i) { 
-    os << "  " << rhs.hwMuons[i] << std::endl;
   }
   os << "HwTrackMuons: " << rhs.hwTrackMuons.size() << std::endl; 
   for (unsigned i=0; i<rhs.hwTrackMuons.size(); ++i) { 

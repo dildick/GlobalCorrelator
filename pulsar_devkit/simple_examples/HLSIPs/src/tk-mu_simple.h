@@ -73,9 +73,6 @@ SwTrackMuon match_prop_sw(const SwPropTrack&, const SwMuon&);
 feta_t decode_track_eta(const HwTrack&);
 fphi_t decode_track_phi(const HwTrack&);
 
-// normalize phi in [-pi,+pi] window
-float normalizePhi(float phi);
-
 // calculate deltaR
 float deltaR(float eta1, float phi1, float eta2, float phi2);
 
