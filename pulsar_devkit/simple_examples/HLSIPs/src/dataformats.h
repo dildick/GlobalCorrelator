@@ -9,15 +9,20 @@
 #include <bitset>
 
 const int N_BINS_TRACK_INVPT = 15;
-const int N_BINS_TRACK_PT = 15;
-const int N_BINS_TRACK_ETA = 15;
+const int N_BINS_TRACK_PT = 12;
+const int N_BINS_TRACK_ETA = 14;
 const int N_BINS_TRACK_PHI = 19;
-const int N_BINS_TRACK_X2 = 10;
+const int N_BINS_TRACK_Z0 = 11;
+
+const int N_BINS_MUON_PT = 9;
+const int N_BINS_MUON_ETA = 9;
+const int N_BINS_MUON_PHI = 10;
 
 typedef ap_int<15> invpt_t;  // inverse pt [1% at 100 GeV]
 typedef ap_int<12> pt_t;     // convert from RINV
 typedef ap_int<14> eta_t;    // eta [sinh(eta) measure to 0.005]
 typedef ap_int<19> phi_t;    // phi (50 micro-rad)
+typedef ap_int<23> phiglobal_t;    // phi (50 micro-rad)
 typedef ap_int<10> chisq_t;  // chi^2 (0 - 100; 0.1 steps)
 typedef ap_uint<1> q_t;       // charge
 typedef ap_int<11> z0_t;     // z0  (1 mm over +/-14.9 cm)
@@ -29,6 +34,7 @@ typedef ap_fixed<15,2> finvpt_t;  // inverse pt [1% at 100 GeV]
 typedef ap_fixed<12,9> fpt_t;     // 1/Rinv
 typedef ap_fixed<14,4> feta_t;    // eta [sinh(eta) measure to 0.005]
 typedef ap_fixed<19,3> fphi_t;    // phi (50 micro-rad)
+typedef ap_fixed<23,3> fphiglobal_t;    // global phi (50 micro-rad)
 typedef ap_fixed<10,7> fchisq_t;  // chi^2 (0 - 100; 0.1 steps) 
 typedef ap_fixed<11,5> fz0_t;     // z0  (1 mm over +/-14.9 cm) 
 
@@ -62,11 +68,11 @@ typedef ap_int<4> quality_m;
 #define RINV_CONVERSION 792055              //1314229             // 1/0.000000760902077
 #define PT_CONVERSION 87719298E-6           // 1/(0.01*0.3*3.8); 87719298E-6
 #define ETA_CONVERSION 512                  //855   // 1/0.0011698 = 854.84698
-#define PHI_CONVERSION 211233               //original: 219037
+#define PHI_CONVERSION 211216               //original: 219037
 #define Z_CONVERSION 17                     //original: 18 // 1/0.05615 = 17.81 -> 18
 #define INVRINV_CONVERSION 1262538462E-15   //0.000001262538462  //original: 760902077E-15    // 0.000000760902077
 #define INVETA_CONVERSION 19531261E-10      //original: 11698E-7
-#define INVPHI_CONVERSION 4734119709E-15    //0.000004734119709  // original: 456544E-11
+#define INVPHI_CONVERSION 47345E-10 // 4734119709E-15    //0.000004734119709  // original: 456544E-11
 #define INVZ_CONVERSION 5859375E-8          //0.05859375 //original: 56152375E-9         //0.056152375
 
 // Muon conversions
@@ -216,11 +222,10 @@ struct HwTrack
 {
   invpt_t hwRinv;
   pt_t hwPt;
-  fphi_t hw;
   eta_t hwSinhEta;
   eta_t hwEta;
   phi_t hwPhi;
-  fphi_t hwPhiGlobal;
+  phiglobal_t hwPhiGlobal;
   z0_t hwZ0;  // same precision at eta_t (Accoring to Dan: z0 precision needed to get precision on eta, which derives from z0)
   sector_t hwSector;
   // test precision of z0 11 to 14 
@@ -255,7 +260,7 @@ struct HwTrack
 struct HwPropTrack : public HwTrack 
 {
   eta_t hwPropEta;
-  phi_t hwPropPhi;
+  phiglobal_t hwPropPhi;
   // constructor
  HwPropTrack() : 
   HwTrack(),
@@ -419,9 +424,10 @@ std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 {
   os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << ", " 
      << "pT: " << std::bitset<12>(rhs.hwPt) << ", "
-     << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << ", "
+     << "eta: " << std::bitset<14>(rhs.hwEta) << ", "
+     /* << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << ", " */
      << "phi: " << std::bitset<19>(rhs.hwPhi) << ", " 
-     << "phiGlobal: " << std::bitset<19>(rhs.hwPhiGlobal) << ", " 
+     /* << "phiGlobal: " << std::bitset<19>(rhs.hwPhiGlobal) << ", "  */
      << "Z0: " << std::bitset<11>(rhs.hwZ0) << ", " 
      << "Q: " << std::bitset<1>(rhs.hwQ) << ", "
      /* << "X2: " << std::bitset<10>(rhs.hwX2) << ", "  */
@@ -446,13 +452,6 @@ std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 {
-  //https://jiafulow.github.io/blog/2016/11/04/fixed-point-twos-complement-in-c++/
-  /* os << "pT: " << std::bitset<9>(rhs.hwPt) << ", "  */
-  /*    << "eta: " << std::bitset<9>(rhs.hwEta) << ", "  */
-  /*    << "phi: " << std::bitset<8>(rhs.hwPhi) << ", "   */
-  /*    << "Q: " << std::bitset<1>(rhs.hwQ) << ", "  */
-  /*    << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", " */
-  /*    << "BX: " << std::bitset<3>(rhs.hwBX);  */
   os << "pT: " << (rhs.hwPt)*0.5 << ", " 
      << "eta: " << (1- 2*std::bitset<9>(rhs.hwEta)[8]) * from_twos_complement<9>(rhs.hwEta) * MUONETA_CONVERSION << ", "
      << "phi: " << normalizePhi(rhs.hwPhi * MUONPHI_CONVERSION) << ", "
@@ -465,9 +464,9 @@ std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 std::ostream& operator << (std::ostream& os, const HwTrackMuon& rhs)
 {
   os << "pT: " << std::bitset<12>(rhs.hwPt) << ", " 
-     << "eta: " << std::bitset<10>(rhs.hwEta) << ", "
-     << "phi: " << std::bitset<9>(rhs.hwPhi) << ", " 
-     << "Q: " << std::bitset<1>(rhs.hwQ) << ", "
+     << "eta: " << (1- 2*std::bitset<9>(rhs.hwEta)[8]) * from_twos_complement<9>(rhs.hwEta) * MUONETA_CONVERSION << ", "
+     << "phi: " << normalizePhi(rhs.hwPhi * MUONPHI_CONVERSION) << ", "
+     << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
      << "BX: " << std::bitset<3>(rhs.hwBX);
    return os;
@@ -510,7 +509,6 @@ std::ostream& operator << (std::ostream& os, const Event& rhs)
   for (unsigned i=0; i<rhs.hwTracks.size(); ++i) {
     os << "  " << rhs.hwTracks[i] << std::endl;
   }
-  /*
   os << "HwPropTracks: " << rhs.hwPropTracks.size() << std::endl;
   for (unsigned i=0; i<rhs.hwPropTracks.size(); ++i) {
     os << "  " << rhs.hwPropTracks[i] << std::endl;
@@ -519,7 +517,10 @@ std::ostream& operator << (std::ostream& os, const Event& rhs)
   for (unsigned i=0; i<rhs.hwTrackMuons.size(); ++i) { 
     os << "  " << rhs.hwTrackMuons[i] << std::endl;
   } 
-  */
+  os << "HwPropTrackMuons: " << rhs.hwPropTrackMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.hwPropTrackMuons.size(); ++i) { 
+    os << "  " << rhs.hwPropTrackMuons[i] << std::endl;
+  } 
   return os;  
 }
 

@@ -143,16 +143,14 @@ int main()
 
       // propagate the tracks
       for (unsigned int iSwTrack = 0; iSwTrack < events[iEvent].swTracks.size(); ++iSwTrack){
-	SwTrack track_sw = events[iEvent].swTracks[iSwTrack];
-	SwPropTrack prop_track_sw = tkmu_simple_ref(track_sw);
+	SwPropTrack prop_track_sw = tkmu_simple_ref(events[iEvent].swTracks[iSwTrack]);
 	events[iEvent].swPropTracks.push_back(prop_track_sw);
 	// std::cout << "Track " << track_sw << " PropTrack " << prop_track_sw << std::endl; 
       } 
 
       // propagate the tracks
       for (unsigned int iHwTrack = 0; iHwTrack < events[iEvent].hwTracks.size(); ++iHwTrack){
-	HwTrack hwTrack = events[iEvent].hwTracks[iHwTrack];
-	HwPropTrack prop_track_hw = tkmu_simple_hw(hwTrack);
+	HwPropTrack prop_track_hw = tkmu_simple_hw(events[iEvent].hwTracks[iHwTrack]);
 	events[iEvent].hwPropTracks.push_back(prop_track_hw);
 	// std::cout << "Track " << hwTrack << " PropTrack " << prop_track_hw << std::endl; 
       } 
@@ -255,7 +253,6 @@ int main()
 	  events[iEvent].hwTrackMuons.push_back(candidateTrackMuon);
 	}
 
-	/*
 	// check all possible matches!
 	maxDeltaPt = 999;
 	HwTrackMuon candidatePropTrackMuon; 
@@ -266,11 +263,11 @@ int main()
 	  HwTrackMuon hwPropTrackMuon = match_prop_hw(hwPropTrack, hwMuon);
 
 	  // // check if valid or not
-	  // if (not hwPropTrackMuon.valid) continue;
+	  if (not hwPropTrackMuon.hwValid) continue;
 
-	  // std::cout << ">>Candiate trackmuon " << hwPropTrackMuon << std::endl;
-	  float deltaPt = fabs(hwPropTrackMuon.pt - hwMuon.pt); 
-	  // std::cout << "Proto deltaPt " << deltaPt << " maxDeltaPt " << maxDeltaPt << std::endl;
+	  std::cout << ">>Candiate proptrack-muon " << hwPropTrackMuon << std::endl;
+	  float deltaPt = fabs(hwPropTrackMuon.hwPt - hwMuon.hwPt); 
+	  std::cout << "Proto deltaPt " << deltaPt << " maxDeltaPt " << maxDeltaPt << std::endl;
 
 	  // retain the matching one that has the smallest delta Pt
 	  if ( deltaPt < maxDeltaPt){
@@ -279,11 +276,10 @@ int main()
 	  }
 	}
 	// add the match to the collection
-	if (candidatePropTrackMuon.valid) {
-	  // std::cout << ">>Adding proptrackmuon " << candidatePropTrackMuon << std::endl << std::endl;
+	if (candidatePropTrackMuon.hwValid) {
+	  std::cout << ">>Adding proptrack-muon " << candidatePropTrackMuon << std::endl << std::endl;
 	  events[iEvent].hwPropTrackMuons.push_back(candidatePropTrackMuon);
 	}
-	*/
       }
     }
 
@@ -700,7 +696,7 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   if (debug_hw_track) std::cout << " Looping over data - hwQ = " << in_track_hw.hwQ << std::endl;
   
   // setup Rinv (signed)
-  std::string rinv_str = "0" + values_fw.at(1).substr(1,14);
+  std::string rinv_str = values_fw.at(1);
   in_track_hw.hwRinv = std::bitset<15>(rinv_str).to_ulong();   
   if (debug_hw_track) std::cout << " Looping over data - hwRinv = " << rinv_str << " " <<in_track_hw.hwRinv << std::endl;
 
@@ -784,18 +780,17 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
 
    third frame:
    B0  Empty
-   31   0                                                                                                                                                                                                   
+   31   0
 
    // seccond muon
    fourth frame:                                                                                                                                              
    B1 phi H/F eta qual pT                                                                                                                                     
-   31  30  22  21  12   8  0                                                                                                                                                                                
+   31  30  22  21  12   8  0
 
-   
    fifth frame:                                                                                                                                             
    B2 track addresses VCH CH                                                                                                                          
-   31 30               1  0                                                                                                                                                                                
-   
+   31 30               1  0
+
    sixth frame:                                                                                                                               
    Empty                                                                                                                                                    
    31   0                    
@@ -811,9 +806,9 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
   phi_str = frame3.substr(1,10);
   q_str = frame2[31];
 
-  in_muon_hw.hwPt = std::bitset<9>(pt_str).to_ulong();
-  in_muon_hw.hwEta = std::bitset<9>(eta_str).to_ulong();
-  in_muon_hw.hwPhi = std::bitset<10>(phi_str).to_ulong();
+  in_muon_hw.hwPt = std::bitset<N_BINS_MUON_PT>(pt_str).to_ulong();
+  in_muon_hw.hwEta = std::bitset<N_BINS_MUON_ETA>(eta_str).to_ulong();
+  in_muon_hw.hwPhi = std::bitset<N_BINS_MUON_PHI>(phi_str).to_ulong();
   in_muon_hw.hwQ = std::bitset<1>(q_str).to_ulong();
   in_muon_hw.hwValid = in_muon_hw.hwEta != 0 and in_muon_hw.hwPhi != 0;
 
@@ -865,16 +860,42 @@ T getMatchingPropTrack(const SimTrack& simTrack, const std::vector<T> collection
 template <class T> 
 T getMatchingHwTrack(const SimTrack& simTrack, const std::vector<T> collection)
 {
+  bool debug(false);
+
   T matchingT;
   // find the best matching T
   for (unsigned iT = 0; iT < collection.size(); iT++){
 
-    float eta = collection[iT].hwEta * INVETA_CONVERSION;
-    float phi = collection[iT].hwPhi * INVPHI_CONVERSION;
+    feta_t inhwEta;
+    feta_t sinhEta;
+    feta_t absSinhEta;
+    if (collection[iT].hwSinhEta<0){
+      absSinhEta = (collection[iT].hwSinhEta+8192)*INVETA_CONVERSION;     // use ap_fixed<>
+      sinhEta    = -1*(collection[iT].hwSinhEta+8192)*INVETA_CONVERSION;
+    }
+    else{
+      absSinhEta = collection[iT].hwSinhEta*INVETA_CONVERSION;
+      sinhEta    = collection[iT].hwSinhEta*INVETA_CONVERSION;
+    }
+    arcsinh(absSinhEta, inhwEta);
+    feta_t abshwEta = inhwEta;
+    if (collection[iT].hwSinhEta<0) inhwEta*=-1;
 
-    std::cout << "hw track eta " <<  collection[iT].hwEta << " " << eta << std::endl;
-    std::cout << "hw track phi " <<  collection[iT].hwPhi << " " << phi << std::endl;
-  
+    fphi_t inhwPhi;
+    if (collection[iT].hwPhi<0)
+      inhwPhi = -1*(collection[iT].hwPhi+262144)*INVPHI_CONVERSION;
+    else
+      inhwPhi = collection[iT].hwPhi*INVPHI_CONVERSION;
+    
+    float eta = inhwEta;
+    float phi = inhwPhi + phiOffSetValues[collection[iT].hwSector-1];
+    
+    if (debug){
+      std::cout << "In function getMatchingHwTrack" << std::endl;
+      std::cout << "hw track track eta " <<  eta << std::endl;
+      std::cout << "hw track track phi " <<  phi << std::endl << std::endl;
+    } 
+ 
     // relatively loose cut
     if (deltaR(eta, phi, simTrack.eta, simTrack.phi) < 0.4) {
       matchingT = collection[iT];
@@ -887,12 +908,22 @@ T getMatchingHwTrack(const SimTrack& simTrack, const std::vector<T> collection)
 template <class T> 
 T getMatchingHwPropTrack(const SimTrack& simTrack, const std::vector<T> collection)
 {
+  bool debug(true);
+
   T matchingT;
   // find the best matching T
   for (unsigned iT = 0; iT < collection.size(); iT++){
 
     float eta = collection[iT].hwPropEta * INVETA_CONVERSION;
     float phi = collection[iT].hwPropPhi * INVPHI_CONVERSION;
+
+    if (debug){
+      std::cout << "In function getMatchingHwPropTrack" << std::endl;
+      std::cout << "true muon eta " << simTrack.eta << std::endl;
+      std::cout << "true muon phi " << simTrack.phi << std::endl;
+      std::cout << "hw prop track eta " << eta << std::endl;
+      std::cout << "hw prop track phi " << phi << std::endl << std::endl;
+    }
 
     // relatively loose cut
     if (deltaR(eta, phi, simTrack.eta, simTrack.phi) < 0.4) {
@@ -904,20 +935,29 @@ T getMatchingHwPropTrack(const SimTrack& simTrack, const std::vector<T> collecti
 }
 
 template <class T> 
-T getMatchingHwMuon(const SimTrack& simTrack, const std::vector<T> collection)
+T getMatchingHwMuon(const SimTrack& simTrack, const std::vector<T> collection, std::string choice)
 {
+  bool debug(true);
+
   T matchingT;
   // find the best matching T
   for (unsigned iT = 0; iT < collection.size(); iT++){
 
     float eta = collection[iT].hwEta *              MUONETA_CONVERSION;
     float phi = normalizePhi(collection[iT].hwPhi * MUONPHI_CONVERSION);
+    float dR = deltaR(eta, phi, simTrack.eta, simTrack.phi);
 
-    // std::cout << "hw muon eta " << eta << std::endl;
-    // std::cout << "hw muon phi " << phi << std::endl;
+    if (debug){
+      std::cout << "In function getMatchingHwMuon" << std::endl;
+      std::cout << "true muon eta " << simTrack.eta << std::endl;
+      std::cout << "true muon phi " << simTrack.phi << std::endl;
+      std::cout << "hw " + choice << " eta " << eta << std::endl;
+      std::cout << "hw " + choice << " phi " << phi << std::endl;
+      std::cout << "dR " << dR << std::endl << std::endl;
+    }
     
     // relatively loose cut
-    if (deltaR(eta, phi, simTrack.eta, simTrack.phi) < 0.4) {
+    if (dR < 0.4) {
       matchingT = collection[iT];
       break;
     }
@@ -942,8 +982,10 @@ void writeOutput(std::ofstream& output,
     const SwTrackMuon& matchingSwPropTrackMuon = getMatchingTrack(event.simTracks[iSimTrack], event.swPropTrackMuons);
 
     const HwTrack&     matchingHwTrack =         getMatchingHwTrack(event.simTracks[iSimTrack], event.hwTracks);
-    // const HwPropTrack& matchingHwPropTrack =     getMatchingHwTrack(event.simTracks[iSimTrack], event.hwPropTracks);
-    const HwMuon&      matchingHwMuon =          getMatchingHwMuon(event.simTracks[iSimTrack], event.hwMuons);
+    const HwPropTrack& matchingHwPropTrack =     getMatchingHwTrack(event.simTracks[iSimTrack], event.hwPropTracks);
+    const HwMuon&      matchingHwMuon =          getMatchingHwMuon(event.simTracks[iSimTrack], event.hwMuons, "muon");
+    const HwTrackMuon& matchingHwTrackMuon =     getMatchingHwMuon(event.simTracks[iSimTrack], event.hwTrackMuons, "track-muon");
+    const HwTrackMuon& matchingHwPropTrackMuon = getMatchingHwMuon(event.simTracks[iSimTrack], event.hwPropTrackMuons, "proptrack-muon");
 
     // base tracks
     output << matchingSwTrack << ",";
@@ -955,9 +997,12 @@ void writeOutput(std::ofstream& output,
     output << matchingSwPropTrackMuon << ",";
     // base tracks
     output << matchingHwTrack << ",";
-    // output << matchingHwPropTrack << ",";
+    output << matchingHwPropTrack << ",";
     // base muon
     output << matchingHwMuon << ",";
+    // track-muons
+    output << matchingHwTrackMuon << ",";
+    output << matchingHwPropTrackMuon << ",";
     output << std::endl;
 
     // now print out the match information
@@ -973,8 +1018,10 @@ void writeOutput(std::ofstream& output,
     std::cout << "Matched SW TrackMuon     " << matchingSwTrackMuon << std::endl;
     std::cout << "Matched SW PropTrackMuon " << matchingSwPropTrackMuon << std::endl;
     std::cout << "Matched HW Track         " << matchingHwTrack << std::endl;
-    // std::cout << "Matched HW PropTrack     " << matchingHwPropTrack << std::endl;
-    std::cout << "Matched HW Muon          " << matchingHwMuon << std::endl << std::endl;
+    std::cout << "Matched HW PropTrack     " << matchingHwPropTrack << std::endl;
+    std::cout << "Matched HW Muon          " << matchingHwMuon << std::endl;
+    std::cout << "Matched HW TrackMuon     " << matchingHwTrackMuon << std::endl;
+    std::cout << "Matched HW PropTrackMuon " << matchingHwPropTrackMuon << std::endl << std::endl;
   }
 }
 

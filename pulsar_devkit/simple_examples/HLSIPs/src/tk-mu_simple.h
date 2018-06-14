@@ -415,7 +415,16 @@ data_S dr2_int(data_T eta1, data_S phi1, data_U eta2, data_V phi2) {
   // eta2, phi2: muon properties
   data_T deta = (eta1-eta2);
   data_S dphi = (phi1-phi2);
-  return deta*deta + dphi*dphi;
+  data_S dR = deta*deta + dphi*dphi;
+  bool debug(false);
+  if (debug) {
+    std::cout << "eta1 " << eta1 << std::endl;
+    std::cout << "eta2 " << eta2 << std::endl;
+    std::cout << "phi1 " << phi1 << std::endl;
+    std::cout << "phi2 " << phi2 << std::endl;
+    std::cout << "dR " << dR << std::endl << std::endl;
+  }
+  return dR;
 }
 
 #endif
