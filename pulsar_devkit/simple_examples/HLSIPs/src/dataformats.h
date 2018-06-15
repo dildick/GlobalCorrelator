@@ -65,12 +65,14 @@ typedef ap_int<4> quality_m;
 #define INV_Z0_RANGE 1/Z0_RANGE
 
 // Conversions between binary and floating point (using example file to derive)
-#define RINV_CONVERSION 792055              //1314229             // 1/0.000000760902077
+#define RINV_CONVERSION 792057              //1314229             // 1/0.000000760902077
+
+
 #define PT_CONVERSION 87719298E-6           // 1/(0.01*0.3*3.8); 87719298E-6
 #define ETA_CONVERSION 512                  //855   // 1/0.0011698 = 854.84698
 #define PHI_CONVERSION 211216               //original: 219037
 #define Z_CONVERSION 17                     //original: 18 // 1/0.05615 = 17.81 -> 18
-#define INVRINV_CONVERSION 1262538462E-15   //0.000001262538462  //original: 760902077E-15    // 0.000000760902077
+#define INVRINV_CONVERSION 1262535E-12   //0.000001262538462  //original: 760902077E-15    // 0.000000760902077
 #define INVETA_CONVERSION 19531261E-10      //original: 11698E-7
 #define INVPHI_CONVERSION 47345E-10 // 4734119709E-15    //0.000004734119709  // original: 456544E-11
 #define INVZ_CONVERSION 5859375E-8          //0.05859375 //original: 56152375E-9         //0.056152375

@@ -87,6 +87,18 @@ void eventReader(std::vector<Event>& events,
 		 const std::string& hwMuonFile,
 		 int batchNumber); 
 
+/*
+  Select events with at most two muons and at most two tracks
+ */
+void eventSelector(const std::vector<Event>& events, 
+	      std::vector<Event>& events_selected);
+
+/*
+  Merge duplicate tracks and muons in each event
+ */
+void duplicateMerger(std::vector<Event>& events);
+
+
 int main() 
 {
     /* Run the program -- 
@@ -135,7 +147,16 @@ int main()
 		hwTrackFiles,
 		hwMuonFiles);
 
-    
+
+    // pre-select events that have at most 2 muons and 2 tracks
+    // events with >2 muons or >2 tracks screw up the hardware
+    /* 
+       std::vector<Event> events_selected;
+       eventSelector(events, events_selected); 
+    */
+
+    duplicateMerger(events);
+  
     // process the tracks and muons
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
 
@@ -615,6 +636,79 @@ void eventReader(std::vector<Event>& events,
 } 
 
 
+void eventSelector(const std::vector<Event>& events, 
+		   std::vector<Event>& events_selected)
+{
+  for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
+    // ignore events with more than two tracks or more than two muons
+    // they screw up the hardware
+    if (events[iEvent].swTracks.size() > 2 or events[iEvent].swMuons.size() > 2) continue;
+    events_selected.push_back(events[iEvent]);
+  }
+}
+
+
+template <class T> 
+bool isDuplicateSw(const T& first, const T& second)
+{
+  return deltaR(first.eta, first.phi, second.eta, second.phi) < 0.2; 
+}
+
+bool isDuplicateHwMuon(const HwMuon& first, const HwMuon& second)
+{
+  feta_m eta1 = (1- 2*std::bitset<9>(first.hwEta)[8]) * from_twos_complement<9>(first.hwEta) * MUONETA_CONVERSION;
+  fphi_m phi1 = normalizePhi(first.hwPhi * MUONPHI_CONVERSION);
+  feta_m eta2 = (1- 2*std::bitset<9>(second.hwEta)[8]) * from_twos_complement<9>(second.hwEta) * MUONETA_CONVERSION;
+  fphi_m phi2 = normalizePhi(second.hwPhi * MUONPHI_CONVERSION);
+
+  feta_m dR2 = dr2_int(eta1, phi1, eta2, phi2);
+
+  return dR2 < 0.2*0.2 and dR2 > - 0.2*0.2; 
+}
+
+bool isDuplicateHwTrack(const HwTrack& first, const HwTrack& second)
+{
+  return first.hwQ == second.hwQ;
+}
+
+void duplicateMerger(std::vector<Event>& events)
+{
+  for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
+    // ignore events with more than two tracks or more than two muons
+    // they screw up the hardware
+    std::vector<SwTrack> newSwTracks;
+    std::vector<HwTrack> newHwTracks;
+    std::vector<SwMuon>  newSwMuons;
+    std::vector<HwMuon>  newHwMuons;
+
+    for (unsigned int iTrack = 0; iTrack < events[iEvent].swTracks.size(); ++iTrack){
+      if (iTrack==0 or (iTrack!=0 and not isDuplicateSw(events[iEvent].swTracks[iTrack-1], events[iEvent].swTracks[iTrack])))
+	newSwTracks.push_back(events[iEvent].swTracks[iTrack]);
+    }
+
+    for (unsigned int iMuon = 0; iMuon < events[iEvent].swMuons.size(); ++iMuon){
+      if (iMuon==0 or (iMuon!=0 and not isDuplicateSw(events[iEvent].swMuons[iMuon-1], events[iEvent].swMuons[iMuon])))
+	newSwMuons.push_back(events[iEvent].swMuons[iMuon]);
+    }
+
+    for (unsigned int iMuon = 0; iMuon < events[iEvent].hwMuons.size(); ++iMuon){
+      if (iMuon==0 or (iMuon!=0 and not isDuplicateHwMuon(events[iEvent].hwMuons[iMuon-1], events[iEvent].hwMuons[iMuon])))
+	newHwMuons.push_back(events[iEvent].hwMuons[iMuon]);
+    }
+
+    for (unsigned int iTrack = 0; iTrack < events[iEvent].hwTracks.size(); ++iTrack){
+      if (iTrack==0 or (iTrack!=0 and not isDuplicateHwTrack(events[iEvent].hwTracks[iTrack-1], events[iEvent].hwTracks[iTrack])))
+	newHwTracks.push_back(events[iEvent].hwTracks[iTrack]);
+    }
+
+    // set the collections
+    events[iEvent].swTracks = newSwTracks;
+    events[iEvent].hwTracks = newHwTracks;
+    events[iEvent].swMuons = newSwMuons;
+    events[iEvent].hwMuons = newHwMuons;
+  }
+}
+
 
 void split(const std::string &s, char delim, std::vector<std::string> &elems) {
     /* Split a string into pieces based on delimiter */
@@ -692,12 +786,17 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   // }
 
   // setup the charge
+  // hwQ == 0 -> negative muon
+  // hwQ == 1 -> positive muon
   in_track_hw.hwQ = values_fw.at(1)[0];
   if (debug_hw_track) std::cout << " Looping over data - hwQ = " << in_track_hw.hwQ << std::endl;
   
   // setup Rinv (signed)
+  bool isNegativeCharge(false);
   std::string rinv_str = values_fw.at(1);
-  in_track_hw.hwRinv = std::bitset<15>(rinv_str).to_ulong();   
+  isNegative(rinv_str, isNegativeCharge);
+  in_track_hw.hwRinv = std::bitset<15>(rinv_str).to_ulong();   //std::stoi(values_fw.at(1).c_str(),NULL,2);
+  if (isNegativeCharge) in_track_hw.hwRinv *= -1;
   if (debug_hw_track) std::cout << " Looping over data - hwRinv = " << rinv_str << " " <<in_track_hw.hwRinv << std::endl;
 
   // setup sinhEta
@@ -937,7 +1036,7 @@ T getMatchingHwPropTrack(const SimTrack& simTrack, const std::vector<T> collecti
 template <class T> 
 T getMatchingHwMuon(const SimTrack& simTrack, const std::vector<T> collection, std::string choice)
 {
-  bool debug(true);
+  bool debug(false);
 
   T matchingT;
   // find the best matching T
@@ -968,6 +1067,7 @@ T getMatchingHwMuon(const SimTrack& simTrack, const std::vector<T> collection, s
 void writeOutput(std::ofstream& output,		   
 		   const Event& event)
 {
+  bool debug(false);
   for (unsigned iSimTrack = 0; iSimTrack < event.simTracks.size(); iSimTrack++){
     output << "Event: " << event.eventNumber << ","
 	   << " BX: " << event.BX << ","
@@ -1005,23 +1105,26 @@ void writeOutput(std::ofstream& output,
     output << matchingHwPropTrackMuon << ",";
     output << std::endl;
 
-    // now print out the match information
-    std::cout << "Event: " << event.eventNumber << ","
-	      << " BX: " << event.BX << ","
-	      << " pT: " << event.simTracks[iSimTrack].pt << "," 
-	      << " eta: " << event.simTracks[iSimTrack].eta << ","
-	      << " phi: " << event.simTracks[iSimTrack].phi << "," 
-	      << " Q: " << event.simTracks[iSimTrack].q << std::endl;
-    std::cout << "Matched SW Track         " << matchingSwTrack << std::endl;
-    std::cout << "Matched SW PropTrack     " << matchingSwPropTrack << std::endl;
-    std::cout << "Matched SW Muon          " << matchingSwMuon << std::endl;
-    std::cout << "Matched SW TrackMuon     " << matchingSwTrackMuon << std::endl;
-    std::cout << "Matched SW PropTrackMuon " << matchingSwPropTrackMuon << std::endl;
-    std::cout << "Matched HW Track         " << matchingHwTrack << std::endl;
-    std::cout << "Matched HW PropTrack     " << matchingHwPropTrack << std::endl;
-    std::cout << "Matched HW Muon          " << matchingHwMuon << std::endl;
-    std::cout << "Matched HW TrackMuon     " << matchingHwTrackMuon << std::endl;
-    std::cout << "Matched HW PropTrackMuon " << matchingHwPropTrackMuon << std::endl << std::endl;
+    if (debug) {
+      // now print out the match information
+      std::cout << "Event: " << event.eventNumber << ","
+		<< " BX: " << event.BX << ","
+		<< " pT: " << event.simTracks[iSimTrack].pt << "," 
+		<< " eta: " << event.simTracks[iSimTrack].eta << ","
+		<< " phi: " << event.simTracks[iSimTrack].phi << "," 
+		<< " Q: " << event.simTracks[iSimTrack].q << std::endl;
+      std::cout << "Matched SW Track         " << matchingSwTrack << std::endl;
+      std::cout << "Matched SW PropTrack     " << matchingSwPropTrack << std::endl;
+      std::cout << "Matched SW Muon          " << matchingSwMuon << std::endl;
+      std::cout << "Matched SW TrackMuon     " << matchingSwTrackMuon << std::endl;
+      std::cout << "Matched SW PropTrackMuon " << matchingSwPropTrackMuon << std::endl;
+      
+      std::cout << "Matched HW Track         " << matchingHwTrack << std::endl;
+      std::cout << "Matched HW PropTrack     " << matchingHwPropTrack << std::endl;
+      std::cout << "Matched HW Muon          " << matchingHwMuon << std::endl;
+      std::cout << "Matched HW TrackMuon     " << matchingHwTrackMuon << std::endl;
+      std::cout << "Matched HW PropTrackMuon " << matchingHwPropTrackMuon << std::endl << std::endl;
+    }
   }
 }
 

@@ -30,7 +30,7 @@ Negative values in binary are generated assuming "One's complement"
 
 HwPropTrack tkmu_simple_hw(  HwTrack& in)
 {
-  bool debug(true);
+  bool debug(false);
 
   HwPropTrack out = in;
 
@@ -112,23 +112,43 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
 		       << " Phi Converted " << in.hwPhiGlobal << std::endl
 		       << " InvPhi-Phi Converted " << in.hwPhiGlobal*INVPHI_CONVERSION << std::endl;
 
+  if (debug) std::cout << " -- in.hwQ = " << in.hwQ << std::endl;
+
   // Rinv -> 1/pT (16384 = 2^14; number of unsigned bits)
-  finvpt_t inhwRinv;
-  if (in.hwRinv<0)
-    inhwRinv = (in.hwRinv+16384)*INVRINV_CONVERSION;
-  else
-    inhwRinv = in.hwRinv*INVRINV_CONVERSION;
-
-  fphi_t invPt_f1(0.719297);
-  fphi_t inhwInvPt(inhwRinv*invPt_f1);
-  inhwInvPt += inhwRinv*87;  // PT_CONVERSION
-  if (in.hwQ<0) inhwInvPt*=-1;
-
   if (debug) std::cout << " -- inrinv = " << in.hwRinv << std::endl;
-  if (debug) std::cout << " -- rinv   = " << inhwRinv << std::endl;
-  if (debug) std::cout << " -- invptf = " << invPt_f1 << std::endl;
-  if (debug) std::cout << " -- invpt  = " << inhwInvPt << std::endl;
+  finvpt_t inhwRinv;
+  if (in.hwRinv < 0) {
+    inhwRinv = (in.hwRinv+16384)*INVRINV_CONVERSION;
+    if (debug) std::cout << " -- in.hwRinv+16384   = " << in.hwRinv+16384 << std::endl;
+    if (debug) std::cout << " -- inhwRinv   = " << inhwRinv << std::endl;
+  }
+  else {
+    inhwRinv = in.hwRinv*INVRINV_CONVERSION;
+    if (debug) std::cout << " -- in.hwRinv   = " << in.hwRinv << std::endl;
+    if (debug) std::cout << " -- inhwRinv   = " << inhwRinv << std::endl;
+  }
 
+  // weird type error that Dan was getting
+  // related to the 3.8
+  fphiglobal_t invPt_f1(0.719297);
+  if (debug) std::cout << " -- invPt_f1 = " << invPt_f1 << std::endl;
+
+  fphiglobal_t inhwInvPt(inhwRinv*invPt_f1);
+  if (debug) std::cout << " -- inhwInvPt (inhwRinv * invPt_f1)  = " << inhwInvPt << std::endl;
+
+  inhwInvPt += inhwRinv*87;  // PT_CONVERSION
+  std::cout << " -- inhwInvPt + inhwRinv*87 = " << inhwInvPt << std::endl;
+
+  inhwInvPt  = -inhwInvPt;
+  if (in.hwQ < 1) { 
+    inhwInvPt  *= -1;
+  }
+  std::cout << " -- inhwInvPt *-1 (if applicable) = " << inhwInvPt << std::endl;
+  
+  // Pt calculation
+  if (debug) std::cout << " -- pt     = " << 1./inhwInvPt.to_float() << std::endl;
+  
+  
   // Do the calculations!
   if (debug) std::cout << " FIRMWARE : Eta calculation " << std::endl;
   if (abshwEta < boundary){
@@ -222,16 +242,17 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
   out.hwPropPhi = outPropPhi*PHI_CONVERSION;
 
   // Print results to screen for debugging
-  if (debug) std::cout << " FIRMWARE : in.hwPhiGlobal                                 = " << in.hwPhiGlobal*INVPHI_CONVERSION << std::endl;
-  if (debug) std::cout << " FIRMWARE : in.hwPhiGlobal (fphiglobal_t)                  = " << fphiglobal_t(in.hwPhiGlobal*INVPHI_CONVERSION) << std::endl;
-  if (debug) std::cout << " FIRMWARE : invCoshEta                                     = " << invCoshEta_Phi << std::endl;
-  if (debug) std::cout << " FIRMWARE : 1.464/pT                                       = " << tmp_A << std::endl;
-  if (debug) std::cout << " FIRMWARE : cosh(1.7)*dzcorrphi                            = " << tmp_B << std::endl;
-  if (debug) std::cout << " FIRMWARE : 1.464*cosh(1.7)*dzcorrphi / (pT*cosh(etaProp)) = " << tmp_val4 << std::endl;
-  if (debug) std::cout << " FIRMWARE : outPropPhi                                     = " << outPropPhi << std::endl;
-  if (debug) std::cout << " FIRMWARE : out.hwPropPhi                                  = " << out.hwPropPhi << std::endl;
-  if (debug) std::cout << " FIRMWARE : out.hwPropPhi*INVPHI                           = " << fphiglobal_t(out.hwPropPhi*INVPHI_CONVERSION) << std::endl;
-
+  if (debug) {
+    std::cout << " FIRMWARE : in.hwPhiGlobal                                 = " << in.hwPhiGlobal*INVPHI_CONVERSION << std::endl;
+    std::cout << " FIRMWARE : in.hwPhiGlobal (fphiglobal_t)                  = " << fphiglobal_t(in.hwPhiGlobal*INVPHI_CONVERSION) << std::endl;
+    std::cout << " FIRMWARE : invCoshEta                                     = " << invCoshEta_Phi << std::endl;
+    std::cout << " FIRMWARE : 1.464/pT                                       = " << tmp_A << std::endl;
+    std::cout << " FIRMWARE : cosh(1.7)*dzcorrphi                            = " << tmp_B << std::endl;
+    std::cout << " FIRMWARE : 1.464*cosh(1.7)*dzcorrphi / (pT*cosh(etaProp)) = " << tmp_val4 << std::endl;
+    std::cout << " FIRMWARE : outPropPhi                                     = " << outPropPhi << std::endl;
+    std::cout << " FIRMWARE : out.hwPropPhi                                  = " << out.hwPropPhi << std::endl;
+    std::cout << " FIRMWARE : out.hwPropPhi*INVPHI                           = " << fphiglobal_t(out.hwPropPhi*INVPHI_CONVERSION) << std::endl;
+  }
   return out;
 }
 
@@ -252,14 +273,14 @@ HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
   if (debug){
     std::cout << "Track eta " << tkEta << std::endl;
     std::cout << "Track phi " << tkPhi << std::endl;
-    std::cout << "Track hwEta " << inTrack.hwEta << std::endl;
-    std::cout << "Track hwPhiGlobal " << inTrack.hwPhiGlobal << std::endl;
-    // std::cout << "Track hwPropEta " << inTrack.hwPropEta << std::endl;
-    // std::cout << "Track hwPropPhi " << inTrack.hwPropPhi << std::endl;
-    std::cout << "Track hwEta " << inTrack.hwEta*INVETA_CONVERSION << std::endl;
-    std::cout << "Track hwPhiGlobal float " << inTrack.hwPhiGlobal*INVPHI_CONVERSION << std::endl;
-    // std::cout << "Track hwPropEta " << inTrack.hwPropEta*INVETA_CONVERSION << std::endl;
-    // std::cout << "Track hwPropPhi " << inTrack.hwPropPhi*INVPHI_CONVERSION << std::endl;
+    // std::cout << "Track hwEta " << inTrack.hwEta << std::endl;
+    // std::cout << "Track hwPhiGlobal " << inTrack.hwPhiGlobal << std::endl;
+    // // std::cout << "Track hwPropEta " << inTrack.hwPropEta << std::endl;
+    // // std::cout << "Track hwPropPhi " << inTrack.hwPropPhi << std::endl;
+    // std::cout << "Track hwEta " << inTrack.hwEta*INVETA_CONVERSION << std::endl;
+    // std::cout << "Track hwPhiGlobal float " << inTrack.hwPhiGlobal*INVPHI_CONVERSION << std::endl;
+    // // std::cout << "Track hwPropEta " << inTrack.hwPropEta*INVETA_CONVERSION << std::endl;
+    // // std::cout << "Track hwPropPhi " << inTrack.hwPropPhi*INVPHI_CONVERSION << std::endl;
     std::cout << "muon eta " << muEta << std::endl;
     std::cout << "muon phi " << muPhi << std::endl;
     std::cout << "dR " << dR2_tk_mu << std::endl << std::endl;
@@ -268,6 +289,7 @@ HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
   // need to allow for negative values, since we do not take 
   // the square root
   if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
+    if (debug)     std::cout << ">>> Matched!" << std::endl << std::endl;
     outTrackMuon.hwPt = inTrack.hwPt;
     outTrackMuon.hwEta = inMuon.hwEta;
     outTrackMuon.hwPhi = inMuon.hwPhi;
@@ -293,7 +315,7 @@ HwTrackMuon match_prop_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
   // dR calculation
   feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
 
-  bool debug(true);
+  bool debug(false);
   if (debug){
     std::cout << "Prop track eta " << tkEta << std::endl;
     std::cout << "Prop track phi " << tkPhi << std::endl;
