@@ -264,7 +264,7 @@ HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
   HwTrackMuon outTrackMuon;
   
   feta_t tkEta = inTrack.hwEta*INVETA_CONVERSION;
-  fphi_t tkPhi = inTrack.hwPhiGlobal*INVPHI_CONVERSION;
+  fphi_t tkPhi = normalizePhi(inTrack.hwPhiGlobal*INVPHI_CONVERSION);
   
   feta_m muEta = (1- 2*std::bitset<9>(inMuon.hwEta)[8]) * from_twos_complement<9>(inMuon.hwEta) * MUONETA_CONVERSION;
   fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
@@ -276,14 +276,6 @@ HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
   if (debug){
     std::cout << "Track eta " << tkEta << std::endl;
     std::cout << "Track phi " << tkPhi << std::endl;
-    // std::cout << "Track hwEta " << inTrack.hwEta << std::endl;
-    // std::cout << "Track hwPhiGlobal " << inTrack.hwPhiGlobal << std::endl;
-    // // std::cout << "Track hwPropEta " << inTrack.hwPropEta << std::endl;
-    // // std::cout << "Track hwPropPhi " << inTrack.hwPropPhi << std::endl;
-    // std::cout << "Track hwEta " << inTrack.hwEta*INVETA_CONVERSION << std::endl;
-    // std::cout << "Track hwPhiGlobal float " << inTrack.hwPhiGlobal*INVPHI_CONVERSION << std::endl;
-    // // std::cout << "Track hwPropEta " << inTrack.hwPropEta*INVETA_CONVERSION << std::endl;
-    // // std::cout << "Track hwPropPhi " << inTrack.hwPropPhi*INVPHI_CONVERSION << std::endl;
     std::cout << "muon eta " << muEta << std::endl;
     std::cout << "muon phi " << muPhi << std::endl;
     std::cout << "dR " << dR2_tk_mu << std::endl << std::endl;
@@ -310,7 +302,7 @@ HwTrackMuon match_prop_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
   HwTrackMuon outTrackMuon;
 
   feta_t tkEta = inTrack.hwPropEta*INVETA_CONVERSION;
-  fphiglobal_t tkPhi = inTrack.hwPropPhi*INVPHI_CONVERSION;
+  fphiglobal_t tkPhi = normalizePhi(inTrack.hwPropPhi*INVPHI_CONVERSION);
   
   feta_m muEta = (1- 2*std::bitset<9>(inMuon.hwEta)[8]) * from_twos_complement<9>(inMuon.hwEta) * MUONETA_CONVERSION;
   fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);

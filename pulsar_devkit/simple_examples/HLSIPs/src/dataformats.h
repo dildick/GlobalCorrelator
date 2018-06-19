@@ -43,9 +43,9 @@ typedef ap_fixed<9,3> fphi_m;    // phi (50 micro-rad)
 
 // muon data
 typedef ap_uint<9> pt_m;
-typedef ap_int<9> eta_m;
-typedef ap_int<10> phi_m;
-typedef ap_int<4> quality_m;
+typedef ap_int<9> eta_m; // muon eta goes from -2.4 to 2.4 
+typedef ap_uint<10> phi_m; // muon phi goes from 0 to 2pi
+typedef ap_uint<4> quality_m;
 
 // dRcut
 #define dRmax = 0.2
@@ -79,6 +79,7 @@ typedef ap_int<4> quality_m;
 #define INVZ_CONVERSION 5859375E-8          //0.05859375 //original: 56152375E-9         //0.056152375
 
 // Muon conversions
+#define MUONPT_CONVERSION 0.5
 #define MUONETA_CONVERSION 0.010875
 #define MUONPHI_CONVERSION 0.010908
 
@@ -98,7 +99,37 @@ template<int N>
 int from_twos_complement(int x) {
   return (x & (1<<(N-1))) ? (~(x-1) & ((1<<N)-1)) : x;
 }
+
+float getMuonPtFloat(int hwPt)
+{
+  return hwPt * MUONPT_CONVERSION;
+}
+
+float getMuonEtaFloat(int hwEta)
+{
+  return (1- 2*std::bitset<9>(hwEta)[8]) * from_twos_complement<9>(hwEta) * MUONETA_CONVERSION;
+}
+
+float getMuonPhiFloat(int hwPhi)
+{
+  return normalizePhi(hwPhi * MUONPHI_CONVERSION);
+}
  
+float getTrackPtFloat(int hwPt)
+{
+  return hwPt * INVPT_CONVERSION;
+}
+
+float getTrackEtaFloat(int hwEta)
+{
+  return hwEta * INVETA_CONVERSION;
+}
+
+float getTrackPhiFloat(int hwPhi)
+{
+  return normalizePhi(hwPhi * INVPHI_CONVERSION);
+}
+
 }
 // -- Define structs for physics objects in software
 struct SimTrack {
@@ -147,7 +178,7 @@ struct SwTrack {
   }
   bool operator==(const SwTrack& rhs) const
   {
-    return fabs(eta - rhs.eta) < 0.2;
+    return (eta - rhs.eta)*(eta - rhs.eta) + normalizePhi(phi - rhs.phi)*normalizePhi(phi - rhs.phi) < 0.3*0.3;
   }
   bool operator<(const SwTrack& rhs) const
   {
@@ -205,10 +236,7 @@ struct SwMuon {
   }
   bool operator==(const SwMuon& rhs) const
   {
-    /* std::cout << "Checking muon equivalence " << std::endl; */
-    /* std::cout << pt << " " << eta << " "  << phi << " " << q << " " << valid << std::endl;  */
-    /* std::cout << rhs.pt << " " << rhs.eta << " "  << rhs.phi << " " << rhs.q << " " << rhs.valid << std::endl;  */
-    return fabs(eta - rhs.eta) < 0.2;
+    return (eta - rhs.eta)*(eta - rhs.eta) + normalizePhi(phi - rhs.phi)*normalizePhi(phi - rhs.phi) < 0.3*0.3;
   }
   bool operator<(const SwMuon& rhs) const
   {
@@ -255,9 +283,6 @@ struct HwTrack
   chisq_t hwX2;
   q_t hwValid;   // valid bit
   bx_t hwBX;    // bunch crossing 3-bit counter
-  bx_t hwBX2;    // bunch crossing 3-bit counter */
-  bx_t hwBX3;    // bunch crossing 3-bit counter */
-  bx_t hwBX4;    // bunch crossing 3-bit counter */
   // constructor
   HwTrack() : 
     hwRinv(0),
@@ -272,9 +297,6 @@ struct HwTrack
     hwX2(0),
     hwValid(0),
       hwBX(0)
-      , hwBX2(0)
-      , hwBX3(0)
-      , hwBX4(0) 
   {
   }
   bool operator==(const HwTrack& rhs) const
@@ -337,11 +359,17 @@ struct HwMuon {
   }
   bool operator==(const HwMuon& rhs) const
   {
-    return abs(hwEta - rhs.hwEta) < 100;
+    float eta1 = getMuonEtaFloat(hwEta);
+    float eta2 = getMuonEtaFloat(rhs.hwEta);
+    float phi1 = getMuonPhiFloat(hwPhi);
+    float phi2 = getMuonPhiFloat(rhs.hwPhi);
+    return (eta1 - eta2)*(eta1 - eta2) + normalizePhi(phi1 - phi2)*normalizePhi(phi1 - phi2) < 0.3*0.3;
   }
   bool operator<(const HwMuon& rhs) const
   {
-    return hwEta < rhs.hwEta;
+    float eta1 = getMuonEtaFloat(hwEta);
+    float eta2 = getMuonEtaFloat(rhs.hwEta);
+    return eta1 < eta2;
   }
 };
 
@@ -460,9 +488,9 @@ std::ostream& operator << (std::ostream& os, const SwTrackMuon& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 {
-  os << "pT: " << rhs.hwPt*INVPT_CONVERSION << ", "
-     << "eta: " << rhs.hwEta*INVETA_CONVERSION << ", "
-     << "phi: " << rhs.hwPhiGlobal*INVPHI_CONVERSION << ", "
+  os << "pT: " << getTrackPtFloat(rhs.hwPt) << ", "
+     << "eta: " << getTrackEtaFloat(rhs.hwEta) << ", "
+     << "phi: " << getTrackPhiFloat(rhs.hwPhiGlobal) << ", "
      << "Z0: " << rhs.hwZ0*INVZ_CONVERSION << ", " 
      << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
@@ -472,9 +500,9 @@ std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 {
-  os << "pT: " << rhs.hwPt*INVPT_CONVERSION << ", "
-     << "eta_prop: " << rhs.hwPropEta*INVETA_CONVERSION << ", " 
-     << "phi_prop: " << rhs.hwPropPhi*INVPHI_CONVERSION << ", "
+  os << "pT: " << getTrackPtFloat(rhs.hwPt) << ", "
+     << "eta: " << getTrackEtaFloat(rhs.hwPropEta) << ", "
+     << "phi: " << getTrackPhiFloat(rhs.hwPropPhi) << ", "
      << "Z0: " << rhs.hwZ0*INVZ_CONVERSION << ", " 
      << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
@@ -484,9 +512,9 @@ std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 {
-  os << "pT: " << (rhs.hwPt)*0.5 << ", " 
-     << "eta: " << (1- 2*std::bitset<9>(rhs.hwEta)[8]) * from_twos_complement<9>(rhs.hwEta) * MUONETA_CONVERSION << ", "
-     << "phi: " << normalizePhi((1- 2*std::bitset<10>(rhs.hwPhi)[9]) * from_twos_complement<10>(rhs.hwPhi) * MUONPHI_CONVERSION) << ", "
+  os << "pT: " << getMuonPtFloat(rhs.hwPt) << ", " 
+     << "eta: " << getMuonEtaFloat(rhs.hwEta) << ", "
+     << "phi: " << getMuonPhiFloat(rhs.hwPhi) << ", "
      << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
      << "BX: " << std::bitset<3>(rhs.hwBX);
@@ -495,9 +523,9 @@ std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwTrackMuon& rhs)
 {
-  os << "pT: " << rhs.hwPt*INVPT_CONVERSION << ", "
-     << "eta: " << (1- 2*std::bitset<9>(rhs.hwEta)[8]) * from_twos_complement<9>(rhs.hwEta) * MUONETA_CONVERSION << ", "
-     << "phi: " << normalizePhi((1- 2*std::bitset<10>(rhs.hwPhi)[9]) * from_twos_complement<10>(rhs.hwPhi) * MUONPHI_CONVERSION) << ", "
+  os << "pT: " << getTrackPtFloat(rhs.hwPt) << ", "
+     << "eta: " << getMuonEtaFloat(rhs.hwEta) << ", "
+     << "phi: " << getMuonPhiFloat(rhs.hwPhi) << ", "
      << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
      << "BX: " << std::bitset<3>(rhs.hwBX);

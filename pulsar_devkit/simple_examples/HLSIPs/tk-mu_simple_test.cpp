@@ -157,11 +157,7 @@ int main()
     sortTrackAndMuons(events);
 
     // remove the duplicate tracks and muons
-    // duplicateMerger(events);
-
-    // for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent) {
-    //   std::cout << events[iEvent] << std::endl;
-    // }
+    duplicateMerger(events);
 
     // process the tracks and muons
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
@@ -444,7 +440,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() ) + (batchNumber * 100);
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	if (newEvent.eventNumber > 10) break;
+	if (newEvent.eventNumber > 100000) break;
 	events.push_back(newEvent);
       }
       
@@ -889,7 +885,7 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
   in_muon_hw.hwQ = std::bitset<1>(q_str).to_ulong();
   in_muon_hw.hwValid = in_muon_hw.hwPt != 0;
 
-  if (true) {
+  if (false) {
     std::cout << "data_fw "  << data_fw << std::endl;
     std::cout << "dataword " << dataword << std::endl;
     std::cout << "frame 1: " << frame1 << std::endl;
@@ -910,8 +906,10 @@ T getMatchingTrack(const SimTrack& simTrack, const std::vector<T> collection)
   T matchingT;
   // find the best matching T
   for (unsigned iT = 0; iT < collection.size(); iT++){
+
     // relatively loose cut
-    if (deltaR(collection[iT].eta, collection[iT].phi, simTrack.eta, simTrack.phi) < 0.4) {
+    if (deltaR(collection[iT].eta, collection[iT].phi, 
+	       simTrack.eta, simTrack.phi) < 0.4) {
       matchingT = collection[iT];
       break;
     }
@@ -925,8 +923,10 @@ T getMatchingPropTrack(const SimTrack& simTrack, const std::vector<T> collection
   T matchingT;
   // find the best matching T
   for (unsigned iT = 0; iT < collection.size(); iT++){
+
     // relatively loose cut
-    if (deltaR(collection[iT].propEta, collection[iT].propPhi, simTrack.eta, simTrack.phi) < 0.4) {
+    if (deltaR(collection[iT].propEta, collection[iT].propPhi, 
+	       simTrack.eta, simTrack.phi) < 0.4) {
       matchingT = collection[iT];
       break;
     }
@@ -943,29 +943,8 @@ T getMatchingHwTrack(const SimTrack& simTrack, const std::vector<T> collection)
   // find the best matching T
   for (unsigned iT = 0; iT < collection.size(); iT++){
 
-    feta_t inhwEta;
-    feta_t sinhEta;
-    feta_t absSinhEta;
-    if (collection[iT].hwSinhEta<0){
-      absSinhEta = (collection[iT].hwSinhEta+8192)*INVETA_CONVERSION;     // use ap_fixed<>
-      sinhEta    = -1*(collection[iT].hwSinhEta+8192)*INVETA_CONVERSION;
-    }
-    else{
-      absSinhEta = collection[iT].hwSinhEta*INVETA_CONVERSION;
-      sinhEta    = collection[iT].hwSinhEta*INVETA_CONVERSION;
-    }
-    arcsinh(absSinhEta, inhwEta);
-    feta_t abshwEta = inhwEta;
-    if (collection[iT].hwSinhEta<0) inhwEta*=-1;
-
-    fphi_t inhwPhi;
-    if (collection[iT].hwPhi<0)
-      inhwPhi = -1*(collection[iT].hwPhi+262144)*INVPHI_CONVERSION;
-    else
-      inhwPhi = collection[iT].hwPhi*INVPHI_CONVERSION;
-    
-    float eta = inhwEta;
-    float phi = inhwPhi + phiOffSetValues[collection[iT].hwSector-1];
+    float eta = getTrackEtaFloat(collection[iT].hwEta);
+    float phi = getTrackPhiFloat(collection[iT].hwPhiGlobal);
     
     if (debug){
       std::cout << "In function getMatchingHwTrack" << std::endl;
@@ -991,8 +970,8 @@ T getMatchingHwPropTrack(const SimTrack& simTrack, const std::vector<T> collecti
   // find the best matching T
   for (unsigned iT = 0; iT < collection.size(); iT++){
 
-    float eta = collection[iT].hwPropEta * INVETA_CONVERSION;
-    float phi = collection[iT].hwPropPhi * INVPHI_CONVERSION;
+    float eta = getTrackEtaFloat(collection[iT].hwPropEta);
+    float phi = getTrackPhiFloat(collection[iT].hwPropPhi);
 
     if (debug){
       std::cout << "In function getMatchingHwPropTrack" << std::endl;
@@ -1020,8 +999,8 @@ T getMatchingHwMuon(const SimTrack& simTrack, const std::vector<T> collection, s
   // find the best matching T
   for (unsigned iT = 0; iT < collection.size(); iT++){
 
-    float eta = collection[iT].hwEta *              MUONETA_CONVERSION;
-    float phi = normalizePhi(collection[iT].hwPhi * MUONPHI_CONVERSION);
+    float eta = getMuonEtaFloat(collection[iT].hwEta);
+    float phi = getMuonPhiFloat(collection[iT].hwPhi);
     float dR = deltaR(eta, phi, simTrack.eta, simTrack.phi);
 
     if (debug){
