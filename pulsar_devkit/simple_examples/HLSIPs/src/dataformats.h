@@ -30,7 +30,7 @@ typedef ap_int<3> bx_t;     // z0  (1 mm over +/-14.9 cm)
 typedef ap_uint<5> sector_t;
 
 // before the decimal point, after the decimal point
-typedef ap_fixed<15,2> finvpt_t;  // inverse pt [1% at 100 GeV]
+typedef ap_fixed<24,2> finvpt_t;  // inverse pt [1% at 100 GeV]
 typedef ap_fixed<12,9> fpt_t;     // 1/Rinv
 typedef ap_fixed<14,4> feta_t;    // eta [sinh(eta) measure to 0.005]
 typedef ap_fixed<19,3> fphi_t;    // phi (50 micro-rad)
@@ -42,7 +42,7 @@ typedef ap_fixed<10,4> feta_m;    // eta [sinh(eta) measure to 0.005]
 typedef ap_fixed<9,3> fphi_m;    // phi (50 micro-rad)
 
 // muon data
-typedef ap_int<9> pt_m;
+typedef ap_uint<9> pt_m;
 typedef ap_int<9> eta_m;
 typedef ap_int<10> phi_m;
 typedef ap_int<4> quality_m;
@@ -66,13 +66,14 @@ typedef ap_int<4> quality_m;
 
 // Conversions between binary and floating point (using example file to derive)
 #define RINV_CONVERSION 792057              //1314229             // 1/0.000000760902077
+#define INVRINV_CONVERSION 1262535E-12   //0.000001262538462  //original: 760902077E-15   
 
-
-#define PT_CONVERSION 87719298E-6           // 1/(0.01*0.3*3.8); 87719298E-6
+#define PT_CONVERSION 877192982456E-10  // 1/(0.01*0.3*3.8); 87719298E-6
+#define INVPT_CONVERSION 114E-4
 #define ETA_CONVERSION 512                  //855   // 1/0.0011698 = 854.84698
 #define PHI_CONVERSION 211216               //original: 219037
 #define Z_CONVERSION 17                     //original: 18 // 1/0.05615 = 17.81 -> 18
-#define INVRINV_CONVERSION 1262535E-12   //0.000001262538462  //original: 760902077E-15    // 0.000000760902077
+ // 0.000000760902077
 #define INVETA_CONVERSION 19531261E-10      //original: 11698E-7
 #define INVPHI_CONVERSION 47345E-10 // 4734119709E-15    //0.000004734119709  // original: 456544E-11
 #define INVZ_CONVERSION 5859375E-8          //0.05859375 //original: 56152375E-9         //0.056152375
@@ -144,6 +145,14 @@ struct SwTrack {
     sector(0)
   {
   }
+  bool operator==(const SwTrack& rhs) const
+  {
+    return fabs(eta - rhs.eta) < 0.3;
+  }
+  bool operator<(const SwTrack& rhs) const
+  {
+    return eta<rhs.eta;
+  }
 };
 
 struct SwPropTrack : public SwTrack {
@@ -193,6 +202,17 @@ struct SwMuon {
     valid(0),
     BX(0)
   {
+  }
+  bool operator==(const SwMuon& rhs) const
+  {
+    /* std::cout << "Checking muon equivalence " << std::endl; */
+    /* std::cout << pt << " " << eta << " "  << phi << " " << q << " " << valid << std::endl;  */
+    /* std::cout << rhs.pt << " " << rhs.eta << " "  << rhs.phi << " " << rhs.q << " " << rhs.valid << std::endl;  */
+    return fabs(eta - rhs.eta) < 0.3;
+  }
+  bool operator<(const SwMuon& rhs) const
+  {
+    return eta < rhs.eta;
   }
 };
 
@@ -257,6 +277,14 @@ struct HwTrack
       , hwBX4(0) 
   {
   }
+  bool operator==(const HwTrack& rhs) const
+  {
+    return abs(hwSinhEta - rhs.hwSinhEta) < 100;
+  }
+  bool operator<(const HwTrack& rhs) const
+  {
+    return hwSinhEta < rhs.hwSinhEta;
+  }
 };
 
 struct HwPropTrack : public HwTrack 
@@ -306,6 +334,14 @@ struct HwMuon {
     hwValid(0),
     hwBX(0)
   {
+  }
+  bool operator==(const HwMuon& rhs) const
+  {
+    return abs(hwEta - rhs.hwEta) < 100;
+  }
+  bool operator<(const HwMuon& rhs) const
+  {
+    return hwEta < rhs.hwEta;
   }
 };
 
@@ -424,15 +460,11 @@ std::ostream& operator << (std::ostream& os, const SwTrackMuon& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 {
-  os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << ", " 
-     << "pT: " << std::bitset<12>(rhs.hwPt) << ", "
-     << "eta: " << std::bitset<14>(rhs.hwEta) << ", "
-     /* << "sinhEta: " << std::bitset<14>(rhs.hwSinhEta) << ", " */
-     << "phi: " << std::bitset<19>(rhs.hwPhi) << ", " 
-     /* << "phiGlobal: " << std::bitset<19>(rhs.hwPhiGlobal) << ", "  */
+  os << "pT: " << fabs(rhs.hwPt*INVPT_CONVERSION) << ", "
+     << "eta: " << rhs.hwEta*INVETA_CONVERSION << ", "
+     << "phi: " << rhs.hwPhiGlobal*INVPHI_CONVERSION << ", "
      << "Z0: " << std::bitset<11>(rhs.hwZ0) << ", " 
-     << "Q: " << std::bitset<1>(rhs.hwQ) << ", "
-     /* << "X2: " << std::bitset<10>(rhs.hwX2) << ", "  */
+     << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
      << "BX: " << std::bitset<3>(rhs.hwBX);
    return os;
@@ -440,13 +472,11 @@ std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 {
-  os << "Rinv: " << std::bitset<15>(rhs.hwRinv) << ", " 
-     << "pT: " << std::bitset<12>(rhs.hwPt) << ", "
-     << "eta_prop: " << std::bitset<14>(rhs.hwPropEta) << ", " 
-     << "phi_prop: " << std::bitset<19>(rhs.hwPropPhi) << ", "
+  os << "pT: " << fabs(rhs.hwPt*INVPT_CONVERSION) << ", "
+     << "eta_prop: " << rhs.hwPropEta*INVETA_CONVERSION << ", " 
+     << "phi_prop: " << rhs.hwPropPhi*INVPHI_CONVERSION << ", "
      << "Z0: " << std::bitset<11>(rhs.hwZ0) << ", " 
-     << "Q: " << std::bitset<1>(rhs.hwQ) << ", "
-     /* << "X2: " << std::bitset<10>(rhs.hwX2) << ", "  */
+     << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
      << "BX: " << std::bitset<3>(rhs.hwBX);
   return os;
@@ -465,7 +495,7 @@ std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwTrackMuon& rhs)
 {
-  os << "pT: " << std::bitset<12>(rhs.hwPt) << ", " 
+  os << "pT: " << fabs(rhs.hwPt*INVPT_CONVERSION) << ", "
      << "eta: " << (1- 2*std::bitset<9>(rhs.hwEta)[8]) * from_twos_complement<9>(rhs.hwEta) * MUONETA_CONVERSION << ", "
      << "phi: " << normalizePhi(rhs.hwPhi * MUONPHI_CONVERSION) << ", "
      << "Q: " << 1- 2*rhs.hwQ << ", "

@@ -13,6 +13,7 @@ HLS with c++
 #include <bitset>
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 #include <stdlib.h>
 #include <math.h>
 
@@ -94,6 +95,11 @@ void eventSelector(const std::vector<Event>& events,
 	      std::vector<Event>& events_selected);
 
 /*
+  Sort tracks and muons in the event
+ */
+void sortTrackAndMuons(std::vector<Event>& events);
+
+/*
   Merge duplicate tracks and muons in each event
  */
 void duplicateMerger(std::vector<Event>& events);
@@ -147,16 +153,16 @@ int main()
 		hwTrackFiles,
 		hwMuonFiles);
 
+    // sort the tracks and muons
+    sortTrackAndMuons(events);
 
-    // pre-select events that have at most 2 muons and 2 tracks
-    // events with >2 muons or >2 tracks screw up the hardware
-    /* 
-       std::vector<Event> events_selected;
-       eventSelector(events, events_selected); 
-    */
-
+    // remove the duplicate tracks and muons
     duplicateMerger(events);
-  
+
+    // for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent) {
+    //   std::cout << events[iEvent] << std::endl;
+    // }
+
     // process the tracks and muons
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
 
@@ -286,9 +292,9 @@ int main()
 	  // // check if valid or not
 	  if (not hwPropTrackMuon.hwValid) continue;
 
-	  std::cout << ">>Candiate proptrack-muon " << hwPropTrackMuon << std::endl;
+	  // std::cout << ">>Candiate proptrack-muon " << hwPropTrackMuon << std::endl;
 	  float deltaPt = fabs(hwPropTrackMuon.hwPt - hwMuon.hwPt); 
-	  std::cout << "Proto deltaPt " << deltaPt << " maxDeltaPt " << maxDeltaPt << std::endl;
+	  // std::cout << "Proto deltaPt " << deltaPt << " maxDeltaPt " << maxDeltaPt << std::endl;
 
 	  // retain the matching one that has the smallest delta Pt
 	  if ( deltaPt < maxDeltaPt){
@@ -298,7 +304,7 @@ int main()
 	}
 	// add the match to the collection
 	if (candidatePropTrackMuon.hwValid) {
-	  std::cout << ">>Adding proptrack-muon " << candidatePropTrackMuon << std::endl << std::endl;
+	  // std::cout << ">>Adding proptrack-muon " << candidatePropTrackMuon << std::endl << std::endl;
 	  events[iEvent].hwPropTrackMuons.push_back(candidatePropTrackMuon);
 	}
       }
@@ -648,64 +654,36 @@ void eventSelector(const std::vector<Event>& events,
 }
 
 
-template <class T> 
-bool isDuplicateSw(const T& first, const T& second)
+void sortTrackAndMuons(std::vector<Event>& events)
 {
-  return deltaR(first.eta, first.phi, second.eta, second.phi) < 0.2; 
+  for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
+    // sort tracks and muons in the event
+    std::sort(events[iEvent].swTracks.begin(), events[iEvent].swTracks.end());
+    std::sort(events[iEvent].swMuons.begin(), events[iEvent].swMuons.end());
+    std::sort(events[iEvent].hwTracks.begin(), events[iEvent].hwTracks.end());
+    std::sort(events[iEvent].hwMuons.begin(), events[iEvent].hwMuons.end());
+  }
 }
 
-bool isDuplicateHwMuon(const HwMuon& first, const HwMuon& second)
-{
-  feta_m eta1 = (1- 2*std::bitset<9>(first.hwEta)[8]) * from_twos_complement<9>(first.hwEta) * MUONETA_CONVERSION;
-  fphi_m phi1 = normalizePhi(first.hwPhi * MUONPHI_CONVERSION);
-  feta_m eta2 = (1- 2*std::bitset<9>(second.hwEta)[8]) * from_twos_complement<9>(second.hwEta) * MUONETA_CONVERSION;
-  fphi_m phi2 = normalizePhi(second.hwPhi * MUONPHI_CONVERSION);
-
-  feta_m dR2 = dr2_int(eta1, phi1, eta2, phi2);
-
-  return dR2 < 0.2*0.2 and dR2 > - 0.2*0.2; 
-}
-
-bool isDuplicateHwTrack(const HwTrack& first, const HwTrack& second)
-{
-  return first.hwQ == second.hwQ;
-}
 
 void duplicateMerger(std::vector<Event>& events)
 {
   for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
     // ignore events with more than two tracks or more than two muons
     // they screw up the hardware
-    std::vector<SwTrack> newSwTracks;
-    std::vector<HwTrack> newHwTracks;
-    std::vector<SwMuon>  newSwMuons;
-    std::vector<HwMuon>  newHwMuons;
-
-    for (unsigned int iTrack = 0; iTrack < events[iEvent].swTracks.size(); ++iTrack){
-      if (iTrack==0 or (iTrack!=0 and not isDuplicateSw(events[iEvent].swTracks[iTrack-1], events[iEvent].swTracks[iTrack])))
-	newSwTracks.push_back(events[iEvent].swTracks[iTrack]);
-    }
-
-    for (unsigned int iMuon = 0; iMuon < events[iEvent].swMuons.size(); ++iMuon){
-      if (iMuon==0 or (iMuon!=0 and not isDuplicateSw(events[iEvent].swMuons[iMuon-1], events[iEvent].swMuons[iMuon])))
-	newSwMuons.push_back(events[iEvent].swMuons[iMuon]);
-    }
-
-    for (unsigned int iMuon = 0; iMuon < events[iEvent].hwMuons.size(); ++iMuon){
-      if (iMuon==0 or (iMuon!=0 and not isDuplicateHwMuon(events[iEvent].hwMuons[iMuon-1], events[iEvent].hwMuons[iMuon])))
-	newHwMuons.push_back(events[iEvent].hwMuons[iMuon]);
-    }
-
-    for (unsigned int iTrack = 0; iTrack < events[iEvent].hwTracks.size(); ++iTrack){
-      if (iTrack==0 or (iTrack!=0 and not isDuplicateHwTrack(events[iEvent].hwTracks[iTrack-1], events[iEvent].hwTracks[iTrack])))
-	newHwTracks.push_back(events[iEvent].hwTracks[iTrack]);
-    }
-
-    // set the collections
-    events[iEvent].swTracks = newSwTracks;
-    events[iEvent].hwTracks = newHwTracks;
-    events[iEvent].swMuons = newSwMuons;
-    events[iEvent].hwMuons = newHwMuons;
+    std::cout << "Eliminating duplicate muons " << iEvent << std::endl;
+    events[iEvent].swTracks.erase(std::unique(events[iEvent].swTracks.begin(), 
+					      events[iEvent].swTracks.end()), 
+				  events[iEvent].swTracks.end());                   
+    events[iEvent].swMuons.erase(std::unique(events[iEvent].swMuons.begin(), 
+					     events[iEvent].swMuons.end()), 
+				 events[iEvent].swMuons.end());                   
+    events[iEvent].hwTracks.erase(std::unique(events[iEvent].hwTracks.begin(), 
+					      events[iEvent].hwTracks.end()), 
+				  events[iEvent].hwTracks.end());
+    events[iEvent].hwMuons.erase(std::unique(events[iEvent].hwMuons.begin(), 
+					     events[iEvent].hwMuons.end()), 
+				 events[iEvent].hwMuons.end());                   
   }
 }
 
@@ -786,8 +764,8 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   // }
 
   // setup the charge
-  // hwQ == 0 -> negative muon
-  // hwQ == 1 -> positive muon
+  // hwQ == 1 -> negative muon
+  // hwQ == 0 -> positive muon
   in_track_hw.hwQ = values_fw.at(1)[0];
   if (debug_hw_track) std::cout << " Looping over data - hwQ = " << in_track_hw.hwQ << std::endl;
   

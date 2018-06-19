@@ -30,9 +30,7 @@ Negative values in binary are generated assuming "One's complement"
 
 HwPropTrack tkmu_simple_hw(  HwTrack& in)
 {
-  bool debug(false);
-
-  HwPropTrack out = in;
+  bool debug(true);
 
   /* Hardware implementation of the track propagation */
   feta_t boundary(1.1);           // barrel/endcap boundary
@@ -137,17 +135,20 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
   if (debug) std::cout << " -- inhwInvPt (inhwRinv * invPt_f1)  = " << inhwInvPt << std::endl;
 
   inhwInvPt += inhwRinv*87;  // PT_CONVERSION
-  std::cout << " -- inhwInvPt + inhwRinv*87 = " << inhwInvPt << std::endl;
+  if (debug) std::cout << " -- inhwInvPt + inhwRinv*87 = " << inhwInvPt << std::endl;
 
-  inhwInvPt  = -inhwInvPt;
-  if (in.hwQ < 1) { 
+  //  inhwInvPt  = -inhwInvPt;
+  if (in.hwQ > 0) { 
     inhwInvPt  *= -1;
   }
-  std::cout << " -- inhwInvPt *-1 (if applicable) = " << inhwInvPt << std::endl;
+  if (debug) std::cout << " -- inhwInvPt *-1 (if applicable) = " << inhwInvPt << std::endl;
   
-  // Pt calculation
+  // Pt calculation and assignment
   if (debug) std::cout << " -- pt     = " << 1./inhwInvPt.to_float() << std::endl;
-  
+  in.hwPt = 1./inhwInvPt.to_float()*PT_CONVERSION;
+  if (debug) std::cout << " -- in.hwPt     = " << in.hwPt << std::endl;
+  if (debug) std::cout << " -- in.hwPt     = " << in.hwPt*INVPT_CONVERSION << std::endl;
+  // if (debug) std::cout << " -- in.hwPt     = " << in.hwPt*a87719298E-6* << std::endl;
   
   // Do the calculations!
   if (debug) std::cout << " FIRMWARE : Eta calculation " << std::endl;
@@ -220,7 +221,9 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     if (debug) std::cout << " FIRMWARE :       tanhEta   = " << tanhEta << std::endl;
     if (debug) std::cout << " FIRMWARE :       dzCorrPhi = " << dzCorrPhi << std::endl;
   }
-
+  
+  // make a new output track
+  HwPropTrack out = in;
 
   // ** calculate the propagated eta ** //
   if (debug) std::cout << " FIRMWARE : -- ETA calculation " << inhwEta + deta << std::endl;
