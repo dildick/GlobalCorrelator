@@ -30,7 +30,7 @@ Negative values in binary are generated assuming "One's complement"
 
 HwPropTrack tkmu_simple_hw(  HwTrack& in)
 {
-  bool debug(true);
+  bool debug(false);
 
   /* Hardware implementation of the track propagation */
   feta_t boundary(1.1);           // barrel/endcap boundary
@@ -145,7 +145,7 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
   
   // Pt calculation and assignment
   if (debug) std::cout << " -- pt     = " << 1./inhwInvPt.to_float() << std::endl;
-  in.hwPt = 1./inhwInvPt.to_float()*PT_CONVERSION;
+  in.hwPt = fabs(1./inhwInvPt.to_float())*PT_CONVERSION;
   if (debug) std::cout << " -- in.hwPt     = " << in.hwPt << std::endl;
   if (debug) std::cout << " -- in.hwPt     = " << in.hwPt*INVPT_CONVERSION << std::endl;
   // if (debug) std::cout << " -- in.hwPt     = " << in.hwPt*a87719298E-6* << std::endl;

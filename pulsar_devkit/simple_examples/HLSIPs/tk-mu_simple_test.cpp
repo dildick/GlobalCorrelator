@@ -157,7 +157,7 @@ int main()
     sortTrackAndMuons(events);
 
     // remove the duplicate tracks and muons
-    duplicateMerger(events);
+    // duplicateMerger(events);
 
     // for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent) {
     //   std::cout << events[iEvent] << std::endl;
@@ -265,7 +265,7 @@ int main()
 	  if (not hwTrackMuon.hwValid) continue;
 
 	  // std::cout << ">>Candiate trackmuon " << hwTrackMuon << std::endl;
-	  float deltaPt = fabs(hwTrackMuon.hwPt - hwMuon.hwPt); 
+	  float deltaPt = fabs(fabs(hwTrackMuon.hwPt*INVPT_CONVERSION) - hwMuon.hwPt*0.5); 
 	  // std::cout << "Proto deltaPt " << deltaPt << " maxDeltaPt " << maxDeltaPt << std::endl;
 
 	  // retain the matching one that has the smallest delta Pt
@@ -293,7 +293,7 @@ int main()
 	  if (not hwPropTrackMuon.hwValid) continue;
 
 	  // std::cout << ">>Candiate proptrack-muon " << hwPropTrackMuon << std::endl;
-	  float deltaPt = fabs(hwPropTrackMuon.hwPt - hwMuon.hwPt); 
+	  float deltaPt = fabs(fabs(hwPropTrackMuon.hwPt*INVPT_CONVERSION) - hwMuon.hwPt*0.5); 
 	  // std::cout << "Proto deltaPt " << deltaPt << " maxDeltaPt " << maxDeltaPt << std::endl;
 
 	  // retain the matching one that has the smallest delta Pt
@@ -444,7 +444,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() ) + (batchNumber * 100);
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	if (newEvent.eventNumber > 1) break;
+	if (newEvent.eventNumber > 10) break;
 	events.push_back(newEvent);
       }
       
@@ -543,7 +543,7 @@ void eventReader(std::vector<Event>& events,
 	HwTrack newTrack;
 	newTrack.hwBX = std::bitset<3>(eventNumber).to_ulong();
 	decode_hw_track_data(newString + " " + phisector, newTrack);
-	//if (newTrack.hwValid)
+	if (newTrack.hwValid)
 	  events[eventNumber-1].hwTracks.push_back(newTrack);
       }
     }
@@ -887,9 +887,9 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
   in_muon_hw.hwEta = std::bitset<N_BINS_MUON_ETA>(eta_str).to_ulong();
   in_muon_hw.hwPhi = std::bitset<N_BINS_MUON_PHI>(phi_str).to_ulong();
   in_muon_hw.hwQ = std::bitset<1>(q_str).to_ulong();
-  in_muon_hw.hwValid = in_muon_hw.hwEta != 0 and in_muon_hw.hwPhi != 0;
+  in_muon_hw.hwValid = in_muon_hw.hwPt != 0;
 
-  if (false) {
+  if (true) {
     std::cout << "data_fw "  << data_fw << std::endl;
     std::cout << "dataword " << dataword << std::endl;
     std::cout << "frame 1: " << frame1 << std::endl;

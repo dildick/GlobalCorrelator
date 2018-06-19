@@ -19,7 +19,7 @@ const int N_BINS_MUON_ETA = 9;
 const int N_BINS_MUON_PHI = 10;
 
 typedef ap_int<15> invpt_t;  // inverse pt [1% at 100 GeV]
-typedef ap_int<12> pt_t;     // convert from RINV
+typedef ap_uint<15> pt_t;     // convert from RINV
 typedef ap_int<14> eta_t;    // eta [sinh(eta) measure to 0.005]
 typedef ap_int<19> phi_t;    // phi (50 micro-rad)
 typedef ap_int<23> phiglobal_t;    // phi (50 micro-rad)
@@ -147,7 +147,7 @@ struct SwTrack {
   }
   bool operator==(const SwTrack& rhs) const
   {
-    return fabs(eta - rhs.eta) < 0.3;
+    return fabs(eta - rhs.eta) < 0.2;
   }
   bool operator<(const SwTrack& rhs) const
   {
@@ -208,7 +208,7 @@ struct SwMuon {
     /* std::cout << "Checking muon equivalence " << std::endl; */
     /* std::cout << pt << " " << eta << " "  << phi << " " << q << " " << valid << std::endl;  */
     /* std::cout << rhs.pt << " " << rhs.eta << " "  << rhs.phi << " " << rhs.q << " " << rhs.valid << std::endl;  */
-    return fabs(eta - rhs.eta) < 0.3;
+    return fabs(eta - rhs.eta) < 0.2;
   }
   bool operator<(const SwMuon& rhs) const
   {
@@ -418,8 +418,8 @@ std::ostream& operator << (std::ostream& os, const SimTrack& rhs)
 std::ostream& operator << (std::ostream& os, const SwTrack& rhs)
 {
   os << "pT: " << rhs.pt << ", " 
-     << "rinv: " << rhs.rinv << ", "
-     << "sinhEta: " << rhs.sinhEta << ", "
+     /* << "rinv: " << rhs.rinv << ", " */
+     /* << "sinhEta: " << rhs.sinhEta << ", " */
      << "eta: " << rhs.eta << ", "
      << "phi: " << rhs.phi << ", " 
      << "sector: " << rhs.sector << ","
@@ -430,9 +430,9 @@ std::ostream& operator << (std::ostream& os, const SwTrack& rhs)
 std::ostream& operator << (std::ostream& os, const SwPropTrack& rhs)
 {
   os << "pT: " << rhs.pt << ", " 
-     << "sinhEta: " << rhs.sinhEta << ", "
-     << "eta: " << rhs.eta << ", "
-     << "phi: " << rhs.phi << ", " 
+     /* << "sinhEta: " << rhs.sinhEta << ", " */
+     /* << "eta: " << rhs.eta << ", " */
+     /* << "phi: " << rhs.phi << ", "  */
      << "eta_prop: " << rhs.propEta << ", " 
      << "phi_prop: " << rhs.propPhi << ", "
      << "sector: " << rhs.sector << ","
@@ -460,10 +460,10 @@ std::ostream& operator << (std::ostream& os, const SwTrackMuon& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 {
-  os << "pT: " << fabs(rhs.hwPt*INVPT_CONVERSION) << ", "
+  os << "pT: " << rhs.hwPt*INVPT_CONVERSION << ", "
      << "eta: " << rhs.hwEta*INVETA_CONVERSION << ", "
      << "phi: " << rhs.hwPhiGlobal*INVPHI_CONVERSION << ", "
-     << "Z0: " << std::bitset<11>(rhs.hwZ0) << ", " 
+     << "Z0: " << rhs.hwZ0*INVZ_CONVERSION << ", " 
      << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
      << "BX: " << std::bitset<3>(rhs.hwBX);
@@ -472,10 +472,10 @@ std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 {
-  os << "pT: " << fabs(rhs.hwPt*INVPT_CONVERSION) << ", "
+  os << "pT: " << rhs.hwPt*INVPT_CONVERSION << ", "
      << "eta_prop: " << rhs.hwPropEta*INVETA_CONVERSION << ", " 
      << "phi_prop: " << rhs.hwPropPhi*INVPHI_CONVERSION << ", "
-     << "Z0: " << std::bitset<11>(rhs.hwZ0) << ", " 
+     << "Z0: " << rhs.hwZ0*INVZ_CONVERSION << ", " 
      << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
      << "BX: " << std::bitset<3>(rhs.hwBX);
@@ -486,7 +486,7 @@ std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 {
   os << "pT: " << (rhs.hwPt)*0.5 << ", " 
      << "eta: " << (1- 2*std::bitset<9>(rhs.hwEta)[8]) * from_twos_complement<9>(rhs.hwEta) * MUONETA_CONVERSION << ", "
-     << "phi: " << normalizePhi(rhs.hwPhi * MUONPHI_CONVERSION) << ", "
+     << "phi: " << normalizePhi((1- 2*std::bitset<10>(rhs.hwPhi)[9]) * from_twos_complement<10>(rhs.hwPhi) * MUONPHI_CONVERSION) << ", "
      << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
      << "BX: " << std::bitset<3>(rhs.hwBX);
@@ -495,9 +495,9 @@ std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 
 std::ostream& operator << (std::ostream& os, const HwTrackMuon& rhs)
 {
-  os << "pT: " << fabs(rhs.hwPt*INVPT_CONVERSION) << ", "
+  os << "pT: " << rhs.hwPt*INVPT_CONVERSION << ", "
      << "eta: " << (1- 2*std::bitset<9>(rhs.hwEta)[8]) * from_twos_complement<9>(rhs.hwEta) * MUONETA_CONVERSION << ", "
-     << "phi: " << normalizePhi(rhs.hwPhi * MUONPHI_CONVERSION) << ", "
+     << "phi: " << normalizePhi((1- 2*std::bitset<10>(rhs.hwPhi)[9]) * from_twos_complement<10>(rhs.hwPhi) * MUONPHI_CONVERSION) << ", "
      << "Q: " << 1- 2*rhs.hwQ << ", "
      << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
      << "BX: " << std::bitset<3>(rhs.hwBX);
@@ -517,38 +517,38 @@ std::ostream& operator << (std::ostream& os, const Event& rhs)
   for (unsigned i=0; i<rhs.swTracks.size(); ++i){
     os << "  " << rhs.swTracks[i] << std::endl;
   }
-  os << "SwPropTracks: " << rhs.swPropTracks.size() << std::endl;
-  for (unsigned i=0; i<rhs.swPropTracks.size(); ++i) {
-    os << "  " << rhs.swPropTracks[i] << std::endl;
-  }
-  os << "SwMuons: " << rhs.swMuons.size() << std::endl; 
-  for (unsigned i=0; i<rhs.swMuons.size(); ++i) { 
-    os << "  " << rhs.swMuons[i] << std::endl;
-  }
-  os << "SwTrackMuons: " << rhs.swTrackMuons.size() << std::endl; 
-  for (unsigned i=0; i<rhs.swTrackMuons.size(); ++i) { 
-    os << "  " << rhs.swTrackMuons[i] << std::endl;
-  }
-  os << "SwPropTrackMuons: " << rhs.swPropTrackMuons.size() << std::endl; 
-  for (unsigned i=0; i<rhs.swPropTrackMuons.size(); ++i) { 
-    os << "  " << rhs.swPropTrackMuons[i] << std::endl;
-  }
-  os << "HwMuons: " << rhs.hwMuons.size() << std::endl; 
-  for (unsigned i=0; i<rhs.hwMuons.size(); ++i) { 
-    os << "  " << rhs.hwMuons[i] << std::endl;
-  }
   os << "HwTracks: " << rhs.hwTracks.size() << std::endl;
   for (unsigned i=0; i<rhs.hwTracks.size(); ++i) {
     os << "  " << rhs.hwTracks[i] << std::endl;
+  }
+  os << "SwPropTracks: " << rhs.swPropTracks.size() << std::endl;
+  for (unsigned i=0; i<rhs.swPropTracks.size(); ++i) {
+    os << "  " << rhs.swPropTracks[i] << std::endl;
   }
   os << "HwPropTracks: " << rhs.hwPropTracks.size() << std::endl;
   for (unsigned i=0; i<rhs.hwPropTracks.size(); ++i) {
     os << "  " << rhs.hwPropTracks[i] << std::endl;
   }
+  os << "SwMuons: " << rhs.swMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.swMuons.size(); ++i) { 
+    os << "  " << rhs.swMuons[i] << std::endl;
+  }
+  os << "HwMuons: " << rhs.hwMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.hwMuons.size(); ++i) { 
+    os << "  " << rhs.hwMuons[i] << std::endl;
+  }
+  os << "SwTrackMuons: " << rhs.swTrackMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.swTrackMuons.size(); ++i) { 
+    os << "  " << rhs.swTrackMuons[i] << std::endl;
+  }
   os << "HwTrackMuons: " << rhs.hwTrackMuons.size() << std::endl; 
   for (unsigned i=0; i<rhs.hwTrackMuons.size(); ++i) { 
     os << "  " << rhs.hwTrackMuons[i] << std::endl;
   } 
+  os << "SwPropTrackMuons: " << rhs.swPropTrackMuons.size() << std::endl; 
+  for (unsigned i=0; i<rhs.swPropTrackMuons.size(); ++i) { 
+    os << "  " << rhs.swPropTrackMuons[i] << std::endl;
+  }
   os << "HwPropTrackMuons: " << rhs.hwPropTrackMuons.size() << std::endl; 
   for (unsigned i=0; i<rhs.hwPropTrackMuons.size(); ++i) { 
     os << "  " << rhs.hwPropTrackMuons[i] << std::endl;
