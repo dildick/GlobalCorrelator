@@ -85,6 +85,36 @@ typedef ap_uint<4> quality_m;
 
 namespace{
 
+fphi_t phiOffSetValues[27] = {
+  -0.0387851, // 1
+  0.193925, // 2
+  0.426636, // 3
+  0.659347, // 4
+  0.892057, // 5
+  1.124768, // 6
+  1.357478, // 7
+  1.590189, // 8
+  1.822899, // 9
+  2.055610, // 10
+  2.288321, // 11
+  2.521031, // 12
+  2.753742, // 13
+  2.986452, // 14
+  -3.064022, // 15
+  -2.831312, // 16
+  -2.598601, // 17
+  -2.365891, // 18
+  -2.133180, // 19
+  -1.900470, // 20
+  -1.667759, // 21
+  -1.435049, // 22
+  -1.202338, // 23
+  -0.969627, // 24
+  -0.736917, // 25
+  -0.504206, // 26
+  -0.271496  // 27
+};
+
 float normalizePhi(float outPhi)
 {
   float returnValue = outPhi;
@@ -128,6 +158,34 @@ float getTrackEtaFloat(int hwEta)
 float getTrackPhiFloat(int hwPhi)
 {
   return normalizePhi(hwPhi * INVPHI_CONVERSION);
+}
+
+float getTrackEtaFloatFromSinhEta(eta_t hwSinhEta)
+{
+  feta_t absSinhEta;
+  if (hwSinhEta<0){
+    absSinhEta = (hwSinhEta+8192)*INVETA_CONVERSION;
+  }
+  else{
+    absSinhEta = hwSinhEta*INVETA_CONVERSION;
+  }
+  feta_t inhwEta = asinh(absSinhEta);
+  if (hwSinhEta<0) inhwEta*=-1;
+
+  return inhwEta;
+}
+
+float getTrackPhiFloatFromLocalPhi(phi_t hwPhi, sector_t hwSector)
+{
+  fphi_t inhwPhi;
+  if (hwPhi<0)
+    inhwPhi = -1*(hwPhi+262144)*INVPHI_CONVERSION;
+  else
+    inhwPhi = hwPhi*INVPHI_CONVERSION;
+  
+  // convert to a global phi value
+  fphi_t hwPhiGlobal = inhwPhi + phiOffSetValues[hwSector-1];
+  return hwPhiGlobal;
 }
 
 }
@@ -301,8 +359,21 @@ struct HwTrack
   }
   bool operator==(const HwTrack& rhs) const
   {
-    return abs(hwSinhEta - rhs.hwSinhEta) < 100;
+    float eta1 = getTrackEtaFloatFromSinhEta(hwSinhEta);
+    float eta2 = getTrackEtaFloatFromSinhEta(rhs.hwSinhEta);
+    float phi1 = getTrackPhiFloatFromLocalPhi(hwPhi, hwSector);
+    float phi2 = getTrackPhiFloatFromLocalPhi(rhs.hwPhi, rhs.hwSector);
+    float dR2 = (eta1 - eta2)*(eta1 - eta2) + normalizePhi(phi1 - phi2)*normalizePhi(phi1 - phi2);
+    /*
+    std::cout << "eta1 " << eta1 << std::endl;
+    std::cout << "eta2 " << eta2 << std::endl;
+    std::cout << "phi1 " << phi1 << std::endl;
+    std::cout << "phi2 " << phi2 << std::endl;
+    std::cout << "dR2 " << dR2 << std::endl << std::endl;
+    */
+    return dR2 < 0.3*0.3;
   }
+
   bool operator<(const HwTrack& rhs) const
   {
     return hwSinhEta < rhs.hwSinhEta;
