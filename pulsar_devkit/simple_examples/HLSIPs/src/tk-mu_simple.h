@@ -31,6 +31,8 @@ HwPropTrack tkmu_simple_hw (       HwTrack& in );
 HwTrackMuon match_hw(const HwTrack&, const HwMuon&);
 HwTrackMuon match_prop_hw(const HwPropTrack&, const HwMuon&);
 
+HwTrackMuon match_track_muon(const HwMuon&, const std::vector<HwPropTrack>&);
+
 // template functions
 template<class data_T, int N_TABLE>
 void init_deta_table(data_T table_out[N_TABLE]){

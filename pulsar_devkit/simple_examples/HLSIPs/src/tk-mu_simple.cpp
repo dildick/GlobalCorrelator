@@ -27,7 +27,6 @@ Negative values in binary are generated assuming "One's complement"
 #endif
 
 
-
 HwPropTrack tkmu_simple_hw(  HwTrack& in)
 {
   bool debug(false);
@@ -333,6 +332,18 @@ HwTrackMuon match_prop_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
     outTrackMuon.hwValid = 0;     
   }
   return outTrackMuon;
+}
+
+HwTrackMuon match_track_muon(const HwMuon& muon, HwTrack& track)
+{
+  HwTrackMuon emptyTrackMuon;
+
+  // propagate the track and try to perform a match
+  HwPropTrack propTrack = tkmu_simple_hw(track);
+  HwTrackMuon trackMuon = match_prop_hw(propTrack, muon);
+  if (trackMuon.hwValid) return trackMuon;
+  
+  return emptyTrackMuon;
 }
 
 

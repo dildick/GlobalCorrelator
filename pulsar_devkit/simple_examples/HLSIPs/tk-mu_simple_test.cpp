@@ -102,10 +102,23 @@ void eventSelector(const std::vector<Event>& events,
 void sortTrackAndMuons(std::vector<Event>& events);
 
 /*
-  Merge duplicate tracks and muons in each event
+ * Merge duplicate tracks and muons in each event
  */
 void duplicateMerger(std::vector<Event>& events);
 
+/*
+ * Write filtered events to file 
+  events       - the vector with events (output)
+  swTrack      - file containing TT track information in floating point format
+  hwTrack      - file containing TT track information in binary format
+  swMuon       - file containing muon information in floating point format
+  hwMuon       - file containing muon information in binary format
+*/
+void filteredEventWriter(std::vector<Event>& events, 
+			 const std::string& swTrackFile,
+			 const std::string& swMuonFile,
+			 const std::string& hwTrackFile,
+			 const std::string& hwMuonFile); 
 
 int main() 
 {
@@ -129,6 +142,11 @@ int main()
     std::string swMuonPattern = "sw_muon_data";
     std::string hwTrackPattern = "CleanTracksAll_binary";
     std::string hwMuonPattern = "hw_muon_data";
+
+    std::string swTrackPatternOut = "sw_track_filtered";
+    std::string swMuonPatternOut = "sw_muon_filtered";
+    std::string hwTrackPatternOut = "hw_track_filtered";
+    std::string hwMuonPatternOut = "hw_muon_filtered";
 
     std::vector<std::string> simTrackFiles;
     std::vector<std::string> swTrackFiles;
@@ -160,7 +178,7 @@ int main()
 
     // remove the duplicate tracks and muons
     duplicateMerger(events);
-
+    
     // process the tracks and muons
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
 
@@ -442,7 +460,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() ) + (batchNumber * 100);
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	if (newEvent.eventNumber > 1) break;
+	if (newEvent.eventNumber > 10) break;
 	events.push_back(newEvent);
       }
       
@@ -639,6 +657,17 @@ void eventReader(std::vector<Event>& events,
   if (debug) std::cout << "End reading HwMuon file" << std::endl;
 } 
 
+/*
+void filteredEventWriter(std::vector<Event>& events, 
+			 const std::string& swTrackFile,
+			 const std::string& swMuonFile,
+			 const std::string& hwTrackFile,
+			 const std::string& hwMuonFile)
+{
+  std::ofstream
+  std::ifstream ifile(simTrackFile.c_str());
+}
+*/
 
 void eventSelector(const std::vector<Event>& events, 
 		   std::vector<Event>& events_selected)
