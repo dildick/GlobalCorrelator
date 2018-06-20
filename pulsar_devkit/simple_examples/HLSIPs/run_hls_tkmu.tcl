@@ -16,7 +16,7 @@ add_files src/dataformats.h
 
 ## test-bench files
 add_files -tb tk-mu_simple_test.cpp
-add_files -tb tk-mu_simple_ref.cpp
+add_files -tb tk-mu_simple_ref.h
 add_files -tb src/dataformatsExtended.h
 
 # reset the solution

@@ -368,8 +368,8 @@ template<class data_T, class data_S, class data_U, class data_V>
 data_S dr2_int(data_T eta1, data_S phi1, data_U eta2, data_V phi2) {
   // eta1, phi1: track properties
   // eta2, phi2: muon properties
-  data_T deta = (eta1-eta2);
-  data_S dphi = (phi1-phi2);
+  data_T deta = eta1 - eta2;
+  data_S dphi = phi1 - phi2;
 
   // normalize the phi values
   data_S dR2 = deta*deta + dphi*dphi;

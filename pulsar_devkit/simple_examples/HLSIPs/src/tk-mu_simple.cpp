@@ -272,7 +272,7 @@ HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
   // dR calculation
   feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
 
-  bool debug(true);
+  bool debug(false);
   if (debug){
     std::cout << "Track eta " << tkEta << std::endl;
     std::cout << "Track phi " << tkPhi << std::endl;

@@ -87,9 +87,10 @@ int from_twos_complement(int x) {
 
 namespace {
 
-float normalizePhi(float outPhi)
+template<class T>
+T normalizePhi(T outPhi)
 {
-  float returnValue = outPhi;
+  T returnValue = outPhi;
   if (returnValue <= -M_PI)
     returnValue += 2*M_PI;
   if (returnValue > M_PI)

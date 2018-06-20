@@ -173,7 +173,10 @@ struct SwMuon {
   }
   bool operator<(const SwMuon& rhs) const
   {
-    return eta < rhs.eta;
+    if (eta != rhs.eta)
+      return eta < rhs.eta;
+    else 
+      return phi < rhs.phi;
   }
 };
 
@@ -205,7 +208,12 @@ struct HwMuonLess {
   {   
     float eta1 = getMuonEtaFloat(lhs.hwEta);
     float eta2 = getMuonEtaFloat(rhs.hwEta);
-    return eta1 < eta2;
+    float phi1 = getMuonPhiFloat(lhs.hwPhi);
+    float phi2 = getMuonPhiFloat(rhs.hwPhi);
+    if (eta1 != eta2)
+      return eta1 < eta2;
+    else 
+      return phi1 < phi2;
   }   
 };
 

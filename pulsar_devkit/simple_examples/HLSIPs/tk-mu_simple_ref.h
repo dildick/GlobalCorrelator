@@ -64,7 +64,7 @@ SwPropTrack tkmu_simple_ref( const SwTrack& in )
   float resPhi = tk_phi - tk_q*4.1407/cosh(etaProp)/tk_pt*dzCorrPhi - M_PI/144.;
   
   while (resPhi > M_PI)  resPhi -= 2.*M_PI;
-  while (resPhi < -M_PI) resPhi += 2.*M_PI;
+  while (resPhi <= -M_PI) resPhi += 2.*M_PI;
   
   out.propEta = tk_eta + deta;
   out.propPhi = resPhi;
