@@ -22,6 +22,8 @@ HLS with c++
 
 #include "ap_fixed.h"
 #include "src/tk-mu_simple.h"
+#include "src/dataformatsExtended.h"
+#include "tk-mu_simple_ref.h"
 
 // functions to decode track and muon data
 void decode_sw_track_data(const std::string &word, SwTrack&);
@@ -440,7 +442,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() ) + (batchNumber * 100);
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	if (newEvent.eventNumber > 100000) break;
+	if (newEvent.eventNumber > 1) break;
 	events.push_back(newEvent);
       }
       
@@ -654,10 +656,16 @@ void sortTrackAndMuons(std::vector<Event>& events)
 {
   for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
     // sort tracks and muons in the event
-    std::sort(events[iEvent].swTracks.begin(), events[iEvent].swTracks.end());
-    std::sort(events[iEvent].swMuons.begin(), events[iEvent].swMuons.end());
-    std::sort(events[iEvent].hwTracks.begin(), events[iEvent].hwTracks.end());
-    std::sort(events[iEvent].hwMuons.begin(), events[iEvent].hwMuons.end());
+    std::sort(events[iEvent].swTracks.begin(), 
+	      events[iEvent].swTracks.end());
+    std::sort(events[iEvent].swMuons.begin(), 
+	      events[iEvent].swMuons.end());
+
+    // note that we have separate sorting functions for HwMuons and HwTracks
+    std::sort(events[iEvent].hwTracks.begin(), 
+	      events[iEvent].hwTracks.end(), HwTrackLess());
+    std::sort(events[iEvent].hwMuons.begin(), 
+	      events[iEvent].hwMuons.end(), HwMuonLess());
   }
 }
 
@@ -674,11 +682,15 @@ void duplicateMerger(std::vector<Event>& events)
     events[iEvent].swMuons.erase(std::unique(events[iEvent].swMuons.begin(), 
 					     events[iEvent].swMuons.end()), 
 				 events[iEvent].swMuons.end());                   
+
+    // note that we have separate comparison functions for HwMuons and HwTracks
     events[iEvent].hwTracks.erase(std::unique(events[iEvent].hwTracks.begin(), 
-					      events[iEvent].hwTracks.end()), 
+					      events[iEvent].hwTracks.end(),
+					      HwTrackEqual()), 
 				  events[iEvent].hwTracks.end());
     events[iEvent].hwMuons.erase(std::unique(events[iEvent].hwMuons.begin(), 
-					     events[iEvent].hwMuons.end()), 
+					     events[iEvent].hwMuons.end(),
+					     HwMuonEqual()), 
 				 events[iEvent].hwMuons.end());                   
   }
 }

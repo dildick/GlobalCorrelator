@@ -27,20 +27,9 @@ if rinv<0: rinv+=16384 then multiply by INVRINV_CONVERSION
 #define DEBUG 0
 
 // reference and hardware functions
-SwPropTrack tkmu_simple_ref( const SwTrack& in );
 HwPropTrack tkmu_simple_hw (       HwTrack& in );
-
 HwTrackMuon match_hw(const HwTrack&, const HwMuon&);
 HwTrackMuon match_prop_hw(const HwPropTrack&, const HwMuon&);
-SwTrackMuon match_sw(const SwTrack&, const SwMuon&);
-SwTrackMuon match_prop_sw(const SwPropTrack&, const SwMuon&);
-
-// decode track eta and phi
-feta_t decode_track_eta(const HwTrack&);
-fphi_t decode_track_phi(const HwTrack&);
-
-// calculate deltaR
-float deltaR(float eta1, float phi1, float eta2, float phi2);
 
 // template functions
 template<class data_T, int N_TABLE>
@@ -381,16 +370,18 @@ data_S dr2_int(data_T eta1, data_S phi1, data_U eta2, data_V phi2) {
   // eta2, phi2: muon properties
   data_T deta = (eta1-eta2);
   data_S dphi = (phi1-phi2);
-  data_S dR = deta*deta + dphi*dphi;
+
+  // normalize the phi values
+  data_S dR2 = deta*deta + dphi*dphi;
   bool debug(false);
   if (debug) {
     std::cout << "eta1 " << eta1 << std::endl;
     std::cout << "eta2 " << eta2 << std::endl;
     std::cout << "phi1 " << phi1 << std::endl;
     std::cout << "phi2 " << phi2 << std::endl;
-    std::cout << "dR " << dR << std::endl << std::endl;
+    std::cout << "dR2 " << dR2 << std::endl << std::endl;
   }
-  return dR;
+  return dR2;
 }
 
 #endif

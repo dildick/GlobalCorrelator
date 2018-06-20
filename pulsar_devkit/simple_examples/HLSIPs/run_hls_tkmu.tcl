@@ -12,8 +12,12 @@ open_project -reset tkmu_proj0
 
 set_top tkmu_simple_hw
 add_files src/tk-mu_simple.cpp
+add_files src/dataformats.h
+
+## test-bench files
 add_files -tb tk-mu_simple_test.cpp
 add_files -tb tk-mu_simple_ref.cpp
+add_files -tb src/dataformatsExtended.h
 
 # reset the solution
 open_solution -reset "solution1"
