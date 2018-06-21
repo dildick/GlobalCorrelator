@@ -143,10 +143,12 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
   if (debug) std::cout << " -- inhwInvPt *-1 (if applicable) = " << inhwInvPt << std::endl;
   
   // Pt calculation and assignment
+  /*
   if (debug) std::cout << " -- pt     = " << 1./inhwInvPt.to_float() << std::endl;
   in.hwPt = fabs(1./inhwInvPt.to_float())*PT_CONVERSION;
   if (debug) std::cout << " -- in.hwPt     = " << in.hwPt << std::endl;
   if (debug) std::cout << " -- in.hwPt     = " << in.hwPt*INVPT_CONVERSION << std::endl;
+  */
   // if (debug) std::cout << " -- in.hwPt     = " << in.hwPt*a87719298E-6* << std::endl;
   
   // Do the calculations!
@@ -263,21 +265,21 @@ HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
   HwTrackMuon outTrackMuon;
   
   feta_t tkEta = inTrack.hwEta*INVETA_CONVERSION;
-  fphi_t tkPhi = normalizePhi(inTrack.hwPhiGlobal*INVPHI_CONVERSION);
+  fphiglobal_t tkPhi = normalizePhi(inTrack.hwPhiGlobal*INVPHI_CONVERSION);
   
   feta_m muEta = (1- 2*std::bitset<9>(inMuon.hwEta)[8]) * from_twos_complement<9>(inMuon.hwEta) * MUONETA_CONVERSION;
   fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
   
   // dR calculation
-  feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
+  fphiglobal_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
 
-  bool debug(false);
+  bool debug(true);
   if (debug){
     std::cout << "Track eta " << tkEta << std::endl;
     std::cout << "Track phi " << tkPhi << std::endl;
     std::cout << "muon eta " << muEta << std::endl;
     std::cout << "muon phi " << muPhi << std::endl;
-    std::cout << "dR " << dR2_tk_mu << std::endl << std::endl;
+    std::cout << "dR2 " << dR2_tk_mu << std::endl << std::endl;
   }
 
   // need to allow for negative values, since we do not take 
@@ -307,7 +309,7 @@ HwTrackMuon match_prop_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
   fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
 
   // dR calculation
-  feta_t dR2_tk_mu = dr2_int (tkEta, tkPhi, muEta, muPhi);
+  fphiglobal_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
 
   bool debug(false);
   if (debug){
@@ -315,7 +317,7 @@ HwTrackMuon match_prop_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
     std::cout << "Prop track phi " << tkPhi << std::endl;
     std::cout << "muon eta " << muEta << std::endl;
     std::cout << "muon phi " << muPhi << std::endl;
-    std::cout << "dR " << dR2_tk_mu << std::endl;
+    std::cout << "dR2 " << dR2_tk_mu << std::endl << std::endl;
     }
   
   // need to allow for negative values, since we do not take 
