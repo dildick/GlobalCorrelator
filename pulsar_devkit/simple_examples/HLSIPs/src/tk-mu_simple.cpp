@@ -143,13 +143,13 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
   if (debug) std::cout << " -- inhwInvPt *-1 (if applicable) = " << inhwInvPt << std::endl;
   
   // Pt calculation and assignment
-  /*
-  if (debug) std::cout << " -- pt     = " << 1./inhwInvPt.to_float() << std::endl;
-  in.hwPt = fabs(1./inhwInvPt.to_float())*PT_CONVERSION;
-  if (debug) std::cout << " -- in.hwPt     = " << in.hwPt << std::endl;
+  finvpt_t absInhwInvPt = fabs(inhwInvPt);
+  rinvToPt(absInhwInvPt, in.hwPt); 
+  in.hwPt *= PT_CONVERSION;
+  // in.hwPt *= ;
+  if (debug) std::cout << " -- in.hwPt     = " << in.hwPt << " " << fabs(1./inhwInvPt.to_float()) << std::endl;
   if (debug) std::cout << " -- in.hwPt     = " << in.hwPt*INVPT_CONVERSION << std::endl;
-  */
-  // if (debug) std::cout << " -- in.hwPt     = " << in.hwPt*a87719298E-6* << std::endl;
+  //  if (debug) std::cout << " -- in.hwPt     = " << in.hwPt*a87719298E-6* << std::endl;
   
   // Do the calculations!
   if (debug) std::cout << " FIRMWARE : Eta calculation " << std::endl;

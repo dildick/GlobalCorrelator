@@ -364,6 +364,54 @@ void arcsinh(data_T &data, res_T &res) {
     return;
 }
 
+///////////////////////////
+// -- RINVTOPT FUNCTION 
+template<class data_T, int N_TABLE>
+void init_rinvToPt_table(data_T table_out[N_TABLE]) {
+    /* Implement rinvToPt lookup */
+    for (int ii = 0; ii < N_TABLE; ii++) {
+        // Convert from table index to X-value (unsigned 4-bit, range 0 to +4)
+        float in_val = (RINV_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
+
+        // Next, compute lookup table function
+        data_T real_val = 1./in_val;
+        if (DEBUG) std::cout << "RinvToPt:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
+        table_out[ii] = real_val;
+    }
+
+    return;
+}
+
+template<class data_T, class res_T, int TABLE_SIZE/*=1024*/>
+void rinvToPt(data_T &data, res_T &res) {
+    // Initialize the lookup table
+    res_T rinvToPt_table[TABLE_SIZE];
+    init_rinvToPt_table<res_T, TABLE_SIZE>(rinvToPt_table);
+
+    #pragma HLS PIPELINE
+
+    res = 0;
+
+    // convert input to index
+    int index = TABLE_SIZE - data * TABLE_SIZE * INV_RINV_RANGE;
+
+    if (index<0) res = rinvToPt_table[0];
+    else if (index>TABLE_SIZE-1) res = rinvToPt_table[TABLE_SIZE-1];
+    else res = rinvToPt_table[index];
+
+    return;
+}
+
+// Gateway to calling rinvToPt(x)
+template<class data_T, class res_T>
+void rinvToPt(data_T &data, res_T &res) { 
+    /* Get the rinvToPt value from the LUT -- anti-symmetric function */
+    res = 0;
+    rinvToPt<data_T, res_T, RINV_TABLE_SIZE>(data, res); 
+
+    return;
+}
+
 // delta R matching
 // choose eta precision of the muon as the dR precision of the match
 template<class data_T, class data_S, class data_U, class data_V>

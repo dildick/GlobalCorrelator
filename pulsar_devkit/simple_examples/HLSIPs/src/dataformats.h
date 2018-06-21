@@ -48,14 +48,17 @@ typedef ap_uint<10> phi_m; // muon phi goes from 0 to 2pi
 typedef ap_uint<4> quality_m;
 
 // size of the LUTs
+#define RINV_TABLE_SIZE 16384  // 14 unsigned bits
 #define ETA_TABLE_SIZE 8192  // 13 unsigned bits
 #define Z0_TABLE_SIZE 1024   // 10 unsigned bits
 
 // range for LUTs
+#define RINV_RANGE 1
 #define SINHETA_RANGE 6
 #define ETA_RANGE 3
 #define COSH_RANGE 3
 #define Z0_RANGE 15
+#define INV_RINV_RANGE 1/RINV_RANGE
 #define INV_SINHETA_RANGE 1/SINHETA_RANGE
 #define INV_ETA_RANGE 1/ETA_RANGE
 #define INV_COSH_RANGE 1/COSH_RANGE
