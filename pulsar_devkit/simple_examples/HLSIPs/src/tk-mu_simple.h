@@ -31,7 +31,7 @@ HwPropTrack tkmu_simple_hw (       HwTrack& in );
 HwTrackMuon match_hw(const HwTrack&, const HwMuon&);
 HwTrackMuon match_prop_hw(const HwPropTrack&, const HwMuon&);
 
-HwTrackMuon match_track_muon(const HwMuon&, const std::vector<HwPropTrack>&);
+HwTrackMuon match_track_muon(const HwMuon&, HwTrack&);
 
 // template functions
 template<class data_T, int N_TABLE>
@@ -371,12 +371,13 @@ data_S dr2_int(data_T eta1, data_S phi1, data_U eta2, data_V phi2) {
   // eta1, phi1: track properties
   // eta2, phi2: muon properties
   data_T deta = eta1 - eta2;
-  data_S dphi = phi1 - phi2;
+  data_S dphi = normalizePhi(phi1 - phi2);
 
   // normalize the phi values
   data_S dR2 = deta*deta + dphi*dphi;
   bool debug(false);
   if (debug) {
+    std::cout << "Calculate dR2" << std::endl;
     std::cout << "eta1 " << eta1 << std::endl;
     std::cout << "eta2 " << eta2 << std::endl;
     std::cout << "phi1 " << phi1 << std::endl;

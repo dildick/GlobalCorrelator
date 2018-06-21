@@ -109,14 +109,6 @@ struct SwTrack {
     sector(0)
   {
   }
-  bool operator==(const SwTrack& rhs) const
-  {
-    return (eta - rhs.eta)*(eta - rhs.eta) + normalizePhi(phi - rhs.phi)*normalizePhi(phi - rhs.phi) < 0.3*0.3;
-  }
-  bool operator<(const SwTrack& rhs) const
-  {
-    return eta<rhs.eta;
-  }
 };
 
 struct SwPropTrack : public SwTrack {
@@ -167,17 +159,6 @@ struct SwMuon {
     BX(0)
   {
   }
-  bool operator==(const SwMuon& rhs) const
-  {
-    return (eta - rhs.eta)*(eta - rhs.eta) + normalizePhi(phi - rhs.phi)*normalizePhi(phi - rhs.phi) < 0.3*0.3;
-  }
-  bool operator<(const SwMuon& rhs) const
-  {
-    if (eta != rhs.eta)
-      return eta < rhs.eta;
-    else 
-      return phi < rhs.phi;
-  }
 };
 
 struct SwTrackMuon 
@@ -202,50 +183,45 @@ struct SwTrackMuon
   }
 };
 
-// comparison functions 
-struct HwMuonLess {
-  bool operator()(const HwMuon& lhs,const HwMuon& rhs) const
-  {   
-    float eta1 = getMuonEtaFloat(lhs.hwEta);
-    float eta2 = getMuonEtaFloat(rhs.hwEta);
-    float phi1 = getMuonPhiFloat(lhs.hwPhi);
-    float phi2 = getMuonPhiFloat(rhs.hwPhi);
-    if (eta1 != eta2)
-      return eta1 < eta2;
-    else 
-      return phi1 < phi2;
-  }   
-};
+bool sameSwMuon(const SwMuon& lhs,const SwMuon& rhs)
+{
+  float eta1 = lhs.eta;
+  float eta2 = rhs.eta;
+  float phi1 = lhs.phi;
+  float phi2 = rhs.phi;
+  float dR2 = (eta1 - eta2)*(eta1 - eta2) + normalizePhi(phi1 - phi2)*normalizePhi(phi1 - phi2);
+  return dR2 < 0.3*0.3;
+}
 
-struct HwMuonEqual {
-  bool operator()(const HwMuon& lhs,const HwMuon& rhs) const
-  {   
-    float eta1 = getMuonEtaFloat(lhs.hwEta);
-    float eta2 = getMuonEtaFloat(rhs.hwEta);
-    float phi1 = getMuonPhiFloat(lhs.hwPhi);
-    float phi2 = getMuonPhiFloat(rhs.hwPhi);
-    return (eta1 - eta2)*(eta1 - eta2) + normalizePhi(phi1 - phi2)*normalizePhi(phi1 - phi2) < 0.3*0.3;
-  }
-};
+bool sameSwTrack(const SwTrack& lhs,const SwTrack& rhs)
+{
+  float eta1 = lhs.eta;
+  float eta2 = rhs.eta;
+  float phi1 = lhs.phi;
+  float phi2 = rhs.phi;
+  float dR2 = (eta1 - eta2)*(eta1 - eta2) + normalizePhi(phi1 - phi2)*normalizePhi(phi1 - phi2);
+  return dR2 < 0.3*0.3;
+}
 
-struct HwTrackLess {
-  bool operator()(const HwTrack& lhs,const HwTrack& rhs) const
-  {   
-    return lhs.hwSinhEta < rhs.hwSinhEta;
-  }   
-};
+bool sameHwMuon(const HwMuon& lhs,const HwMuon& rhs)
+{
+  float eta1 = getMuonEtaFloat(lhs.hwEta);
+  float eta2 = getMuonEtaFloat(rhs.hwEta);
+  float phi1 = getMuonPhiFloat(lhs.hwPhi);
+  float phi2 = getMuonPhiFloat(rhs.hwPhi);
+  float dR2 = (eta1 - eta2)*(eta1 - eta2) + normalizePhi(phi1 - phi2)*normalizePhi(phi1 - phi2);
+  return dR2 < 0.3*0.3;
+}
 
-struct HwTrackEqual {
-  bool operator()(const HwTrack& lhs,const HwTrack& rhs) const
-  {   
-    float eta1 = getTrackEtaFloatFromSinhEta(lhs.hwSinhEta);
-    float eta2 = getTrackEtaFloatFromSinhEta(rhs.hwSinhEta);
-    float phi1 = getTrackPhiFloatFromLocalPhi(lhs.hwPhi, lhs.hwSector);
-    float phi2 = getTrackPhiFloatFromLocalPhi(rhs.hwPhi, rhs.hwSector);
-    float dR2 = (eta1 - eta2)*(eta1 - eta2) + normalizePhi(phi1 - phi2)*normalizePhi(phi1 - phi2);
-    return dR2 < 0.3*0.3;
-  }
-};
+bool sameHwTrack(const HwTrack& lhs,const HwTrack& rhs)
+{
+  float eta1 = getTrackEtaFloatFromSinhEta(lhs.hwSinhEta);
+  float eta2 = getTrackEtaFloatFromSinhEta(rhs.hwSinhEta);
+  float phi1 = getTrackPhiFloatFromLocalPhi(lhs.hwPhi, lhs.hwSector);
+  float phi2 = getTrackPhiFloatFromLocalPhi(rhs.hwPhi, rhs.hwSector);
+  float dR2 = (eta1 - eta2)*(eta1 - eta2) + normalizePhi(phi1 - phi2)*normalizePhi(phi1 - phi2);
+  return dR2 < 0.3*0.3;
+}
 
 struct Event 
 {

@@ -12,9 +12,10 @@ Propagate track to muon system
 // calculate deltaR
 float deltaR(float eta1, float phi1, float eta2, float phi2)
 {
-  float dEta = eta1 - eta1;
+  float dEta = eta1 - eta2;
   float dPhi = normalizePhi(normalizePhi(phi1) - normalizePhi(phi2));
-  return sqrt(dEta*dEta + dPhi*dPhi);
+  float dR = sqrt(dEta*dEta + dPhi*dPhi); 
+  return dR;
 }
 
 SwPropTrack tkmu_simple_ref( const SwTrack& in )
@@ -74,7 +75,7 @@ SwPropTrack tkmu_simple_ref( const SwTrack& in )
 
 SwTrackMuon match_sw(const SwTrack& inTrack, const SwMuon& inMuon)
 {
-  bool debug = false;
+  bool debug = true;
 
   SwTrackMuon outTrack;
   float tketa = inTrack.eta;
@@ -84,7 +85,7 @@ SwTrackMuon match_sw(const SwTrack& inTrack, const SwMuon& inMuon)
   float muphi = inMuon.phi;
 
   // dR calculation
-  float dR2_tk_mu = deltaR (tketa, tkphi, mueta, muphi);
+  float dR2_tk_mu = deltaR(tketa, tkphi, mueta, muphi);
   
   if (debug){
     std::cout 
@@ -125,7 +126,7 @@ SwTrackMuon match_prop_sw(const SwPropTrack& inTrack, const SwMuon& inMuon)
   float muphi = inMuon.phi;
 
   // dR calculation
-  float dR2_tk_mu = deltaR (tketa, tkphi, mueta, muphi);
+  float dR2_tk_mu = deltaR(tketa, tkphi, mueta, muphi);
   
   if (debug){
     std::cout 

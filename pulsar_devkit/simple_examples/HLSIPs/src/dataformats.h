@@ -91,10 +91,10 @@ template<class T>
 T normalizePhi(T outPhi)
 {
   T returnValue = outPhi;
-  if (returnValue <= -M_PI)
-    returnValue += 2*M_PI;
-  if (returnValue > M_PI)
-    returnValue -= 2*M_PI;
+  if (returnValue <= -T(M_PI))
+    returnValue += T(2*M_PI);
+  if (returnValue > T(M_PI))
+    returnValue -= T(2*M_PI);
   return returnValue;
 }
 

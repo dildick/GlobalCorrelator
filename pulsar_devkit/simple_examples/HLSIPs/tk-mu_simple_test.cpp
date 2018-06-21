@@ -97,11 +97,6 @@ void eventSelector(const std::vector<Event>& events,
 	      std::vector<Event>& events_selected);
 
 /*
-  Sort tracks and muons in the event
- */
-void sortTrackAndMuons(std::vector<Event>& events);
-
-/*
  * Merge duplicate tracks and muons in each event
  */
 void duplicateMerger(std::vector<Event>& events);
@@ -119,6 +114,10 @@ void filteredEventWriter(std::vector<Event>& events,
 			 const std::string& swMuonFile,
 			 const std::string& hwTrackFile,
 			 const std::string& hwMuonFile); 
+/*
+ * analyze events
+ */
+void analyzeEvents(std::vector<Event>& events);
 
 int main() 
 {
@@ -173,16 +172,13 @@ int main()
 		hwTrackFiles,
 		hwMuonFiles);
 
-    // sort the tracks and muons
-    sortTrackAndMuons(events);
-
     // remove the duplicate tracks and muons
     duplicateMerger(events);
     
     // process the tracks and muons
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
 
-      std::cout << "Processing event " << iEvent+1 << std::endl;
+      if (iEvent%100==0) std::cout << "Processing event " << iEvent+1 << std::endl;
 
       // propagate the tracks
       for (unsigned int iSwTrack = 0; iSwTrack < events[iEvent].swTracks.size(); ++iSwTrack){
@@ -324,17 +320,20 @@ int main()
 	  events[iEvent].hwPropTrackMuons.push_back(candidatePropTrackMuon);
 	}
       }
+      std::cout << events[iEvent] << std::endl;
     }
 
     // print all information to a file
     std::ofstream data_output;
     data_output.open("../../../../output_data.txt");
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent) {
-      std::cout << events[iEvent] << std::endl;
       writeOutput(data_output, events[iEvent]);
     }
     data_output.close();
     
+    // print out differences between Sw and Hw objects!
+    analyzeEvents(events);
+  
     std::cout << " Finished " << std::endl;
     
     return 0;
@@ -460,7 +459,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() ) + (batchNumber * 100);
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	if (newEvent.eventNumber > 10) break;
+	if (newEvent.eventNumber > 1000) break;
 	events.push_back(newEvent);
       }
       
@@ -669,6 +668,34 @@ void filteredEventWriter(std::vector<Event>& events,
 }
 */
 
+void analyzeEvents(std::vector<Event>& events)
+{
+  int nDeltaMuon = 0;
+  int nDeltaTrack = 0;
+  int nDeltaPropTrack = 0;
+  int nDeltaTrackMuon = 0;
+  int nDeltaPropTrackMuon = 0;
+  for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
+    nDeltaTrack += bool(abs(events[iEvent].swTracks.size() - 
+			    events[iEvent].hwTracks.size()));
+    nDeltaPropTrack += bool(abs(events[iEvent].swPropTracks.size() - 
+				events[iEvent].hwPropTracks.size()));
+    nDeltaMuon += bool(abs(events[iEvent].swMuons.size() - 
+			   events[iEvent].hwMuons.size()));
+    nDeltaTrackMuon += bool(abs(events[iEvent].swTrackMuons.size() - 
+				events[iEvent].hwTrackMuons.size()));
+    nDeltaPropTrackMuon += bool(abs(events[iEvent].swPropTrackMuons.size() - 
+				    events[iEvent].hwPropTrackMuons.size()));
+  }
+  std::cout << "+++ Event Analysis +++" << std::endl;
+  std::cout << "nDeltaMuon:          " << nDeltaMuon << " -> " << nDeltaMuon/float(events.size()*2)<< std::endl;
+  std::cout << "nDeltaTrack:         " << nDeltaTrack << " -> " << nDeltaTrack/float(events.size()*2) << std::endl;
+  std::cout << "nDeltaPropTrack:     " << nDeltaPropTrack << " -> " << nDeltaPropTrack/float(events.size()*2) << std::endl;
+  std::cout << "nDeltaTrackMuon:     " << nDeltaTrackMuon << " -> " << nDeltaTrackMuon/float(events.size()*2) << std::endl;
+  std::cout << "nDeltaPropTrackMuon: " << nDeltaPropTrackMuon << " -> " << nDeltaPropTrackMuon/float(events.size()*2) << std::endl;
+  std::cout << "+++ Event Analysis +++" << std::endl;
+}
+
 void eventSelector(const std::vector<Event>& events, 
 		   std::vector<Event>& events_selected)
 {
@@ -681,46 +708,51 @@ void eventSelector(const std::vector<Event>& events,
 }
 
 
-void sortTrackAndMuons(std::vector<Event>& events)
-{
-  for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
-    // sort tracks and muons in the event
-    std::sort(events[iEvent].swTracks.begin(), 
-	      events[iEvent].swTracks.end());
-    std::sort(events[iEvent].swMuons.begin(), 
-	      events[iEvent].swMuons.end());
-
-    // note that we have separate sorting functions for HwMuons and HwTracks
-    std::sort(events[iEvent].hwTracks.begin(), 
-	      events[iEvent].hwTracks.end(), HwTrackLess());
-    std::sort(events[iEvent].hwMuons.begin(), 
-	      events[iEvent].hwMuons.end(), HwMuonLess());
-  }
-}
-
-
 void duplicateMerger(std::vector<Event>& events)
 {
   for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
-    // ignore events with more than two tracks or more than two muons
-    // they screw up the hardware
-    std::cout << "Eliminating duplicate muons " << iEvent << std::endl;
-    events[iEvent].swTracks.erase(std::unique(events[iEvent].swTracks.begin(), 
-					      events[iEvent].swTracks.end()), 
-				  events[iEvent].swTracks.end());                   
-    events[iEvent].swMuons.erase(std::unique(events[iEvent].swMuons.begin(), 
-					     events[iEvent].swMuons.end()), 
-				 events[iEvent].swMuons.end());                   
+    // sort tracks and muons in the event
 
-    // note that we have separate comparison functions for HwMuons and HwTracks
-    events[iEvent].hwTracks.erase(std::unique(events[iEvent].hwTracks.begin(), 
-					      events[iEvent].hwTracks.end(),
-					      HwTrackEqual()), 
-				  events[iEvent].hwTracks.end());
-    events[iEvent].hwMuons.erase(std::unique(events[iEvent].hwMuons.begin(), 
-					     events[iEvent].hwMuons.end(),
-					     HwMuonEqual()), 
-				 events[iEvent].hwMuons.end());                   
+    std::vector<SwTrack> newSwTracks;
+    std::vector<SwMuon> newSwMuons;
+    std::vector<HwTrack> newHwTracks;
+    std::vector<HwMuon> newHwMuons;
+    
+    for (unsigned int iObj = 0; iObj < events[iEvent].swTracks.size(); iObj++){
+      bool isNew(true);
+      for (unsigned int iNewObj = 0; iNewObj < newSwTracks.size(); iNewObj++){
+	if (sameSwTrack(events[iEvent].swTracks[iObj], newSwTracks[iNewObj])) isNew = false;
+      }
+      if (isNew) newSwTracks.push_back(events[iEvent].swTracks[iObj]);
+    }
+    for (unsigned int iObj = 0; iObj < events[iEvent].swMuons.size(); iObj++){
+      bool isNew(true);
+      for (unsigned int iNewObj = 0; iNewObj < newSwMuons.size(); iNewObj++){
+	if (sameSwMuon(events[iEvent].swMuons[iObj], newSwMuons[iNewObj])) isNew = false;
+      }
+      if (isNew) newSwMuons.push_back(events[iEvent].swMuons[iObj]);
+    }
+
+    for (unsigned int iObj = 0; iObj < events[iEvent].hwTracks.size(); iObj++){
+      bool isNew(true);
+      for (unsigned int iNewObj = 0; iNewObj < newHwTracks.size(); iNewObj++){
+	if (sameHwTrack(events[iEvent].hwTracks[iObj], newHwTracks[iNewObj])) isNew = false;
+      }
+      if (isNew) newHwTracks.push_back(events[iEvent].hwTracks[iObj]);
+    }
+    for (unsigned int iObj = 0; iObj < events[iEvent].hwMuons.size(); iObj++){
+      bool isNew(true);
+      for (unsigned int iNewObj = 0; iNewObj < newHwMuons.size(); iNewObj++){
+	if (sameHwMuon(events[iEvent].hwMuons[iObj], newHwMuons[iNewObj])) isNew = false;
+      }
+      if (isNew) newHwMuons.push_back(events[iEvent].hwMuons[iObj]);
+    }
+    
+    // add the new collections to the event
+    events[iEvent].swTracks = newSwTracks;
+    events[iEvent].swMuons = newSwMuons;
+    events[iEvent].hwTracks = newHwTracks;
+    events[iEvent].hwMuons = newHwMuons;
   }
 }
 
