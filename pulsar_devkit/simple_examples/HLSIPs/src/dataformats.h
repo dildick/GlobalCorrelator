@@ -19,7 +19,7 @@ const int N_BINS_MUON_ETA = 9;
 const int N_BINS_MUON_PHI = 10;
 
 typedef ap_int<15> invpt_t;  // inverse pt [1% at 100 GeV]
-typedef ap_uint<15> pt_t;     // convert from RINV
+typedef ap_uint<14> pt_t;     // convert from RINV
 typedef ap_int<14> eta_t;    // eta [sinh(eta) measure to 0.005]
 typedef ap_int<19> phi_t;    // phi (50 micro-rad)
 typedef ap_int<23> phiglobal_t;    // phi (50 micro-rad)
@@ -31,7 +31,7 @@ typedef ap_uint<5> sector_t;
 
 // before the decimal point, after the decimal point
 typedef ap_fixed<24,2> finvpt_t;  // inverse pt [1% at 100 GeV]
-typedef ap_fixed<12,9> fpt_t;     // 1/Rinv
+typedef ap_fixed<14,9> fpt_t;     // 1/Rinv
 typedef ap_fixed<14,4> feta_t;    // eta [sinh(eta) measure to 0.005]
 typedef ap_fixed<19,3> fphi_t;    // phi (50 micro-rad)
 typedef ap_fixed<23,3> fphiglobal_t;    // global phi (50 micro-rad)
@@ -48,35 +48,44 @@ typedef ap_uint<10> phi_m; // muon phi goes from 0 to 2pi
 typedef ap_uint<4> quality_m;
 
 // size of the LUTs
-#define RINV_TABLE_SIZE 16384  // 14 unsigned bits
+#define PT_TABLE_SIZE 16384  // 14 unsigned bits
+#define RINV_TABLE_SIZE 16384 // 32768 // 16384  // 14 unsigned bits
 #define ETA_TABLE_SIZE 8192  // 13 unsigned bits
 #define Z0_TABLE_SIZE 1024   // 10 unsigned bits
 
 // range for LUTs
-#define RINV_RANGE 1
+#define PT_RANGE 175
+#define INV_PT_RANGE 1/PT_RANGE
+
+#define RINV_RANGE 57E-4  // (0.3*3.8*0.01)/2
+#define INV_RINV_RANGE 175
+
 #define SINHETA_RANGE 6
-#define ETA_RANGE 3
-#define COSH_RANGE 3
-#define Z0_RANGE 15
-#define INV_RINV_RANGE 1/RINV_RANGE
 #define INV_SINHETA_RANGE 1/SINHETA_RANGE
+
+#define ETA_RANGE 3
 #define INV_ETA_RANGE 1/ETA_RANGE
+
+#define COSH_RANGE 3
 #define INV_COSH_RANGE 1/COSH_RANGE
+
+#define Z0_RANGE 15
 #define INV_Z0_RANGE 1/Z0_RANGE
 
 // Conversions between binary and floating point (using example file to derive)
 #define RINV_CONVERSION 792057              //1314229             // 1/0.000000760902077
 #define INVRINV_CONVERSION 1262535E-12   //0.000001262538462  //original: 760902077E-15   
-
 #define PT_CONVERSION 877192982456E-10  // 1/(0.01*0.3*3.8); 87719298E-6
 #define INVPT_CONVERSION 114E-4
-#define ETA_CONVERSION 512                  //855   // 1/0.0011698 = 854.84698
-#define PHI_CONVERSION 211216               //original: 219037
-#define Z_CONVERSION 17                     //original: 18 // 1/0.05615 = 17.81 -> 18
- // 0.000000760902077
-#define INVETA_CONVERSION 19531261E-10      //original: 11698E-7
-#define INVPHI_CONVERSION 47345E-10 // 4734119709E-15    //0.000004734119709  // original: 456544E-11
-#define INVZ_CONVERSION 5859375E-8          //0.05859375 //original: 56152375E-9         //0.056152375
+
+#define ETA_CONVERSION 512
+#define INVETA_CONVERSION 19531261E-10
+
+#define PHI_CONVERSION 211216
+#define INVPHI_CONVERSION 47345E-10
+
+#define Z_CONVERSION 17
+#define INVZ_CONVERSION 5859375E-8
 
 // Muon conversions
 #define MUONPT_CONVERSION 0.5
