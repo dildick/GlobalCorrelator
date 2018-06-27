@@ -281,7 +281,7 @@ std::ostream& operator << (std::ostream& os, const SwTrack& rhs)
      /* << "sinhEta: " << rhs.sinhEta << ", " */
      << "eta: " << rhs.eta << ", "
      << "phi: " << rhs.phi << ", " 
-     << "sector: " << rhs.sector << ","
+     << "sector: " << rhs.sector << ", "
      << "Q: " << rhs.q;
   return os;
 }
@@ -294,7 +294,7 @@ std::ostream& operator << (std::ostream& os, const SwPropTrack& rhs)
      /* << "phi: " << rhs.phi << ", "  */
      << "eta_prop: " << rhs.propEta << ", " 
      << "phi_prop: " << rhs.propPhi << ", "
-     << "sector: " << rhs.sector << ","
+     << "sector: " << rhs.sector << ", "
      << "Q: " << rhs.q;
   return os;
 }

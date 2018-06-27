@@ -123,6 +123,7 @@ void duplicateMerger(std::vector<Event>& events);
   hwMuon       - file containing muon information in binary format
 */
 void filteredEventWriter(std::vector<Event>& events, 
+			 const std::string& directory,
 			 const std::string& swTrackFile,
 			 const std::string& swMuonFile,
 			 const std::string& hwTrackFile,
@@ -147,18 +148,21 @@ int main()
     muonComment.push_back("MuonO");
     muonComment.push_back("MuonE");
 
+    // directory
     std::string directory = "../../../../data/";
 
+    // input data files
     std::string simTrackPattern = "sim_muon_data";
-    std::string swTrackPattern = "CleanTracksAll_floating";
-    std::string swMuonPattern = "sw_muon_data";
-    std::string hwTrackPattern = "CleanTracksAll_binary";
-    std::string hwMuonPattern = "hw_muon_data";
+    std::string swTrackPattern =  "CleanTracksAll_floating";
+    std::string swMuonPattern =   "sw_muon_data";
+    std::string hwTrackPattern =  "CleanTracksAll_binary";
+    std::string hwMuonPattern =   "hw_muon_data";
 
-    std::string swTrackPatternOut = "../../../../data/sw_track_filtered.txt";
-    std::string swMuonPatternOut = "../../../../data/sw_muon_filtered.txt";
-    std::string hwTrackPatternOut = "../../../../data/hw_track_filtered.txt";
-    std::string hwMuonPatternOut = "../../../../data/hw_muon_filtered.txt";
+    // filtered data files (duplicates are out)
+    std::string swTrackPatternOut = "sw_track_filtered.dat";
+    std::string swMuonPatternOut =  "sw_muon_filtered.dat";
+    std::string hwTrackPatternOut = "hw_track_filtered.dat";
+    std::string hwMuonPatternOut =  "hw_muon_filtered.dat";
 
     std::vector<std::string> simTrackFiles;
     std::vector<std::string> swTrackFiles;
@@ -188,13 +192,6 @@ int main()
     // remove the duplicate tracks and muons
     duplicateMerger(events);
     
-    // produce a set of filtered output files
-    filteredEventWriter(events, 
-			swTrackPatternOut,
-			swMuonPatternOut,
-			hwTrackPatternOut,
-			hwMuonPatternOut);
-
     // process the tracks and muons
     for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
 
@@ -351,6 +348,14 @@ int main()
     }
     data_output.close();
     
+    // produce a set of filtered output files
+    filteredEventWriter(events,
+			directory, 
+			swTrackPatternOut,
+			swMuonPatternOut,
+			hwTrackPatternOut,
+			hwMuonPatternOut);
+
     // print out differences between Sw and Hw objects!
     analyzeEvents(events);
   
@@ -479,7 +484,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() ) + (batchNumber * 100);
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	if (newEvent.eventNumber > 10) break;
+	if (newEvent.eventNumber > 10000) break;
 	events.push_back(newEvent);
       }
       
@@ -676,18 +681,20 @@ void eventReader(std::vector<Event>& events,
   if (debug) std::cout << "End reading HwMuon file" << std::endl;
 } 
 
-void filteredEventWriter(std::vector<Event>& events, 
+void filteredEventWriter(std::vector<Event>& events,
+			 const std::string& directory, 
 			 const std::string& swTrackFile,
 			 const std::string& swMuonFile,
 			 const std::string& hwTrackFile,
 			 const std::string& hwMuonFile)
 {
-  std::ofstream swTrack(swTrackFile.c_str());
-  std::ofstream swMuon(swMuonFile.c_str());
-  std::ofstream hwTrack(hwTrackFile.c_str());
-  std::ofstream hwMuon(hwMuonFile.c_str());
+  std::ofstream swTrack((directory + swTrackFile).c_str());
+  std::ofstream swMuon( (directory + swMuonFile).c_str());
+  std::ofstream hwTrack((directory + hwTrackFile).c_str());
+  std::ofstream hwMuon( (directory + hwMuonFile).c_str());
 
-
+  // loop over the simtracks in the event
+  // this ensures that the muons and tracks are organized in the same way
   for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){ 
     Event thisEvent = events[iEvent];
 
@@ -697,15 +704,18 @@ void filteredEventWriter(std::vector<Event>& events,
     hwMuon << "Event " << thisEvent.eventNumber << " BX " << thisEvent.BX << std::endl;
 
     for (unsigned iSimTrack = 0; iSimTrack < thisEvent.simTracks.size(); iSimTrack++){
+
       // access the matching objects
-      const SwTrack&     matchingSwTrack =         getMatchingTrack(thisEvent.simTracks[iSimTrack], thisEvent.swTracks);
-      const SwMuon&      matchingSwMuon =          getMatchingTrack(thisEvent.simTracks[iSimTrack], thisEvent.swMuons);
-      const HwTrack&     matchingHwTrack =         getMatchingHwTrack(thisEvent.simTracks[iSimTrack], thisEvent.hwTracks);
-      const HwMuon&      matchingHwMuon =          getMatchingHwMuon(thisEvent.simTracks[iSimTrack], thisEvent.hwMuons, "muon");
+      const SwTrack& matchingSwTrack = getMatchingTrack(  thisEvent.simTracks[iSimTrack], thisEvent.swTracks);
+      const SwMuon&  matchingSwMuon =  getMatchingTrack(  thisEvent.simTracks[iSimTrack], thisEvent.swMuons);
+      const HwTrack& matchingHwTrack = getMatchingHwTrack(thisEvent.simTracks[iSimTrack], thisEvent.hwTracks);
+      const HwMuon&  matchingHwMuon =  getMatchingHwMuon( thisEvent.simTracks[iSimTrack], thisEvent.hwMuons, "muon");
       
       // now print them out
       swTrack << "SwTrack " << iSimTrack+1 << " " << matchingSwTrack << std::endl;
+
       swMuon  << "SwMuon " << iSimTrack+1 << " " << matchingSwMuon << std::endl;
+
       hwTrack << "HwTrack " << iSimTrack+1 << " " 
 	      << "Rinv: " << std::bitset<15>(matchingHwTrack.hwRinv) << ", "
 	      << "t: " << std::bitset<14>(matchingHwTrack.hwEta) << ", "
@@ -1045,13 +1055,24 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
 template <class T> 
 T getMatchingTrack(const SimTrack& simTrack, const std::vector<T> collection)
 {
+  bool debug(false);
+
   T matchingT;
   // find the best matching T
   for (unsigned iT = 0; iT < collection.size(); iT++){
 
+    // float eta = collection[iT].eta;
+    // float phi = getTrackPhiFloat(collection[iT].hwPhiGlobal);
+    
+    // if (debug){
+    //   std::cout << "In function getMatchingHwTrack" << std::endl;
+    //   std::cout << "hw track track eta " <<  eta << std::endl;
+    //   std::cout << "hw track track phi " <<  phi << std::endl << std::endl;
+    // } 
+
     // relatively loose cut
     if (deltaR(collection[iT].eta, collection[iT].phi, 
-	       simTrack.eta, simTrack.phi) < 0.4) {
+	       simTrack.eta, simTrack.phi) < 0.5) {
       matchingT = collection[iT];
       break;
     }
@@ -1068,7 +1089,7 @@ T getMatchingPropTrack(const SimTrack& simTrack, const std::vector<T> collection
 
     // relatively loose cut
     if (deltaR(collection[iT].propEta, collection[iT].propPhi, 
-	       simTrack.eta, simTrack.phi) < 0.4) {
+	       simTrack.eta, simTrack.phi) < 0.5) {
       matchingT = collection[iT];
       break;
     }
@@ -1095,7 +1116,7 @@ T getMatchingHwTrack(const SimTrack& simTrack, const std::vector<T> collection)
     } 
  
     // relatively loose cut
-    if (deltaR(eta, phi, simTrack.eta, simTrack.phi) < 0.4) {
+    if (deltaR(eta, phi, simTrack.eta, simTrack.phi) < 0.5) {
       matchingT = collection[iT];
       break;
     }
@@ -1106,7 +1127,7 @@ T getMatchingHwTrack(const SimTrack& simTrack, const std::vector<T> collection)
 template <class T> 
 T getMatchingHwPropTrack(const SimTrack& simTrack, const std::vector<T> collection)
 {
-  bool debug(true);
+  bool debug(false);
 
   T matchingT;
   // find the best matching T
@@ -1124,7 +1145,7 @@ T getMatchingHwPropTrack(const SimTrack& simTrack, const std::vector<T> collecti
     }
 
     // relatively loose cut
-    if (deltaR(eta, phi, simTrack.eta, simTrack.phi) < 0.4) {
+    if (deltaR(eta, phi, simTrack.eta, simTrack.phi) < 0.5) {
       matchingT = collection[iT];
       break;
     }

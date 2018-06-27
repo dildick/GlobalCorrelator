@@ -448,8 +448,11 @@ void rinvToPt(data_T &data, res_T &res) {
     else if (index>TABLE_SIZE-1) res = rinvToPt_table[TABLE_SIZE-1];
     else res = rinvToPt_table[index];
 
-    std::cout << "Index " << index << std::endl;
-    std::cout << "res " << res << std::endl;
+    bool debug(false);
+    if (debug) {
+      std::cout << "Index " << index << std::endl;
+      std::cout << "res " << res << std::endl;
+    }
 
     return;
 }

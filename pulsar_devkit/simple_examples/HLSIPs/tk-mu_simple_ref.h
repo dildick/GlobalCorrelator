@@ -75,7 +75,7 @@ SwPropTrack tkmu_simple_ref( const SwTrack& in )
 
 SwTrackMuon match_sw(const SwTrack& inTrack, const SwMuon& inMuon)
 {
-  bool debug = true;
+  bool debug = false;
 
   SwTrackMuon outTrack;
   float tketa = inTrack.eta;
