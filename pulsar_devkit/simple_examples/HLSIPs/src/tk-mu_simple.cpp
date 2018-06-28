@@ -27,7 +27,7 @@ Negative values in binary are generated assuming "One's complement"
 #endif
 
 
-HwPropTrack tkmu_simple_hw(  HwTrack& in)
+etaphiglobal_t tkmu_simple_hw(HwTrack& in)
 {
   bool debug(false);
 
@@ -140,21 +140,16 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
 
   //finvpt_t absInhwRinv = inhwRinv;
   // hwQ==0 maps to +1; hwQ==1 maps to -1  
-  // if (in.hwQ < 1)
+  if (in.hwQ > 0)
+    inhwInvPt = -inhwInvPt;
   //   absInhwRinv = -inhwRinv;
     
-  // calculate pT from 1/pT with a LUT
-  fpt_t absPt;
-  rinvToPt(inhwRinv, absPt);
-
-  in.hwPt = absPt * fpt_t(PT_CONVERSION);
-
   if (debug) {
     std::cout << " FIRMWARE : pT calculation " << std::endl
-	      << " -- 1/pT           = " << inhwInvPt << std::endl
-	      << " -- pT             = " << absPt << std::endl
-	      << " -- in.hwPt        = " << in.hwPt << std::endl
-	      << " -- pT (converted) = " << in.hwPt*INVPT_CONVERSION << std::endl;
+	      << " -- 1/pT           = " << inhwInvPt << std::endl;
+	      // << " -- pT             = " << absPt << std::endl
+	      // << " -- in.hwPt        = " << in.hwPt << std::endl
+	      // << " -- pT (converted) = " << in.hwPt*INVPT_CONVERSION << std::endl;
   }
 
   // Do the calculations!
@@ -229,13 +224,10 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     if (debug) std::cout << " FIRMWARE :       dzCorrPhi = " << dzCorrPhi << std::endl;
   }
   
-  // make a new output track
-  HwPropTrack out = in;
-
   // ** calculate the propagated eta ** //
   if (debug) std::cout << " FIRMWARE : -- ETA calculation " << inhwEta + deta << std::endl;
   eta_t etaconv(ETA_CONVERSION);
-  out.hwPropEta = (inhwEta + deta)*etaconv;
+  eta_t hwPropEta = (inhwEta + deta)*etaconv;
 
 
   // ** calculate the propagated phi ** //
@@ -249,7 +241,7 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
   fphiglobal_t tmp_val4   = tmp_A * tmp_B * invCoshEta_Phi;
   fphiglobal_t outPropPhi = fphiglobal_t(in.hwPhiGlobal*INVPHI_CONVERSION) - tmp_val4 - M_PI_144;
 
-  out.hwPropPhi = outPropPhi*PHI_CONVERSION;
+  phiglobal_t hwPropPhi = outPropPhi*PHI_CONVERSION;
 
   // Print results to screen for debugging
   if (debug) {
@@ -260,16 +252,19 @@ HwPropTrack tkmu_simple_hw(  HwTrack& in)
     std::cout << " FIRMWARE : cosh(1.7)*dzcorrphi                            = " << tmp_B << std::endl;
     std::cout << " FIRMWARE : 1.464*cosh(1.7)*dzcorrphi / (pT*cosh(etaProp)) = " << tmp_val4 << std::endl;
     std::cout << " FIRMWARE : outPropPhi                                     = " << outPropPhi << std::endl;
-    std::cout << " FIRMWARE : out.hwPropPhi                                  = " << out.hwPropPhi << std::endl;
-    std::cout << " FIRMWARE : out.hwPropPhi*INVPHI                           = " << fphiglobal_t(out.hwPropPhi*INVPHI_CONVERSION) << std::endl;
+    std::cout << " FIRMWARE : hwPropPhi*INVPHI                           = " << fphiglobal_t(hwPropPhi*INVPHI_CONVERSION) << std::endl;
   }
-  return out;
+  return etaphiglobal_t(hwPropEta, hwPropPhi);
 }
 
-HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
+HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
 {
   HwTrackMuon outTrackMuon;
   
+  // assign the pT
+  assign_pt_hw(inTrack);
+
+  // calculate eta and phi
   feta_t tkEta = inTrack.hwEta*INVETA_CONVERSION;
   fphiglobal_t tkPhi = normalizePhi(inTrack.hwPhiGlobal*INVPHI_CONVERSION);
   
@@ -292,6 +287,7 @@ HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
   // the square root
   if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
     if (debug)     std::cout << ">>> Matched!" << std::endl << std::endl;
+    
     outTrackMuon.hwPt = inTrack.hwPt;
     outTrackMuon.hwEta = inMuon.hwEta;
     outTrackMuon.hwPhi = inMuon.hwPhi;
@@ -304,10 +300,14 @@ HwTrackMuon match_hw(const HwTrack& inTrack, const HwMuon& inMuon)
   return outTrackMuon;
 }
 
-HwTrackMuon match_prop_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
+HwTrackMuon match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon)
 {
   HwTrackMuon outTrackMuon;
+  
+  // assign the pT
+  assign_pt_hw(inTrack);
 
+  // calculate eta and phi
   feta_t tkEta = inTrack.hwPropEta*INVETA_CONVERSION;
   fphiglobal_t tkPhi = normalizePhi(inTrack.hwPropPhi*INVPHI_CONVERSION);
   
@@ -330,6 +330,7 @@ HwTrackMuon match_prop_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
   // the square root
   if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
     if (debug)     std::cout << ">>> Matched!" << std::endl << std::endl;
+
     outTrackMuon.hwPt = inTrack.hwPt;
     outTrackMuon.hwEta = inMuon.hwEta;
     outTrackMuon.hwPhi = inMuon.hwPhi;
@@ -342,17 +343,22 @@ HwTrackMuon match_prop_hw(const HwPropTrack& inTrack, const HwMuon& inMuon)
   return outTrackMuon;
 }
 
-HwTrackMuon match_track_muon(const HwMuon& muon, HwTrack& track)
+void assign_pt_hw(HwTrack& inTrack)
 {
-  HwTrackMuon emptyTrackMuon;
-
-  // propagate the track and try to perform a match
-  HwPropTrack propTrack = tkmu_simple_hw(track);
-  HwTrackMuon trackMuon = match_prop_hw(propTrack, muon);
-  if (trackMuon.hwValid) return trackMuon;
+  // Rinv (16384 = 2^14; number of unsigned bits)
+  invpt_t absInvRinv;
+  if (inTrack.hwRinv < 0) 
+    absInvRinv = (inTrack.hwRinv+16384);
+  else               
+    absInvRinv = inTrack.hwRinv;
   
-  return emptyTrackMuon;
+  finvpt_t inhwRinv;
+  inhwRinv = absInvRinv * INVRINV_CONVERSION;
+  
+  // calculate pT from 1/pT with a LUT
+  fpt_t absPt;
+  rinvToPt(inhwRinv, absPt);
+  inTrack.hwPt = absPt * fpt_t(PT_CONVERSION);
 }
-
 
 // THE END

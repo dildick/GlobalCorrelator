@@ -47,6 +47,9 @@ typedef ap_int<9> eta_m; // muon eta goes from -2.4 to 2.4
 typedef ap_uint<10> phi_m; // muon phi goes from 0 to 2pi
 typedef ap_uint<4> quality_m;
 
+// propetaphi
+typedef std::pair<eta_t, phiglobal_t> etaphiglobal_t;
+
 // size of the LUTs
 #define PT_TABLE_SIZE 16384  // 14 unsigned bits
 #define RINV_TABLE_SIZE 16384 // 32768 // 16384  // 14 unsigned bits
@@ -213,6 +216,7 @@ struct HwMuon {
     q_t hwQ;
     q_t hwValid;   // valid bit
     bx_t hwBX;    // bunch crossing
+    quality_m hwQuality;
   // constructor
   HwMuon() : 
     hwPt(0),
@@ -220,7 +224,8 @@ struct HwMuon {
     hwPhi(0),
     hwQ(0),
     hwValid(0),
-    hwBX(0)
+    hwBX(0),
+    hwQuality(0)
   {
   }
 };

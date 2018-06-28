@@ -206,7 +206,10 @@ int main()
 
       // propagate the tracks
       for (unsigned int iHwTrack = 0; iHwTrack < events[iEvent].hwTracks.size(); ++iHwTrack){
-	HwPropTrack prop_track_hw = tkmu_simple_hw(events[iEvent].hwTracks[iHwTrack]);
+	etaphiglobal_t etaphi = tkmu_simple_hw(events[iEvent].hwTracks[iHwTrack]);
+	HwPropTrack prop_track_hw = events[iEvent].hwTracks[iHwTrack];
+	prop_track_hw.hwPropEta = etaphi.first;
+	prop_track_hw.hwPropPhi = etaphi.second;
 	events[iEvent].hwPropTracks.push_back(prop_track_hw);
 	// std::cout << "Track " << hwTrack << " PropTrack " << prop_track_hw << std::endl; 
       } 
@@ -286,9 +289,9 @@ int main()
 	HwTrackMuon candidateTrackMuon; 
 	for (unsigned int iHwTrack = 0; 
 	     iHwTrack < events[iEvent].hwTracks.size(); ++iHwTrack){
-	  HwTrack hwTrack = events[iEvent].hwTracks[iHwTrack];
 	  // std::cout << ">>Candidate track " << hwTrack << std::endl;
-	  HwTrackMuon hwTrackMuon = match_hw(hwTrack, hwMuon);
+	  HwTrackMuon hwTrackMuon = match_hw(events[iEvent].hwTracks[iHwTrack], 
+					     hwMuon);
 
 	  // // check if valid or not
 	  if (not hwTrackMuon.hwValid) continue;
@@ -314,9 +317,9 @@ int main()
 	HwTrackMuon candidatePropTrackMuon; 
 	for (unsigned int iHwPropTrack = 0; 
 	     iHwPropTrack < events[iEvent].hwPropTracks.size(); ++iHwPropTrack){
-	  HwPropTrack hwPropTrack = events[iEvent].hwPropTracks[iHwPropTrack];
 	  // std::cout << ">>Candidate track " << hwPropTrack << std::endl;
-	  HwTrackMuon hwPropTrackMuon = match_prop_hw(hwPropTrack, hwMuon);
+	  HwTrackMuon hwPropTrackMuon = match_prop_hw(events[iEvent].hwPropTracks[iHwPropTrack], 
+						      hwMuon);
 
 	  // // check if valid or not
 	  if (not hwPropTrackMuon.hwValid) continue;
@@ -337,7 +340,7 @@ int main()
 	  events[iEvent].hwPropTrackMuons.push_back(candidatePropTrackMuon);
 	}
       }
-      std::cout << events[iEvent] << std::endl;
+      //   std::cout << events[iEvent] << std::endl;
     }
 
     // print all information to a file
@@ -698,10 +701,17 @@ void filteredEventWriter(std::vector<Event>& events,
   for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){ 
     Event thisEvent = events[iEvent];
 
-    swTrack << "Event " << thisEvent.eventNumber << " BX " << thisEvent.BX << std::endl;
-    swMuon << "Event " << thisEvent.eventNumber << " BX " << thisEvent.BX << std::endl;
-    hwTrack << "Event " << thisEvent.eventNumber << " BX " << thisEvent.BX << std::endl;
-    hwMuon << "Event " << thisEvent.eventNumber << " BX " << thisEvent.BX << std::endl;
+    swTrack << "Begin event " << thisEvent.eventNumber << std::endl;
+    swMuon << "Begin event " << thisEvent.eventNumber << std::endl;
+    hwTrack << "Begin event " << thisEvent.eventNumber << std::endl;
+    hwMuon << "Begin event " << thisEvent.eventNumber << std::endl;
+    
+    std::bitset<1> B0((std::bitset<3>(thisEvent.BX).to_string())[2]);
+    std::bitset<1> B1((std::bitset<3>(thisEvent.BX).to_string())[1]);
+    std::bitset<1> B2((std::bitset<3>(thisEvent.BX).to_string())[0]);
+    std::bitset<1> Res(0);
+    std::bitset<1> BX0(0);
+    std::bitset<1> SE(0);
 
     for (unsigned iSimTrack = 0; iSimTrack < thisEvent.simTracks.size(); iSimTrack++){
 
@@ -711,34 +721,49 @@ void filteredEventWriter(std::vector<Event>& events,
       const HwTrack& matchingHwTrack = getMatchingHwTrack(thisEvent.simTracks[iSimTrack], thisEvent.hwTracks);
       const HwMuon&  matchingHwMuon =  getMatchingHwMuon( thisEvent.simTracks[iSimTrack], thisEvent.hwMuons, "muon");
       
+      std::bitset<1> extraBit1 = iSimTrack == 0 ? BX0 : B1;
+      std::bitset<1> extraBit2 = iSimTrack == 0 ? SE  : B2;
+      std::bitset<1> extraBit3 = iSimTrack == 0 ? B0  : Res;
+      
+      // 96 bit words!
+      std::string hwTrackDataWord = (extraBit3.to_string() +
+				     "00000000000000000000000000" + // 26 zeros
+				     std::bitset<5>(matchingHwTrack.hwSector).to_string() + //needed to convert to global phi! 
+				     extraBit2.to_string() + 
+				     "0" + 
+				     std::bitset<19>(matchingHwTrack.hwZ0).to_string() +
+				     std::bitset<19>(matchingHwTrack.hwPhi).to_string() +
+				     extraBit1.to_string() + 
+				     "00" + 
+				     std::bitset<14>(matchingHwTrack.hwSinhEta).to_string() + 
+				     std::bitset<15>(matchingHwTrack.hwRinv).to_string());
+
+      std::string hwMuonDataWord = (extraBit3.to_string() +
+				    std::bitset<10>(matchingHwMuon.hwPhi).to_string() + 
+				    "000000000000000000000" + // 21 zeros
+				    extraBit2.to_string() + 
+				    "0000000000000000000000000000000" + // 31 zeros from track addresses -- not used
+				    extraBit1.to_string() + 
+				    "000000000" + //local phi -- not used
+				    "0" + // H/F not used
+				    std::bitset<9>(matchingHwMuon.hwEta).to_string() + 
+				    std::bitset<4>(matchingHwMuon.hwQuality).to_string() + 
+				    std::bitset<9>(matchingHwMuon.hwPt).to_string());
+      
       // now print them out
       swTrack << "SwTrack " << iSimTrack+1 << " " << matchingSwTrack << std::endl;
 
       swMuon  << "SwMuon " << iSimTrack+1 << " " << matchingSwMuon << std::endl;
 
-      hwTrack << "HwTrack " << iSimTrack+1 << " " 
-	      << "Rinv: " << std::bitset<15>(matchingHwTrack.hwRinv) << ", "
-	      << "t: " << std::bitset<14>(matchingHwTrack.hwEta) << ", "
-	      << "phi: " << std::bitset<19>(matchingHwTrack.hwPhi) << ", "
-	      << "Z0: " << std::bitset<11>(matchingHwTrack.hwZ0) << ", " 
-	      << "Q: " << std::bitset<1>(matchingHwTrack.hwQ) << ", "
-	      << "Sector: " << std::bitset<5>(matchingHwTrack.hwSector) << ", "
-	      << "HwValid: " << std::bitset<1>(matchingHwTrack.hwValid) << ", "
-	      << "BX: " << std::bitset<3>(matchingHwTrack.hwBX) << std::endl;
+      hwTrack << "HwTrack" << iSimTrack+1 << " " << hwTrackDataWord << std::endl;
       
-      hwMuon  << "HwMuon " << iSimTrack+1 << " " 
-	      << "pT: " << std::bitset<9>(matchingHwMuon.hwPt) << ", " 
-	      << "eta: " << std::bitset<9>(matchingHwMuon.hwEta) << ", "
-	      << "phi: " << std::bitset<10>(matchingHwMuon.hwPhi) << ", "
-	      << "Q: " << std::bitset<1>(matchingHwMuon.hwQ) << ", "
-	      << "HwValid: " << std::bitset<1>(matchingHwMuon.hwValid) << ", "
-	      << "BX: " << std::bitset<3>(matchingHwMuon.hwBX) << std::endl;
+      hwMuon  << "HwMuon" << iSimTrack+1 << " " << hwMuonDataWord << std::endl; 
 
     }
-    swTrack << std::endl;
-    swMuon << std::endl;
-    hwTrack << std::endl;
-    hwMuon << std::endl;
+    swTrack << "End event " << std::endl << std::endl;
+    swMuon  << "End event " << std::endl << std::endl;
+    hwTrack << "End event " << std::endl << std::endl;
+    hwMuon  << "End event " << std::endl << std::endl;
   } 
   
   swTrack.close();
@@ -754,6 +779,24 @@ void analyzeEvents(std::vector<Event>& events)
   int nDeltaPropTrack = 0;
   int nDeltaTrackMuon = 0;
   int nDeltaPropTrackMuon = 0;
+
+  int nMoreSwMuon = 0;
+  int nMoreSwTrack = 0;
+  int nMoreSwPropTrack = 0;
+  int nMoreSwTrackMuon = 0;
+  int nMoreSwPropTrackMuon = 0;
+
+  int nMoreHwMuon = 0;
+  int nMoreHwTrack = 0;
+  int nMoreHwPropTrack = 0;
+  int nMoreHwTrackMuon = 0;
+  int nMoreHwPropTrackMuon = 0;
+
+  int nMatchingSwMuon = 0;
+  int nMatchingHwMuon = 0;
+  int nMatchingSwPropTrackMuon = 0;
+  int nMatchingHwPropTrackMuon = 0;
+
   for (unsigned int iEvent = 0; iEvent < events.size(); ++iEvent){
     nDeltaTrack += bool(abs(events[iEvent].swTracks.size() - 
 			    events[iEvent].hwTracks.size()));
@@ -765,13 +808,62 @@ void analyzeEvents(std::vector<Event>& events)
 				events[iEvent].hwTrackMuons.size()));
     nDeltaPropTrackMuon += bool(abs(events[iEvent].swPropTrackMuons.size() - 
 				    events[iEvent].hwPropTrackMuons.size()));
+
+    nMoreSwTrack += bool(events[iEvent].swTracks.size() > 
+			 events[iEvent].hwTracks.size());
+    nMoreSwPropTrack += bool(events[iEvent].swPropTracks.size() > 
+			     events[iEvent].hwPropTracks.size());
+    nMoreSwMuon += bool(events[iEvent].swMuons.size() > 
+			events[iEvent].hwMuons.size());
+    nMoreSwTrackMuon += bool(events[iEvent].swTrackMuons.size() > 
+			     events[iEvent].hwTrackMuons.size());
+    nMoreSwPropTrackMuon += bool(events[iEvent].swPropTrackMuons.size() > 
+				 events[iEvent].hwPropTrackMuons.size());
+
+    nMoreSwTrack += bool(events[iEvent].swTracks.size() <
+			 events[iEvent].hwTracks.size());
+    nMoreSwPropTrack += bool(events[iEvent].swPropTracks.size() <
+			     events[iEvent].hwPropTracks.size());
+    nMoreSwMuon += bool(events[iEvent].swMuons.size() <
+			events[iEvent].hwMuons.size());
+    nMoreSwTrackMuon += bool(events[iEvent].swTrackMuons.size() <
+			     events[iEvent].hwTrackMuons.size());
+    nMoreSwPropTrackMuon += bool(events[iEvent].swPropTrackMuons.size() <
+				 events[iEvent].hwPropTrackMuons.size());
+
+    // count the matches for each type of object
+    for (unsigned iSimTrack = 0; iSimTrack < events[iEvent].simTracks.size(); iSimTrack++){
+      const SwMuon& matchingSwMuon = getMatchingTrack(events[iEvent].simTracks[iSimTrack], events[iEvent].swMuons);
+      const HwMuon& matchingHwMuon = getMatchingHwMuon(events[iEvent].simTracks[iSimTrack], events[iEvent].hwMuons, "muon");
+      const SwTrackMuon& matchingSwPropTrackMuon = getMatchingTrack(events[iEvent].simTracks[iSimTrack], events[iEvent].swPropTrackMuons);
+      const HwTrackMuon& matchingHwPropTrackMuon = getMatchingHwMuon(events[iEvent].simTracks[iSimTrack], events[iEvent].hwPropTrackMuons, "proptrack-muon");
+
+      if (matchingSwMuon.valid)            nMatchingSwMuon++;
+      if (matchingHwMuon.hwValid)          nMatchingHwMuon++;
+      if (matchingSwPropTrackMuon.valid)   nMatchingSwPropTrackMuon++;
+      if (matchingHwPropTrackMuon.hwValid) nMatchingHwPropTrackMuon++;
+    }
   }
   std::cout << "+++ Event Analysis +++" << std::endl;
   std::cout << "nDeltaMuon:          " << nDeltaMuon << " -> " << nDeltaMuon/float(events.size()*2)<< std::endl;
   std::cout << "nDeltaTrack:         " << nDeltaTrack << " -> " << nDeltaTrack/float(events.size()*2) << std::endl;
   std::cout << "nDeltaPropTrack:     " << nDeltaPropTrack << " -> " << nDeltaPropTrack/float(events.size()*2) << std::endl;
   std::cout << "nDeltaTrackMuon:     " << nDeltaTrackMuon << " -> " << nDeltaTrackMuon/float(events.size()*2) << std::endl;
-  std::cout << "nDeltaPropTrackMuon: " << nDeltaPropTrackMuon << " -> " << nDeltaPropTrackMuon/float(events.size()*2) << std::endl;
+  std::cout << "nDeltaPropTrackMuon: " << nDeltaPropTrackMuon << " -> " << nDeltaPropTrackMuon/float(events.size()*2) << std::endl << std::endl;
+  std::cout << "nMoreSwMuon:          " << nMoreSwMuon << " -> " << nMoreSwMuon/float(events.size()*2)<< std::endl;
+  std::cout << "nMoreSwTrack:         " << nMoreSwTrack << " -> " << nMoreSwTrack/float(events.size()*2) << std::endl;
+  std::cout << "nMoreSwPropTrack:     " << nMoreSwPropTrack << " -> " << nMoreSwPropTrack/float(events.size()*2) << std::endl;
+  std::cout << "nMoreSwTrackMuon:     " << nMoreSwTrackMuon << " -> " << nMoreSwTrackMuon/float(events.size()*2) << std::endl;
+  std::cout << "nMoreSwPropTrackMuon: " << nMoreSwPropTrackMuon << " -> " << nMoreSwPropTrackMuon/float(events.size()*2) << std::endl << std::endl;
+  std::cout << "nMoreHwMuon:          " << nMoreHwMuon << " -> " << nMoreHwMuon/float(events.size()*2)<< std::endl;
+  std::cout << "nMoreHwTrack:         " << nMoreHwTrack << " -> " << nMoreHwTrack/float(events.size()*2) << std::endl;
+  std::cout << "nMoreHwPropTrack:     " << nMoreHwPropTrack << " -> " << nMoreHwPropTrack/float(events.size()*2) << std::endl;
+  std::cout << "nMoreHwTrackMuon:     " << nMoreHwTrackMuon << " -> " << nMoreHwTrackMuon/float(events.size()*2) << std::endl;
+  std::cout << "nMoreHwPropTrackMuon: " << nMoreHwPropTrackMuon << " -> " << nMoreHwPropTrackMuon/float(events.size()*2) << std::endl << std::endl;
+  std::cout << "nMatchingSwMuon: " << nMatchingSwMuon << " -> " << nMatchingSwMuon/float(events.size()*2) << std::endl << std::endl;
+  std::cout << "nMatchingHwMuon: " << nMatchingHwMuon << " -> " << nMatchingHwMuon/float(events.size()*2) << std::endl << std::endl;
+  std::cout << "nMatchingSwPropTrackMuon: " << nMatchingSwPropTrackMuon << " -> " << nMatchingSwPropTrackMuon/float(nMatchingSwMuon) << std::endl << std::endl;
+  std::cout << "nMatchingHwPropTrackMuon: " << nMatchingHwPropTrackMuon << " -> " << nMatchingHwPropTrackMuon/float(nMatchingHwMuon) << std::endl << std::endl;
   std::cout << "+++ Event Analysis +++" << std::endl;
 }
 
@@ -1023,8 +1115,9 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
   
   // it is slightly difference for the first muon than for the second muon
   // int B0, B1, B2, BX0, SE;
-  std::string pt_str, eta_str, phi_str, q_str;
+  std::string pt_str, eta_str, phi_str, q_str, quality_str;
   pt_str = frame1.substr(31-8,9);
+  quality_str = frame3.substr(31-12,4);
   eta_str = frame1.substr(31-21,9);
   //  phi_str = frame1.substr(31-30,8);
   // global phi can be found in the third frame
@@ -1036,6 +1129,7 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
   in_muon_hw.hwPhi = std::bitset<N_BINS_MUON_PHI>(phi_str).to_ulong();
   in_muon_hw.hwQ = std::bitset<1>(q_str).to_ulong();
   in_muon_hw.hwValid = in_muon_hw.hwPt != 0;
+  in_muon_hw.hwQuality = std::bitset<4>(quality_str).to_ulong();
 
   if (false) {
     std::cout << "data_fw "  << data_fw << std::endl;
@@ -1047,6 +1141,7 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
 	      << " pt "      << pt_str << " " 
 	      << " eta "     << eta_str << " "
 	      << " phi "     << phi_str << " "
+	      << " quality " << quality_str << " "
 	      << " q "       << q_str << std::endl;
   }
 }
