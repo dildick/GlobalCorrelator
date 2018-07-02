@@ -170,6 +170,7 @@ struct SwTrackMuon
   int q;
   int valid;   // valid bit
   int BX;    // bunch crossing
+  int quality;
   // constructor
   SwTrackMuon() : 
     index(0),
@@ -178,7 +179,8 @@ struct SwTrackMuon
     phi(0),
     q(0),
     valid(0),
-    BX(0)
+    BX(0),
+    quality(0)
   {
   }
 };

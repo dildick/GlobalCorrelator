@@ -49,6 +49,7 @@ typedef ap_uint<4> quality_m;
 
 // propetaphi
 typedef std::pair<eta_t, phiglobal_t> etaphiglobal_t;
+typedef std::pair<eta_m, phi_m> etaphiglobal_m;
 
 // size of the LUTs
 #define PT_TABLE_SIZE 16384  // 14 unsigned bits
@@ -237,6 +238,7 @@ struct HwTrackMuon {
     q_t hwQ;
     q_t hwValid;   // valid bit
     bx_t hwBX;    // bunch crossing
+    quality_m hwQuality;
   // constructor
   HwTrackMuon() : 
     hwPt(0),
@@ -244,7 +246,8 @@ struct HwTrackMuon {
     hwPhi(0),
     hwQ(0),
     hwValid(0),
-    hwBX(0)
+    hwBX(0),
+    hwQuality(0)
   {
   }
 };
