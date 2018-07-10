@@ -8,26 +8,39 @@
 #include <sstream>
 #include <bitset>
 
-const int N_BINS_TRACK_INVPT = 15;
-const int N_BINS_TRACK_PT = 12;
-const int N_BINS_TRACK_ETA = 14;
-const int N_BINS_TRACK_PHI = 19;
-const int N_BINS_TRACK_Z0 = 11;
+// general stuff
+const int N_BITS_GENERAL_Q = 1;
+const int N_BITS_GENERAL_BX = 3;
+const int N_BITS_GENERAL_B0 = 1;
+const int N_BITS_GENERAL_SE = 1;
+const int N_BITS_GENERAL_RES = 1;
 
-const int N_BINS_MUON_PT = 9;
-const int N_BINS_MUON_ETA = 9;
-const int N_BINS_MUON_PHI = 10;
+// track specific
+const int N_BITS_TRACK_INVPT = 15;
+const int N_BITS_TRACK_PT = 14;
+const int N_BITS_TRACK_ETA = 14;
+const int N_BITS_TRACK_PHI = 19;
+const int N_BITS_TRACK_PHIGLOBAL = 23;
+const int N_BITS_TRACK_CHI2 = 10;
+const int N_BITS_TRACK_Z0 = 11;
+const int N_BITS_TRACK_SECTOR = 5;
 
-typedef ap_int<15> invpt_t;  // inverse pt [1% at 100 GeV]
-typedef ap_uint<14> pt_t;     // convert from RINV
-typedef ap_int<14> eta_t;    // eta [sinh(eta) measure to 0.005]
-typedef ap_int<19> phi_t;    // phi (50 micro-rad)
-typedef ap_int<23> phiglobal_t;    // phi (50 micro-rad)
-typedef ap_int<10> chisq_t;  // chi^2 (0 - 100; 0.1 steps)
+// muon specific
+const int N_BITS_MUON_PT = 9;
+const int N_BITS_MUON_ETA = 9;
+const int N_BITS_MUON_PHI = 10;
+const int N_BITS_MUON_QUALITY = 4;
+
+typedef ap_int<N_BITS_TRACK_INVPT> invpt_t;  // inverse pt [1% at 100 GeV]
+typedef ap_uint<N_BITS_TRACK_PT> pt_t;     // convert from RINV
+typedef ap_int<N_BITS_TRACK_ETA> eta_t;    // eta [sinh(eta) measure to 0.005]
+typedef ap_int<N_BITS_TRACK_PHI> phi_t;    // phi (50 micro-rad)
+typedef ap_int<N_BITS_TRACK_PHIGLOBAL> phiglobal_t;    // phi (50 micro-rad)
+typedef ap_int<N_BITS_TRACK_CHI2> chisq_t;  // chi^2 (0 - 100; 0.1 steps)
 typedef ap_uint<1> q_t;       // charge
-typedef ap_int<11> z0_t;     // z0  (1 mm over +/-14.9 cm)
+typedef ap_int<N_BITS_TRACK_Z0> z0_t;     // z0  (1 mm over +/-14.9 cm)
 typedef ap_int<3> bx_t;     // z0  (1 mm over +/-14.9 cm)
-typedef ap_uint<5> sector_t;
+typedef ap_uint<N_BITS_TRACK_SECTOR> sector_t;
 
 // before the decimal point, after the decimal point
 typedef ap_fixed<24,2> finvpt_t;  // inverse pt [1% at 100 GeV]
@@ -231,14 +244,15 @@ struct HwMuon {
   }
 };
 
+// need a 64-bit trackmuon at least
 struct HwTrackMuon {
-    pt_t hwPt;
-    eta_m hwEta;
-    phi_m hwPhi;
-    q_t hwQ;
-    q_t hwValid;   // valid bit
-    bx_t hwBX;    // bunch crossing
-    quality_m hwQuality;
+  pt_t hwPt; //14
+  eta_m hwEta; //9
+  phi_m hwPhi; //9
+  q_t hwQ; //1
+  q_t hwValid;   //1 valid bit
+  bx_t hwBX;    // 3 bunch crossing
+  quality_m hwQuality;//4
   // constructor
   HwTrackMuon() : 
     hwPt(0),

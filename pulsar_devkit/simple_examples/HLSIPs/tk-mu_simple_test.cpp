@@ -125,9 +125,13 @@ void duplicateMerger(std::vector<Event>& events);
 void filteredEventWriter(std::vector<Event>& events, 
 			 const std::string& directory,
 			 const std::string& swTrackFile,
-			 const std::string& swMuonFile,
 			 const std::string& hwTrackFile,
-			 const std::string& hwMuonFile); 
+			 const std::string& swMuonFile,
+			 const std::string& hwMuonFile,
+			 const std::string& swPropTrackFile,
+			 const std::string& hwPropTrackFile,
+			 const std::string& swTrackMuonFile,
+			 const std::string& hwTrackMuonFile); 
 /*
  * analyze events
  */
@@ -160,9 +164,13 @@ int main()
 
     // filtered data files (duplicates are out)
     std::string swTrackPatternOut = "sw_track_filtered.dat";
-    std::string swMuonPatternOut =  "sw_muon_filtered.dat";
     std::string hwTrackPatternOut = "hw_track_filtered.dat";
+    std::string swMuonPatternOut =  "sw_muon_filtered.dat";
     std::string hwMuonPatternOut =  "hw_muon_filtered.dat";
+    std::string swPropTrackPatternOut = "sw_proptrack_filtered.dat";
+    std::string hwPropTrackPatternOut = "hw_proptrack_filtered.dat";
+    std::string swTrackMuonPatternOut =  "sw_trackmuon_filtered.dat";
+    std::string hwTrackMuonPatternOut =  "hw_trackmuon_filtered.dat";
 
     std::vector<std::string> simTrackFiles;
     std::vector<std::string> swTrackFiles;
@@ -355,9 +363,13 @@ int main()
     filteredEventWriter(events,
 			directory, 
 			swTrackPatternOut,
-			swMuonPatternOut,
 			hwTrackPatternOut,
-			hwMuonPatternOut);
+			swMuonPatternOut,
+			hwMuonPatternOut,
+			swPropTrackPatternOut,
+			hwPropTrackPatternOut,
+			swTrackMuonPatternOut,
+			hwTrackMuonPatternOut);
 
     // print out differences between Sw and Hw objects!
     analyzeEvents(events);
@@ -687,14 +699,22 @@ void eventReader(std::vector<Event>& events,
 void filteredEventWriter(std::vector<Event>& events,
 			 const std::string& directory, 
 			 const std::string& swTrackFile,
-			 const std::string& swMuonFile,
 			 const std::string& hwTrackFile,
-			 const std::string& hwMuonFile)
+			 const std::string& swMuonFile,
+			 const std::string& hwMuonFile,
+			 const std::string& swPropTrackFile,
+			 const std::string& hwPropTrackFile,
+			 const std::string& swTrackMuonFile,
+			 const std::string& hwTrackMuonFile)
 {
   std::ofstream swTrack((directory + swTrackFile).c_str());
-  std::ofstream swMuon( (directory + swMuonFile).c_str());
   std::ofstream hwTrack((directory + hwTrackFile).c_str());
+  std::ofstream swMuon( (directory + swMuonFile).c_str());
   std::ofstream hwMuon( (directory + hwMuonFile).c_str());
+  std::ofstream swPropTrack((directory + swPropTrackFile).c_str());
+  std::ofstream hwPropTrack((directory + hwPropTrackFile).c_str());
+  std::ofstream swTrackMuon((directory + swTrackMuonFile).c_str());
+  std::ofstream hwTrackMuon((directory + hwTrackMuonFile).c_str());
 
   // loop over the simtracks in the event
   // this ensures that the muons and tracks are organized in the same way
@@ -702,74 +722,118 @@ void filteredEventWriter(std::vector<Event>& events,
     Event thisEvent = events[iEvent];
 
     swTrack << "Begin event " << thisEvent.eventNumber << std::endl;
-    swMuon << "Begin event " << thisEvent.eventNumber << std::endl;
     hwTrack << "Begin event " << thisEvent.eventNumber << std::endl;
+    swMuon << "Begin event " << thisEvent.eventNumber << std::endl;
     hwMuon << "Begin event " << thisEvent.eventNumber << std::endl;
+    swPropTrack << "Begin event " << thisEvent.eventNumber << std::endl;
+    hwPropTrack << "Begin event " << thisEvent.eventNumber << std::endl;
+    swTrackMuon << "Begin event " << thisEvent.eventNumber << std::endl;
+    hwTrackMuon << "Begin event " << thisEvent.eventNumber << std::endl;
     
-    std::bitset<1> B0((std::bitset<3>(thisEvent.BX).to_string())[2]);
-    std::bitset<1> B1((std::bitset<3>(thisEvent.BX).to_string())[1]);
-    std::bitset<1> B2((std::bitset<3>(thisEvent.BX).to_string())[0]);
-    std::bitset<1> Res(0);
-    std::bitset<1> BX0(0);
-    std::bitset<1> SE(0);
+    std::bitset<1> B0((std::bitset<N_BITS_GENERAL_BX>(thisEvent.BX).to_string())[2]);
+    std::bitset<1> B1((std::bitset<N_BITS_GENERAL_BX>(thisEvent.BX).to_string())[1]);
+    std::bitset<1> B2((std::bitset<N_BITS_GENERAL_BX>(thisEvent.BX).to_string())[0]);
+    std::bitset<N_BITS_GENERAL_RES> Res(0);
+    std::bitset<N_BITS_GENERAL_B0> BX0(0);
+    std::bitset<N_BITS_GENERAL_SE> SE(0);
 
     for (unsigned iSimTrack = 0; iSimTrack < thisEvent.simTracks.size(); iSimTrack++){
 
       // access the matching objects
       const SwTrack& matchingSwTrack = getMatchingTrack(  thisEvent.simTracks[iSimTrack], thisEvent.swTracks);
-      const SwMuon&  matchingSwMuon =  getMatchingTrack(  thisEvent.simTracks[iSimTrack], thisEvent.swMuons);
       const HwTrack& matchingHwTrack = getMatchingHwTrack(thisEvent.simTracks[iSimTrack], thisEvent.hwTracks);
+      const SwMuon&  matchingSwMuon =  getMatchingTrack(  thisEvent.simTracks[iSimTrack], thisEvent.swMuons);
       const HwMuon&  matchingHwMuon =  getMatchingHwMuon( thisEvent.simTracks[iSimTrack], thisEvent.hwMuons, "muon");
-      
+      const SwPropTrack& matchingSwPropTrack = getMatchingTrack(  thisEvent.simTracks[iSimTrack], thisEvent.swPropTracks);
+      const HwPropTrack& matchingHwPropTrack = getMatchingHwTrack(thisEvent.simTracks[iSimTrack], thisEvent.hwPropTracks);
+      const SwTrackMuon&  matchingSwTrackMuon =  getMatchingTrack(  thisEvent.simTracks[iSimTrack], thisEvent.swPropTrackMuons);
+      const HwTrackMuon&  matchingHwTrackMuon =  getMatchingHwMuon( thisEvent.simTracks[iSimTrack], thisEvent.hwPropTrackMuons, "proptrack-muon");
+
       std::bitset<1> extraBit1 = iSimTrack == 0 ? BX0 : B1;
       std::bitset<1> extraBit2 = iSimTrack == 0 ? SE  : B2;
       std::bitset<1> extraBit3 = iSimTrack == 0 ? B0  : Res;
       
       // 96 bit words!
-      std::string hwTrackDataWord = (extraBit3.to_string() +
-				     "00000000000000000000000000" + // 26 zeros
-				     std::bitset<5>(matchingHwTrack.hwSector).to_string() + //needed to convert to global phi! 
-				     extraBit2.to_string() + 
-				     "0" + 
-				     std::bitset<19>(matchingHwTrack.hwZ0).to_string() +
-				     std::bitset<19>(matchingHwTrack.hwPhi).to_string() +
-				     extraBit1.to_string() + 
-				     "00" + 
-				     std::bitset<14>(matchingHwTrack.hwSinhEta).to_string() + 
-				     std::bitset<15>(matchingHwTrack.hwRinv).to_string());
-
-      std::string hwMuonDataWord = (extraBit3.to_string() +
-				    std::bitset<10>(matchingHwMuon.hwPhi).to_string() + 
-				    "000000000000000000000" + // 21 zeros
-				    extraBit2.to_string() + 
-				    "0000000000000000000000000000000" + // 31 zeros from track addresses -- not used
-				    extraBit1.to_string() + 
-				    "000000000" + //local phi -- not used
-				    "0" + // H/F not used
-				    std::bitset<9>(matchingHwMuon.hwEta).to_string() + 
-				    std::bitset<4>(matchingHwMuon.hwQuality).to_string() + 
-				    std::bitset<9>(matchingHwMuon.hwPt).to_string());
+      std::string hwTrackDataWord = 
+	(extraBit3.to_string() +
+	 "00000000000000000000000000" + // 26 zeros
+	 //needed to convert to global phi! 
+	 std::bitset<N_BITS_TRACK_SECTOR>(matchingHwTrack.hwSector).to_string() + 
+	 extraBit2.to_string() + 
+	 "0" + 
+	 std::bitset<N_BITS_TRACK_Z0>(matchingHwTrack.hwZ0).to_string() +
+	 std::bitset<N_BITS_TRACK_PHI>(matchingHwTrack.hwPhi).to_string() +
+	 extraBit1.to_string() + 
+	 "00" + 
+	 std::bitset<N_BITS_TRACK_ETA>(matchingHwTrack.hwSinhEta).to_string() + 
+	 std::bitset<N_BITS_TRACK_INVPT>(matchingHwTrack.hwRinv).to_string());
       
+      std::string hwPropTrackDataWord = 
+	(extraBit3.to_string() +
+	 "00000000000000000000" + // 20 zeros
+	 std::bitset<N_BITS_TRACK_Z0>(matchingHwPropTrack.hwZ0).to_string() +
+ 	 extraBit2.to_string() + 
+	 "00000000" + // 8 zeros
+	 std::bitset<N_BITS_TRACK_PHIGLOBAL>(matchingHwPropTrack.hwPropPhi).to_string() +
+	 extraBit1.to_string() + 
+	 "000" + 
+	 std::bitset<N_BITS_TRACK_ETA>(matchingHwPropTrack.hwPropEta).to_string() + 
+	 std::bitset<N_BITS_TRACK_PT>(matchingHwPropTrack.hwPt).to_string());
+      
+      std::string hwMuonDataWord = 
+	(extraBit3.to_string() +
+	 std::bitset<N_BITS_MUON_PHI>(matchingHwMuon.hwPhi).to_string() + 
+	 "000000000000000000000" + // 21 zeros
+	 extraBit2.to_string() + 
+	 "0000000000000000000000000000000" + // 31 zeros from track addresses -- not used
+	 extraBit1.to_string() + 
+	 "00000000" + //local phi -- not used
+	 "0" + // H/F not used
+	 std::bitset<N_BITS_MUON_ETA>(matchingHwMuon.hwEta).to_string() + 
+	 std::bitset<N_BITS_MUON_QUALITY>(matchingHwMuon.hwQuality).to_string() + 
+	 std::bitset<N_BITS_MUON_PT>(matchingHwMuon.hwPt).to_string());
+      
+      // 96-bit track-muon
+      std::string hwTrackMuonDataWord = 
+	(extraBit3.to_string() +
+	 std::bitset<N_BITS_MUON_PHI>(matchingHwTrackMuon.hwPhi).to_string() + 
+	 "000000000000000000000" + // 21 zeros
+	 extraBit2.to_string() + 
+	 "0000000000000000000000000000000" + // 31 zeros from track addresses -- not used
+	 extraBit1.to_string() + 
+	 "0000" + 
+	 std::bitset<N_BITS_MUON_ETA>(matchingHwTrackMuon.hwEta).to_string() + 
+	 std::bitset<N_BITS_MUON_QUALITY>(matchingHwTrackMuon.hwQuality).to_string() + 
+	 std::bitset<N_BITS_TRACK_PT>(matchingHwTrackMuon.hwPt).to_string());
+
       // now print them out
       swTrack << "SwTrack " << iSimTrack+1 << " " << matchingSwTrack << std::endl;
-
-      swMuon  << "SwMuon " << iSimTrack+1 << " " << matchingSwMuon << std::endl;
-
       hwTrack << "HwTrack" << iSimTrack+1 << " " << hwTrackDataWord << std::endl;
-      
+      swMuon  << "SwMuon " << iSimTrack+1 << " " << matchingSwMuon << std::endl;
       hwMuon  << "HwMuon" << iSimTrack+1 << " " << hwMuonDataWord << std::endl; 
-
+      swPropTrack << "SwPropTrack " << iSimTrack+1 << " " << matchingSwPropTrack << std::endl;
+      hwPropTrack << "HwPropTrack" << iSimTrack+1 << " " << hwPropTrackDataWord << std::endl;
+      swTrackMuon << "SwTrackMuon " << iSimTrack+1 << " " << matchingSwTrackMuon << std::endl;
+      hwTrackMuon << "HwTrackMuon" << iSimTrack+1 << " " << hwTrackMuonDataWord << std::endl;
     }
     swTrack << "End event " << std::endl << std::endl;
-    swMuon  << "End event " << std::endl << std::endl;
     hwTrack << "End event " << std::endl << std::endl;
+    swMuon  << "End event " << std::endl << std::endl;
     hwMuon  << "End event " << std::endl << std::endl;
+    swPropTrack << "End event " << std::endl << std::endl;
+    hwPropTrack << "End event " << std::endl << std::endl;
+    swTrackMuon  << "End event " << std::endl << std::endl;
+    hwTrackMuon  << "End event " << std::endl << std::endl;
   } 
   
   swTrack.close();
-  swMuon.close();
   hwTrack.close();
+  swMuon.close();
   hwMuon.close();
+  swPropTrack.close();
+  hwPropTrack.close();
+  swTrackMuon.close();
+  hwTrackMuon.close();
 }
 
 void analyzeEvents(std::vector<Event>& events)
@@ -1013,7 +1077,7 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   bool isNegativeCharge(false);
   std::string rinv_str = values_fw.at(1);
   isNegative(rinv_str, isNegativeCharge);
-  in_track_hw.hwRinv = std::bitset<15>(rinv_str).to_ulong();   //std::stoi(values_fw.at(1).c_str(),NULL,2);
+  in_track_hw.hwRinv = std::bitset<N_BITS_TRACK_INVPT>(rinv_str).to_ulong();   //std::stoi(values_fw.at(1).c_str(),NULL,2);
   if (isNegativeCharge) in_track_hw.hwRinv *= -1;
   if (debug_hw_track) std::cout << " Looping over data - hwRinv = " << rinv_str << " " <<in_track_hw.hwRinv << std::endl;
 
@@ -1021,7 +1085,7 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   bool isNegativeEta(false);
   std::string eta_str = values_fw.at(3);
   isNegative(eta_str, isNegativeEta);
-  in_track_hw.hwSinhEta = std::bitset<14>(eta_str).to_ulong();   //std::stoi(values_fw.at(3).c_str(),NULL,2);
+  in_track_hw.hwSinhEta = std::bitset<N_BITS_TRACK_ETA>(eta_str).to_ulong();   //std::stoi(values_fw.at(3).c_str(),NULL,2);
   if (isNegativeEta) in_track_hw.hwSinhEta *= -1;
   
   if (debug_hw_track) std::cout << " Looping over data - hwSinhEta = " << in_track_hw.hwSinhEta << std::endl;
@@ -1030,7 +1094,7 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   bool isNegativePhi(false);
   std::string phi_str = values_fw.at(2);
   isNegative(phi_str, isNegativePhi);
-  in_track_hw.hwPhi = std::bitset<19>(phi_str).to_ulong();   //std::stoi(values_fw.at(2).c_str(),NULL,2);
+  in_track_hw.hwPhi = std::bitset<N_BITS_TRACK_PHI>(phi_str).to_ulong();   //std::stoi(values_fw.at(2).c_str(),NULL,2);
   if (isNegativePhi) in_track_hw.hwPhi *= -1;
   
   if (debug_hw_track) std::cout << " Looping over data - hwPhi = " << in_track_hw.hwPhi << std::endl;
@@ -1039,7 +1103,7 @@ void decode_hw_track_data(const std::string &data_fw, HwTrack& in_track_hw)
   bool isNegativeZ0(false);
   std::string z0_str = values_fw.at(4);
   isNegative(z0_str, isNegativeZ0);
-  in_track_hw.hwZ0 = std::bitset<12>(z0_str).to_ulong();   //std::stoi(values_fw.at(4).c_str(),NULL,2);
+  in_track_hw.hwZ0 = std::bitset<N_BITS_TRACK_Z0>(z0_str).to_ulong();   //std::stoi(values_fw.at(4).c_str(),NULL,2);
   if (isNegativeZ0) in_track_hw.hwZ0 *= -1;
   
   if (debug_hw_track) std::cout << " Looping over data - hwZ0 = " << in_track_hw.hwZ0 << std::endl;
@@ -1124,12 +1188,12 @@ void decode_hw_muon_data(const std::string &data_fw, HwMuon& in_muon_hw)
   phi_str = frame3.substr(1,10);
   q_str = frame2[31];
 
-  in_muon_hw.hwPt = std::bitset<N_BINS_MUON_PT>(pt_str).to_ulong();
-  in_muon_hw.hwEta = std::bitset<N_BINS_MUON_ETA>(eta_str).to_ulong();
-  in_muon_hw.hwPhi = std::bitset<N_BINS_MUON_PHI>(phi_str).to_ulong();
-  in_muon_hw.hwQ = std::bitset<1>(q_str).to_ulong();
+  in_muon_hw.hwPt = std::bitset<N_BITS_MUON_PT>(pt_str).to_ulong();
+  in_muon_hw.hwEta = std::bitset<N_BITS_MUON_ETA>(eta_str).to_ulong();
+  in_muon_hw.hwPhi = std::bitset<N_BITS_MUON_PHI>(phi_str).to_ulong();
+  in_muon_hw.hwQ = std::bitset<N_BITS_GENERAL_Q>(q_str).to_ulong();
   in_muon_hw.hwValid = in_muon_hw.hwPt != 0;
-  in_muon_hw.hwQuality = std::bitset<4>(quality_str).to_ulong();
+  in_muon_hw.hwQuality = std::bitset<N_BITS_MUON_QUALITY>(quality_str).to_ulong();
 
   if (false) {
     std::cout << "data_fw "  << data_fw << std::endl;
