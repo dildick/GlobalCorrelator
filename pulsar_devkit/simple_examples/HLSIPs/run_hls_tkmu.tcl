@@ -10,7 +10,7 @@
 # open the project, don't forget to reset
 open_project -reset tkmu_proj0
 
-set_top match_track_muon 
+set_top tkmu_simple_hw 
 ## tkmu_simple_hw
 add_files src/tk-mu_simple.cpp
 add_files src/dataformats.h

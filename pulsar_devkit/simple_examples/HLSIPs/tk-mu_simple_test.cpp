@@ -753,6 +753,13 @@ void filteredEventWriter(std::vector<Event>& events,
       std::bitset<1> extraBit2 = iSimTrack == 0 ? SE  : B2;
       std::bitset<1> extraBit3 = iSimTrack == 0 ? B0  : Res;
       
+      bool ignoreSyncBits = true;
+      if (ignoreSyncBits){
+	extraBit1 = 0;
+	extraBit2 = 0;
+	extraBit3 = 0;
+      }
+
       // 96 bit words!
       std::string hwTrackDataWord = 
 	(extraBit3.to_string() +
@@ -773,7 +780,8 @@ void filteredEventWriter(std::vector<Event>& events,
 	 "00000000000000000000" + // 20 zeros
 	 std::bitset<N_BITS_TRACK_Z0>(matchingHwPropTrack.hwZ0).to_string() +
  	 extraBit2.to_string() + 
-	 "00000000" + // 8 zeros
+	 "000" + // 3 zeros
+	 std::bitset<N_BITS_TRACK_SECTOR>(matchingHwPropTrack.hwZ0).to_string() +
 	 std::bitset<N_BITS_TRACK_PHIGLOBAL>(matchingHwPropTrack.hwPropPhi).to_string() +
 	 extraBit1.to_string() + 
 	 "000" + 
@@ -1346,7 +1354,7 @@ T getMatchingHwMuon(const SimTrack& simTrack, const std::vector<T> collection, s
 void writeOutput(std::ofstream& output,		   
 		   const Event& event)
 {
-  bool debug(false);
+  bool debug(true);
   for (unsigned iSimTrack = 0; iSimTrack < event.simTracks.size(); iSimTrack++){
     output << "Event: " << event.eventNumber << ","
 	   << " BX: " << event.BX << ","

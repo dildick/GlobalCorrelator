@@ -269,106 +269,106 @@ namespace {
 
 std::ostream& operator << (std::ostream& os, const SimTrack& rhs)
 {
-  os << "pT: " << rhs.pt << ", " 
-     << "eta: " << rhs.eta << ", "
-     << "phi: " << rhs.phi << ", " 
+  os << "pT: " << rhs.pt << " " 
+     << "eta: " << rhs.eta << " "
+     << "phi: " << rhs.phi << " " 
      << "Q: " << rhs.q;
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwTrack& rhs)
 {
-  os << "pT: " << rhs.pt << ", " 
-     /* << "rinv: " << rhs.rinv << ", " */
-     /* << "sinhEta: " << rhs.sinhEta << ", " */
-     << "eta: " << rhs.eta << ", "
-     << "phi: " << rhs.phi << ", " 
-     << "sector: " << rhs.sector << ", "
+  os << "pT: " << rhs.pt << " " 
+     /* << "rinv: " << rhs.rinv << " " */
+     /* << "sinhEta: " << rhs.sinhEta << " " */
+     << "eta: " << rhs.eta << " "
+     << "phi: " << rhs.phi << " " 
+     << "sector: " << rhs.sector << " "
      << "Q: " << rhs.q;
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwPropTrack& rhs)
 {
-  os << "pT: " << rhs.pt << ", " 
-     /* << "sinhEta: " << rhs.sinhEta << ", " */
-     /* << "eta: " << rhs.eta << ", " */
-     /* << "phi: " << rhs.phi << ", "  */
-     << "eta_prop: " << rhs.propEta << ", " 
-     << "phi_prop: " << rhs.propPhi << ", "
-     << "sector: " << rhs.sector << ", "
+  os << "pT: " << rhs.pt << " " 
+     /* << "sinhEta: " << rhs.sinhEta << " " */
+     /* << "eta: " << rhs.eta << " " */
+     /* << "phi: " << rhs.phi << " "  */
+     << "eta_prop: " << rhs.propEta << " " 
+     << "phi_prop: " << rhs.propPhi << " "
+     << "sector: " << rhs.sector << " "
      << "Q: " << rhs.q;
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwMuon& rhs)
 {
-  os << "pT: " << rhs.pt << ", " 
-     << "eta: " << rhs.eta << ", "
-     << "phi: " << rhs.phi << ", " 
+  os << "pT: " << rhs.pt << " " 
+     << "eta: " << rhs.eta << " "
+     << "phi: " << rhs.phi << " " 
      << "Q: " << rhs.q;
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const SwTrackMuon& rhs)
 {
-  os << "pT: " << rhs.pt << ", " 
-     << "eta: " << rhs.eta << ", "
-     << "phi: " << rhs.phi << ", " 
+  os << "pT: " << rhs.pt << " " 
+     << "eta: " << rhs.eta << " "
+     << "phi: " << rhs.phi << " " 
      << "Q: " << rhs.q;
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwTrack& rhs)
 {
-  os << "pT: " << getTrackPtFloat(rhs.hwPt) << ", "
-     << "eta: " << getTrackEtaFloat(rhs.hwEta) << ", "
-     << "phi: " << getTrackPhiFloat(rhs.hwPhiGlobal) << ", "
-     << "Z0: " << rhs.hwZ0*INVZ_CONVERSION << ", " 
-     << "Q: " << 1- 2*rhs.hwQ << ", "
-     << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
+  os << "pT: " << getTrackPtFloat(rhs.hwPt) << " "
+     << "eta: " << getTrackEtaFloat(rhs.hwEta) << " "
+     << "phi: " << getTrackPhiFloat(rhs.hwPhiGlobal) << " "
+     << "Z0: " << rhs.hwZ0*INVZ_CONVERSION << " " 
+     << "Q: " << 1- 2*rhs.hwQ << " "
+     << "HwValid: " << std::bitset<1>(rhs.hwValid) << " "
      << "BX: " << std::bitset<3>(rhs.hwBX);
    return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwPropTrack& rhs)
 {
-  os << "pT: " << getTrackPtFloat(rhs.hwPt) << ", "
-     << "eta: " << getTrackEtaFloat(rhs.hwPropEta) << ", "
-     << "phi: " << getTrackPhiFloat(rhs.hwPropPhi) << ", "
-     << "Z0: " << rhs.hwZ0*INVZ_CONVERSION << ", " 
-     << "Q: " << 1- 2*rhs.hwQ << ", "
-     << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
+  os << "pT: " << getTrackPtFloat(rhs.hwPt) << " "
+     << "eta: " << getTrackEtaFloat(rhs.hwPropEta) << " "
+     << "phi: " << getTrackPhiFloat(rhs.hwPropPhi) << " "
+     << "Z0: " << rhs.hwZ0*INVZ_CONVERSION << " " 
+     << "Q: " << 1- 2*rhs.hwQ << " "
+     << "HwValid: " << std::bitset<1>(rhs.hwValid) << " "
      << "BX: " << std::bitset<3>(rhs.hwBX);
   return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwMuon& rhs)
 {
-  os << "pT: " << getMuonPtFloat(rhs.hwPt) << ", " 
-     << "eta: " << getMuonEtaFloat(rhs.hwEta) << ", "
-     << "phi: " << getMuonPhiFloat(rhs.hwPhi) << ", "
-     << "Q: " << 1- 2*rhs.hwQ << ", "
-     << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
+  os << "pT: " << getMuonPtFloat(rhs.hwPt) << " " 
+     << "eta: " << getMuonEtaFloat(rhs.hwEta) << " "
+     << "phi: " << getMuonPhiFloat(rhs.hwPhi) << " "
+     << "Q: " << 1- 2*rhs.hwQ << " "
+     << "HwValid: " << std::bitset<1>(rhs.hwValid) << " "
      << "BX: " << std::bitset<3>(rhs.hwBX);
    return os;
 }
 
 std::ostream& operator << (std::ostream& os, const HwTrackMuon& rhs)
 {
-  os << "pT: " << getTrackPtFloat(rhs.hwPt) << ", "
-     << "eta: " << getMuonEtaFloat(rhs.hwEta) << ", "
-     << "phi: " << getMuonPhiFloat(rhs.hwPhi) << ", "
-     << "Q: " << 1- 2*rhs.hwQ << ", "
-     << "HwValid: " << std::bitset<1>(rhs.hwValid) << ", "
+  os << "pT: " << getTrackPtFloat(rhs.hwPt) << " "
+     << "eta: " << getMuonEtaFloat(rhs.hwEta) << " "
+     << "phi: " << getMuonPhiFloat(rhs.hwPhi) << " "
+     << "Q: " << 1- 2*rhs.hwQ << " "
+     << "HwValid: " << std::bitset<1>(rhs.hwValid) << " "
      << "BX: " << std::bitset<3>(rhs.hwBX);
    return os;
 }
 
 std::ostream& operator << (std::ostream& os, const Event& rhs)
 {
-  os << "Event: " << rhs.eventNumber << ", " 
-     << "BX: " << rhs.BX << ", " << std::endl
+  os << "Event: " << rhs.eventNumber << " " 
+     << "BX: " << rhs.BX << " " << std::endl
      << "SimTracks: " << rhs.simTracks.size() << std::endl;
 
   for (unsigned i=0; i<rhs.simTracks.size(); ++i){
