@@ -207,14 +207,14 @@ int main()
 
       // propagate the tracks
       for (unsigned int iSwTrack = 0; iSwTrack < events[iEvent].swTracks.size(); ++iSwTrack){
-	SwPropTrack prop_track_sw = tkmu_simple_ref(events[iEvent].swTracks[iSwTrack]);
+	SwPropTrack prop_track_sw = prop_sw(events[iEvent].swTracks[iSwTrack]);
 	events[iEvent].swPropTracks.push_back(prop_track_sw);
 	// std::cout << "Track " << track_sw << " PropTrack " << prop_track_sw << std::endl; 
       } 
 
       // propagate the tracks
       for (unsigned int iHwTrack = 0; iHwTrack < events[iEvent].hwTracks.size(); ++iHwTrack){
-	etaphiglobal_t etaphi = tkmu_simple_hw(events[iEvent].hwTracks[iHwTrack]);
+	etaphiglobal_t etaphi = prop_hw(events[iEvent].hwTracks[iHwTrack]);
 	HwPropTrack prop_track_hw = events[iEvent].hwTracks[iHwTrack];
 	prop_track_hw.hwPropEta = etaphi.first;
 	prop_track_hw.hwPropPhi = etaphi.second;
@@ -763,7 +763,8 @@ void filteredEventWriter(std::vector<Event>& events,
       // 96 bit words!
       std::string hwTrackDataWord = 
 	(extraBit3.to_string() +
-	 "00000000000000000000000000" + // 26 zeros
+	 "000" + // 3 zeros
+	 std::bitset<N_BITS_TRACK_PHIGLOBAL>(matchingHwTrack.hwPhiGlobal).to_string() +
 	 //needed to convert to global phi! 
 	 std::bitset<N_BITS_TRACK_SECTOR>(matchingHwTrack.hwSector).to_string() + 
 	 extraBit2.to_string() + 
@@ -781,7 +782,7 @@ void filteredEventWriter(std::vector<Event>& events,
 	 std::bitset<N_BITS_TRACK_Z0>(matchingHwPropTrack.hwZ0).to_string() +
  	 extraBit2.to_string() + 
 	 "000" + // 3 zeros
-	 std::bitset<N_BITS_TRACK_SECTOR>(matchingHwPropTrack.hwZ0).to_string() +
+	 std::bitset<N_BITS_TRACK_SECTOR>(matchingHwPropTrack.hwSector).to_string() +
 	 std::bitset<N_BITS_TRACK_PHIGLOBAL>(matchingHwPropTrack.hwPropPhi).to_string() +
 	 extraBit1.to_string() + 
 	 "000" + 

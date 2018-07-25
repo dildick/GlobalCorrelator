@@ -18,7 +18,7 @@ float deltaR(float eta1, float phi1, float eta2, float phi2)
   return dR;
 }
 
-SwPropTrack tkmu_simple_ref( const SwTrack& in )
+SwPropTrack prop_sw( const SwTrack& in )
 {
   bool debug = false;
 

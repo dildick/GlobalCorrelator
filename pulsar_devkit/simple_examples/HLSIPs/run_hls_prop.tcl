@@ -8,9 +8,9 @@
 ############################################################
 
 # open the project, don't forget to reset
-open_project -reset tkmu_proj0
+open_project -reset hls_prop
 
-set_top tkmu_simple_hw 
+set_top prop_hw 
 ## tkmu_simple_hw
 add_files src/tk-mu_simple.cpp
 add_files src/dataformats.h

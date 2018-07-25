@@ -27,7 +27,7 @@ Negative values in binary are generated assuming "One's complement"
 #endif
 
 
-etaphiglobal_t tkmu_simple_hw(HwTrack& in)
+etaphiglobal_t prop_hw(HwTrack& in)
 {
   bool debug(false);
 
@@ -56,11 +56,11 @@ etaphiglobal_t tkmu_simple_hw(HwTrack& in)
   feta_t absSinhEta;
   if (in.hwSinhEta<0){
     absSinhEta = (in.hwSinhEta+8192)*INVETA_CONVERSION;     // use ap_fixed<>
-    sinhEta    = -1*(in.hwSinhEta+8192)*INVETA_CONVERSION;
+    //    sinhEta    = -1*(in.hwSinhEta+8192)*INVETA_CONVERSION;
   }
   else{
     absSinhEta = in.hwSinhEta*INVETA_CONVERSION;
-    sinhEta    = in.hwSinhEta*INVETA_CONVERSION;
+    //sinhEta    = in.hwSinhEta*INVETA_CONVERSION;
   }
   arcsinh(absSinhEta, inhwEta);
   feta_t abshwEta = inhwEta;
@@ -70,7 +70,7 @@ etaphiglobal_t tkmu_simple_hw(HwTrack& in)
   if (debug) {
     std::cout << " FIRMWARE : SinhEta calculation " << in.hwSinhEta << std::endl
 	      << " -- |sinheta| = " << absSinhEta << std::endl
-	      << " -- sinheta   = " << sinhEta << std::endl
+      // << " -- sinheta   = " << sinhEta << std::endl
 	      << " -- eta       = " << inhwEta << std::endl
 	      << " -- in.hwEta  = " << in.hwEta << std::endl;
   }
@@ -262,7 +262,7 @@ HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
   HwTrackMuon outTrackMuon;
   
   // assign the pT
-  assign_pt_hw(inTrack);
+  //  assign_pt_hw(inTrack);
 
   // calculate eta and phi
   feta_t tkEta = inTrack.hwEta*INVETA_CONVERSION;
@@ -286,7 +286,7 @@ HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
   // need to allow for negative values, since we do not take 
   // the square root
   if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
-    if (debug)     std::cout << ">>> Matched!" << std::endl << std::endl;
+    if (debug) std::cout << ">>> Matched!" << std::endl << std::endl;
     
     outTrackMuon.hwPt = inTrack.hwPt;
     outTrackMuon.hwEta = inMuon.hwEta;
@@ -347,11 +347,12 @@ void assign_pt_hw(HwTrack& inTrack)
 {
   // Rinv (16384 = 2^14; number of unsigned bits)
   invpt_t absInvRinv;
-  if (inTrack.hwRinv < 0) 
+  if (inTrack.hwRinv < 0){ 
     absInvRinv = (inTrack.hwRinv+16384);
-  else               
+  } 
+  else{               
     absInvRinv = inTrack.hwRinv;
-  
+  }
   finvpt_t inhwRinv;
   inhwRinv = absInvRinv * INVRINV_CONVERSION;
   
@@ -359,6 +360,57 @@ void assign_pt_hw(HwTrack& inTrack)
   fpt_t absPt;
   rinvToPt(inhwRinv, absPt);
   inTrack.hwPt = absPt * fpt_t(PT_CONVERSION);
+}
+
+pt_t calc_pt_hw(invpt_t hwRinv)
+{
+  // Rinv (16384 = 2^14; number of unsigned bits)
+  invpt_t absInvRinv;
+  if (hwRinv < 0){ 
+    absInvRinv = (hwRinv+16384);
+  } 
+  else{               
+    absInvRinv = hwRinv;
+  }
+  finvpt_t inhwRinv;
+  inhwRinv = absInvRinv * INVRINV_CONVERSION;
+  
+  // calculate pT from 1/pT with a LUT
+  fpt_t absPt;
+  rinvToPt(inhwRinv, absPt);
+
+  return absPt * fpt_t(PT_CONVERSION);
+}
+
+eta_t calc_eta_hw(eta_t hwSinhEta)
+{
+  feta_t inhwEta;
+  feta_t absSinhEta;
+  if (hwSinhEta<0){
+    absSinhEta = (hwSinhEta+8192)*INVETA_CONVERSION;     // use ap_fixed<>
+  }
+  else{
+    absSinhEta = hwSinhEta*INVETA_CONVERSION;
+  }
+  arcsinh(absSinhEta, inhwEta);
+  feta_t abshwEta = inhwEta;
+  if (hwSinhEta<0) inhwEta*=-1;
+
+  return inhwEta*ETA_CONVERSION;
+}
+
+phiglobal_t calc_phi_hw(phi_t hwPhi, sector_t hwSector)
+{
+  // Phi0 (262144 = 2^18; number of unsigned bits)
+  fphi_t inhwPhi;
+  if (hwPhi<0) {
+    inhwPhi = -1*(hwPhi+262144)*INVPHI_CONVERSION;
+  }
+  else {
+    inhwPhi = hwPhi*INVPHI_CONVERSION;
+  }
+  // convert to a global phi value -- 1+22 bits (for 360 degrees)
+  return (inhwPhi + phiOffSetValues[hwSector-1]) * PHI_CONVERSION;
 }
 
 // THE END

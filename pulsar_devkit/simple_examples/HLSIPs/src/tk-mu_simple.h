@@ -27,7 +27,7 @@ if rinv<0: rinv+=16384 then multiply by INVRINV_CONVERSION
 #define DEBUG 0
 
 // hardware functions
-etaphiglobal_t tkmu_simple_hw(HwTrack& in);
+etaphiglobal_t prop_hw(HwTrack& in);
 
 HwTrackMuon match_hw(HwTrack&, const HwMuon&);
 HwTrackMuon match_prop_hw(HwPropTrack&, const HwMuon&);
