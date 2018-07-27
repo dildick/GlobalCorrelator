@@ -46,7 +46,7 @@ etaphiglobal_t prop_hw(HwTrack& in)
   feta_t deta(0.0);
   feta_t etaProp(1.1);
 
-  fphi_t invCoshEta_Phi(0.0);
+  feta_t invCoshEta_Phi(0.0);
   feta_t invCoshEta_EtaBarrel(0.0);
 
   // ** convert inputs (ap_int<>) to ap_fixed<> for internal use ** //
@@ -165,7 +165,7 @@ etaphiglobal_t prop_hw(HwTrack& in)
     if (inhwZ0<0)
       deta *= -1;
 
-    invCosh(abshwEta,invCoshEta_EtaBarrel);               // LUT: 1/cosh(|eta|)
+    invCosh(abshwEta, invCoshEta_EtaBarrel);               // LUT: 1/cosh(|eta|)
     deta *= invCoshEta_EtaBarrel;
 
     if (debug) std::cout << " FIRMWARE :       deta       = " << deta << std::endl;
@@ -233,7 +233,9 @@ etaphiglobal_t prop_hw(HwTrack& in)
   // ** calculate the propagated phi ** //
   if (debug) std::cout << " FIRMWARE : -- Phi calculation " << std::endl;
 
-  invCosh(etaProp,invCoshEta_Phi);            // LUT: 1/cosh(x)
+  // I had to change the data type of invCoshEta_Phi
+  // from fphi_t to feta_t. Otherwise the function does not synthesize
+  invCosh(etaProp, invCoshEta_Phi);            // LUT: 1/cosh(x)
 
   // Include two constants used in calculation (1.464*cosh(1.7))
   tmp_A *= inhwInvPt;       // 1.464 * 1/pT

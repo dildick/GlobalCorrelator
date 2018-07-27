@@ -252,8 +252,9 @@ void init_tanh_table(data_T table_out[N_TABLE]) {
         float in_val = (ETA_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table function
-        data_T real_val = tanh(in_val);
-        if (DEBUG) std::cout << "Tanh:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
+        data_T real_val = (expf(2*in_val) - 1) / (expf(2*in_val) + 1);
+	
+	if (DEBUG) std::cout << "Tanh:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
         table_out[ii] = real_val;
     }
 
@@ -266,12 +267,12 @@ void tanh(data_T &data, res_T &res) {
     res_T tanh_table[TABLE_SIZE];
     init_tanh_table<res_T, TABLE_SIZE>(tanh_table);
 
+    int index;
+
     #pragma HLS PIPELINE
 
-    res = 0;
-
     // convert input to index
-    int index = TABLE_SIZE - data * TABLE_SIZE * INV_ETA_RANGE;
+    index = (1 - data * INV_ETA_RANGE) * TABLE_SIZE;
 
     if (index<0) res = tanh_table[0];
     else if (index>TABLE_SIZE-1) res = tanh_table[TABLE_SIZE-1];
@@ -316,12 +317,12 @@ void invCosh(data_T &data, res_T &res) {
     res_T cosh_table[TABLE_SIZE];
     init_cosh_table<res_T, TABLE_SIZE>(cosh_table);
 
+    int index;
+
     #pragma HLS PIPELINE
 
-    res = 0;
-
     // convert input to index
-    int index = TABLE_SIZE - data * TABLE_SIZE * INV_COSH_RANGE;
+    index = (1 - data * INV_COSH_RANGE) * TABLE_SIZE;
 
     if (index<0) res = cosh_table[0];
     else if (index>TABLE_SIZE-1) res = cosh_table[TABLE_SIZE-1];
