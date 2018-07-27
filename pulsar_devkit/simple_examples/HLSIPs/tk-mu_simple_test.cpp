@@ -39,8 +39,8 @@ float sinhEta2eta(const float& sinhEta);
 void isNegative( std::string& bit_value, bool& isNeg);
 
 // calculate offset in phi
-float getPhiOffset(int sector, float offset = -0.0387851);
-fphi_t getPhiOffsetBinary(int sector, float offset = -0.0387851);
+// float getPhiOffset(int sector, float offset = -0.0387851);
+// fphi_t getPhiOffsetBinary(int sector, float offset = -0.0387851);
 
 // dump event output
 void writeOutput(std::ofstream&, const Event&);
@@ -499,7 +499,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() ) + (batchNumber * 100);
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	if (newEvent.eventNumber > 10000) break;
+	if (newEvent.eventNumber > 1) break;
 	events.push_back(newEvent);
       }
       
@@ -1415,7 +1415,7 @@ void writeOutput(std::ofstream& output,
     }
   }
 }
-
+/*
 float getPhiOffset(int sector, float offset)
 {
   // calculate the global phi value
@@ -1427,5 +1427,5 @@ fphi_t getPhiOffsetBinary(int sector, float offset)
 {
   return fphi_t(getPhiOffset(sector, offset));
 }
-
+*/
 // THE END

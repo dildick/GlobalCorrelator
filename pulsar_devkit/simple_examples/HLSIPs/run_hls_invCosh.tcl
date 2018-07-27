@@ -8,10 +8,9 @@
 ############################################################
 
 # open the project, don't forget to reset
-open_project -reset hls_prop
+open_project -reset hls_invCosh
 
-set_top prop_hw 
-## tkmu_simple_hw
+set_top invCosh
 add_files src/tk-mu_simple.cpp
 add_files src/dataformats.h
 
@@ -30,9 +29,9 @@ create_clock -period 5 -name default
  #source "./nb1/solution1/directives.tcl"
 
 # do stuff
-csim_design
+#csim_design
 csynth_design
-#cosim_design -trace_level all
+ #cosim_design -trace_level all
 export_design -format ip_catalog  -vendor "cern-cms"
 
 # exit Vivado HLS

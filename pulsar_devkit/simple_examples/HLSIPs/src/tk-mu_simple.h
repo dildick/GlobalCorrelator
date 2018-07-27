@@ -25,6 +25,7 @@ if rinv<0: rinv+=16384 then multiply by INVRINV_CONVERSION
 #include "dataformats.h"
 
 #define DEBUG 0
+#define NSECTORS 27
 
 // hardware functions
 etaphiglobal_t prop_hw(HwTrack& in);
@@ -33,12 +34,30 @@ HwTrackMuon match_hw(HwTrack&, const HwMuon&);
 HwTrackMuon match_prop_hw(HwPropTrack&, const HwMuon&);
 
 void assign_pt_hw(HwTrack& in);
+pt_t calc_pt_hw(invpt_t hwRinv);
+eta_t calc_eta_hw(eta_t hwSinhEta);
+phiglobal_t calc_phi_hw(phi_t hwPhi, sector_t hwSector);
+
+void getPhiOffSet(int sector, fphi_t &result)
+{
+  int i;
+  static fphi_t phiOffSetValues[NSECTORS]={ 0 };
+  #pragma HLS ARRAY_PARTITION variable=phiOffSetValues complete
+
+ f2: for(i=0; i<NSECTORS; i++) {
+        #pragma HLS unroll
+    phiOffSetValues[i] = -0.0387851 + (sector - 1 ) * 0.23271056693;
+  }
+    
+  result=phiOffSetValues[sector];
+}
 
 // template functions
 template<class data_T, int N_TABLE>
 void init_deta_table(data_T table_out[N_TABLE]){
     /* deta_LUT  = track.hwZ0 * (1/550)*/
     for (int ii = 0; ii < N_TABLE; ii++) {
+
         float in_val = (Z0_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table 
@@ -56,11 +75,12 @@ void deta_LUT(data_T &data, res_T &res) {
     res_T deta_table[TABLE_SIZE];
     init_deta_table<res_T,TABLE_SIZE>(deta_table);
 
+    int index;
+
     #pragma HLS PIPELINE
-    res = 0;
 
     // convert input to index
-    int index = TABLE_SIZE - data * TABLE_SIZE * INV_Z0_RANGE;
+    index = (1 - data*INV_Z0_RANGE) * TABLE_SIZE;
 
     if (index<0) res = deta_table[0];
     else if (index>TABLE_SIZE-1) res = deta_table[TABLE_SIZE-1];
@@ -85,6 +105,7 @@ template<class data_T, int N_TABLE>
 void init_delta_minus_LUT(data_T table_out[N_TABLE]){
     /* delta_minus_LUT  z0 / (z0-850) */
     for (int ii = 0; ii < N_TABLE; ii++) {
+
         float in_val = (Z0_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table 
@@ -102,12 +123,12 @@ void delta_minus_LUT(data_T &data, res_T &res) {
     res_T delta_minus_table[TABLE_SIZE];
     init_delta_minus_LUT<res_T,TABLE_SIZE>(delta_minus_table);
 
+    int index;
+
     #pragma HLS PIPELINE
 
-    res = 0;
-
     // convert input to index
-    int index = TABLE_SIZE - data * TABLE_SIZE * INV_Z0_RANGE;
+    index = (1 - data * INV_Z0_RANGE) * TABLE_SIZE;
 
     if (index<0) res = delta_minus_table[0];
     else if (index>TABLE_SIZE-1) res = delta_minus_table[TABLE_SIZE-1];
@@ -132,6 +153,7 @@ template<class data_T, int N_TABLE>
 void init_delta_plus_LUT(data_T table_out[N_TABLE]){
     /* delta_plus_LUT  z0 / (z0+850) */
     for (int ii = 0; ii < N_TABLE; ii++) {
+
         float in_val = (Z0_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table 
@@ -149,12 +171,11 @@ void delta_plus_LUT(data_T &data, res_T &res) {
     res_T delta_plus_table[TABLE_SIZE];
     init_delta_plus_LUT<res_T,TABLE_SIZE>(delta_plus_table);
 
+    int index;
+    
     #pragma HLS PIPELINE
 
-    res = 0;
-
-    // convert input to index
-    int index = TABLE_SIZE - data * TABLE_SIZE * INV_Z0_RANGE;
+    index = (1 - data * INV_Z0_RANGE) * TABLE_SIZE;
 
     if (index<0) res = delta_plus_table[0];
     else if (index>TABLE_SIZE-1) res = delta_plus_table[TABLE_SIZE-1];
@@ -178,6 +199,7 @@ template<class data_T, int N_TABLE>
 void init_delta_LUT(data_T table_out[N_TABLE]){
     /* delta_LUT  = track.hwZ0 / 850 */
     for (int ii = 0; ii < N_TABLE; ii++) {
+
         float in_val = (Z0_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table 
@@ -195,12 +217,12 @@ void delta_LUT(data_T &data, res_T &res) {
     res_T delta_table[TABLE_SIZE];
     init_delta_LUT<res_T,TABLE_SIZE>(delta_table);
 
+    int index;
+    
     #pragma HLS PIPELINE
 
-    res = 0;
-
     // convert input to index
-    int index = TABLE_SIZE - data * TABLE_SIZE * INV_Z0_RANGE;
+    index = (1 - data * INV_Z0_RANGE) * TABLE_SIZE;
 
     if (index<0) res = delta_table[0];
     else if (index>TABLE_SIZE-1) res = delta_table[TABLE_SIZE-1];
@@ -225,6 +247,7 @@ template<class data_T, int N_TABLE>
 void init_tanh_table(data_T table_out[N_TABLE]) {
     /* Implement tanh lookup */
     for (int ii = 0; ii < N_TABLE; ii++) {
+
         // Convert from table index to X-value (unsigned 4-bit, range 0 to +4)
         float in_val = (ETA_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
@@ -244,6 +267,8 @@ void tanh(data_T &data, res_T &res) {
     init_tanh_table<res_T, TABLE_SIZE>(tanh_table);
 
     #pragma HLS PIPELINE
+
+    res = 0;
 
     // convert input to index
     int index = TABLE_SIZE - data * TABLE_SIZE * INV_ETA_RANGE;
@@ -272,11 +297,12 @@ template<class data_T, int N_TABLE>
 void init_cosh_table(data_T table_out[N_TABLE]) {
     /* Implement cosh lookup */
     for (int ii = 0; ii < N_TABLE; ii++) {
+
         // Convert from table index to X-value
         float in_val = (COSH_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table function
-        data_T real_val = 1./cosh(in_val);
+        data_T real_val = 2./(expf(in_val) + expf(-in_val));
         if (DEBUG) std::cout << "1/cosh:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
         table_out[ii] = real_val;
     }
@@ -323,6 +349,7 @@ template<class data_T, int N_TABLE>
 void init_arcsinh_table(data_T table_out[N_TABLE]) {
     /* Implement arcsinh lookup */
     for (int ii = 0; ii < N_TABLE; ii++) {
+
         // Convert from table index to X-value (unsigned 4-bit, range 0 to +4)
         float in_val = (SINHETA_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
@@ -341,12 +368,12 @@ void arcsinh(data_T &data, res_T &res) {
     res_T arcsinh_table[TABLE_SIZE];
     init_arcsinh_table<res_T, TABLE_SIZE>(arcsinh_table);
 
+    int index;
+
     #pragma HLS PIPELINE
 
-    res = 0;
-
     // convert input to index
-    int index = TABLE_SIZE - data * TABLE_SIZE * INV_SINHETA_RANGE;
+    index = (1 - data * INV_SINHETA_RANGE) * TABLE_SIZE;
 
     if (index<0) res = arcsinh_table[0];
     else if (index>TABLE_SIZE-1) res = arcsinh_table[TABLE_SIZE-1];
@@ -371,6 +398,7 @@ template<class data_T, int N_TABLE>
 void init_rinvToInvPt_table(data_T table_out[N_TABLE]) {
     /* Implement rinvToInvPt lookup */
     for (int ii = 0; ii < N_TABLE; ii++) {
+
       // Convert from table index to X-value (unsigned 4-bit, range 0 to +4)
       float in_val = RINV_RANGE*((N_TABLE-1)-ii)/float(N_TABLE);
       
@@ -389,12 +417,12 @@ void rinvToInvPt(data_T &data, res_T &res) {
     res_T rinvToInvPt_table[TABLE_SIZE];
     init_rinvToInvPt_table<res_T, TABLE_SIZE>(rinvToInvPt_table);
 
+    int index;
+    
     #pragma HLS PIPELINE
 
-    res = 0;
-
     // convert input to index
-    int index = TABLE_SIZE - data * TABLE_SIZE * INV_RINV_RANGE;
+    index = (1 - data * INV_RINV_RANGE) * TABLE_SIZE;
 
     if (index<0) res = rinvToInvPt_table[0];
     else if (index>TABLE_SIZE-1) res = rinvToInvPt_table[TABLE_SIZE-1];
@@ -419,6 +447,7 @@ template<class res_T, int N_TABLE>
 void init_rinvToPt_table(res_T table_out[N_TABLE]) {
   /* Implement rinvToPt lookup */
   for (int ii = 0; ii < N_TABLE; ii++) {
+    
     // Convert from table index to X-value)
     float in_val = RINV_RANGE*((N_TABLE-1)-ii)/float(N_TABLE);
     
@@ -437,13 +466,12 @@ void rinvToPt(data_T &data, res_T &res) {
     res_T rinvToPt_table[TABLE_SIZE];
     init_rinvToPt_table<res_T, TABLE_SIZE>(rinvToPt_table);
 
+    int index;
+
     #pragma HLS PIPELINE
 
-    res = 0;
-
     // convert input to index
-    int index = TABLE_SIZE - data * TABLE_SIZE * INV_RINV_RANGE;
-
+    index = (1 - data * INV_RINV_RANGE) * TABLE_SIZE;
 
     if (index<0) res = rinvToPt_table[0];
     else if (index>TABLE_SIZE-1) res = rinvToPt_table[TABLE_SIZE-1];

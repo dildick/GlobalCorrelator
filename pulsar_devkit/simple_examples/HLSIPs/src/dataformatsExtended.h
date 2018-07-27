@@ -30,9 +30,9 @@ float getTrackEtaFloat(int hwEta)
   return hwEta * INVETA_CONVERSION;
 }
 
-float getTrackPhiFloat(int hwPhi)
+float getTrackPhiFloat(int hwPhiGlobal)
 {
-  return normalizePhi(hwPhi * INVPHI_CONVERSION);
+  return normalizePhi(hwPhiGlobal * INVPHI_CONVERSION);
 }
 
 float getTrackEtaFloatFromSinhEta(eta_t hwSinhEta)

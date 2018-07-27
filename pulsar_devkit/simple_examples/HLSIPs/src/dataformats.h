@@ -127,7 +127,7 @@ T normalizePhi(T outPhi)
   return returnValue;
 }
 
-fphi_t phiOffSetValues[27] = {
+static fphi_t phiOffSetValues[27] = {
   -0.0387851, // 1
   0.193925, // 2
   0.426636, // 3
