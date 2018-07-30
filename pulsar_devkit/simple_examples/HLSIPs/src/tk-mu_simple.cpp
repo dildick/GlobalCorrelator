@@ -46,7 +46,7 @@ etaphiglobal_t prop_hw(HwTrack& in)
   feta_t deta(0.0);
   feta_t etaProp(1.1);
 
-  feta_t invCoshEta_Phi(0.0);
+  fphi_t invCoshEta_Phi(0.0);
   feta_t invCoshEta_EtaBarrel(0.0);
 
   // ** convert inputs (ap_int<>) to ap_fixed<> for internal use ** //
@@ -216,7 +216,7 @@ etaphiglobal_t prop_hw(HwTrack& in)
     if (debug) std::cout << " FIRMWARE :       deta      = " << deta << std::endl;
 
     feta_t tanhEta;
-    tanh(inhwEta,tanhEta);  // handles the sign internally
+    tanh_LUT(inhwEta,tanhEta);  // handles the sign internally
     deta*=tanhEta;
 
     if (debug) std::cout << " FIRMWARE :       deta      = " << deta << std::endl;
@@ -264,7 +264,7 @@ HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
   HwTrackMuon outTrackMuon;
   
   // assign the pT
-  //  assign_pt_hw(inTrack);
+  //assign_pt_hw(inTrack);
 
   // calculate eta and phi
   feta_t tkEta = inTrack.hwEta*INVETA_CONVERSION;
@@ -274,8 +274,8 @@ HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
   fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
   
   // dR calculation
-  feta_m dEta = (tkEta - muEta)*(tkEta - muEta);
-  // fphiglobal_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
+  //feta_m dEta = (tkEta - muEta)*(tkEta - muEta);
+  fphiglobal_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
 
   bool debug(false);
   if (debug){
@@ -283,13 +283,13 @@ HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
     std::cout << "Track phi " << tkPhi << std::endl;
     std::cout << "muon eta " << muEta << std::endl;
     std::cout << "muon phi " << muPhi << std::endl;
-    // std::cout << "dR2 " << dR2_tk_mu << std::endl << std::endl;
+    std::cout << "dR2 " << dR2_tk_mu << std::endl << std::endl;
   }
 
   // need to allow for negative values, since we do not take 
   // the square root
-  if (dEta < 0.2*0.2 and dEta > - 0.2*0.2) {     
-  // if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
+  //if (dEta < 0.2*0.2 and dEta > - 0.2*0.2) {     
+  if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
     if (debug) std::cout << ">>> Matched!" << std::endl << std::endl;
     
     outTrackMuon.hwPt = inTrack.hwPt;
@@ -312,7 +312,7 @@ HwTrackMuon match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon)
   HwTrackMuon outTrackMuon;
   
   // assign the pT
-  assign_pt_hw(inTrack);
+  //assign_pt_hw(inTrack);
 
   // calculate eta and phi
   feta_t tkEta = inTrack.hwPropEta*INVETA_CONVERSION;
@@ -322,8 +322,8 @@ HwTrackMuon match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon)
   fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
 
   // dR calculation
-  //fphiglobal_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
-  feta_m dEta = (tkEta - muEta)*(tkEta - muEta);
+  fphiglobal_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
+  //feta_m dEta = (tkEta - muEta)*(tkEta - muEta);
 
   bool debug(false);
   if (debug){
@@ -331,13 +331,13 @@ HwTrackMuon match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon)
     std::cout << "Prop track phi " << tkPhi << std::endl;
     std::cout << "muon eta " << muEta << std::endl;
     std::cout << "muon phi " << muPhi << std::endl;
-    //    std::cout << "dR2 " << dR2_tk_mu << std::endl << std::endl;
+    std::cout << "dR2 " << dR2_tk_mu << std::endl << std::endl;
     }
   
   // need to allow for negative values, since we do not take 
   // the square root
-  //  if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {
-  if (dEta < 0.2*0.2 and dEta > - 0.2*0.2) {     
+  if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {
+    //if (dEta < 0.2*0.2 and dEta > - 0.2*0.2) {     
     if (debug)     std::cout << ">>> Matched!" << std::endl << std::endl;
 
     outTrackMuon.hwPt = inTrack.hwPt;
@@ -422,7 +422,7 @@ phiglobal_t calc_phi_hw(phi_t hwPhi, sector_t hwSector)
     inhwPhi = hwPhi*INVPHI_CONVERSION;
   }
   fphi_t offset;
-  getPhiOffSet(hwSector-1, offset); 
+  phiOffSet(hwSector-1, offset); 
   // convert to a global phi value -- 1+22 bits (for 360 degrees)
   phiglobal_t  hwPhiGlobal = (inhwPhi + offset) * PHI_CONVERSION;
 

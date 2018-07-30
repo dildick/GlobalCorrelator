@@ -499,7 +499,7 @@ void eventReader(std::vector<Event>& events,
 	split(newString,' ',values);
 	newEvent.eventNumber = std::atoi( values.at(1).c_str() ) + (batchNumber * 100);
 	newEvent.BX = std::atoi( values.at(3).c_str() );	
-	if (newEvent.eventNumber > 1) break;
+	if (newEvent.eventNumber > 10000) break;
 	events.push_back(newEvent);
       }
       

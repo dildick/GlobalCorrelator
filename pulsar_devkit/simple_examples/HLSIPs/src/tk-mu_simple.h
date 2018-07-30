@@ -38,10 +38,11 @@ pt_t calc_pt_hw(invpt_t hwRinv);
 eta_t calc_eta_hw(eta_t hwSinhEta);
 phiglobal_t calc_phi_hw(phi_t hwPhi, sector_t hwSector);
 
-void getPhiOffSet(int sector, fphi_t &result)
+template<class data_T>
+void phiOffSet(int sector, data_T &result)
 {
   int i;
-  static fphi_t phiOffSetValues[NSECTORS]={ 0 };
+  data_T phiOffSetValues[NSECTORS]={ 0 };
   #pragma HLS ARRAY_PARTITION variable=phiOffSetValues complete
 
  f2: for(i=0; i<NSECTORS; i++) {
@@ -252,7 +253,7 @@ void init_tanh_table(data_T table_out[N_TABLE]) {
         float in_val = (ETA_RANGE)*((N_TABLE-1)-ii)/float(N_TABLE);
 
         // Next, compute lookup table function
-        data_T real_val = (expf(2*in_val) - 1) / (expf(2*in_val) + 1);
+        data_T real_val = tanh(in_val);
 	
 	if (DEBUG) std::cout << "Tanh:  Lookup table Index: " <<  ii<< " In Value: " << in_val << " Result: " << real_val << std::endl;
         table_out[ii] = real_val;
@@ -262,7 +263,7 @@ void init_tanh_table(data_T table_out[N_TABLE]) {
 }
 
 template<class data_T, class res_T, int TABLE_SIZE/*=1024*/>
-void tanh(data_T &data, res_T &res) {
+void tanh_LUT(data_T &data, res_T &res) {
     // Initialize the lookup table
     res_T tanh_table[TABLE_SIZE];
     init_tanh_table<res_T, TABLE_SIZE>(tanh_table);
@@ -283,10 +284,10 @@ void tanh(data_T &data, res_T &res) {
 
 // Gateway to calling tanh(x)
 template<class data_T, class res_T>
-void tanh(data_T &data, res_T &res) { 
+void tanh_LUT(data_T &data, res_T &res) { 
     /* Get the tanh value from the LUT -- symmetric function */
     res = 0;
-    tanh<data_T, res_T, ETA_TABLE_SIZE>(data, res); 
+    tanh_LUT<data_T, res_T, ETA_TABLE_SIZE>(data, res); 
 
     return;
 }

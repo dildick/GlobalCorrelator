@@ -10,7 +10,7 @@
 # open the project, don't forget to reset
 open_project -reset hls_tanh
 
-set_top tanh
+set_top tanh_LUT
 add_files src/tk-mu_simple.cpp
 add_files src/dataformats.h
 
