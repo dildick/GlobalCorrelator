@@ -268,28 +268,28 @@ HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
 
   // calculate eta and phi
   feta_t tkEta = inTrack.hwEta*INVETA_CONVERSION;
-  fphiglobal_t tkPhi = normalizePhi(inTrack.hwPhiGlobal*INVPHI_CONVERSION);
+  //fphiglobal_t tkPhi = normalizePhi(inTrack.hwPhiGlobal*INVPHI_CONVERSION);
   
   feta_m muEta = (1- 2*std::bitset<9>(inMuon.hwEta)[8]) * from_twos_complement<9>(inMuon.hwEta) * MUONETA_CONVERSION;
-  fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
+  //fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
   
   // dR calculation
-  //feta_m dEta = (tkEta - muEta)*(tkEta - muEta);
-  fphiglobal_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
+  feta_m dEta = (tkEta - muEta);
+  //fphiglobal_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
 
   bool debug(false);
   if (debug){
     std::cout << "Track eta " << tkEta << std::endl;
-    std::cout << "Track phi " << tkPhi << std::endl;
+    // std::cout << "Track phi " << tkPhi << std::endl;
     std::cout << "muon eta " << muEta << std::endl;
-    std::cout << "muon phi " << muPhi << std::endl;
-    std::cout << "dR2 " << dR2_tk_mu << std::endl << std::endl;
+    // std::cout << "muon phi " << muPhi << std::endl;
+    // std::cout << "dR2 " << dR2_tk_mu << std::endl << std::endl;
   }
 
   // need to allow for negative values, since we do not take 
   // the square root
-  //if (dEta < 0.2*0.2 and dEta > - 0.2*0.2) {     
-  if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
+  if (dEta < 0.4 and dEta > - 0.4) {     
+    //if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
     if (debug) std::cout << ">>> Matched!" << std::endl << std::endl;
     
     outTrackMuon.hwPt = inTrack.hwPt;
@@ -301,8 +301,9 @@ HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
   } else {
     outTrackMuon.hwValid = 0;     
     outTrackMuon.hwPt = 0;
-    outTrackMuon.hwEta = 0;
-    outTrackMuon.hwPhi = 0;
+    outTrackMuon.hwEta = 99;
+    outTrackMuon.hwPhi = 99;
+    outTrackMuon.hwBX = 99;
   }
   return outTrackMuon;
 }
@@ -374,7 +375,7 @@ void assign_pt_hw(HwTrack& inTrack)
   inTrack.hwPt = absPt * fpt_t(PT_CONVERSION);
 }
 
-pt_t calc_pt_hw(invpt_t hwRinv)
+void calc_pt_hw(invpt_t hwRinv, pt_t& outPt)
 {
   // Rinv (16384 = 2^14; number of unsigned bits)
   invpt_t absInvRinv;
@@ -391,7 +392,7 @@ pt_t calc_pt_hw(invpt_t hwRinv)
   fpt_t absPt;
   rinvToPt(inhwRinv, absPt);
 
-  return absPt * fpt_t(PT_CONVERSION);
+  outPt = absPt * fpt_t(PT_CONVERSION);
 }
 
 eta_t calc_eta_hw(eta_t hwSinhEta)

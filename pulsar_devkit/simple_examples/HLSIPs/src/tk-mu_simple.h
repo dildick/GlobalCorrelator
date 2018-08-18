@@ -43,10 +43,11 @@ void phiOffSet(int sector, data_T &result)
 {
   int i;
   data_T phiOffSetValues[NSECTORS]={ 0 };
-  #pragma HLS ARRAY_PARTITION variable=phiOffSetValues complete
 
- f2: for(i=0; i<NSECTORS; i++) {
-        #pragma HLS unroll
+  for(i=0; i<NSECTORS; i++) {
+    
+   #pragma HLS PIPELINE
+    
     phiOffSetValues[i] = -0.0387851 + (sector - 1 ) * 0.23271056693;
   }
     
