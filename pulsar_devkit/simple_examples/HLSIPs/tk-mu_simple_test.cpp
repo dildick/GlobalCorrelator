@@ -299,8 +299,8 @@ int main()
 	for (unsigned int iHwTrack = 0; 
 	     iHwTrack < events[iEvent].hwTracks.size(); ++iHwTrack){
 	  // std::cout << ">>Candidate track " << hwTrack << std::endl;
-	  HwTrackMuon hwTrackMuon = match_hw(events[iEvent].hwTracks[iHwTrack], 
-					     hwMuon);
+	  HwTrackMuon hwTrackMuon;
+	  match_hw(events[iEvent].hwTracks[iHwTrack], hwMuon, hwTrackMuon);
 
 	  // // check if valid or not
 	  if (not hwTrackMuon.hwValid) continue;
@@ -327,8 +327,8 @@ int main()
 	for (unsigned int iHwPropTrack = 0; 
 	     iHwPropTrack < events[iEvent].hwPropTracks.size(); ++iHwPropTrack){
 	  // std::cout << ">>Candidate track " << hwPropTrack << std::endl;
-	  HwTrackMuon hwPropTrackMuon = match_prop_hw(events[iEvent].hwPropTracks[iHwPropTrack], 
-						      hwMuon);
+	  HwTrackMuon hwPropTrackMuon;
+	  match_prop_hw(events[iEvent].hwPropTracks[iHwPropTrack], hwMuon, hwPropTrackMuon);
 
 	  // // check if valid or not
 	  if (not hwPropTrackMuon.hwValid) continue;

@@ -259,10 +259,8 @@ void prop_hw(HwTrack& in, etaphiglobal_t& outEtaPhi)
   outEtaPhi = etaphiglobal_t(hwPropEta, hwPropPhi);
 }
 
-HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
+void match_hw(HwTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outTrackMuon)
 {
-  HwTrackMuon outTrackMuon;
-  
   // assign the pT
   //assign_pt_hw(inTrack);
 
@@ -305,13 +303,10 @@ HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
     outTrackMuon.hwPhi = 99;
     outTrackMuon.hwBX = 99;
   }
-  return outTrackMuon;
 }
 
-HwTrackMuon match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon)
+void match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outTrackMuon)
 {
-  HwTrackMuon outTrackMuon;
-  
   // assign the pT
   //assign_pt_hw(inTrack);
 
@@ -353,7 +348,6 @@ HwTrackMuon match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon)
     outTrackMuon.hwEta = 0;
     outTrackMuon.hwPhi = 0;
   }
-  return outTrackMuon;
 }
 
 void assign_pt_hw(HwTrack& inTrack)

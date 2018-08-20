@@ -29,9 +29,8 @@ if rinv<0: rinv+=16384 then multiply by INVRINV_CONVERSION
 
 // hardware functions
 void prop_hw(HwTrack& in, etaphiglobal_t& outEtaPhi);
-
-HwTrackMuon match_hw(HwTrack&, const HwMuon&);
-HwTrackMuon match_prop_hw(HwPropTrack&, const HwMuon&);
+void match_hw(HwTrack&, const HwMuon&, HwTrackMuon&);
+void match_prop_hw(HwPropTrack&, const HwMuon&, HwTrackMuon&);
 
 // helper functions
 void assign_pt_hw(HwTrack& in);
