@@ -27,7 +27,7 @@ Negative values in binary are generated assuming "One's complement"
 #endif
 
 
-etaphiglobal_t prop_hw(HwTrack& in)
+void prop_hw(HwTrack& in, etaphiglobal_t& outEtaPhi)
 {
   bool debug(false);
 
@@ -256,7 +256,7 @@ etaphiglobal_t prop_hw(HwTrack& in)
     std::cout << " FIRMWARE : outPropPhi                                     = " << outPropPhi << std::endl;
     std::cout << " FIRMWARE : hwPropPhi*INVPHI                           = " << fphiglobal_t(hwPropPhi*INVPHI_CONVERSION) << std::endl;
   }
-  return etaphiglobal_t(hwPropEta, hwPropPhi);
+  outEtaPhi = etaphiglobal_t(hwPropEta, hwPropPhi);
 }
 
 HwTrackMuon match_hw(HwTrack& inTrack, const HwMuon& inMuon)
@@ -395,7 +395,7 @@ void calc_pt_hw(invpt_t hwRinv, pt_t& outPt)
   outPt = absPt * fpt_t(PT_CONVERSION);
 }
 
-eta_t calc_eta_hw(eta_t hwSinhEta)
+void calc_eta_hw(eta_t hwSinhEta, eta_t& outEta)
 {
   feta_t inhwEta;
   feta_t absSinhEta;
@@ -409,10 +409,10 @@ eta_t calc_eta_hw(eta_t hwSinhEta)
   feta_t abshwEta = inhwEta;
   if (hwSinhEta<0) inhwEta*=-1;
 
-  return inhwEta*ETA_CONVERSION;
+  outEta = inhwEta*ETA_CONVERSION;
 }
 
-phiglobal_t calc_phi_hw(phi_t hwPhi, sector_t hwSector)
+void calc_phi_hw(phi_t hwPhi, sector_t hwSector, phiglobal_t& hwPhiGlobal)
 {
   // Phi0 (262144 = 2^18; number of unsigned bits)
   fphi_t inhwPhi;
@@ -425,7 +425,7 @@ phiglobal_t calc_phi_hw(phi_t hwPhi, sector_t hwSector)
   fphi_t offset;
   phiOffSet(hwSector-1, offset); 
   // convert to a global phi value -- 1+22 bits (for 360 degrees)
-  phiglobal_t  hwPhiGlobal = (inhwPhi + offset) * PHI_CONVERSION;
+  hwPhiGlobal = (inhwPhi + offset) * PHI_CONVERSION;
 
   bool debug(false);
   if (debug){
@@ -434,8 +434,7 @@ phiglobal_t calc_phi_hw(phi_t hwPhi, sector_t hwSector)
     std::cout << "input hwSector " << hwSector << std::endl;
     std::cout << "intermediate inhwPhi " << inhwPhi << std::endl;
     std::cout << "output hwPhiGlobal " << hwPhiGlobal << std::endl;
-    }
-  return hwPhiGlobal;
+  }
 }
 
 // THE END

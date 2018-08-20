@@ -214,7 +214,8 @@ int main()
 
       // propagate the tracks
       for (unsigned int iHwTrack = 0; iHwTrack < events[iEvent].hwTracks.size(); ++iHwTrack){
-	etaphiglobal_t etaphi = prop_hw(events[iEvent].hwTracks[iHwTrack]);
+	etaphiglobal_t etaphi;
+	prop_hw(events[iEvent].hwTracks[iHwTrack], etaphi);
 	HwPropTrack prop_track_hw = events[iEvent].hwTracks[iHwTrack];
 	prop_track_hw.hwPropEta = etaphi.first;
 	prop_track_hw.hwPropPhi = etaphi.second;

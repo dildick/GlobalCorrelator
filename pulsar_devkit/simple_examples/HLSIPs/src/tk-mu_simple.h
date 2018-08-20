@@ -28,30 +28,34 @@ if rinv<0: rinv+=16384 then multiply by INVRINV_CONVERSION
 #define NSECTORS 27
 
 // hardware functions
-etaphiglobal_t prop_hw(HwTrack& in);
+void prop_hw(HwTrack& in, etaphiglobal_t& outEtaPhi);
 
 HwTrackMuon match_hw(HwTrack&, const HwMuon&);
 HwTrackMuon match_prop_hw(HwPropTrack&, const HwMuon&);
 
+// helper functions
 void assign_pt_hw(HwTrack& in);
-pt_t calc_pt_hw(invpt_t hwRinv);
-eta_t calc_eta_hw(eta_t hwSinhEta);
-phiglobal_t calc_phi_hw(phi_t hwPhi, sector_t hwSector);
+void calc_pt_hw(invpt_t hwRinv, pt_t& outPt);
+void calc_eta_hw(eta_t hwSinhEta, eta_t& outEta);
+void calc_phi_hw(phi_t hwPhi, sector_t hwSector, phiglobal_t& outPhi);
 
-template<class data_T>
-void phiOffSet(int sector, data_T &result)
+template<class data_T, class res_T>
+void phiOffSet(data_T sector, res_T &result)
 {
-  int i;
-  data_T phiOffSetValues[NSECTORS]={ 0 };
+  res_T phiOffSetValues[NSECTORS] = {};
 
-  for(i=0; i<NSECTORS; i++) {
+  #pragma HLS PIPELINE
+
+  for(int i=0; i<NSECTORS; i++) {
     
-   #pragma HLS PIPELINE
+    #pragma HLS UNROLL
     
     phiOffSetValues[i] = -0.0387851 + (sector - 1 ) * 0.23271056693;
   }
     
   result=phiOffSetValues[sector];
+
+  return;
 }
 
 // template functions
