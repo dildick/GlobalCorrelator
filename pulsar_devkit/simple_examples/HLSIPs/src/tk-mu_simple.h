@@ -36,7 +36,7 @@ void match_prop_hw(HwPropTrack&, const HwMuon&, HwTrackMuon&);
 void assign_pt_hw(HwTrack& in);
 void calc_pt_hw(invpt_t hwRinv, pt_t& outPt);
 void calc_eta_hw(eta_t hwSinhEta, eta_t& outEta);
-void calc_phi_hw(phi_t hwPhi, sector_t hwSector, phiglobal_t& outPhi);
+void calc_phi_hw(phi_t hwPhi, sector_t hwSector, phiglobal_t& outPhiGlobal);
 
 template<class data_T, class res_T>
 void phiOffSet(data_T sector, res_T &result)

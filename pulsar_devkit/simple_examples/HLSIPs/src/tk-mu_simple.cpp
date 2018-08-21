@@ -302,6 +302,7 @@ void match_hw(HwTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outTrackMuon)
     outTrackMuon.hwEta = 99;
     outTrackMuon.hwPhi = 99;
     outTrackMuon.hwBX = 99;
+    outTrackMuon.hwQ = 0;
   }
 }
 
@@ -345,8 +346,10 @@ void match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outT
   } else {
     outTrackMuon.hwValid = 0;     
     outTrackMuon.hwPt = 0;
-    outTrackMuon.hwEta = 0;
-    outTrackMuon.hwPhi = 0;
+    outTrackMuon.hwEta = 99;
+    outTrackMuon.hwPhi = 99;
+    outTrackMuon.hwBX = 99;
+    outTrackMuon.hwQ = 0;
   }
 }
 
