@@ -1,0 +1,143 @@
+<InterfaceSummary>
+<RtlPorts>
+<name>in_hwRinv_V</name>
+<CType>
+<TypeName>ap_int 15</TypeName>
+<TypeWidth>15</TypeWidth>
+<PhysicalWidth>15</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwPt_V</name>
+<CType>
+<TypeName>ap_uint 14</TypeName>
+<TypeWidth>14</TypeWidth>
+<PhysicalWidth>14</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwSinhEta_V</name>
+<CType>
+<TypeName>ap_int 14</TypeName>
+<TypeWidth>14</TypeWidth>
+<PhysicalWidth>14</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwEta_V</name>
+<CType>
+<TypeName>ap_int 14</TypeName>
+<TypeWidth>14</TypeWidth>
+<PhysicalWidth>14</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwPhi_V</name>
+<CType>
+<TypeName>ap_int 19</TypeName>
+<TypeWidth>19</TypeWidth>
+<PhysicalWidth>19</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwPhiGlobal_V</name>
+<CType>
+<TypeName>ap_int 23</TypeName>
+<TypeWidth>23</TypeWidth>
+<PhysicalWidth>23</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwZ0_V</name>
+<CType>
+<TypeName>ap_int 11</TypeName>
+<TypeWidth>11</TypeWidth>
+<PhysicalWidth>11</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwSector_V</name>
+<CType>
+<TypeName>ap_uint 5</TypeName>
+<TypeWidth>5</TypeWidth>
+<PhysicalWidth>5</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwQ_V</name>
+<CType>
+<TypeName>ap_uint 1</TypeName>
+<TypeWidth>1</TypeWidth>
+<PhysicalWidth>1</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwX2_V</name>
+<CType>
+<TypeName>ap_int 10</TypeName>
+<TypeWidth>10</TypeWidth>
+<PhysicalWidth>10</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwValid_V</name>
+<CType>
+<TypeName>ap_uint 1</TypeName>
+<TypeWidth>1</TypeWidth>
+<PhysicalWidth>1</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>in_hwBX_V</name>
+<CType>
+<TypeName>ap_int 3</TypeName>
+<TypeWidth>3</TypeWidth>
+<PhysicalWidth>3</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>outEtaPhi_first_V</name>
+<CType>
+<TypeName>ap_int 14</TypeName>
+<TypeWidth>14</TypeWidth>
+<PhysicalWidth>14</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>outEtaPhi_second_V</name>
+<CType>
+<TypeName>ap_int 23</TypeName>
+<TypeWidth>23</TypeWidth>
+<PhysicalWidth>23</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+</InterfaceSummary>
+

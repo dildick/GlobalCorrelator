@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="prop_hw" xd:componentRef="prop_hw" xd:initiationInterval="1" xd:clockPeriod="4.115000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="in.hwRinv" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwRinv_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="15"/>
+  <xd:arg xd:name="in.hwPt" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwPt_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="14"/>
+  <xd:arg xd:name="in.hwSinhEta" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwSinhEta_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="14"/>
+  <xd:arg xd:name="in.hwEta" xd:originalName="in" xd:direction="out" xd:interfaceRef="in_hwEta_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="14"/>
+  <xd:arg xd:name="in.hwPhi" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwPhi_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="19"/>
+  <xd:arg xd:name="in.hwPhiGlobal" xd:originalName="in" xd:direction="out" xd:interfaceRef="in_hwPhiGlobal_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="23"/>
+  <xd:arg xd:name="in.hwZ0" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwZ0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="11"/>
+  <xd:arg xd:name="in.hwSector" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwSector_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="5"/>
+  <xd:arg xd:name="in.hwQ" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwQ_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="1"/>
+  <xd:arg xd:name="in.hwX2" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwX2_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="10"/>
+  <xd:arg xd:name="in.hwValid" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwValid_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="1"/>
+  <xd:arg xd:name="in.hwBX" xd:originalName="in" xd:direction="in" xd:interfaceRef="in_hwBX_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="3"/>
+  <xd:arg xd:name="outEtaPhi.first" xd:originalName="outEtaPhi" xd:direction="out" xd:interfaceRef="outEtaPhi_first_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="14"/>
+  <xd:arg xd:name="outEtaPhi.second" xd:originalName="outEtaPhi" xd:direction="out" xd:interfaceRef="outEtaPhi_second_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="23"/>
+  <xd:latencyEstimates xd:best-case="57" xd:worst-case="57" xd:average-case="57"/>
+  <xd:resourceEstimates xd:LUT="12626" xd:FF="12164" xd:BRAM="51" xd:DSP="118"/>
+</xd:acceleratorMap>

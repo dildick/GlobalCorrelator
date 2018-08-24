@@ -1,0 +1,207 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'calc_phi_hw'" level="0">
+<item name = "Date">Thu Aug 23 18:08:00 2018
+</item>
+<item name = "Version">2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)</item>
+<item name = "Project">hls_calc_phi_hw</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">virtex7</item>
+<item name = "Target device">xc7vx690tffg1927-2</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Target clock period (ns)">4.11</item>
+<item name = "Clock uncertainty (ns)">0.51</item>
+<item name = "Target initiation interval">1</item>
+<item name = "Estimated clock period (ns)">3.59</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">46, 46, 15, 15, function</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+<column name="grp_phiOffSet_fu_150">phiOffSet, 42, 42, 15, 15, function</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="5">Name, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="DSP">-, 1, -, -</column>
+<column name="Expression">-, -, 0, 956</column>
+<column name="FIFO">-, -, -, -</column>
+<column name="Instance">2, 25, 4886, 9920</column>
+<column name="Memory">-, -, -, -</column>
+<column name="Multiplexer">-, -, -, 193</column>
+<column name="Register">-, -, 614, -</column>
+<specialColumn name="Available">2940, 3600, 866400, 433200</specialColumn>
+<specialColumn name="Utilization (%)">~0, ~0, ~0, 2</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="6">Instance, Module, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="calc_phi_hw_dmul_dEe_x_U6">calc_phi_hw_dmul_dEe, 0, 11, 456, 238</column>
+<column name="calc_phi_hw_sitodeOg_x_U7">calc_phi_hw_sitodeOg, 0, 0, 412, 461</column>
+<column name="grp_phiOffSet_fu_150">phiOffSet, 2, 14, 4018, 9221</column>
+</table>
+</item>
+<item name = "DSP48"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+<column name="calc_phi_hw_am_adfYi_U8">calc_phi_hw_am_adfYi, (i0 + i1) * i2</column>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="9">Memory, Module, BRAM_18K, FF, LUT, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="7">Name, BRAM_18K, FF, LUT, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="grp_phiOffSet_fu_150_sector_V">+, 0, 0, 6, 6, 2</column>
+<column name="ret_V_1_fu_543_p2">+, 0, 0, 23, 1, 23</column>
+<column name="tmp_13_fu_430_p2">+, 0, 0, 12, 12, 6</column>
+<column name="tmp_s_fu_285_p2">+, 0, 0, 12, 12, 6</column>
+<column name="F2_1_fu_273_p2">-, 0, 0, 12, 11, 12</column>
+<column name="F2_fu_418_p2">-, 0, 0, 12, 11, 12</column>
+<column name="man_V_1_fu_398_p2">-, 0, 0, 54, 1, 54</column>
+<column name="man_V_4_fu_253_p2">-, 0, 0, 54, 1, 54</column>
+<column name="op2_fu_186_p2">-, 0, 0, 19, 1, 19</column>
+<column name="tmp_14_fu_436_p2">-, 0, 0, 12, 5, 12</column>
+<column name="tmp_18_fu_291_p2">-, 0, 0, 12, 5, 12</column>
+<column name="tmp_27_fu_485_p2">ashr, 0, 0, 178, 54, 54</column>
+<column name="tmp_30_fu_340_p2">ashr, 0, 0, 178, 54, 54</column>
+<column name="tmp_10_fu_267_p2">icmp, 0, 0, 22, 63, 1</column>
+<column name="tmp_12_fu_424_p2">icmp, 0, 0, 5, 12, 5</column>
+<column name="tmp_15_fu_450_p2">icmp, 0, 0, 5, 12, 5</column>
+<column name="tmp_17_fu_279_p2">icmp, 0, 0, 5, 12, 5</column>
+<column name="tmp_19_fu_305_p2">icmp, 0, 0, 5, 12, 5</column>
+<column name="tmp_22_fu_476_p2">icmp, 0, 0, 5, 12, 6</column>
+<column name="tmp_23_fu_465_p2">icmp, 0, 0, 5, 12, 5</column>
+<column name="tmp_24_fu_331_p2">icmp, 0, 0, 5, 12, 6</column>
+<column name="tmp_25_fu_320_p2">icmp, 0, 0, 5, 12, 5</column>
+<column name="tmp_34_fu_537_p2">icmp, 0, 0, 6, 16, 1</column>
+<column name="tmp_5_fu_412_p2">icmp, 0, 0, 22, 63, 1</column>
+<column name="man_V_2_fu_404_p3">select, 0, 0, 54, 1, 54</column>
+<column name="man_V_5_fu_259_p3">select, 0, 0, 54, 1, 54</column>
+<column name="p_2_fu_504_p3">select, 0, 0, 2, 1, 2</column>
+<column name="p_3_fu_497_p3">select, 0, 0, 2, 1, 2</column>
+<column name="p_s_fu_548_p3">select, 0, 0, 23, 1, 23</column>
+<column name="sh_amt_1_fu_297_p3">select, 0, 0, 12, 1, 12</column>
+<column name="sh_amt_fu_442_p3">select, 0, 0, 12, 1, 12</column>
+<column name="tmp_28_fu_470_p2">shl, 0, 0, 48, 19, 19</column>
+<column name="tmp_31_fu_325_p2">shl, 0, 0, 48, 19, 19</column>
+<column name="r_V_fu_180_p2">xor, 0, 0, 27, 19, 20</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="ap_NS_fsm">10, 16, 1, 16</column>
+<column name="ap_enable_reg_pp0_iter0">1, 2, 1, 2</column>
+<column name="ap_enable_reg_pp0_iter3">1, 2, 1, 2</column>
+<column name="ap_phi_precharge_reg_pp0_iter1_p_Val2_2_reg_105">38, 10, 19, 190</column>
+<column name="ap_phi_precharge_reg_pp0_iter3_p_1_reg_140">23, 2, 23, 46</column>
+<column name="grp_fu_155_p0">64, 3, 64, 192</column>
+<column name="grp_fu_160_p0">32, 3, 32, 96</column>
+<column name="grp_phiOffSet_fu_150_ap_start">1, 2, 1, 2</column>
+<column name="p_1_phi_fu_143_p4">23, 2, 23, 46</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_CS_fsm">15, 0, 15, 0</column>
+<column name="ap_enable_reg_pp0_iter0_preg">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter2">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter3">1, 0, 1, 0</column>
+<column name="ap_phi_precharge_reg_pp0_iter1_p_Val2_2_reg_105">19, 0, 19, 0</column>
+<column name="ap_phi_precharge_reg_pp0_iter3_p_1_reg_140">23, 0, 23, 0</column>
+<column name="ap_pipeline_reg_pp0_iter1_tmp_reg_566">1, 0, 1, 0</column>
+<column name="ap_pipeline_reg_pp0_iter2_p_Val2_2_reg_105">19, 0, 19, 0</column>
+<column name="isneg_1_reg_595">1, 0, 1, 0</column>
+<column name="isneg_reg_650">1, 0, 1, 0</column>
+<column name="man_V_2_reg_655">54, 0, 54, 0</column>
+<column name="man_V_5_reg_600">54, 0, 54, 0</column>
+<column name="offset_V_reg_715">19, 0, 19, 0</column>
+<column name="op2_reg_575">19, 0, 19, 0</column>
+<column name="p_Val2_2_reg_105">19, 0, 19, 0</column>
+<column name="reg_163">64, 0, 64, 0</column>
+<column name="sh_amt_1_reg_615">12, 0, 12, 0</column>
+<column name="sh_amt_reg_670">12, 0, 12, 0</column>
+<column name="tmp_102_reg_695">19, 0, 19, 0</column>
+<column name="tmp_103_reg_640">19, 0, 19, 0</column>
+<column name="tmp_104_reg_727">1, 0, 1, 0</column>
+<column name="tmp_10_reg_607">1, 0, 1, 0</column>
+<column name="tmp_12_reg_666">1, 0, 1, 0</column>
+<column name="tmp_15_reg_678">1, 0, 1, 0</column>
+<column name="tmp_17_reg_611">1, 0, 1, 0</column>
+<column name="tmp_19_reg_623">1, 0, 1, 0</column>
+<column name="tmp_1_reg_590">64, 0, 64, 0</column>
+<column name="tmp_22_reg_691">1, 0, 1, 0</column>
+<column name="tmp_23_reg_682">1, 0, 1, 0</column>
+<column name="tmp_24_reg_636">1, 0, 1, 0</column>
+<column name="tmp_25_reg_627">1, 0, 1, 0</column>
+<column name="tmp_28_reg_686">19, 0, 19, 0</column>
+<column name="tmp_31_reg_631">19, 0, 19, 0</column>
+<column name="tmp_34_reg_731">1, 0, 1, 0</column>
+<column name="tmp_4_reg_720">23, 0, 23, 0</column>
+<column name="tmp_5_reg_662">1, 0, 1, 0</column>
+<column name="tmp_6_reg_585">64, 0, 64, 0</column>
+<column name="tmp_98_reg_700">19, 0, 19, 0</column>
+<column name="tmp_99_reg_645">19, 0, 19, 0</column>
+<column name="tmp_reg_566">1, 0, 1, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, calc_phi_hw, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, calc_phi_hw, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, calc_phi_hw, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, calc_phi_hw, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, calc_phi_hw, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, calc_phi_hw, return value</column>
+<column name="hwPhi_V">in, 19, ap_none, hwPhi_V, scalar</column>
+<column name="hwSector_V">in, 5, ap_none, hwSector_V, scalar</column>
+<column name="hwPhiGlobal_V">out, 23, ap_vld, hwPhiGlobal_V, pointer</column>
+<column name="hwPhiGlobal_V_ap_vld">out, 1, ap_vld, hwPhiGlobal_V, pointer</column>
+</table>
+</item>
+</section>
+
+<section name = "Critical Path" level="0">
+<item name = "Max Delay">3.59</item>
+<item name = "Critical Path Table"><table name="Critical Path Table" hasTotal="0">
+<keys size="15">Name, Operator, Delay, Accumulated Delay, Store Source, Resource, Core, Interface, Type, Port, Array, Scope, Pointer, Callee, Phi Node</keys>
+<column name="'offset.V', src/tk-mu_simple.cpp:436">call, 3.59, 3.59, -, -, -, -, -, -, -, -, -, phiOffSet, -</column>
+</table>
+</item>
+</section>
+</profile>

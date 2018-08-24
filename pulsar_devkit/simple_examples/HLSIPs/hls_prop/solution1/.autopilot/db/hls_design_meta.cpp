@@ -1,0 +1,28 @@
+#include "hls_design_meta.h"
+const Port_Property HLS_Design_Meta::port_props[]={
+	Port_Property("ap_clk", 1, hls_in, -1, "", "", 1),
+	Port_Property("ap_rst", 1, hls_in, -1, "", "", 1),
+	Port_Property("ap_start", 1, hls_in, -1, "", "", 1),
+	Port_Property("ap_done", 1, hls_out, -1, "", "", 1),
+	Port_Property("ap_idle", 1, hls_out, -1, "", "", 1),
+	Port_Property("ap_ready", 1, hls_out, -1, "", "", 1),
+	Port_Property("in_hwRinv_V", 15, hls_in, 0, "ap_none", "in_data", 1),
+	Port_Property("in_hwPt_V", 14, hls_in, 1, "ap_none", "in_data", 1),
+	Port_Property("in_hwSinhEta_V", 14, hls_in, 2, "ap_none", "in_data", 1),
+	Port_Property("in_hwEta_V", 14, hls_out, 3, "ap_vld", "out_data", 1),
+	Port_Property("in_hwEta_V_ap_vld", 1, hls_out, 3, "ap_vld", "out_vld", 1),
+	Port_Property("in_hwPhi_V", 19, hls_in, 4, "ap_none", "in_data", 1),
+	Port_Property("in_hwPhiGlobal_V", 23, hls_out, 5, "ap_vld", "out_data", 1),
+	Port_Property("in_hwPhiGlobal_V_ap_vld", 1, hls_out, 5, "ap_vld", "out_vld", 1),
+	Port_Property("in_hwZ0_V", 11, hls_in, 6, "ap_none", "in_data", 1),
+	Port_Property("in_hwSector_V", 5, hls_in, 7, "ap_none", "in_data", 1),
+	Port_Property("in_hwQ_V", 1, hls_in, 8, "ap_none", "in_data", 1),
+	Port_Property("in_hwX2_V", 10, hls_in, 9, "ap_none", "in_data", 1),
+	Port_Property("in_hwValid_V", 1, hls_in, 10, "ap_none", "in_data", 1),
+	Port_Property("in_hwBX_V", 3, hls_in, 11, "ap_none", "in_data", 1),
+	Port_Property("outEtaPhi_first_V", 14, hls_out, 12, "ap_vld", "out_data", 1),
+	Port_Property("outEtaPhi_first_V_ap_vld", 1, hls_out, 12, "ap_vld", "out_vld", 1),
+	Port_Property("outEtaPhi_second_V", 23, hls_out, 13, "ap_vld", "out_data", 1),
+	Port_Property("outEtaPhi_second_V_ap_vld", 1, hls_out, 13, "ap_vld", "out_vld", 1),
+};
+const char* HLS_Design_Meta::dut_name = "prop_hw";

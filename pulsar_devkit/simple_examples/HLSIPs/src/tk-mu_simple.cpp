@@ -29,6 +29,8 @@ Negative values in binary are generated assuming "One's complement"
 
 void prop_hw(HwTrack& in, etaphiglobal_t& outEtaPhi)
 {
+  #pragma HLS PIPELINE
+
   bool debug(false);
 
   /* Hardware implementation of the track propagation */
@@ -261,6 +263,8 @@ void prop_hw(HwTrack& in, etaphiglobal_t& outEtaPhi)
 
 void match_hw(HwTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outTrackMuon)
 {
+  #pragma HLS PIPELINE
+
   // assign the pT
   //assign_pt_hw(inTrack);
 
@@ -286,8 +290,9 @@ void match_hw(HwTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outTrackMuon)
 
   // need to allow for negative values, since we do not take 
   // the square root
-  if (dEta < 0.4 and dEta > - 0.4) {     
-    //if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
+  if (abs(dEta)<0.2) {
+  // if (dEta < 0.4 and dEta > - 0.4) {     
+    //    //if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
     if (debug) std::cout << ">>> Matched!" << std::endl << std::endl;
     
     outTrackMuon.hwPt = inTrack.hwPt;
@@ -299,15 +304,17 @@ void match_hw(HwTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outTrackMuon)
   } else {
     outTrackMuon.hwValid = 0;     
     outTrackMuon.hwPt = 0;
-    outTrackMuon.hwEta = 99;
-    outTrackMuon.hwPhi = 99;
-    outTrackMuon.hwBX = 99;
+    outTrackMuon.hwEta = 0;
+    outTrackMuon.hwPhi = 0;
+    outTrackMuon.hwBX = 0;
     outTrackMuon.hwQ = 0;
   }
 }
 
 void match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outTrackMuon)
 {
+  #pragma HLS PIPELINE
+
   // assign the pT
   //assign_pt_hw(inTrack);
 
@@ -333,7 +340,7 @@ void match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outT
   
   // need to allow for negative values, since we do not take 
   // the square root
-  if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {
+  if (abs(dR2_tk_mu)) {
     //if (dEta < 0.2*0.2 and dEta > - 0.2*0.2) {     
     if (debug)     std::cout << ">>> Matched!" << std::endl << std::endl;
 
@@ -346,9 +353,9 @@ void match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outT
   } else {
     outTrackMuon.hwValid = 0;     
     outTrackMuon.hwPt = 0;
-    outTrackMuon.hwEta = 99;
-    outTrackMuon.hwPhi = 99;
-    outTrackMuon.hwBX = 99;
+    outTrackMuon.hwEta = 0;
+    outTrackMuon.hwPhi = 0;
+    outTrackMuon.hwBX = 0;
     outTrackMuon.hwQ = 0;
   }
 }
@@ -374,6 +381,8 @@ void assign_pt_hw(HwTrack& inTrack)
 
 void calc_pt_hw(invpt_t hwRinv, pt_t& outPt)
 {
+  #pragma HLS PIPELINE
+
   // Rinv (16384 = 2^14; number of unsigned bits)
   invpt_t absInvRinv;
   if (hwRinv < 0){ 
@@ -394,6 +403,8 @@ void calc_pt_hw(invpt_t hwRinv, pt_t& outPt)
 
 void calc_eta_hw(eta_t hwSinhEta, eta_t& outEta)
 {
+  #pragma HLS PIPELINE
+
   feta_t inhwEta;
   feta_t absSinhEta;
   if (hwSinhEta<0){
@@ -411,6 +422,8 @@ void calc_eta_hw(eta_t hwSinhEta, eta_t& outEta)
 
 void calc_phi_hw(phi_t hwPhi, sector_t hwSector, phiglobal_t& hwPhiGlobal)
 {
+  #pragma HLS PIPELINE
+
   // Phi0 (262144 = 2^18; number of unsigned bits)
   fphi_t inhwPhi;
   if (hwPhi<0) {

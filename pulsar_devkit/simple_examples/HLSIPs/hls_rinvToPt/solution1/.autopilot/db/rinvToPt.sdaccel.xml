@@ -1,0 +1,149 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'rinvToPt'" level="0">
+<item name = "Date">Mon Aug 20 16:40:50 2018
+</item>
+<item name = "Version">2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)</item>
+<item name = "Project">hls_rinvToPt</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">virtex7</item>
+<item name = "Target device">xc7vx690tffg1927-2</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Target clock period (ns)">4.11</item>
+<item name = "Clock uncertainty (ns)">0.51</item>
+<item name = "Target initiation interval">1</item>
+<item name = "Estimated clock period (ns)">3.53</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">5, 5, 1, 1, function</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="5">Name, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="DSP">-, 1, -, -</column>
+<column name="Expression">-, -, 0, 129</column>
+<column name="FIFO">-, -, -, -</column>
+<column name="Instance">-, -, -, -</column>
+<column name="Memory">14, -, 0, 0</column>
+<column name="Multiplexer">-, -, -, -</column>
+<column name="Register">-, -, 106, -</column>
+<specialColumn name="Available">2940, 3600, 866400, 433200</specialColumn>
+<specialColumn name="Utilization (%)">~0, ~0, ~0, ~0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="6">Instance, Module, BRAM_18K, DSP48E, FF, LUT</keys>
+</table>
+</item>
+<item name = "DSP48"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+<column name="rinvToPt_mac_mulacud_U1">rinvToPt_mac_mulacud, i0 + i1 * i2</column>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="9">Memory, Module, BRAM_18K, FF, LUT, Words, Bits, Banks, W*Bits*Banks</keys>
+<column name="rinvToPt_table1_U">rinvToPt_rinvToPtbkb, 14, 0, 0, 16384, 14, 1, 229376</column>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="7">Name, BRAM_18K, FF, LUT, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="ret_V_fu_122_p2">+, 0, 0, 25, 1, 25</column>
+<column name="sel_tmp2_fu_184_p2">and, 0, 0, 1, 1, 1</column>
+<column name="icmp_fu_169_p2">icmp, 0, 0, 7, 18, 1</column>
+<column name="tmp_7_fu_116_p2">icmp, 0, 0, 8, 22, 1</column>
+<column name="tmp_8_fu_197_p2">or, 0, 0, 1, 1, 1</column>
+<column name="index_fu_143_p3">select, 0, 0, 32, 1, 32</column>
+<column name="res_V">select, 0, 0, 14, 1, 14</column>
+<column name="sel_tmp_cast_fu_189_p3">select, 0, 0, 7, 1, 1</column>
+<column name="tmp_5_fu_135_p3">select, 0, 0, 32, 1, 32</column>
+<column name="sel_tmp1_fu_179_p2">xor, 0, 0, 2, 1, 2</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_CS_fsm">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter2">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter3">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter4">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter5">1, 0, 1, 0</column>
+<column name="ap_pipeline_reg_pp0_iter4_icmp_reg_253">1, 0, 1, 0</column>
+<column name="ap_pipeline_reg_pp0_iter4_tmp_9_reg_247">1, 0, 1, 0</column>
+<column name="icmp_reg_253">1, 0, 1, 0</column>
+<column name="index_reg_242">32, 0, 32, 0</column>
+<column name="r_V_reg_226">32, 0, 32, 0</column>
+<column name="tmp_2_reg_231">24, 0, 24, 0</column>
+<column name="tmp_4_reg_237">8, 0, 8, 0</column>
+<column name="tmp_9_reg_247">1, 0, 1, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, rinvToPt&lt;ap_fixed&lt;24, 2, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, ap_fixed&lt;14, 9, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, 16384&gt;, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, rinvToPt&lt;ap_fixed&lt;24, 2, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, ap_fixed&lt;14, 9, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, 16384&gt;, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, rinvToPt&lt;ap_fixed&lt;24, 2, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, ap_fixed&lt;14, 9, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, 16384&gt;, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, rinvToPt&lt;ap_fixed&lt;24, 2, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, ap_fixed&lt;14, 9, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, 16384&gt;, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, rinvToPt&lt;ap_fixed&lt;24, 2, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, ap_fixed&lt;14, 9, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, 16384&gt;, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, rinvToPt&lt;ap_fixed&lt;24, 2, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, ap_fixed&lt;14, 9, (ap_q_mode)5, (ap_o_mode)3, 0&gt;, 16384&gt;, return value</column>
+<column name="data_V">in, 24, ap_none, data_V, pointer</column>
+<column name="res_V">out, 14, ap_vld, res_V, pointer</column>
+<column name="res_V_ap_vld">out, 1, ap_vld, res_V, pointer</column>
+</table>
+</item>
+</section>
+
+<section name = "Critical Path" level="0">
+<item name = "Max Delay">3.53</item>
+<item name = "Critical Path Table"><table name="Critical Path Table" hasTotal="0">
+<keys size="15">Name, Operator, Delay, Accumulated Delay, Store Source, Resource, Core, Interface, Type, Port, Array, Scope, Pointer, Callee, Phi Node</keys>
+<column name="'ret_V_cast_cast', src/tk-mu_simple.h:480">sext, 0.00, 0.00, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'ret.V', src/tk-mu_simple.h:480">add, 1.51, 1.51, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'tmp_s', src/tk-mu_simple.h:480">sext, 0.00, 1.51, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'tmp_5', src/tk-mu_simple.h:480">select, 0.00, 1.51, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'index', src/tk-mu_simple.h:480">select, 0.71, 2.22, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'tmp_10', src/tk-mu_simple.h:483">partselect, 0.00, 2.22, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'icmp', src/tk-mu_simple.h:483">icmp, 1.31, 3.53, -, -, -, -, -, -, -, -, -, -, -</column>
+</table>
+</item>
+</section>
+</profile>

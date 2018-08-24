@@ -1,0 +1,23 @@
+<InterfaceSummary>
+<RtlPorts>
+<name>hwRinv_V</name>
+<CType>
+<TypeName>ap_int 15</TypeName>
+<TypeWidth>15</TypeWidth>
+<PhysicalWidth>15</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>outPt_V</name>
+<CType>
+<TypeName>ap_uint 14</TypeName>
+<TypeWidth>14</TypeWidth>
+<PhysicalWidth>14</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+</InterfaceSummary>
+
