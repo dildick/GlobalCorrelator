@@ -1,3 +1,0 @@
-delta_minus_LUT_mcud
-delta_minus_LUT_dbkb
-delta_minus_LUT

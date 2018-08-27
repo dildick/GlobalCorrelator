@@ -1,4 +1,0 @@
-#!/bin/sh
-lli=${LLVMINTERP-lli}
-exec $lli \
-    /data/dildick/GlobalCorrelator/pulsar_devkit/simple_examples/HLSIPs/hls_invCosh/solution1/.autopilot/db/a.g.0.bc ${1+"$@"}

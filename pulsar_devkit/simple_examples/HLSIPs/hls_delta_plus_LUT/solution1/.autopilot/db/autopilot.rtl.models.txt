@@ -1,3 +1,0 @@
-delta_plus_LUT_mucud
-delta_plus_LUT_debkb
-delta_plus_LUT

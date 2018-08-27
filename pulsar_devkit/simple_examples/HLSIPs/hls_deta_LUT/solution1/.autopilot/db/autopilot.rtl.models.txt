@@ -1,3 +1,0 @@
-deta_LUT_mul_mul_cud
-deta_LUT_deta_tabbkb
-deta_LUT

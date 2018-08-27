@@ -1,3 +1,0 @@
-tanh_LUT_mul_mul_cud
-tanh_LUT_tanh_tabbkb
-tanh_LUT

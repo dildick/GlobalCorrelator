@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="calc_phi_hw" xd:componentRef="calc_phi_hw" xd:initiationInterval="15" xd:clockPeriod="4.115000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
-  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
-  <xd:arg xd:name="hwPhi" xd:originalName="hwPhi" xd:direction="in" xd:interfaceRef="hwPhi_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="19"/>
-  <xd:arg xd:name="hwSector" xd:originalName="hwSector" xd:direction="in" xd:interfaceRef="hwSector_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="5"/>
-  <xd:arg xd:name="hwPhiGlobal" xd:originalName="hwPhiGlobal" xd:direction="out" xd:interfaceRef="hwPhiGlobal_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="23"/>
-  <xd:latencyEstimates xd:best-case="46" xd:worst-case="46" xd:average-case="46"/>
-  <xd:resourceEstimates xd:LUT="11069" xd:FF="5500" xd:BRAM="2" xd:DSP="26"/>
-</xd:acceleratorMap>
