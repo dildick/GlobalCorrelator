@@ -266,33 +266,30 @@ void match_hw(HwTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outTrackMuon)
   #pragma HLS PIPELINE
 
   // assign the pT
-  //assign_pt_hw(inTrack);
+  assign_pt_hw(inTrack);
 
   // calculate eta and phi
   feta_t tkEta = inTrack.hwEta*INVETA_CONVERSION;
-  //fphiglobal_t tkPhi = normalizePhi(inTrack.hwPhiGlobal*INVPHI_CONVERSION);
+  fphiglobal_t tkPhi = normalizePhi(inTrack.hwPhiGlobal*INVPHI_CONVERSION);
   
   feta_m muEta = (1- 2*std::bitset<9>(inMuon.hwEta)[8]) * from_twos_complement<9>(inMuon.hwEta) * MUONETA_CONVERSION;
-  //fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
+  fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
   
   // dR calculation
-  feta_m dEta = (tkEta - muEta);
-  //fphiglobal_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
+  feta_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
 
   bool debug(false);
   if (debug){
     std::cout << "Track eta " << tkEta << std::endl;
-    // std::cout << "Track phi " << tkPhi << std::endl;
+    std::cout << "Track phi " << tkPhi << std::endl;
     std::cout << "muon eta " << muEta << std::endl;
-    // std::cout << "muon phi " << muPhi << std::endl;
-    // std::cout << "dR2 " << dR2_tk_mu << std::endl << std::endl;
+    std::cout << "muon phi " << muPhi << std::endl;
+    std::cout << "dR2 " << dR2_tk_mu << std::endl << std::endl;
   }
 
   // need to allow for negative values, since we do not take 
   // the square root
-  if (abs(dEta)<0.2) {
-  // if (dEta < 0.4 and dEta > - 0.4) {     
-    //    //if (dR2_tk_mu < 0.2*0.2 and dR2_tk_mu > - 0.2*0.2) {     
+  if (abs(dR2_tk_mu)<0.2) {
     if (debug) std::cout << ">>> Matched!" << std::endl << std::endl;
     
     outTrackMuon.hwPt = inTrack.hwPt;
@@ -316,7 +313,7 @@ void match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outT
   #pragma HLS PIPELINE
 
   // assign the pT
-  //assign_pt_hw(inTrack);
+  assign_pt_hw(inTrack);
 
   // calculate eta and phi
   feta_t tkEta = inTrack.hwPropEta*INVETA_CONVERSION;
@@ -326,8 +323,7 @@ void match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outT
   fphi_m muPhi = normalizePhi(inMuon.hwPhi * MUONPHI_CONVERSION);
 
   // dR calculation
-  fphiglobal_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
-  //feta_m dEta = (tkEta - muEta)*(tkEta - muEta);
+  feta_t dR2_tk_mu = dr2_int(tkEta, tkPhi, muEta, muPhi);
 
   bool debug(false);
   if (debug){
@@ -340,8 +336,7 @@ void match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outT
   
   // need to allow for negative values, since we do not take 
   // the square root
-  if (abs(dR2_tk_mu)) {
-    //if (dEta < 0.2*0.2 and dEta > - 0.2*0.2) {     
+  if (abs(dR2_tk_mu)<0.2) {
     if (debug)     std::cout << ">>> Matched!" << std::endl << std::endl;
 
     outTrackMuon.hwPt = inTrack.hwPt;
@@ -445,6 +440,44 @@ void calc_phi_hw(phi_t hwPhi, sector_t hwSector, phiglobal_t& hwPhiGlobal)
     std::cout << "intermediate inhwPhi " << inhwPhi << std::endl;
     std::cout << "output hwPhiGlobal " << hwPhiGlobal << std::endl;
   }
+}
+
+void multimatch_prop_hw(HwMuon       inMuons[N_MUONS], 
+			HwPropTrack inTracks[N_TRACKS], 
+			HwTrackMuon outMuons[N_MUONS])
+{
+  #pragma HLS PIPELINE
+
+  #pragma HLS ARRAY_PARTITION variable=inMuons complete
+  #pragma HLS ARRAY_PARTITION variable=inTracks complete
+  #pragma HLS ARRAY_PARTITION variable=outMuons complete
+
+  for (unsigned int iMu = 0; iMu < N_MUONS; ++iMu) {
+  
+    #pragma HLS UNROLL
+
+    fpt_t maxDeltaPt = 999;
+    for (unsigned int iTrk = 0; iTrk < N_TRACKS; ++iTrk) {
+  
+      #pragma HLS UNROLL
+  
+      // preselect the tracks
+      HwTrackMuon hwPropTrackMuon;
+      match_prop_hw(inTracks[iTrk], inMuons[iMu], hwPropTrackMuon);
+    
+      // check if valid or not
+      if (! hwPropTrackMuon.hwValid) continue;
+    
+      fpt_t deltaPt = abs(inTracks[iTrk].hwPt*INVPT_CONVERSION - inMuons[iMu].hwPt*0.5); 
+    
+      // retain the matching one that has the smallest delta Pt
+      if ( deltaPt < maxDeltaPt){
+	maxDeltaPt = deltaPt;
+	outMuons[iMu] = hwPropTrackMuon; 
+      }
+    }
+  }
+  return;
 }
 
 // THE END

@@ -8,6 +8,9 @@
 #include <sstream>
 #include <bitset>
 
+const int N_MUONS = 6;
+const int N_TRACKS = 18;
+
 // general stuff
 const int N_BITS_GENERAL_Q = 1;
 const int N_BITS_GENERAL_BX = 3;

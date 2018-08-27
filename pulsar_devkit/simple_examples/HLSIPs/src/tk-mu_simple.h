@@ -31,6 +31,9 @@ if rinv<0: rinv+=16384 then multiply by INVRINV_CONVERSION
 void prop_hw(HwTrack& in, etaphiglobal_t& outEtaPhi);
 void match_hw(HwTrack&, const HwMuon&, HwTrackMuon&);
 void match_prop_hw(HwPropTrack&, const HwMuon&, HwTrackMuon&);
+void multimatch_prop_hw(const HwMuon& inMuon, 
+			HwPropTrack inPropTracks[N_TRACKS], 
+			HwTrackMuon& outTrackMuon);
 
 // helper functions
 void assign_pt_hw(HwTrack& in);
