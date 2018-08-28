@@ -265,8 +265,8 @@ void match_hw(HwTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outTrackMuon)
 {
   #pragma HLS PIPELINE
 
-  // assign the pT
-  assign_pt_hw(inTrack);
+  // // assign the pT
+  // assign_pt_hw(inTrack);
 
   // calculate eta and phi
   feta_t tkEta = inTrack.hwEta*INVETA_CONVERSION;
@@ -312,8 +312,8 @@ void match_prop_hw(HwPropTrack& inTrack, const HwMuon& inMuon, HwTrackMuon& outT
 {
   #pragma HLS PIPELINE
 
-  // assign the pT
-  assign_pt_hw(inTrack);
+  // // assign the pT
+  // assign_pt_hw(inTrack);
 
   // calculate eta and phi
   feta_t tkEta = inTrack.hwPropEta*INVETA_CONVERSION;
@@ -442,39 +442,32 @@ void calc_phi_hw(phi_t hwPhi, sector_t hwSector, phiglobal_t& hwPhiGlobal)
   }
 }
 
-void multimatch_prop_hw(HwMuon       inMuons[N_MUONS], 
+void multimatch_prop_hw(const HwMuon& inMuon, 
 			HwPropTrack inTracks[N_TRACKS], 
-			HwTrackMuon outMuons[N_MUONS])
+		        HwTrackMuon& outMuon)
 {
   #pragma HLS PIPELINE
 
-  #pragma HLS ARRAY_PARTITION variable=inMuons complete
   #pragma HLS ARRAY_PARTITION variable=inTracks complete
-  #pragma HLS ARRAY_PARTITION variable=outMuons complete
 
-  for (unsigned int iMu = 0; iMu < N_MUONS; ++iMu) {
-  
+  fpt_t maxDeltaPt = 999;
+  for (unsigned int iTrk = 0; iTrk < N_TRACKS; ++iTrk) {
+    
     #pragma HLS UNROLL
-
-    fpt_t maxDeltaPt = 999;
-    for (unsigned int iTrk = 0; iTrk < N_TRACKS; ++iTrk) {
-  
-      #pragma HLS UNROLL
-  
-      // preselect the tracks
-      HwTrackMuon hwPropTrackMuon;
-      match_prop_hw(inTracks[iTrk], inMuons[iMu], hwPropTrackMuon);
     
-      // check if valid or not
-      if (! hwPropTrackMuon.hwValid) continue;
+    // preselect the tracks
+    HwTrackMuon hwPropTrackMuon;
+    match_prop_hw(inTracks[iTrk], inMuon, hwPropTrackMuon);
     
-      fpt_t deltaPt = abs(inTracks[iTrk].hwPt*INVPT_CONVERSION - inMuons[iMu].hwPt*0.5); 
+    // check if valid or not
+    if (! hwPropTrackMuon.hwValid) continue;
     
-      // retain the matching one that has the smallest delta Pt
-      if ( deltaPt < maxDeltaPt){
-	maxDeltaPt = deltaPt;
-	outMuons[iMu] = hwPropTrackMuon; 
-      }
+    fpt_t deltaPt = abs(inTracks[iTrk].hwPt*INVPT_CONVERSION - inMuon.hwPt*0.5); 
+    
+    // retain the matching one that has the smallest delta Pt
+    if ( deltaPt < maxDeltaPt){
+      maxDeltaPt = deltaPt;
+      outMuon = hwPropTrackMuon; 
     }
   }
   return;
